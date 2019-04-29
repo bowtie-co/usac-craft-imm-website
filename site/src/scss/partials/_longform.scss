@@ -1,0 +1,191 @@
+.long-form {
+  .tab-section-header {
+    padding-top: 2rem;
+     position: fixed;
+     top: 84px;
+     z-index: 10;
+     width: 100%;
+     background-color: $white;
+     @include breakpoint(small only) {
+       position: relative;
+       top: 0px;
+       padding-top: 0rem;
+     }
+      @include breakpoint(medium only) {
+        position: relative;
+        top: 0px;
+        padding-top: 0rem;
+      }
+  }
+  .tabs-panel {
+    padding: 2rem 0 0;
+    .tab-content-block {
+      padding: 1rem 0;
+    }
+  }
+  .tab-header {
+    padding-top: 2rem;
+  }
+  .breadcrumb {
+    a {
+      color: $medium-gray;
+    }
+    font-size: 14px;
+    color: $medium-gray;
+    padding-bottom: .5rem;
+  }
+  h1 {
+    color: $red;
+    text-transform: uppercase;
+  }
+  .tab-titles {
+    padding-top: .5rem;
+  }
+
+  .tabs-title {
+      border-bottom: 5px solid $medium-gray;
+    a {
+      font-family: 'AlternateGothicNo2D', sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 1.25rem 0rem .5rem;
+      color: $medium-gray;
+    }
+  }
+
+  .tabs-title:hover {
+         background: none;
+         border-bottom: 5px solid $dark-red;
+         a {
+           color: $dark-red;
+         }
+  }
+
+  .tabs-title.is-active {
+      border-bottom: 5px solid $red;
+      a {
+        color: $red;
+      }
+  }
+
+  .tab-content-section {
+    padding-top: 198px;
+    padding-bottom: 3rem;
+    @include breakpoint(medium only) {
+      padding-top: 0px;
+    }
+    .tab-content {
+      padding-top: 3rem;
+    }
+  }
+
+
+  .bullet-title {
+    color: $red;
+    font-family: 'ProximaNovaBold', sans-serif;
+  }
+
+ .accordion-content {
+   border: none;
+ }
+
+.accordion {
+  list-style: none;
+ .accordion-item {
+   list-style: none;
+   list-style-position: inside;
+   list-style-type: none;
+   background: $blue;
+ }
+ .accordion-item-link {
+   color: $white;
+   padding: 1rem;
+   font-family: 'AlternateGothicNo2D', sans-serif;
+   font-size: 18px;
+   text-transform: uppercase;
+ }
+ .is-active{
+   background: $light-blue !important;
+ }
+ .accordion-title:focus {
+   background: $light-blue;
+ }
+ .accordion-title:hover {
+   background: $light-blue;
+ }
+}
+
+}
+.membership-comparison-table {
+  padding: 2rem 0;
+  tbody {
+    tr {
+      td {
+        padding: .75rem;
+        border: 2px solid $medium-gray;
+      }
+    }
+  }
+  @include breakpoint (small only) {
+    thead {
+      tr {
+        th {
+          padding: 0;
+          h6 {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: .5rem;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+}
+
+.membership-blocks {
+  padding: 2rem 0;
+  .membership-name {
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .membership-price {
+    font-size: 52px;
+    font-family: 'ProximaNovaBold';
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+  .membership-type {
+    border: 2px solid $blue;
+    .grid-x {
+      height: 100%;
+    }
+  }
+  .membership-feature-list {
+    padding: 2rem 2rem 1rem;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  .membership-description {
+    background: $blue;
+    color: $white;
+    padding: 1rem 0 !important;
+  }
+  a {
+    margin-bottom: 0;
+  }
+  @include breakpoint (small only) {
+    .membership-feature-list {
+      padding: 0.875rem;
+    }
+
+  }
+
+}

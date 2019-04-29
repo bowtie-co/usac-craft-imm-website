@@ -1,0 +1,144 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /deploys/usacycling_org_codedeploy
+permissions:
+  - object: /deploys/usacycling_org_codedeploy/craft
+    pattern: "*app*"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/craft
+    pattern: "*app*"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/craft/app
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/craft/app
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/craft
+    pattern: "*config*"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/craft
+    pattern: "*config*"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/craft/config
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/craft/config
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/craft
+    pattern: "*storage*"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/craft
+    pattern: "*storage*"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/craft/storage
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/craft/storage
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/site
+    pattern: "*assets*"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/site/assets
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/site/assets
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+  - object: /deploys/usacycling_org_codedeploy/site
+    pattern: "*documents*"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/site/documents
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 775
+    type:
+      - directory
+  - object: /deploys/usacycling_org_codedeploy/site/documents
+    pattern: "**"
+    owner: apache
+    group: apache
+    mode: 664
+    type:
+      - file
+hooks:
+  AfterInstall:
+    - location: scripts/deploy/sync_post_codedeploy
+      timeout: 300
+      runas: root
+    - location: scripts/deploy/clear_cache
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/deploy/graceful_server
+      timeout: 300
+      runas: root

@@ -1,0 +1,527 @@
+{
+  "count": 53,
+  "next": null,
+  "previous": null,
+  "results": [{
+    "id": 0,
+    "name": "Select Event Type",
+    "slug": "gran-fondo",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  },{
+    "id": 1,
+    "name": "Gran fondo",
+    "slug": "gran-fondo",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 2,
+    "name": "Century",
+    "slug": "century",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 3,
+    "name": "Criterium",
+    "slug": "criterium",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 4,
+    "name": "Track",
+    "slug": "track",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 5,
+    "name": "Randonneur",
+    "slug": "randonneur",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 6,
+    "name": "Sportive",
+    "slug": "sportive",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 7,
+    "name": "Time Trial",
+    "slug": "time-trial",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 8,
+    "name": "Stage race",
+    "slug": "stage-race",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }, {
+    "id": 9,
+    "name": "Ultra marathon",
+    "slug": "ultra-marathon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 10,
+    "name": "Marathon",
+    "slug": "marathon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 11,
+    "name": "Enduro",
+    "slug": "enduro",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 12,
+    "name": "Downhill",
+    "slug": "downhill",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 13,
+    "name": "Cross Country",
+    "slug": "cross-country",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 14,
+    "name": "Relay",
+    "slug": "relay",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 15,
+    "name": "Freeride",
+    "slug": "freeride",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 16,
+    "name": "Dual slalom",
+    "slug": "dual-slalom",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 17,
+    "name": "4X",
+    "slug": "4x",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 18,
+    "name": "Stage races",
+    "slug": "stage-races",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 19,
+    "name": "MTB orienteering",
+    "slug": "mtb-orienteering",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 20,
+    "name": "Dirt jumping",
+    "slug": "dirt-jumping",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 21,
+    "name": "Super D",
+    "slug": "super-d",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 22,
+    "name": "Race",
+    "slug": "race",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [4]
+  }, {
+    "id": 23,
+    "name": "Park / Vert",
+    "slug": "park-vert",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [4]
+  }, {
+    "id": 24,
+    "name": "Dirt",
+    "slug": "dirt",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [4]
+  }, {
+    "id": 25,
+    "name": "Street",
+    "slug": "street",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [4]
+  }, {
+    "id": 26,
+    "name": "Flatland",
+    "slug": "flatland",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [4]
+  }, {
+    "id": 27,
+    "name": "Aquabike",
+    "slug": "aquabike",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 28,
+    "name": "Aquathlon",
+    "slug": "aquathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 29,
+    "name": "Cross Triathlon",
+    "slug": "cross-triathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 30,
+    "name": "Duathlon",
+    "slug": "duathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 31,
+    "name": "Long Distance Triathlon",
+    "slug": "long-distance-triathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 32,
+    "name": "Paratriathlon",
+    "slug": "Paratriathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 33,
+    "name": "Winter triathlon",
+    "slug": "winter-triathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 34,
+    "name": "Tour",
+    "slug": "tour",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 35,
+    "name": "Hill Climb",
+    "slug": "hill-climb",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 36,
+    "name": "Road Woman",
+    "slug": "road-woman",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 37,
+    "name": "MTB-Raley",
+    "slug": "mtb-raley",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [2]
+  }, {
+    "id": 38,
+    "name": "CycleCross All",
+    "slug": "cyclecross-all",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 39,
+    "name": "Kids All",
+    "slug": "kids-all",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [8]
+  }, {
+    "id": 40,
+    "name": "Trials all",
+    "slug": "trials-all",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 41,
+    "name": "Triathlon",
+    "slug": "triathlon",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [6]
+  }, {
+    "id": 42,
+    "name": "Off-road dua",
+    "slug": "off-road-dua",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 43,
+    "name": "Endurance",
+    "slug": "endurance",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 44,
+    "name": "Kids",
+    "slug": "kids-mtb",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 45,
+    "name": "Road-Race",
+    "slug": "road-race",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 46,
+    "name": "Gravel",
+    "slug": "gravel",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 47,
+    "name": "Charity /  Fundraising Ride",
+    "slug": "charity-fundraising-ride",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 54,
+    "name": "Lynn Event Listing Category",
+    "slug": "lynn-event-listing-category",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 55,
+    "name": "BMX",
+    "slug": "bmx",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [4]
+  }, {
+    "id": 56,
+    "name": "Try-a Triathlon Entry event",
+    "slug": "try-triathlon-entry-event",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 57,
+    "name": "Youth Triathlon and Multisport",
+    "slug": "youth-triathlon-and-multisport",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": []
+  }, {
+    "id": 58,
+    "name": "Kids os Steel Triathlon and Multisport",
+    "slug": "kids-os-steel-triathlon-and-multisport",
+    "subcategories": [],
+    "attributes": [{
+      "id": 1,
+      "name": "Event Type",
+      "slug": "event-type",
+      "options": [{
+        "id": 1,
+        "name": "Competition / Race",
+        "slug": "competition-race",
+        "group": null
+      }, {
+        "id": 2,
+        "name": "Clinic/Workshop",
+        "slug": "clinicworkshop",
+        "group": null
+      }, {
+        "id": 3,
+        "name": "Training Series / Sessions",
+        "slug": "training-series-sessions",
+        "group": null
+      }, {
+        "id": 4,
+        "name": "Ceremony / Celebration",
+        "slug": "ceremony-celebration",
+        "group": null
+      }],
+      "option_groups": [],
+      "is_multiselect": true
+    }, {
+      "id": 2,
+      "name": "Race Series",
+      "slug": "race-series",
+      "options": [{
+        "id": 8,
+        "name": "International Triathlon Union Events",
+        "slug": "international-triathlon-union-events",
+        "group": null
+      }, {
+        "id": 9,
+        "name": "Canadian Championship Events",
+        "slug": "canadian-championship-events",
+        "group": null
+      }, {
+        "id": 10,
+        "name": "Triathlon Canada Qualification Events",
+        "slug": "triathlon-canada-qualification-events",
+        "group": null
+      }, {
+        "id": 11,
+        "name": "Triathlon Canada Junior Series",
+        "slug": "triathlon-canada-junior-series",
+        "group": null
+      }, {
+        "id": 12,
+        "name": "Provincial Championships",
+        "slug": "provincial-championships",
+        "group": null
+      }, {
+        "id": 13,
+        "name": "Provincial Sanctioned Races",
+        "slug": "provincial-sanctioned-races",
+        "group": null
+      }],
+      "option_groups": [],
+      "is_multiselect": true
+    }, {
+      "id": 3,
+      "name": "Competition Level",
+      "slug": "competition-level",
+      "options": [{
+        "id": 5,
+        "name": "Entry",
+        "slug": "entry",
+        "group": null
+      }, {
+        "id": 6,
+        "name": "Participation",
+        "slug": "participation",
+        "group": null
+      }, {
+        "id": 7,
+        "name": "Competitive",
+        "slug": "competitive",
+        "group": null
+      }],
+      "option_groups": [],
+      "is_multiselect": true
+    }, {
+      "id": 4,
+      "name": "Age Category",
+      "slug": "age-category",
+      "options": [{
+        "id": 14,
+        "name": "Kids Triathlon",
+        "slug": "kids-triathlon",
+        "group": {
+          "id": 1
+        }
+      }, {
+        "id": 15,
+        "name": "Youth",
+        "slug": "youth",
+        "group": {
+          "id": 1
+        }
+      }, {
+        "id": 16,
+        "name": "Junior",
+        "slug": "junior",
+        "group": {
+          "id": 1
+        }
+      }, {
+        "id": 17,
+        "name": "Elite",
+        "slug": "elite",
+        "group": {
+          "id": 1
+        }
+      }, {
+        "id": 18,
+        "name": "Age-Group",
+        "slug": "age-group",
+        "group": {
+          "id": 1
+        }
+      }],
+      "option_groups": [{
+        "id": 1,
+        "name": "Age Category"
+      }, {
+        "id": 1,
+        "name": "Age Category"
+      }, {
+        "id": 1,
+        "name": "Age Category"
+      }, {
+        "id": 1,
+        "name": "Age Category"
+      }, {
+        "id": 1,
+        "name": "Age Category"
+      }],
+      "is_multiselect": true
+    }],
+    "disciplines": []
+  }, {
+    "id": 59,
+    "name": "Cyclo-cross",
+    "slug": "cyclo-cross",
+    "subcategories": [],
+    "attributes": [],
+    "disciplines": [1]
+  }]
+}

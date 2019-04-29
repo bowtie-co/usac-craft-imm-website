@@ -1,0 +1,113 @@
+{% set hDCount = 0 %}
+{% set fDCount = 0 %}
+{% set sDCount = 0 %}
+
+{% for entry in content.teamTierMember %}
+    {% switch entry.teamTier %}
+        {% case "highlightedDirector" %}
+            {% set hDCount = hDCount + 1 %}
+        {% case "featuredDirector" %}
+            {% set fDCount = fDCount + 1 %}
+        {% case "standardDirector" %}
+            {% set sDCount = sDCount + 1 %}
+    {% endswitch %}
+{% endfor %}
+
+{#########################}
+{# HIGHLIGHTED DIRECTORS #}
+{#########################}
+{% if hDCount > 0 %}
+    <div id="{{content.type}}_{{content.id}}" class="tiered-team-highlighted grid-container">
+        <div class="grid-x grid-margin-x">
+            {% for entry in content.teamTierMember %}
+                {% if entry.teamTier == "highlightedDirector" %}
+                    <div class="cell large-6 highlighted-director-section">
+                        <div class="grid-x">
+                            <div class="cell medium-6 team-image-cell">
+                                <img class="highlighted-director-image" src="{{ entry.teamMemberImage.first().getUrl("highlightedDirectors") }}"/>
+                            </div>
+                            <div class="cell medium-6 team-content-cell">
+                                <h2 class="main-title highlighted-director-name">{{ entry.teamFirstName }}<br/>{{ entry.teamLastName }}</h2>
+                                <div class="highlighted-director-title">{{ entry.teamMemberTitle }}</div>
+                                <div class="highlighted-director-social">
+                                    {% if entry.teamSocialTwitterLink %}
+                                        <a href="{{ entry.teamSocialTwitterLink }}" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                    {% if entry.teamSocialFacebookLink %}
+                                        <a href="{{ entry.teamSocialFacebookLink }}" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                    {% if entry.teamSocialInstagramLink %}
+                                        <a href="{{ entry.teamSocialInstagramLink }}" target="_blank"><i class="fa fa-instagram fa-2x no-border" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="grid-x highlighted-director-background-section">
+                                <div class="cell large-3">
+                                  <div class="top-title">Background</div>
+                                </div>
+                                <div class="cell large-9">
+                                    <div class="highlighted-director-bio">{{ entry.teamMemberBio }}</div>
+                                    {% if entry.teamContact %}
+                                        <a class="button hollow secondary" href="mailto:{{ entry.teamContact }}">CONTACT</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+{######################}
+{# FEATURED DIRECTORS #}
+{######################}
+{% if fDCount > 0 %}
+    <div class="tiered-team-featured">
+        {% if content.teamFeaturedHeading|length %}
+        <div class="row">
+            <h2 class="main-title tiered-team-heading">{{content.teamFeaturedHeading}}</h2>
+        </div>
+        {% endif %}
+        <div class="row small-up-1 medium-up-3 large-up-5">
+            {% for entry in content.teamTierMember %}
+                {% if entry.teamTier == "featuredDirector" %}
+                    <div class="cell cell-block tiered-team-content">
+                        {% if entry.teamMemberImage.first()|length %}
+                            <img class="featured-director-image" src="{{ entry.teamMemberImage.first().getUrl("featuredDirectors") }}"/>
+                        {% endif %}
+                        <div class="featured-director-name">{{ entry.teamFirstName }} {{ entry.teamLastName }}</div>
+                        <div class="director-title">{{ entry.teamMemberTitle }}</div>
+                        <div class="director-location">{{ entry.teamMemberLocation }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{####################}
+{# NORMAL DIRECTORS #}
+{####################}
+{% if sDCount > 0 %}
+    <div class="tiered-team-normal">
+        {% if content.teamAdditionalHeading|length %}
+            <div class="cell">
+              <h2 class="main-title tiered-team-heading">{{content.teamAdditionalHeading}}</h2>
+            </div>
+        {% endif %}
+        <div class="row small-up-1 medium-up-3 large-up-5">
+        {% for entry in content.teamTierMember %}
+            {% if entry.teamTier == "standardDirector" %}
+                <div class="cell cell-block tiered-team-content">
+                    <div class="normal-director-name">{{ entry.teamFirstName }} {{ entry.teamLastName }}</div>
+                    <div class="director-location">{{ entry.teamMemberLocation }}</div>
+                    <div class="director-title">{{ entry.teamMemberTitle }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,183 @@
+<div id="{{content.type}}_{{content.id}}" class="image-grid-widget grid-container">
+    <h2 class="main-title image-grid-title">{{content.topTitle}}</h2>
+    <div class="grid-x grid-margin-x">
+        <div class="small-12 medium-4 cell image-grid-column grid-padding-y">
+            {% if content.imageGridWidget1.first().getUrl() is defined %}
+                <div class="small-12 cell grid-image">
+                    {% if content.imageGridWidgetVideoUrl1|length %}
+                        <a data-open="imageGridWidgetCta1" data-ga-push="{% include 'inc/ga-push.html'%}_video_1">
+                            <img src="{{content.imageGridWidget1.first().getUrl("imageGrid")}}"/>
+                            <i class="fa fa-play"></i>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy1}}</h3>
+                        </a>
+                    {% else %}
+                        {% if content.imageGridWidgetCta1|length %}
+                            <a href="{{content.imageGridWidgetCta1}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_link_1">
+                                <img src="{{content.imageGridWidget1.first().getUrl("imageGrid")}}"/>
+                                <h4 class="grid-image-content">{{content.imageGridWidgetCopy1}}</h3>
+                            </a>
+                        {% else %}
+                            <img src="{{content.imageGridWidget1.first().getUrl("imageGrid")}}"/>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy1}}</h3>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if content.imageGridWidgetVideoUrl1|length %}
+                        <div class="reveal" id="imageGridWidgetCta1" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                            <button class="close-button" data-close aria-label="Close modal" type="button">
+                                <span class="" aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="video-container">
+                                <iframe class="vimeo-iframe" src="{{content.imageGridWidgetVideoUrl1}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if content.imageGridWidget2.first().getUrl() is defined %}
+                <div class="small-12 cell grid-image">
+                    {% if content.imageGridWidgetVideoUrl2|length %}
+                        <a data-open="imageGridWidgetCta2" data-ga-push="{% include 'inc/ga-push.html'%}_video_2">
+                            <img src="{{content.imageGridWidget2.first().getUrl("imageGrid")}}"/>
+                            <i class="fa fa-play"></i>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy2}}</h3>
+                        </a>
+                    {% else %}
+                        {% if content.imageGridWidgetCta2|length %}
+                            <a href="{{content.imageGridWidgetCta2}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_link_2">
+                                <img src="{{content.imageGridWidget2.first().getUrl("imageGrid")}}"/>
+                                <h4 class="grid-image-content">{{content.imageGridWidgetCopy2}}</h3>
+                            </a>
+                        {% else %}
+                            <img src="{{content.imageGridWidget2.first().getUrl("imageGrid")}}"/>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy2}}</h3>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if content.imageGridWidgetVideoUrl2|length %}
+                        <div class="reveal" id="imageGridWidgetCta2" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                            <button class="close-button" data-close aria-label="Close modal" type="button">
+                                <span class="" aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="video-container">
+                                <iframe class="vimeo-iframe" src="{{content.imageGridWidgetVideoUrl2}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="small-12 medium-4 cell image-grid-column grid-padding-y">
+            {% if content.imageGridWidget3.first().getUrl() is defined %}
+                <div class="small-12 cell featured-grid-image">
+                    {% if content.imageGridWidgetVideoUrl3|length %}
+                        <a data-open="imageGridWidgetCta3" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_3">
+                            <img class="feature-image" src="{{content.imageGridWidget3.first().getUrl("imageGridFeatured")}}"/>
+                            <i class="fa fa-play"></i>
+                            <div class="featured-grid-image-overlay"></div>
+                            <div class="featured-grid-image-content">
+                                <h4 class="featured-grid-image-title">{{content.imageGridWidgetCopy3}}</h3>
+                                <div class="featured-grid-image-description">{{content.imageGridWidgetDescription3}}</div>
+                            </div>
+                        </a>
+                    {% else %}
+                        {% if content.imageGridWidgetCta3|length %}
+                            <a href="{{content.imageGridWidgetCta3}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_3">
+                                <img class="feature-image" src="{{content.imageGridWidget3.first().getUrl("imageGridFeatured")}}"/>
+                                <div class="featured-grid-image-overlay"></div>
+                                <div class="featured-grid-image-content">
+                                    <h4 class="featured-grid-image-title">{{content.imageGridWidgetCopy3}}</h3>
+                                    <div class="featured-grid-image-description">{{content.imageGridWidgetDescription3}}</div>
+                                </div>
+                            </a>
+                        {% else %}
+                            <img class="feature-image" src="{{content.imageGridWidget3.first().getUrl("imageGridFeatured")}}"/>
+                            <div class="featured-grid-image-overlay"></div>
+                            <div class="featured-grid-image-content">
+                                <h4 class="featured-grid-image-title">{{content.imageGridWidgetCopy3}}</h3>
+                                <div class="featured-grid-image-description">{{content.imageGridWidgetDescription3}}</div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if content.imageGridWidgetVideoUrl3|length %}
+                        <div class="reveal" id="imageGridWidgetCta3" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                            <button class="close-button" data-close aria-label="Close modal" type="button">
+                                <span class="" aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="video-container">
+                                <iframe class="vimeo-iframe" src="{{content.imageGridWidgetVideoUrl3}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="small-12 medium-4 cell image-grid-column grid-padding-y">
+            {% if content.imageGridWidget4.first().getUrl() is defined %}
+                <div class="small-12 cell grid-image">
+                {% if content.imageGridWidgetVideoUrl4|length %}
+                    <a data-open="imageGridWidgetCta4" data-ga-push="{% include 'inc/ga-push.html'%}_video_4">
+                        <img src="{{content.imageGridWidget4.first().getUrl("imageGrid")}}"/>
+                        <i class="fa fa-play"></i>
+                        <h4 class="grid-image-content">{{content.imageGridWidgetCopy4}}</h3>
+                    </a>
+                {% else %}
+                    {% if content.imageGridWidgetCta4|length %}
+                        <a href="{{content.imageGridWidgetCta4}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_link_4">
+                            <img src="{{content.imageGridWidget4.first().getUrl("imageGrid")}}"/>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy4}}</h3>
+                        </a>
+                    {% else %}
+                        <img src="{{content.imageGridWidget4.first().getUrl("imageGrid")}}"/>
+                        <h4 class="grid-image-content">{{content.imageGridWidgetCopy4}}</h3>
+                    {% endif %}
+                {% endif %}
+
+                {% if content.imageGridWidgetVideoUrl4|length %}
+                <div class="reveal" id="imageGridWidgetCta4" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                        <span class="" aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="video-container">
+                        <iframe class="vimeo-iframe" src="{{content.imageGridWidgetVideoUrl4}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% if content.imageGridWidget5.first().getUrl() is defined %}
+                <div class="small-12 cell grid-image">
+                    {% if content.imageGridWidgetVideoUrl5|length %}
+                        <a data-open="imageGridWidgetCta5" data-ga-push="{% include 'inc/ga-push.html'%}_video_5">
+                            <img src="{{content.imageGridWidget5.first().getUrl("imageGrid")}}"/>
+                            <i class="fa fa-play"></i>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy5}}</h3>
+                        </a>
+                    {% else %}
+                        {% if content.imageGridWidgetCta5|length %}
+                            <a href="{{content.imageGridWidgetCta5}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_link_5">
+                                <img src="{{content.imageGridWidget5.first().getUrl("imageGrid")}}"/>
+                                <h4 class="grid-image-content">{{content.imageGridWidgetCopy5}}</h3>
+                            </a>
+                        {% else %}
+                            <img src="{{content.imageGridWidget5.first().getUrl("imageGrid")}}"/>
+                            <h4 class="grid-image-content">{{content.imageGridWidgetCopy5}}</h3>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if content.imageGridWidgetVideoUrl5|length %}
+                    <div class="reveal" id="imageGridWidgetCta5" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                        <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span class="" aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="video-container">
+                            <iframe class="vimeo-iframe" src="{{content.imageGridWidgetVideoUrl5}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

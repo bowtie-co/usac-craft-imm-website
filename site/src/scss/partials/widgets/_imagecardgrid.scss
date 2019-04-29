@@ -1,0 +1,115 @@
+// Image Card Grid
+// ---------
+
+.card-grid {
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  .card-grid-image {
+    position: relative;
+  //  border: 8px solid $white;
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    overflow: hidden;
+    img {
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      background: no-repeat center/cover;
+      -moz-transition: all 0.8s;
+      -webkit-transition: all 0.8s;
+      transition: all 0.8s;
+    }
+  }
+
+  .card-grid-image:hover {
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.3), 10px 6px 20px 0 rgba(0, 0, 0, 0.2);
+    //border: 8px solid $white;
+    img{
+      -moz-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform:scale(1.1);
+    }
+  }
+
+  .card-grid-image:active {
+    border: 8px solid $red;
+  }
+
+  .card-grid-title {
+    letter-spacing: 5px;
+    @include breakpoint(medium only) {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+      }
+  }
+
+  .card-grid-subtitle {
+    color:$white;
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+  }
+}
+
+  .card-grid-content{
+      text-align: center;
+      text-transform: uppercase;
+      color: $white;
+      position: absolute;
+      line-height: 1;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+  }
+
+  .swipper-slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .swipper-slide-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 314px;
+  }
+
+  .card-grid-title-mobile {
+    font-size: 1.75rem;
+    letter-spacing: 2vw;
+    margin-right:-20px;
+  }
+
+  .card-grid-subtitle-mobile {
+    color:$white;
+    font-size: 1rem;
+    letter-spacing: 6px;
+  }
+
+@include breakpoint(medium only) {
+  .card-grid {
+    .card-grid-subtitle {
+      display: none;
+    }
+  }
+}
+@include breakpoint(large only) {
+  .card-grid {
+    .card-grid-subtitle {
+      font-size:1rem;
+    }
+  }
+}
+@include breakpoint(xlarge only) {
+  .card-grid {
+    .card-grid-subtitle {
+      font-size:1rem;
+    }
+  }
+}

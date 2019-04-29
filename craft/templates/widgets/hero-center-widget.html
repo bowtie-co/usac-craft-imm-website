@@ -1,0 +1,48 @@
+<div id="{{content.type}}_{{content.id}}" class="hero-widget"
+     style="{% if content.image|length %}background-image:url({{content.image.first().url}});{% endif %}
+     {% if content.backgroundPosition|length %}text-align:{{content.backgroundPosition}};{% endif %}">
+
+    {% if content.backgroundColorOverlay != "none" %}
+        <div class="background-color-overlay" style="background-color:{{content.backgroundColorOverlay}}"></div>
+    {% endif %}
+
+    <div class="hero-center-content grid-x grid-container align-middle">
+    <div class="cell">
+
+        {% if content.displayUsaCyclingBadge %}
+            <img class="hero-emblem" src="/images/USACycling_Logo.png">
+        {% endif %}
+        {% if content.displayUsaCyclingFoundationBadge %}
+            <div class="hero-emblem"><img src="/images/usacf_badge.png"></div>
+        {% endif %}
+
+        {% if  content.topTitle|length %}
+            <div class="hero-top-title">{{ content.topTitle }}</div>
+        {% endif %}
+
+        {% if  content.subTitle|length %}
+            <h1 class="hero-sub-title">{{ content.subTitle }}</h1>
+        {% endif %}
+
+        {% if  content.description|length %}
+            <p class="description">{{ content.description }}</p>
+        {% endif %}
+
+        {% if content.ctaUrl|length and content.ctaText|length %}
+            <a class="button large secondary hero-cta" href="{{ content.ctaUrl }}" {% if content.hrefTarget %}target="_blank"{% endif %} data-ga-push="{% if content.gaOverrideValue|length %}{{content.gaOverrideValue}}{% else %}{% include 'inc/ga-push.html'%}{% endif %}">{{ content.ctaText }}</a>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+
+<!--Hero Widget-->
+<!--<div class="hero-widget ">-->
+    <!---->
+    <!---->
+        <!--<div class="hero-emblem"></div>-->
+        <!--<div class="hero-top-title">Get Involved</div>-->
+        <!--<div class="hero-sub-title">ONE SPORT AND COUNTLESS WAYS TO ENJOY IT.</div>-->
+        <!--<div class="hero-description">Ride along with four million cyclists strong. There are countless ways to het involved with the sport you love from training and racing to coaching and support.</div>-->
+        <!--<a class="button large secondary hero-cta" href="http://google.com" target="_blank">Learn More</a>-->
+<!--</div>-->

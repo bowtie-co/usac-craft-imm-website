@@ -1,0 +1,183 @@
+#rr-app {
+  padding-top: 20px;
+  padding-bottom: 60px;
+
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+  .error {
+    color: red;
+    border: solid 2px red;
+  }
+
+    /* Enter and leave animations can use different */
+  /* durations and timing functions.              */
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .5s cubic-bezier(15.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transition: all .2s ease;
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  
+  table {
+    th {
+      text-align: left;
+    }
+  }
+  #rankings {
+      margin-bottom: 15px;
+  }
+  .expander {
+    display: none;
+  }
+  .license-link {
+    color: #D60B30;
+    text-decoration: underline;
+  }
+  .footable-first-visible {
+    display: none !important;
+  }
+
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255,255,255,0.85);
+    z-index: 9999;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .half-circle-spinner, .half-circle-spinner * {
+          box-sizing: border-box;
+        }
+
+        .half-circle-spinner {
+          width: 60px;
+          height: 60px;
+          border-radius: 100%;
+          position: relative;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+        }
+
+        .half-circle-spinner .circle {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          border: calc(60px / 10) solid transparent;
+        }
+
+        .half-circle-spinner .circle.circle-1 {
+          border-top-color: #031e41;
+          animation: half-circle-spinner-animation 1s infinite;
+        }
+
+        .half-circle-spinner .circle.circle-2 {
+          border-bottom-color: #979797;
+          animation: half-circle-spinner-animation 1s infinite alternate;
+        }
+
+        @keyframes half-circle-spinner-animation {
+          0% {
+            transform: rotate(0deg);
+
+          }
+          100%{
+            transform: rotate(360deg);
+          }
+        }
+
+  }
+
+  @include breakpoint(small only) {
+  .expander {
+    display: inline-block;
+  }
+  .form-search-rankings {
+    display: block;
+    &.active {
+      display: none;
+    }
+  }
+  .form-search-results {
+    display: block;
+    &.active {
+      display: none;
+    }
+  }
+}
+.toggleResults {
+  @include breakpoint(small only) {
+    display: block;
+    position: relative;
+    margin-bottom: 14px;
+  }
+}
+  .error-msg {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: ProximaNovaSb;
+    color: #D60B30;
+  }
+  input,
+  select {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .license-box {
+    @include breakpoint(small only) {
+      margin-top: 24px;
+    }
+  }
+  .btn-search {
+    position: relative;
+    float: left;
+    display: inline-block;
+    background-color: #D60B30;
+    padding: 8px;
+    color: #fff;
+    font-family: ProximaNovaSb;
+    min-width: 150px;
+    text-align: center;
+    margin-bottom: 15px;
+    @include breakpoint(small only) {
+      // margin-top: 15px;
+      display: inline-block;
+      float: none;
+      max-width: 75px;
+      min-width: 0px;
+    }
+  }
+  #eventNameOrID, #nameOrLicense {
+    width: 80%;
+
+    @include breakpoint(small only) {
+      width: 220px;
+      display: inline-block;
+    }
+  }
+  .license-link {
+    text-decoration: underline;
+    color: #d60b30;
+    cursor: pointer;
+  }
+}

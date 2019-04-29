@@ -1,0 +1,45 @@
+{% extends "_layout" %}
+
+{% block content %}
+<div class="login-container">
+<section id="login-form" class="grid-container grid-container-padded align-center">
+  <div class="grid-x align-center">
+      <div class="cell large-4 align-center login-sect">
+        <h4 class="text-center"><a>My Account Login</a></h4>
+        <form class="log-in-form" data-abide>
+          <div class="error-msg" style="display: none;"></div>
+          <label>
+            <input id="username" type="text" placeholder="License Number, Username, or Email" autocomplete="off" required>
+          </label>
+          <label>
+            <input id="password" type="password" placeholder="Password" autocomplete="off" required>
+          </label>
+          <!-- <input id="formSubmission" type="submit" class="button expanded" value="Log in"></input> -->
+          <a href="#" class="btn-login btn-login-action">
+            <span class="btn-search-text active">LOGIN</span>
+            <div class="loader">
+              <div id="fountainG">
+               <div id="fountainG_1" class="fountainG"></div>
+               <div id="fountainG_2" class="fountainG"></div>
+               <div id="fountainG_3" class="fountainG"></div>
+               <div id="fountainG_4" class="fountainG"></div>
+               <div id="fountainG_5" class="fountainG"></div>
+               <div id="fountainG_6" class="fountainG"></div>
+               <div id="fountainG_7" class="fountainG"></div>
+               <div id="fountainG_8" class="fountainG"></div>
+              </div>
+            </div>
+          </a>
+          <p class="text-center"><a href="https://legacy.usacycling.org/pwreset.php" style="color: #fff;font-family: 'ProximaNovaSb';margin-top: -10px;position: relative;display: block;">Forgot your password?</a>
+        </form>
+      </div>
+      <div class="cell large-12 align-center text-center">
+        <img src="/images/or.png" style="margin-top: 10px;margin-bottom: 10px;" />
+      </div>
+      <div class="cell large-4 align-center text-center">
+        <a href="http://legacy.usacycling.org/myusac/index.php?pagename=register" class="btn-login text-center" style="margin-top: 15px;">SIGN UP FOR NEW ACCOUNT</a>
+      </div>
+  </div>
+</section>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+<section class="grid-container grid-container-padded container" v-show="raceResultsShow">
+        <div class="grid-x grid-padding-x grid-margin-x">
+            <div class="cell small-12">
+              <h2>Showing Results for [[currentEventName]]</h2>
+            </div>
+            <div class="cell small-12">
+              <a v-if="discSelected != ''" @click="raceResultsShow = false;discEShow = true;" class="return-to-results" style="margin-bottom: 4px;position: relative;display: block;">&larr;&nbsp;Return to Categories</a><br />
+              <a v-else @click="returnToEventResults()" class="return-to-results" style="margin-bottom: 4px;position: relative;display: block;">&larr;&nbsp;Return to Events</a><br />
+            </div>
+            <div class="cell small-12">
+              <div class="show-for-small-only">
+                  <div class="cell small-12" v-for="(rresult, key, index) in raceResults" style="margin-bottom: 20px;">
+                    <strong>Place:</strong>&nbsp;<span v-if="rresult.place == 996">DNS</span><span v-else-if="rresult.place == 999">DNF</span><span v-else v-text="rresult.place"></span><br />
+                    <strong>Points:</strong>&nbsp;<span v-if="rresult.points != ''" v-text="rresult.points"></span><span v-else v-text="NA"></span><br />
+                    <strong>Name:</strong>&nbsp;<span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span><br />
+                    <strong>City, State:</strong>&nbsp;<span v-if="rresult.comp_city != null && rresult.comp_state != null" v-text="rresult.comp_city + ', ' + rresult.comp_state"><br />
+                    <strong>Bib:</strong>&nbsp;<span v-text="rresult.compid">
+                  </div>
+              </div>
+              <table class="race-results-table show-for-medium">
+                <thead>
+                  <tr>
+                    <th>Place</th>
+                    <th>Points</th>
+                    <th>Name</th>
+                    <th data-breakpoints="xs">City, State</th>
+                    <th data-breakpoints="xs">USAC #</th>
+                    <th data-breakpoints="xs">Bib</th>
+                  </tr>
+                </thead>
+                <tr v-for="(rresult, key, index) in raceResults">
+                  <td>
+                    <span v-if="rresult.place == 996">DNS</span>
+                    <span v-else-if="rresult.place == 999">DNF</span>
+                    <span v-else v-text="rresult.place"></span>
+                  </td>
+
+                  <td>
+                    <span v-if="rresult.points != ''" v-text="rresult.points"></span>
+                    <span v-else v-text="NA"></span>
+                  </td>
+
+                  <td>
+                    <span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span>
+                  </td>
+
+                  <td>
+                    <span v-if="rresult.comp_city != null && rresult.comp_state != null" v-text="rresult.comp_city + ', ' + rresult.comp_state">
+                    <span v-else>N/A</span>
+                  </td>
+
+                  <td>
+                    <span v-text="rresult.compid">
+                  </td>
+
+                  <td>
+                    <span v-text="rresult.bib">
+                  </td>
+                </tr>
+              </table>
+            </div>
+        </div>
+    </section>

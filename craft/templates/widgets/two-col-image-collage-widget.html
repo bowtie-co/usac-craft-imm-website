@@ -1,0 +1,28 @@
+<div id="{{content.type}}_{{content.id}}" class="two-col-image-collage-widget grid-x grid-container align-middle">
+
+        <div class="small-12 medium-12 large-5 cell left-col">
+            <div class="title">{{content.topTitle}}</div>
+            <div class="description">{{content.description}}</div>
+            {% if content.ctaUrl and content.ctaText %}
+                <a class="button large secondary hero-cta" href="{{ content.ctaUrl }}" {% if content.hrefTarget %}target="_blank"{% endif %} data-ga-push="{% if content.gaOverrideValue|length %}{{content.gaOverrideValue}}{% else %}{% include 'inc/ga-push.html'%}{% endif %}">{{ content.ctaText }}</a>
+            {% endif %}
+        </div>
+        <div class="small-12 medium-12 large-7 cell right-col">
+            {% if content.collageImage1|length %}
+            <div class="large-text-center">
+              <img class="image1" src="{{content.collageImage1.first().getUrl('collage')}}"/>
+            </div>
+            {% endif %}
+            {% if content.collageImage2|length %}
+            <div class="large-text-right">
+              <img class="image2" src="{{content.collageImage2.first().getUrl('collage')}}"/>
+            </div>
+            {% endif %}
+            {% if content.collageImage3|length %}
+            <div class="large-text-left">
+              <img class="image3" src="{{content.collageImage3.first().getUrl('collage')}}"/>
+            </div>
+            {% endif %}
+        </div>
+
+</div>

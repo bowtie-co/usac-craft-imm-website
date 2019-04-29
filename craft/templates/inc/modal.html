@@ -1,0 +1,27 @@
+  <div class="reveal modal" id="{{ entry.modalId }}" data-reveal data-close-on-click="true">
+    <div class="grid-x align-middle align-center">
+      <div class="cell">
+    {{ entry.wysiwygWidget }}
+  </div>
+</div>
+    <button id="modal-close" class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+{% includejs %}
+
+var isAlreadyPopUp = false;
+
+$(document).on('closed.zf.reveal', function () {
+  isAlreadyPopUp=true;
+});
+
+$(window).scroll(function () {
+        if(!isAlreadyPopUp){
+          $("#{{entry.modalId}}").foundation('open');
+
+         }
+    });
+
+{% endincludejs %}

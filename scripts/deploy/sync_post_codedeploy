@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Rysnc codedeploy to docroot for site
+rsync -avzhpW /deploys/usacycling_org_codedeploy/ /var/www/usacycling_org/
+
+# Copy httpd.conf
+cp -f /var/www/usacycling_org/conf/httpd.conf /etc/httpd/conf/httpd.con
+
+# Symlink usac_org.conf file
+if [ ! -L /etc/httpd/conf.d/usac_org.conf ]
+then
+  ln -s /var/www/usacycling_org/conf/usac_org.conf /etc/httpd/conf.d/usac_org.conf
+fi

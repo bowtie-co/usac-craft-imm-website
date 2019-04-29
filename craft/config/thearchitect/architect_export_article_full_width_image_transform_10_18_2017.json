@@ -1,0 +1,14 @@
+{
+    "transforms": [
+        {
+            "name": "article-full-width",
+            "handle": "articleFullWidth",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "900",
+            "height": "475",
+            "quality": "82",
+            "format": "jpg"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+<div id="{{content.type}}_{{content.id}}" class="faq-widget">
+
+        {% for block in content.faqMatrix %}
+            <div class="small-12 medium-6 large-4 cell">
+
+                <div class="faq">{{block.faq}}</div>
+
+                {% if block.faqAnswer|length > 500 %}
+                <div class="faqAnswerHacksaw">{{block.faqAnswer|hacksaw(hack='characters', limit='500', allow='<a>')}}...</div>
+                {% else %}
+                <div class="faqAnswerHacksaw">{{block.faqAnswer}}</div>
+                {% endif %}
+
+                <div class="faqAnswerFull">{{block.faqAnswer}}</div>
+
+                {% if block.faqAnswer|length > 500 %}
+                <div class="learn-more-expand">
+                    <a href="#" >Learn More</a>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+</div>

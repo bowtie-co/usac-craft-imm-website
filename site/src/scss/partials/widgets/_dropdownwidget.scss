@@ -1,0 +1,20 @@
+.dropdown-widget {
+  background-color: $light-gray;
+    padding: 2rem 0;
+    select {
+      padding-left: 1rem;
+      background-color: transparent;
+      &:focus {
+        background-color: transparent;
+      }
+    }
+    .dropdown-select-button {
+      @include breakpoint (small only) {
+        text-align: center;
+      }
+    }
+    .button {
+    height: 46px;
+    padding: 0 2rem;
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "transforms": [
+        {
+            "name": "hero-mobile-bg",
+            "handle": "heroMobileBg",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "640",
+            "height": "958",
+            "quality": "82",
+            "format": "jpg"
+        }
+    ]
+}

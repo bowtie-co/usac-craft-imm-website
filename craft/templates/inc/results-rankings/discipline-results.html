@@ -1,0 +1,24 @@
+    <section v-if="discShow" class="grid-container grid-container-padded container">
+        <div class="grid-x grid-padding-x grid-margin-x">
+            <div class="cell small-12" style="margin-top: 12px;">
+                <p><a @click="backToEvents">&larr;&nbsp;Return to Events</a></p>
+              </div>
+            <div class="cell small-12" id="irr">
+              <h2>Showing disciplines in [[eidName]]</h2>
+              <p v-if="leftResults.length == 0">No results found</p>
+            </div>
+            <div class="cell small-12" v-if="leftResults.length > 0">
+              <table class="individual-race-results">
+                  <tr>
+                      <th>Discipline</th>
+                      <th>Race Date</th>
+                  </tr>
+                  <tr v-for="(result, key, index) in unique(discResults,'discipline')">
+                      <td @click="discShow = false;discSelected = result.discipline.toLowerCase(); discEShow = true;" class="license-link" v-text="discFullName(result.discipline)"></td>
+                      <td v-else>N/A</td>
+                      <td v-text="result.race_date"></td>
+                  </tr>
+              </table>
+            </div>
+        </div>
+    </section>

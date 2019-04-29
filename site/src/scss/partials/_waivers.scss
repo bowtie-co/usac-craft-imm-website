@@ -1,0 +1,40 @@
+.waiver-content {
+  transition: all 0.3s;
+  &.hidden {
+    display: none !important;
+  }
+}
+.error-red {
+  border: solid 2px red !important;
+}
+.waiver-disclaim {
+  padding: 16px;
+  background-color: #3498db;
+  color: #fff;
+  &.error {
+    background-color: red;
+  }
+  &.active {
+    background-color: #5fcf80;
+  }
+  span {
+    padding-left: 15px;
+  }
+  input[type=checkbox]
+  {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    padding: 10px;
+  }
+
+  /* Might want to wrap a span around your checkbox text */
+  .checkboxtext
+  {
+    /* Checkbox text */
+    font-size: 110%;
+    display: inline;
+  }
+}

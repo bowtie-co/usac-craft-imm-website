@@ -1,0 +1,24 @@
+<div class="membership-blocks">
+  <div class="grid-x grid-margin-x grid-margin-y align-center">
+    {% for block in entry.membershipBlocksMatrix %}
+    <div class="cell small-10 medium-4 large-4 membership-type">
+      <div class="grid-x">
+        <div class="cell membership-description">
+          <h5 class="membership-name text-center">{{ block.membershipName }}</h5>
+          <div class="membership-price text-center">{{ block.membershipPrice }}</div>
+        </div>
+        <div class="cell membership-feature-list">
+          <ul>
+            {% for row in block.membershipFeatures %}
+            <li>{{row.feature}}</li>
+            {% endfor %}
+          </ul>
+      </div>
+      <div class="cell text-center align-self-bottom">
+      <a class="button expanded" href="{{block.membershipCtaHref}}">{{ block.membershipCtaText }}</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>

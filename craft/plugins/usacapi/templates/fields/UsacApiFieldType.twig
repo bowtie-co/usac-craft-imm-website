@@ -1,0 +1,24 @@
+{#
+/**
+ * usac api plugin for Craft CMS
+ *
+ * UsacApiFieldType HTML
+ *
+ * @author    IMM
+ * @copyright Copyright (c) 2018 IMM
+ * @link      https://imm.com
+ * @package   UsacApi
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    id: id ~ 'someField',
+    class: 'nicetext',
+    name: name ~ '[someField]',
+    value: values.someField,
+    errors: values.getErrors('someField'),
+    required: false,
+}) }}

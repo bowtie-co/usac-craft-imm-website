@@ -1,0 +1,29 @@
+<div id="{{content.type}}_{{content.id}}" class="twitter-widget">
+    {% if content.topTitle|length %}
+    <div class="grid-x grid-container">
+      <div class="cell">
+        <h2>{{ content.topTitle }}</h2>
+      </div>
+    </div>
+  {% endif %}
+  {% cache for 1 day %}
+  {% set tweets = craft.twitter.get('statuses/user_timeline') %}
+  {% if tweets %}
+  <div class="grid-x grid-container tweet-carousel">
+    {% for tweet in tweets %}
+    <div class="cell tweets-parent-container">
+      <div class="grid-x grid-padding-x tweets-container align-center align-middle">
+        <div class="cell small-2 icon-cell">
+          <i class="fab fa-twitter"></i>
+        </div>
+        <div class="cell small-8 tweet-text-container">
+          <div class="tweet-text">{{tweet.text}}</div>
+          <img src="images/tweetbox.svg">
+        </div>
+      </div>
+    </div>
+      {% endfor %}
+  </div>
+    {% endif %}
+    {% endcache %}
+</div>

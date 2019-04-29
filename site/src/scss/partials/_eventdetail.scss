@@ -1,0 +1,175 @@
+.event-details {
+  padding-top: 30px;
+
+  .breadcrumb {
+    a {
+      color: $medium-gray;
+    }
+    font-size: 14px;
+    color: $medium-gray;
+    padding-bottom: 0.5rem;
+  }
+
+  h1 {
+    color: $red;
+    text-transform: uppercase;
+    font-size: 36px;
+    padding: 1rem 0;
+    @include breakpoint (small only) {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+  }
+
+  .event-date-grid {
+    padding: 2rem 0 0;
+
+    h5 {
+      margin-bottom: 0;
+      color: $blue;
+    }
+
+    p {
+      font-family: 'ProximaNovaBold';
+    }
+  }
+
+  .event-description-grid {
+    padding: 1rem 0;
+  }
+
+  .tab-content-section {
+    padding: 2rem 0 4rem;
+
+    h5 {
+      text-transform: uppercase;
+    }
+
+    .general-info-right {
+      height: 100%;
+    }
+
+    .sponsors {
+      img {
+        padding: 0 1rem;
+      }
+    }
+
+    .course-map-cell {
+      padding: 3rem 0;
+    }
+
+    #resources {
+      a {
+        text-transform: uppercase;
+      }
+
+      .far {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .tab-titles {
+    padding-top: 0.5rem;
+
+    .is-active {
+      a {
+        background: none;
+        color: $red;
+        border-bottom: 5px solid $red;
+      }
+    }
+  }
+
+  .tabs-title {
+    a {
+      font-family: 'AlternateGothicNo2D', sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      border-bottom: 5px solid $medium-gray;
+      @include breakpoint (medium only) {
+        font-size: 17px;
+        padding: 1.25rem 0rem .5rem;
+      }
+    }
+
+    a:focus,
+    a:hover {
+      background: none;
+      color: $dark-red;
+      border-bottom: 5px solid $dark-red;
+    }
+
+    a:active {
+      background: none;
+      color: $red;
+      border-bottom: 5px solid $red;
+    }
+  }
+
+  .orbit-slide {
+    img {
+      width: 100%;
+    }
+  }
+
+  .orbit-next,
+  .orbit-previous {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 1rem;
+    color: #fefefe;
+    background-color: $blue;
+  }
+
+  .orbit-next:active,
+  .orbit-next:focus,
+  .orbit-next:hover,
+  .orbit-previous:active,
+  .orbit-previous:focus,
+  .orbit-previous:hover {
+    background-color: $light-blue;
+  }
+
+  .accordion-content {
+    border: none;
+  }
+
+  .accordion {
+    padding-bottom: 3rem;
+
+    li {
+      background: $blue;
+
+      .accordion-name {
+        color: $white;
+        padding: 1rem;
+        font-family: 'AlternateGothicNo2D', sans-serif;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+    }
+
+    .is-active {
+      background: $light-blue !important;
+    }
+
+    .accordion-title:focus,
+    .accordion-title:hover {
+      background: $light-blue;
+    }
+  }
+
+  .accordion-content {
+    h5 {
+      text-transform: uppercase;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<div id="{{content.type}}_{{content.id}}" class="image-text-carousel-widget grid-container" data-delayspeed="{{content.imageTextCarouselDelaySpeed}}">
+    <div class="swiper-container swiper-image-text-carousel">
+        <div class="swiper-wrapper">
+            {% for block in content.imageTextCarouselMatrixWidget %}
+                {% set type = block.type.handle %}
+                {% switch type %}
+                {% case 'imageTextCarouselBlocks' %}
+                    <div class="swiper-slide">
+                        <div class="grid-x align-middle align-right">
+                            <div class="small-12 medium-12 large-6 cell hide-for-small-only swiper-image-text-container">
+                                <div class="swiper-image-text">
+                                        <div class="top-title swiper-top-title">{{block.slideTopTitle}}</div>
+                                        <h1 class="swiper-main-title">{{block.slideTitle}}</h1>
+                                        <h4 class="sub-title">{{block.slideSubTitle}}</h4>
+                                        <div class="description">{{block.slideDescription}}</div>
+                                        {% if block.slideCtaText|length %}
+                                        <a class="button hollow card-cta" href="{{block.slideCtaUrl}}" {% if block.slideCtaHrefTarget %}target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                                            {{block.slideCtaText}}
+                                        </a>
+                                        {% endif %}
+                                </div>
+                            </div>
+                            <div class="small-12 medium-12 large-9 cell swiper-image-container">
+                                {% if block.slideBackgroundImage.first().getUrl() is defined %}
+                                <img class="swiper-image" src="{{block.slideBackgroundImage.first().getUrl("imageCarousel")}}"/>
+                                {% endif %}
+                                {% if block.slideCtaText|length %}
+                                <a class="show-for-small-only" href="{{block.slideCtaUrl}}" {% if block.slideCtaHrefTarget %}target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                                    <div class="swiper-image-text-mobile">
+                                        <h1 class="swiper-main-title">{{block.slideTitle}}</h1>
+                                        <div class="description">{{block.slideSubTitle}}</div>
+                                    </div>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endswitch %}
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+</div>

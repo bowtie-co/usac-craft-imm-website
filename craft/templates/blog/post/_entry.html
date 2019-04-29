@@ -1,0 +1,330 @@
+{% extends "_layout" %}
+
+{% block content %}
+<div class="blog-posts">
+<div class="grid-container full wrapper">
+    <img src="/images/purple_heart_texture.png" class="full width cell higher-image">
+    <div class="grid-container full">
+        {% set newEntry = craft.entries.section('blog').first() %}
+        {% if newEntry.contentBuilder|length %}
+        {% for content in newEntry.contentBuilder %}
+        <!-- {% if content.desktopHero|length %} -->
+        <img class="hide-for-small-only" src="{{entry.postHeroImage.first().getUrl()}}" class="full width cell lower-image">
+        <img class="show-for-small-only" src="{{entry.postImage.first().getUrl()}}" class="full width cell lower-image">
+        <!-- {% endif %} -->
+
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="main-blog-section grid-container">
+
+    <div class="grid-x grid-margin-x align-spaced">
+        <div class="cell large-10 medium-10 small-8">
+
+            <nav class="top-breadcrumbs" aria-label="You are here:" role="navigation">
+                {% set crumbs = entry.postCategory %}
+                {% if crumbs|length %}
+                <ul class="breadcrumbs">
+                    <li><a href="{{ siteUrl }}">Home</a></li>
+                    {% for crumb in crumbs %}
+                    <li><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </nav>
+            <h1>{{ entry.title }}</h1>
+            {{ entry.body }}
+            <div><hr></div>
+
+            <nav aria-label="You are here:" role="navigation">
+                {% if crumbs|length %}
+                <ul class="breadcrumbs">
+                    <li><a href="{{ siteUrl }}">Home</a></li>
+                    {% for crumb in crumbs %}
+                    <li><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Twitter Feed -->
+{% if entry.twitterFeedOnOff %}
+<div class="twitter-widget">
+  {% if entry.titleHeader|length %}
+  <div class="grid-x grid-container">
+    <div class="cell">
+      <h2>Latest Tweets</h2>
+    </div>
+  </div>
+  {% endif %}
+{% cache for 1 day %}
+{% set tweets = craft.twitter.get('statuses/user_timeline') %}
+{% if tweets %}
+<div class="grid-x grid-container tweet-carousel">
+  {% for tweet in tweets %}
+<div class="cell tweets-parent-container">
+    <div class="grid-x grid-padding-x tweets-container align-center align-middle">
+      <div class="cell small-2 icon-cell">
+        <i class="fab fa-twitter"></i>
+      </div>
+      <div class="cell small-8 tweet-text-container">
+          <div class="tweet-text">{{tweet.text}}</div>
+          <img src="/images/tweetbox.svg">
+      </div>
+
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endif %}
+{% endcache %}
+</div>
+{% endif %}
+{% if entry.shopThisArticleOnOff %}
+<div class="featured-products-widget shop-this-article">
+  <div class="grid-x grid-container">
+    <div class="cell">
+      <h2 class="featured-products-title">{{entry.titleHeader}}</h2>
+    </div>
+  </div>
+    {% if entry.featuredProducts|length > 1 %}
+    <div class="featured-products-carousel">
+          {% for product in entry.featuredProducts %}
+  <div class="grid-x grid-container align-center align-bottom featured-products">
+    <div class="cell large-1"></div>
+    <div class="cell large-4 product-photo-cell">
+      <a href="{{product.url}}"><img src="{{product.productImage.first.url('square500')}}"></a>
+    </div>
+    <div class="cell large-6 medium-10 product-grid">
+      <div class="grid-x grid-padding-x align-middle product-grid-title-row">
+        <div class="cell large-8 small-9 product-grid-title-cell">
+          <div class="product-grid-title">
+            <a href="{{product.url}}">{% if product.productLineCat %}<h4>{{ product.productLineCat.first.title() }}</h4>{% endif %}
+            <h3>{{product.shortName}}</h3></a>
+          </div>
+        </div>
+        <div class="cell large-4 small-3 icon-cell">
+          {% set thisProductLine = product.productLineCat.first().id %}
+          {% set category = craft.categories.id(thisProductLine).first() %}
+          <img src="{{category.productLineIcon.first.getUrl('ingredientSmall')}}">
+        </div>
+      </div>
+      <form method="POST">
+      <div class="grid-x grid-padding-x align-middle product-details-grid">
+        <div class="cell medium-5 small-order-3 medium-order-1 featured-price-cell">
+        {# {% for purchasable in product.variants %}
+
+            <span class="featured-price">{{ purchasable.price|commerceCurrency(cart.currency) }}</span>
+          {% endfor %} #}
+
+            {% set lowestPriceVariant = craft.commerce.variants({
+              productId: product.id,
+              order: 'variants.price'
+            }).first() %}
+          <span class="featured-price">{{ lowestPriceVariant.price|currency('USD',true) }}</span>
+        </div>
+        <input type="hidden" name="action" value="commerce/cart/updateCart">
+        <input type="hidden" name="redirect" value="cart">
+        <div class="cell medium-4 small-order-1 medium-order-2 size-selector product-option-select">
+          <h6>Size</h6>
+          {{ getCsrfInput() }}
+          <select name="purchasableId" class="featured-product-variant">
+          {% set products = craft.commerce.variants({
+            productId: product.id,
+            order: 'variants.price'
+          }) %}
+              {% for purchasable in products %}
+                  <option {% if purchasable.stock <= 0 and purchasable.unlimitedStock == false %}disabled {% endif %}
+                          data-price="{{ purchasable.price|commerceCurrency(cart.currency) }}" value="{{ purchasable.purchasableId }}">{{ purchasable.displaySize }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="cell medium-3 small-order-2 medium-order-3">
+          <h6>Quantity</h6>
+           <input class="product-qty" type="number" name="qty" min="1" max="999" value="1">
+        </div>
+      </div>
+      <div class="grid-x grid-padding-x align-middle product-cta-buttons">
+        <div class="cell medium-4 add-to-cart">
+          <input type="submit" value="Add to cart" class="add-to-cart"/></div>
+        <div class="cell medium-4 online-retailer">
+          <a class=""><script>PriceSpider.insertWidget({"sku":"{{product.defaultSku}}"})</script></a>
+        </div>
+        <div class="cell medium-4">
+          <a href="/where-to-buy" class="">Find In Store</a>
+        </div>
+      </div>
+  </div>
+  <div class="cell large-1"></div>
+</form>
+</div>
+  {% endfor %}
+</div>
+{% endif %}
+{% if entry.featuredProducts|length == 1 %}
+      {% for product in entry.featuredProducts %}
+<div class="grid-x grid-container align-center align-bottom">
+<div class="cell large-1"></div>
+<div class="cell large-4 product-photo-cell">
+  <img src="{{product.productImage.first.url('square500')}}">
+</div>
+<div class="cell large-6 medium-10 product-grid">
+  <div class="grid-x grid-padding-x align-middle" data-equalizer>
+    <div class="cell large-8 small-9 product-grid-title-cell" data-equalizer-watch>
+      <div class="product-grid-title">
+        {% if product.productLineCat %}<h4>{{ product.productLineCat.first.title() }}</h4>{% endif %}
+        <h3>{{product.shortName}}</h3>
+      </div>
+    </div>
+    <div class="cell large-4 small-3 icon-cell" data-equalizer-watch>
+      {% set thisProductLine = product.productLineCat.first().id %}
+      {% set category = craft.categories.id(thisProductLine).first() %}
+      <img src="{{category.productLineIcon.first.getUrl('ingredientSmall')}}">
+    </div>
+  </div>
+  <form method="POST">
+  <div class="grid-x grid-padding-x align-middle product-details-grid" data-equalizer>
+    <div class="cell medium-5 small-order-3 medium-order-1 text-center" data-equalizer-watch>
+    {# {% for purchasable in product.variants %}
+        <span class="featured-price">{{ purchasable.price|commerceCurrency(cart.currency) }}</span>
+      {% endfor %} #}
+
+        {% set lowestPriceVariant = craft.commerce.variants({
+          productId: product.id,
+          order: 'variants.price'
+        }).first() %}
+      <span class="featured-price" style="font-size: 42px;font-family: TradeGothicBold;">{{ lowestPriceVariant.price|currency('USD',true) }}</span>
+    </div>
+    <input type="hidden" name="action" value="commerce/cart/updateCart">
+    <input type="hidden" name="redirect" value="cart">
+    <div class="cell medium-4 small-order-1 medium-order-2 size-selector product-option-select" data-equalizer-watch>
+      <h6>Size</h6>
+      {{ getCsrfInput() }}
+
+      <select name="purchasableId" class="featured-product-variant">
+      {% set products = craft.commerce.variants({
+        productId: product.id,
+        order: 'variants.price'
+      }) %}
+          {% for purchasable in products %}
+              <option {% if purchasable.stock <= 0 and purchasable.unlimitedStock == false %}disabled {% endif %}
+                      data-price="{{ purchasable.price|commerceCurrency(cart.currency) }}" value="{{ purchasable.purchasableId }}">{{ purchasable.displaySize }}</option>
+          {% endfor %}
+      </select>
+    </div>
+    <div class="cell medium-3 small-order-2 medium-order-3" data-equalizer-watch>
+      <h6>Quantity</h6>
+      <select id="product-qty" name="qty">
+      {% for i in 1..20 %}
+        <option value="{{ i }}">
+        {{ i }}
+        </option>
+      {% endfor %}
+     </select>
+    </div>
+  </div>
+  <div class="grid-x grid-padding-x align-middle product-cta-buttons">
+    <div class="cell medium-4 add-to-cart">
+      <input type="submit" value="Add to cart" class="add-to-cart"/></div>
+    <div class="cell medium-4 online-retailer">
+      <a class="price-spider-fp"><script>PriceSpider.insertWidget({"sku":"{{product.defaultSku}}"})</script></a>
+    </div>
+    <div class="cell medium-4">
+      <a href="/where-to-buy" class="">Find In Store</a>
+    </div>
+  </div>
+</div>
+<div class="cell large-1"></div>
+</form>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+{% includejs %}
+$( ".purchasableId" ).change(function(e) {
+  $(".purchasableInfo").hide();
+  $("#"+($(this).find(":selected").data('info'))).toggle();
+});
+{% endincludejs %}
+{% endif %}
+<!-- This will be were featured products and comments go -->
+    {% set page = craft.request.getParam('page') ? craft.request.getParam('page')|number_format : 1 %}
+    {% set newPage = page + 3 %}
+
+<div class="grid-container fluid comment-section">
+    <div class="grid-x grid-margin-x align-center">
+         <div class="cell large-8 medium-8 small-8">
+                <h4 id="more-comments" class="comment-header">Comments</h4>
+                {% set params = {
+                    order: 'dateCreated asc',
+                    limit: page
+                } %}
+                {{ craft.comments.form(entry.id, params) }}
+
+                <div id="more-comments-button" class ="grid-x align-center">
+                    <a href="?page={{ newPage }}#more-comments" class="button">Read More</a></div>
+        </div>
+    </div>
+</div>
+<div class="grid-container next-previous-section">
+    <div class="grid-x grid-margin-x grid-padding-x align-center">
+
+        {% set category = entry.postCategory %}
+        {% set params = craft.entries.section('posts') %}
+        {% set prevEntry = entry.getPrev(params) %}
+        {% set nextEntry = entry.getNext(params) %}
+
+        {% if prevEntry %}
+            <div class="cell medium-4 small-4 article-nav previous-article-content text-right">
+              <div class="grid-x article-nav-cell">
+                <div class="cell article-nav-image">
+                  <a href="{{ prevEntry.url }}"><img class="small-blog-image" src="{{ prevEntry.postHeroImage.first().url }}"></a>
+                </div>
+                <div class="cell">
+                <h6><a href="{{ prevEntry.url }}">Previous Article</a></h6>
+                <h3 class="hide-for-small-only"><a href="{{ prevEntry.url }}">{{ prevEntry.title }}</a></h3>
+                </div>
+                <div class="cell align-self-bottom">
+                  <a href="{{ prevEntry.url }}"><img class="arrow" src="/images/leftarrow.svg"></a>
+                </div>
+              </div>
+            </div>
+            {% if nextEntry %}
+              <div class="blog-divider"></div>
+            {% endif %}
+        {% endif %}
+
+
+        {% if nextEntry %}
+            <div class="cell medium-4 small-4 article-nav next-article-content">
+              <div class="grid-x article-nav-cell">
+                <div class="cell article-nav-image">
+                <a href="{{ nextEntry.url }}"><img class="small-blog-image" src="{{ nextEntry.postHeroImage.first().url }}"></a>
+              </div>
+              <div class="cell">
+                <h6><a href="{{ nextEntry.url }}">Next Article</a></h6>
+                <h3 class="hide-for-small-only"><a href="{{ nextEntry.url }}">{{ nextEntry.title }}</a></h3>
+              </div>
+              <div class="cell align-self-bottom">
+                <a href="{{ nextEntry.url }}"><img class="arrow" src="/images/rightarrow.svg"></a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+    </div>
+    <div class ="grid-x align-center">
+        <a href="/blog" class="article-button button">See All</a>
+    </div>
+</div>
+</div>
+
+
+
+{% include 'widgets/related-posts-widget.html' %}
+
+{% endblock %}

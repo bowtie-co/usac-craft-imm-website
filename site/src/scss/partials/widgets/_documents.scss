@@ -1,0 +1,54 @@
+.document-widget {
+  padding: 2.0625rem 0;
+  .row-title {
+    font-family:ProximaNovaBold;
+    font-size:26px;
+    color: #031E41;
+  }
+  .doc-row > a {
+    margin:1em;
+    padding:.8em;
+    border-bottom:1px #A0B2B8 solid;
+    min-width:300px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    //justify-content: flex-start;
+    justify-content:space-between;
+
+    .row-year {
+      font-family:'ProximaNovaSb';
+      font-size:24px;
+      color: #031E41;
+      //padding: 10px 20px 0px 0px;
+      padding-right: 14px;
+      border-right: 1px #a0b2b8 solid;
+    }
+
+    .document-title {
+      font-family: 'ProximaNovaSb';
+      font-size: 15px;
+      color: #a0b2b8;
+      text-transform: capitalize;
+
+      width: 75%;
+      padding-top: 6px;
+      padding-left: 10px;
+      min-height: 36px;
+
+
+    }
+    .download-document {
+      //justify-content: flex-end;
+    }
+  }
+
+}
+
+@include breakpoint(large only) {
+  .document-widget {
+    .document-title {
+      max-width: 161px;
+    }
+  }
+}

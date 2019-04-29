@@ -1,0 +1,11 @@
+{% set membershipSection = craft.entries.section('membership') %}
+
+    {# Membership Blocks #}
+    {% if entry.type == "membershipBlocks" %}
+      {% include 'membership/membership-blocks.html' %}
+    {% endif %}
+
+    {# Membership Tables #}
+    {% if entry.type == "membershipTables" %}
+      {% include 'membership/membership-tables.html' %}
+    {% endif %}

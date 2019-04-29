@@ -1,0 +1,231 @@
+.background-color-overlay {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: -1;
+}
+
+.top-title {
+  font-family: "AlternateGothicNo2D", sans-serif;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  color: $blue;
+}
+
+.main-title {
+  color: $red;
+  line-height: 1;
+  letter-spacing: 0.15625rem;
+  text-transform: uppercase;
+}
+
+.description {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: .015625rem;
+    position:relative;
+  }
+
+.wide-title {
+  font-family: "AlternateGothicNo2D", sans-serif;
+  font-size: 2.8rem;
+  line-height: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2.8rem;
+  margin: 0 -1.8rem;
+  padding-left: .75em;
+  color: $white;
+  text-align: center;
+  z-index:1;
+  padding-bottom: 10px;
+
+  @include breakpoint(medium only) {
+    letter-spacing: 1.5rem;
+    margin: 0 -1.5rem;
+    //text-indent: 1.5em;
+  }
+
+  @include breakpoint(small only) {
+    font-size: 2rem;
+    line-height: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    margin: 0 -1rem;
+    //text-indent: 1em;
+  }
+}
+
+.membership-blocks-widget {
+  background-color: $light-gray;
+  padding: 4rem 1.875rem !important;
+
+  @include breakpoint(small only) {
+    h5 {
+      font-size: 1rem;
+    }
+  }
+}
+
+
+// 1. Hero Widget
+// ---------
+@import 'partials/widgets/hero';
+
+
+// 2. Inset Image Widget
+// ---------
+
+@import 'partials/widgets/insetimage';
+
+
+// 3. Alternating Image Text Blocks Widget
+// ---------
+
+@import 'partials/widgets/alternatingimagetextblocks';
+
+
+// 4. Section Title Widget
+// ---------
+
+@import 'partials/widgets/section-title';
+
+
+// 5. Team Member Widgets
+// ---------
+
+@import 'partials/widgets/team';
+
+
+// 6. Feature Card Widget
+// ---------
+
+@import 'partials/widgets/featurecard';
+
+
+// 7. Skinny Row Widget
+// ---------
+
+@import 'partials/widgets/skinnyrow';
+
+
+// 8. Newsletter Signup Widget
+// ---------
+
+@import 'partials/widgets/newslettersignup';
+
+
+// 9. Image Card Grid Widget
+// ---------
+
+@import 'partials/widgets/imagecardgrid';
+
+
+// 10. Image Text Widget
+// ---------
+
+@import 'partials/widgets/imagetext';
+
+
+// 11. Image CTA Grid Widget
+// ---------
+
+@import 'partials/widgets/imageCTAgrid';
+
+
+// 12. Image Text Carousel Widget
+// ---------
+
+@import 'partials/widgets/imagetextcarousel';
+
+
+// 13. Image Grid Widget
+// ---------
+
+@import 'partials/widgets/imagegrid';
+
+
+// 14. Social Widget
+// ---------
+
+@import 'partials/widgets/social';
+
+
+// 15. News Article Grid Widget
+// ---------
+
+@import 'partials/widgets/articlelistingcategory';
+
+
+// 16. Tiered Team Widget
+// ---------
+
+@import 'partials/widgets/tiered-team';
+
+
+// 17. Documents Widget
+// ---------
+
+@import 'partials/widgets/documents';
+
+
+// 18. Wysiwyg Widget
+// ---------
+
+@import 'partials/widgets/wysiwyg';
+
+
+// 19. Article Listing Widget
+// ---------
+
+@import 'partials/widgets/articlelisting';
+
+// 20. Two Column Video Widget
+// ---------
+
+@import 'partials/widgets/twocolvideowidget';
+
+// 21. Two Column Video Widget
+// ---------
+
+@import 'partials/widgets/twocolimagecollagewidget';
+
+// 22. FAQ Widget
+// ---------
+
+@import 'partials/widgets/faqwidget';
+
+// 23. Accordion FAQ Widget
+// ---------
+
+@import 'partials/widgets/accordionfaq';
+
+// 24. Twitter Widget
+// ---------
+
+@import 'partials/widgets/twitterfeed';
+
+// 25. Feature Card Carousel Widget
+// ---------
+
+@import 'partials/widgets/featurecardcarousel';
+
+// 26. Dropdown Widget
+// ---------
+
+@import 'partials/widgets/dropdownwidget';
+
+// 26. Stacked Image Text Widget
+// ---------
+
+@import 'partials/widgets/stackedimagetext';
+
+@import 'partials/widgets/fullwidthbutton';
+
+@import 'partials/widgets/videogallery';
+
+@import 'partials/widgets/modalwidget';
+
+@import 'partials/widgets/eventcarousel';

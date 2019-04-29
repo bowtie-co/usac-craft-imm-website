@@ -1,0 +1,191 @@
+{% extends "_layout" %}
+{% block content %}
+<div class="long-form">
+  <div class="hero-widget" style="{% if entry.image|length %}background-image:url({{entry.image.first().getUrl()}});{% endif %}">
+    {% if entry.backgroundColorOverlay != "none" %}
+    <div class="background-color-overlay" style="background-color:{{entry.backgroundColorOverlay}}"></div>
+    {% endif %}
+    <div class="hero-content grid-x grid-padding-x grid-container align-left align-middle">
+      <div class="cell medium-8">
+        {% if entry.displayUsaCyclingBadge %}
+        <div class="hero-emblem"><img src="/images/USACycling_Logo.png"></div>
+        {% endif %} {% if entry.displayUsaCyclingFoundationBadge %}
+        <div class="hero-emblem"><img src="/images/usacf_badge.png"></div>
+        {% endif %} {% if entry.topTitle|length %}
+        <div class="hero-top-title">{{ entry.topTitle }}</div>
+        {% endif %} {% if entry.subTitle|length %}
+        <h1 class="hero-sub-title">{{ entry.subTitle }}</h1> {% endif %} {% if entry.description|length %}
+        <p class="description">{{ entry.description }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="grid-container">
+      <div class="tab-header grid-x grid-padding-x {% if not entry.image|length %}tab-section-header{% endif %}">
+        {% if craft.request.segments %}
+        <div class="cell">
+          <div class="breadcrumb">
+            {% for crumb in entry.getAncestors() %}
+            <span>{{ crumb.getLink() }} ></span> {% endfor %}
+            <span>{{ entry.title() }}</span>
+          </div>
+        </div>
+        {% endif %}
+        {% if entry.image|length %}
+        <div class="cell">
+          <h5 class="text-center">{{ entry.tabHeadline }}</h5>
+        </div>
+        {% else %}
+        <div class="cell">
+          <h1>{{ entry.title }}</h1>
+        </div>
+        {% endif %}
+        {% if entry.tabMenuMatrix|length %}
+          <div class="cell tab-titles">
+            <ul class="tabs grid-x grid-padding-x grid-margin-x">
+              {% for block in entry.tabMenuMatrix %}
+              <li class="cell auto tabs-title {% if block.activeTab %} is-active {% endif %}"><a href="{{ block.tabHref }}">{{ block.tabTitle }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        <div {% if not entry.image|length %} id="tabs-section" {% endif %} class="cell tab-titles hide-for-small-only">
+          <ul class="tabs grid-x grid-padding-x grid-margin-x" data-deep-link="true" data-deep-link-smudge="true" data-tabs id="long-form-tabs">
+            {% for content in entry.tabs %}
+            {% switch content.type %}
+            {% case 'tab' %}
+            <li class="cell auto tabs-title {% if content.activeTab | length %} is-active {% endif %}"><a class="tab-link" data-tabs-target="{{ content.tabId }}" href="#{{ content.tabId }}">{{ content.tabTitle }}</a></li>
+            {% endswitch %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="{% if not entry.image|length %}tab-content-section {% endif %} hide-for-small-only">
+        <div class="grid-x grid-margin-x grid-padding-x align-center">
+          <div class="cell">
+            <div class="tab-content" data-tabs-content="long-form-tabs">
+              {% for content in entry.tabs %}
+              {% switch content.type %}
+              {% case 'tab' %}
+              <div class="tabs-panel {% if content.activeTab | length %} is-active {% endif %}" id="{{ content.tabId }}">
+                {% for block in content.tabContentMatrix %}
+                {% set type = block.type.handle %}
+                {% switch type %}
+                {% case 'singleColumn' %}
+                <div class="grid-x tab-content-block">
+                  <div class="cell">
+                    {{ block.singleColumnContent }}
+                  </div>
+                </div>
+                {% case 'twoColumn' %}
+                <div class="grid-x tab-content-block">
+                  <div class="cell medium-6">{{ block.column1Content }}</div>
+                  <div class="cell medium-6">{{ block.column2Content }}</div>
+                </div>
+                {% case 'textBullets' %}
+                <div class="grid-x tab-content-block">
+                  <div class="cell medium-3">
+                    <p class="bullet-title">{{ block.bulletTitle }}</p>
+                  </div>
+                  <div class="cell medium-9">{{ block.bulletContent }}</div>
+                </div>
+                {% case 'tables' %}
+                  {% for entry in block.membershipTables %}
+                    {% include 'membership/_entry.html' %}
+                  {% endfor %}
+                {% endswitch %}
+                {% endfor %}
+
+                <ul class="tabs grid-x grid-margin-x grid-padding-x" data-deep-link="true" data-tabs id="nested-long-form-tabs">
+                  {% for block in content.tabsMatrix %}
+                  {% set type = block.type.handle %}
+                  {% switch type %}
+                  {% case 'tab' %}
+                  <li class="cell auto tabs-title {% if block.activeTabSwitch %} is-active {% endif %}"><a class="tab-link" data-tabs-target="{{ block.tabId }}" href="#{{ block.tabId }}">{{ block.tabTitle }}</a></li>
+                  {% endswitch %}
+                  {% endfor %}
+                </ul>
+                <div class="nested-tab-content" data-tabs-content="nested-long-form-tabs">
+                  {% for block in content.tabsMatrix %}
+                  {% set type = block.type.handle %}
+                  {% switch type %}
+                  {% case 'tab' %}
+                  <div class="tabs-panel {% if block.activeTabSwitch %} is-active {% endif %}" id="{{ block.tabId }}">
+                    {{ block.tabContent }}
+                    {% if block.tabTables | length %}
+                    {% for entry in block.tabTables %}
+                      {% include 'membership/_entry.html' %}
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                  {% endswitch %}
+                  {% endfor %}
+                </div>
+              </div>
+              {% endswitch %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+      <div class="grid-x grid-container align-center show-for-small-only">
+        <div class="cell small-11">
+          <ul class="accordion" data-responsive-accordion-tabs="accordion" id="long-form-tabs-mobile" data-allow-all-closed="true">
+            {% for content in entry.tabs %}
+            {% switch content.type %}
+            {% case 'tab' %}
+            <li class="accordion-item {% if content.activeTab | length %} is-active {% endif %}" data-accordion-item>
+              <a class="accordion-item-link" href="#{{ content.tabId }}">{{ content.tabTitle }}</a>
+            </li>
+            {% endswitch %}
+            {% endfor %}
+          </ul>
+          <div class="accordion-content" data-tabs-content="long-form-tabs-mobile">
+            {% for content in entry.tabs %}
+            {% switch content.type %}
+            {% case 'tab' %}
+            <div class="tabs-panel {% if content.activeTab | length %} is-active {% endif %}" id="{{ content.tabId }}">
+              {% for block in content.tabContentMatrix %}
+              {% set type = block.type.handle %}
+              {% switch type %}
+              {% case 'singleColumn' %}
+              <div class="grid-x">
+                <div class="cell">
+                  {{ block.singleColumnContent }}
+                </div>
+              </div>
+              {% case 'twoColumn' %}
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-6">{{ block.column1Content }}</div>
+                <div class="cell medium-6">{{ block.column2Content }}</div>
+              </div>
+              {% case 'textBullets' %}
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-3">
+                  <p class="bullet-title">{{ block.bulletTitle }}</p>
+                </div>
+                <div class="cell medium-9">{{ block.bulletContent }}</div>
+              </div>
+              {% case 'tables' %}
+                {% for entry in block.membershipTables %}
+                  {% include 'membership/_entry.html' %}
+                {% endfor %}
+              {% endswitch %}
+              {% endfor %}
+            </div>
+            {% endswitch %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% if entry.contentBuilder|length %}
+      {% for content in entry.contentBuilder %}
+      {% include 'inc/widgets.twig' %}
+      {% endfor %}
+      {% endif %}
+    </div>
+
+    {% endblock %}

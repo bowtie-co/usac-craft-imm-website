@@ -1,0 +1,110 @@
+// Hero Widgets
+// ---------
+
+.hero-widget {
+    background-position-x: 50%;
+    background-position-y: center;
+    background-size: cover;
+    position:relative;
+    max-height: 500px;
+    background-repeat: no-repeat;
+    color: $white;
+    z-index:0;
+
+
+  .hero-emblem {
+    position:relative;
+    padding-bottom:10px;
+    //width: 90px;
+    height: 120px;
+    @include breakpoint(small only) {
+      margin:0 auto;
+    }
+  }
+
+  .hero-top-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    padding-bottom: 10px;
+    position:relative;
+  }
+
+  .hero-sub-title {
+    line-height: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15625rem;
+    padding-bottom: 10px;
+    position:relative;
+
+    @include breakpoint(medium only) {
+        line-height: 3rem;
+      }
+    @include breakpoint(small only) {
+        line-height: 2rem;
+      }
+  }
+
+  .hero-cta{
+    position:relative;
+    z-index: 1;
+    margin: 0 !important;
+  }
+
+
+  // 1. Left/Right Hero Widget
+  // ---------
+
+  .hero-content {
+  //  margin: 0 5%;
+    //width: 60%;
+    height: 500px;
+
+    @include breakpoint(medium only) {
+      margin: 0 5%;
+    //  width: 75%;
+    }
+
+    @include breakpoint(small only) {
+      padding: 0 5%;
+      margin: 0;
+      width: 100%;
+      text-align:center;
+    }
+  }
+
+
+  // 2. Centered Hero Widget
+  // ---------
+
+  .hero-center-content {
+    margin: 0 auto;
+    text-align: center;
+    height: 500px;
+  }
+
+
+  // 3. Wide Hero Widget
+  // ---------
+
+  .wide-hero-content {
+    margin: 0 auto;
+    text-align: center;
+    height: 500px;
+
+    @include breakpoint(small only) {
+        padding: 0 5%;
+        margin: 0 auto;
+        width: 100%;
+        text-align:center;
+      }
+    }
+  }
+
+
+/* medium break points */
+@include breakpoint(medium only) {
+  .wide-hero-content {
+    width:100%;
+  }
+}

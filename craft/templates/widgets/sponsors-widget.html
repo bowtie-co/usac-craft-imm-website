@@ -1,0 +1,26 @@
+<div id="{{content.type}}_{{content.id}}" class="sponsors-widget">
+<div id="sponsors" class="grid-container">
+    <div class="grid-x grid-padding-x align-middle">
+        <div class="small-12 medium-6 cell">
+            <h2 class="red">{{content.sponsorsTitle}}</h2>
+            <p>{{content.sponsorsDescription}}</p>
+            <a class="button secondary hollow" href="{{content.sponsorsCtaUrl}}">{{content.sponsorsCtaText}}</a>
+        </div>
+        <div class="small-12 medium-6 cell sponsor-grid">
+            <div class="row sponsor-grid">
+                {% for block in content.sponsorsMatrix %}
+                    {% set type = block.type.handle %}
+                    {% switch type %}
+                        {% case 'sponsors' %}
+                            <div class="small-6 medium-6 large-3 cell-block">
+                                <a href="{{ block.ctaUrl }}" {% if block.hrefTarget %}target="_blank"{% endif %}>
+                                    <img class="sponsor-img" src="{{block.sponsor.first().getUrl()}}"/>
+                                </a>
+                            </div>
+                    {% endswitch %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>

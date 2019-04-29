@@ -1,0 +1,133 @@
+// Feature Cards Carousel
+// ---------
+.feature-card-carousel-widget {
+  padding: 2rem 0;
+  color: $white;
+  h5 {
+    text-transform: uppercase;
+  }
+  .feature-card-parent-container {
+    padding: 0 5px;
+    .feature-card-container{
+      height: 100%;
+      background: $blue;
+    .carousel-card-image-block {
+        height: 240px;
+        width: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+    }
+    .carousel-card-content-block {
+      padding: 1.5rem;
+      height: 200px;
+      .description {
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+@include breakpoint (small only) {
+      .carousel-card-image-block {
+        height: 200px;
+      }
+      .carousel-card-content-block {
+        height: 200px;
+      }
+      h5 {
+        font-size: 1.5rem;
+      }
+      .swiper-slide {
+        width: 320px;
+      }
+      .feature-card-parent-container {
+        padding: 0px;
+      }
+}
+.fcc-swiper-pagination {
+  position: relative;
+
+.swiper-pagination-bullets {
+  bottom: 0;
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 4px;
+  border-radius: 100%;
+  background: $blue;
+  opacity: 0.2;
+  @include breakpoint (small only) {
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+  }
+  }
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  }
+}
+
+.fcc-swiper-button-prev {
+      margin-top: 0px;
+      top:0;
+      background-image: none;
+      position: relative;
+      font-size: 60px;
+      color: $blue;
+      left: 60px;
+      width: auto;
+      height: auto;
+      @include breakpoint (small only) {
+        left: 20px;
+      }
+      [dir="rtl"] & {
+          left: auto;
+          right: 60px;
+          @include breakpoint (small only) {
+            right: 20px;
+          }
+      }
+      &:after {
+          content: "\2190";
+          [dir="rtl"] & {
+              content: "\2192";
+          }
+      }
+  }
+
+.fcc-swiper-button-next {
+      margin-top: 0px;
+      top:0;
+      background-image: none;
+      position: relative;
+      font-size: 60px;
+      color: $blue;
+      float: right;
+      right: 60px;
+      width: auto;
+      height: auto;
+
+      @include breakpoint (small only) {
+        right: 20px;
+      }
+      [dir="rtl"] & {
+          left: 60px;
+          right: auto;
+          @include breakpoint (small only) {
+            left: 20px;
+          }
+      }
+      &:after {
+          content: "\2192";
+          [dir="rtl"] & {
+              content: "\2190";
+          }
+      }
+  }
+}

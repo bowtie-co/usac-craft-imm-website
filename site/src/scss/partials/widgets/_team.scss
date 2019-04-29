@@ -1,0 +1,58 @@
+//TEAM WIDGET
+
+.team-widget {
+  margin: 3rem 0;
+
+  .team-title {
+    text-align:center;
+    padding-bottom: 1rem;
+  }
+
+  .team-member {
+    position: relative;
+    //margin: 1rem;
+    width: 50%;
+  }
+
+  .team-member-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow:hidden;
+  }
+
+  .team-member-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity:0;
+    transition: .5s ease;
+    background-color: rgba(208,2,27,0);
+  }
+
+  .team-member:hover .team-member-overlay {
+      background-color: rgba(208,2,27,.75);
+      opacity: 1;
+    }
+
+  .team-name {
+    color:$white;
+    text-transform: uppercase;
+    line-height: 1;
+    position: absolute;
+    bottom: 5%;
+    left: 8%;
+    right: 8%;
+    font-size: 1rem;
+    @include breakpoint (medium only) {
+      font-size: 1.25rem;
+    }
+    @include breakpoint (large) {
+      font-size: 1.5rem;
+    }
+  }
+}

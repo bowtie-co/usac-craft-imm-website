@@ -1,0 +1,21 @@
+{
+    "groups": [
+        "Default"
+    ],
+    "fields": [
+        {
+            "group": "Default",
+            "name": "CTA Text Load More",
+            "handle": "ctaTextLoadMore",
+            "instructions": "This is the text for the CTA that will load additional grid items if the max display amount has been exceeded (6). If you are not adding more than 6 grid items, this can remain blank.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{% set category = content.teamCategory.first() %}
+{% set entries = craft.entries.section('team').relatedTo(category).find() %}
+<div id="{{content.type}}_{{content.id}}" class="team-widget grid-container">
+   <div class="cell">
+      <h2 class="main-title team-title">{{content.teamFeaturedHeading}}</h2>
+   </div>
+   <div class="grid-x grid-margin-x small-up-1 medium-up-3 large-up-5">
+      {% for entry in entries %}
+      <div class="cell cell-block team-member">
+         {% if entry.teamCta|length %}<a href="{{entry.teamCta}}">{% endif %}
+         {% if entry.teamMemberImage.first()|length %}
+            <img class="team-member-image" src="{{ entry.teamMemberImage.first().getUrl("teamMember") }}"/>
+         {% endif %}
+         <div class="team-member-overlay">
+            <h4 class="team-name">{{ entry.teamFirstName }} {{ entry.teamLastName }}</h4>
+         </div>
+         {% if entry.teamCta|length %}</a>{% endif %}
+      </div>
+      {% endfor %}
+   </div>
+</div>

@@ -1,0 +1,296 @@
+{% extends "_layout" %} {% block content %}
+<!-- <script src="https://unpkg.com/vue"></script>
+
+<script src="https://unpkg.com/vue-infinite-scroll"></script> -->
+<div id="events-app" style="margin-bottom: 40px;">
+  <div id="events-default" style="background-image:url('{{entry.image.first().getUrl()}}');">
+      <!-- OUR FAR IS FURTHER -->
+      <img class="bg-img hide-for-small-only" src=""/>
+      <div class="hero-content">
+          <h1 class="hero-text">{{entry.topTitle}}</h1>
+      </div>
+  </div>
+  <div style="position: relative; width: 100vw;height: 40px; color: #fff; text-align: center;background-color:#031e41;padding-top: 8px;font-family: ProximaNovaSb;">
+    <p>Miss our old map-based event search? <a href="https://legacy.usacycling.org/events" target="_blank" style="color: #fff;text-decoration:underline;">Click here</a>.</p>
+  </div>
+  <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="20">
+    <section id="events-search" class="grid-container grid-container-padded align-center">
+
+      <div id="search-contain">
+      <form class="search-form" @submit.prevent="search">
+
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="cell large-12">
+              <h2>SEARCH USA CYCLING EVENTS</h2>
+            <p>* All fields are optional.</p>
+          </div>
+          <div class="large-6 cell">
+            <label>
+          <input type="text" id="raceName" v-model="raceName" placeholder="Race Name">
+        </label>
+          </div>
+          <div class="large-6 cell">
+            <label>
+              <select v-model="eventTypeSelected">
+                <option value="" selected>Select Type</option>
+                <option value="ROAD">Road</option>
+                <option value="MTN">Mountain</option>
+                <option value="TRACK">Track</option>
+                <option value="CX">Cyclo-cross</option>
+                <option value="BMX">BMX</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="large-6 cell">
+            <label>
+            <input id="eventStartDate" v-model="eventStartDate" type="text" class="date-picker" placeholder="Event Start Date">
+          </label>
+          </div>
+          <div class="large-6 cell">
+            <label>
+            <input id="eventEndDate" v-model="eventEndDate" type="text" class="date-picker" placeholder="Event End Date">
+          </label>
+          </div>
+        </div>
+        <!-- <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="large-4 cell">
+            <label>STATE
+              <input type="text">
+            </label>
+          </div> -->
+        <!-- <a v-on:click="geoLocate">
+              <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+                <title>
+                  Find my location
+                </title>
+                <path d="M19 31.047c3.342 0 6.185-1.173 8.53-3.517 2.344-2.345 3.517-5.188 3.517-8.53 0-3.342-1.173-6.185-3.517-8.53-2.345-2.344-5.188-3.517-8.53-3.517-3.342 0-6.185 1.173-8.53 3.517-2.344 2.345-3.517 5.188-3.517 8.53 0 3.342 1.173 6.185 3.517 8.53 2.345 2.344 5.188 3.517 8.53 3.517zm15.443-13.745H38v3.396h-3.557c-.378 3.611-1.86 6.71-4.447 9.298-2.588 2.587-5.687 4.07-9.298 4.447V38h-3.396v-3.557c-3.611-.378-6.71-1.86-9.298-4.447-2.587-2.588-4.07-5.687-4.447-9.298H0v-3.396h3.557c.378-3.611 1.86-6.71 4.447-9.298 2.588-2.587 5.687-4.07 9.298-4.447V0h3.396v3.557c3.611.378 6.71 1.86 9.298 4.447 2.587 2.588 4.07 5.687 4.447 9.298zM19 12.128c1.887 0 3.504.673 4.851 2.02 1.348 1.348 2.021 2.965 2.021 4.852 0 1.887-.673 3.504-2.02 4.851-1.348 1.348-2.965 2.021-4.852 2.021-1.887 0-3.504-.673-4.851-2.02-1.348-1.348-2.021-2.965-2.021-4.852 0-1.887.673-3.504 2.02-4.851 1.348-1.348 2.965-2.021 4.852-2.021z" fill="#D60B30" fill-rule="evenodd"/>
+              </svg>
+            </a> -->
+        <!-- <div class="large-4 cell">
+            <label>ZIP CODE
+              <input type="text">
+            </label>
+          </div>
+          <div class="large-4 cell">
+            <label>MILES FROM STATE
+              <input type="text">
+            </label>
+          </div>
+        </div> -->
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="large-4 cell">
+            <label>
+              <select v-model="provinceSelected" name="state" id="state"><option value="" selected="">Select State</option>
+                    <option value="AE">Overseas Military</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>
+            </label>
+          </div>
+          <div class="large-4 cell">
+            <label>
+              <input type="text" v-model="zipSelected" placeholder="Zip Code" />
+            </label>
+          </div>
+          <div class="large-4 cell">
+            <!-- <label>USAC Events Only</label>
+            <div class="switch">
+              <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+              <label class="switch-paddle" for="exampleSwitch">
+                <span class="show-for-sr">Toggle USAC Events Only</span>
+              </label>
+            </div> -->
+          </div>
+        </div>
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="large-4 cell">
+            <button class="btn-search">
+                   <span class="btn-search-text" v-bind:class="{ active: showButtonText}" v-text="searchButtonText"></span>
+                   <div class="loader" v-bind:class="{ active: showLoading }">
+                     <div id="fountainG">
+                     	<div id="fountainG_1" class="fountainG"></div>
+                     	<div id="fountainG_2" class="fountainG"></div>
+                     	<div id="fountainG_3" class="fountainG"></div>
+                     	<div id="fountainG_4" class="fountainG"></div>
+                     	<div id="fountainG_5" class="fountainG"></div>
+                     	<div id="fountainG_6" class="fountainG"></div>
+                     	<div id="fountainG_7" class="fountainG"></div>
+                     	<div id="fountainG_8" class="fountainG"></div>
+                     </div>
+                   </div>
+                 </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </section>
+    <section class="grid-container search-sticky align-center">
+      <a id="results-anchor" name="results" />
+    <div class="grid-x grid-margin-x grid-padding-x">
+      <div class="cell">
+        <a class="revise-search" style="visibility: hidden;">Revise Search</a>
+        <strong style="font-size: 20px;" v-text="resultsMsg"></strong>
+      </div>
+    </div>
+  </section>
+  <section v-bind:class="{ active: isActive }" class="grid-container results-container">
+    <div class="grid-x grid-margin-x grid-padding-x" style="margin-top: 8px; margin-bottom: 8px;">
+        <div class="cell large-12">
+          <span style="padding-right: 8px;">Filter by:</span>
+          <label class="filter-event">
+            <input type="radio" id="one" value="ALL" v-model="filterSelected">
+            All Events
+          </label>
+          <label class="filter-event" for="two">
+            <input type="radio" id="two" value="Y" v-model="filterSelected">
+            Race Events
+          </label>
+          <label class="filter-event" for="two">
+            <input type="radio" id="three" value="N" v-model="filterSelected">
+            Ride Events
+          </label>
+        </div>
+    </div>
+    <div v-for="result in results" class="result" v-bind:id="'event-'+ result.id" style="padding-top: 20px; padding-bottom:20px;"  @click="result.showDetails = !result.showDetails">
+        <div class="grid-x grid-padding-x grid-margin-x" style="position: relative; width: 100%;">
+            <div class="cell medium-6">
+                <h4 style="margin-bottom: -6px;">[[ result.title ]]</h4>
+                <div class="extra-info" v-if="result.competitive == 'N'">
+                  <span style="color: #031e41;">Ride Event</span>
+                </div>
+                <div class="extra-info" v-if="result.competitive == 'Y'">
+                  <span style="color: #031e41;">Race Event</span>
+                </div>
+                <div class="event-date" v-if="result.date_start == result.date_end">[[ result.date_start | friendlyDate ]]</div>
+                <div class="event-date" v-else>[[ result.date_start | friendlyDate ]]&nbsp;&mdash;&nbsp;[[ result.date_end | friendlyDate ]]</div>
+                <div class="grid-x">
+                    <div class="cell small-12 medium-12 address">
+                      <strong>Address:</strong><br />
+                      <a v-if="result.address.street" v-bind:href="'https://maps.google.com/?q=' + result.address.street + ', ' + result.address.city + ', ' + result.address.state + ', ' + result.address.zip" target="_blank" class="result-address">
+                        <span v-if="result.address.street" v-text="result.address.street"></span>
+                        <span v-text="result.address.city + ', ' + result.address.state + ' ' + result.address.zip"></span>
+                      </a>
+                      <a v-else v-bind:href="'https://maps.google.com/?q=' + result.address.city + ', ' + result.address.state + ', ' + result.address.zip" target="_blank" class="result-address">
+                        <span v-text="result.address.city + ', ' + result.address.state + ' ' + result.address.zip"></span>
+                      </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell large-3">
+              <div class="extra-info" v-if="result.status != 4">
+                <strong>Status:&nbsp;</strong>
+                <span v-if="result.status == 0"><span style="font-weight: bold; color: red;">Cancelled</span></span>
+                <span v-if="result.status == 1"><span>Permit in Process</span></span>
+                <span v-if="result.status == 2"><span>Application in Process</span></span>
+                <span v-if="result.status == 3"><span>Permitted</span></span>
+              </div>
+              <div class="extra-info link" v-if="result">
+                <a v-bind:href="'https://legacy.usacycling.org/events/getflyer.php?permit='+result.id" target="_blank">Event Flyer</a>
+              </div>
+                  <div class="extra-info link" v-if="result.web_page">
+                    <a v-bind:href="'http://'+result.web_page" target="_blank">Event Website</a>
+                  </div>
+                  <div class="extra-info link" v-if="result.email">
+                    <a v-bind:href="'mailto:'+result.email">Email Event Organizer</a>
+                  </div>
+            </div>
+            <div class="cell large-3"  v-if="result.status != 0">
+              <div class="cell large-12">
+                <a v-if="result.usac_registration == 'Y' && isLoggedIn" v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=registration&eventid=' + sanitizeCompID(result.id)" target="_blank" class="register-btn">Register for Event</a>
+                <a v-else-if="result.usac_registration == 'Y' && !isLoggedIn" v-bind:href="'/user-login?Return_URL=https://legacy.usacycling.org/myusac/index.php?pagename=registration%26eventid=' + sanitizeCompID(result.id)" target="_blank" class="register-btn">Register for Event</a>
+                <a v-else v-bind:href="'http://'+result.reg_url" target="_blank" class="register-btn">Register for Event</a>
+              </div>
+              <div v-if="result.date_start != result.date_end" class="cell large-12 align-middle" style="display: flex;">
+                  <div class="grid-x">
+                      <div class="cell medium-12">
+                        <label style="margin-top: 10px;">
+                          <strong>One Day License:</strong>
+                          <select v-model="result.singleDaySelection" style="width: 80%;position: relative; float: left;">
+                            <option value="">Select Date</option>
+                            <option v-for="date in result.raceDates" v-bind:value="date">[[ date ]]</option>
+                        </select>&nbsp;
+                        <a v-if="result.singleDaySelection && isLoggedIn" v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=registration&eventid=' + sanitizeCompID(result.id) + '&mode=add_oneday&day='+result.singleDaySelection" style="position: relative; float: left;display: inline-block;background-color: #D60B30;padding-left: 5px; padding: 8px;color: #fff;margin-left: 4px;" target="_blank">GO</a>
+                        <a v-if="result.singleDaySelection && !isLoggedIn" v-bind:href="'/user-login?Return_URL=https://legacy.usacycling.org/myusac/index.php?pagename=registration%26eventid=' + sanitizeCompID(result.id) + '%26mode=add_oneday%26day='+result.singleDaySelection" style="position: relative; float: left;display: inline-block;background-color: #D60B30;padding-left: 5px; padding: 8px;color: #fff;margin-left: 4px;" target="_blank">GO</a>
+                        </label>
+                      </div>
+                  </div>
+
+              </div>
+              <div v-else style="position: relative; top:20px;float: left;margin-bottom: 15px;" class="cell small-12 large-12">
+                <a v-if="isLoggedIn" v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=registration&eventid=' + sanitizeCompID(result.id) + '&mode=add_oneday&day='+result.date_start" target="_blank" class="register-btn">One Day License</a>
+                <a v-if="!isLoggedIn" v-bind:href="'/user-login?Return_URL=https://legacy.usacycling.org/myusac/index.php?pagename=registration%26eventid=' + sanitizeCompID(result.id) + '%26mode=add_oneday%26day='+result.date_start" target="_blank" class="register-btn">One Day License</a>
+              </div>
+            </div>
+        </div>
+
+    </div>
+  </section>
+  </div>
+  <div v-show="uInfoLoad">
+    <div id="fountainG">
+     <div id="fountainG_1" class="fountainG"></div>
+     <div id="fountainG_2" class="fountainG"></div>
+     <div id="fountainG_3" class="fountainG"></div>
+     <div id="fountainG_4" class="fountainG"></div>
+     <div id="fountainG_5" class="fountainG"></div>
+     <div id="fountainG_6" class="fountainG"></div>
+     <div id="fountainG_7" class="fountainG"></div>
+     <div id="fountainG_8" class="fountainG"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

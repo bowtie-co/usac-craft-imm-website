@@ -1,0 +1,55 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+<style type="text/css">
+ [v-cloak] {
+   display: none;
+ }
+</style>
+<h1 style="text-align:center;">Waiver Signature Required</h1>
+<div id="waiver-app" v-cloak>
+  <input id="wid" type="hidden" v-bind:value="waiverID" />
+  <div class="grid-x grid-margin-x grid-padding-x">
+    <div class="cell large-12 text-center">
+        <h3 v-text="waiverContent.name"></h3>
+    </div>
+  </div>
+  <div id="waiver-underage" style="display: none;">
+    <div class="grid-x grid-margin-x grid-padding-x align-center waiver-content" style="display: flex;margin-bottom: 20px;">
+      <div class="cell large-8">
+        The license for [[user_account.first_name]] [[user_account.last_name]] is pending because your Parent or Legal Guardian needs to sign the USA Cycling Membership Waiver. This waiver must be completed prior to competing in any USA Cycling sanctioned events. This waiver has already been sent to [[waiverContent.guardian_email]]. If you have questions or need the waiver sent to a different email, you may contact our membership services team at <a href="mailto:membership@usacycling.org" target="_blank">membership@usacycling.org</a> or call <a href="tel:7194344200" target="_blank">(719) 434-4200</a>.
+      </div>
+    </div>
+  </div>
+  <form id="waiver-data-form" data-abide novalidate>
+  <div v-for="(item, index) in waiverContent.waiver_content_blocks">
+  <div v-bind:id="'content-' + index" class="grid-x grid-margin-x grid-padding-x align-center waiver-content" style="display: flex;margin-bottom: 20px;">
+    <div class="cell large-8 small-12" v-html="formatHTML(item.content)" style=" padding-top: 15px; padding-bottom: 5px;background-color:#f7f7f7;">
+
+    </div>
+  </div>
+  <div class="grid-x align-center" style="display: flex;">
+    <div class="cell large-8">
+      <div class="grid-x" style="display: flex;padding: 16px;">
+          <div class="cell large-12 align-middle waiver-disclaim">
+            <input v-bind:id="'content-check-' + index" class="waiver-check" type="checkbox" :data-content="'#content-' + index">
+            <span v-html="formatHTML(item.confirm_label)" style="font-weight: bold;"></span>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grid-x align-center  grid-padding-x" style="display: flex;" v-cloak>
+  <div class="cell large-8">
+    <p class="signature-label">Enter your full name to confirm agreement</p>
+    <label><input type="text" id="waiver-signature" name="signature" placeholder="Full name"></label>
+  </div>
+  <div class="cell large-8">
+    <button type="submit" class="button hollow secondary" value="Submit" text="Submit">I AGREE TO THE ABOVE</button>
+  </div>
+</div>
+
+</form>
+</div>
+{% endblock %}

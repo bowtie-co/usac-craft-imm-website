@@ -1,0 +1,26 @@
+{#
+/**
+ * usac api plugin for Craft CMS
+ *
+ * usac apiWidget Settings
+ *
+ * @author    IMM
+ * @copyright Copyright (c) 2018 IMM
+ * @link      https://imm.com
+ * @package   UsacApi
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% includeCssResource "usacapi/css/UsacApi_Style.css" %}
+{% includeJsResource "usacapi/js/UsacApi_Script.js" %}
+
+{{ forms.textField({
+    label: 'Some Setting',
+    instructions: 'Enter some setting here.',
+    id: 'someSetting',
+    name: 'someSetting',
+    value: settings['someSetting']})
+}}

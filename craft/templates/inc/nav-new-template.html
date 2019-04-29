@@ -1,0 +1,342 @@
+<header id="header">
+  {% if getCookie('USACTOKEN') %} {% set loginCookie = getCookie('USACTOKEN') %} {% endif %}
+  <nav class="desktop-header">
+    <div class="top-nav-bar hide-for-small show-for-large">
+      <div class="grid-x grid-container align-right align-middle text-right">
+        <div class="cell top-nav-bar-links">
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Renew Membership</a></li>
+            <li>|</li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar hide-for-small show-for-large" id="usac-main-menu">
+      <ul class="dropdown menu main-menu" data-dropdown-menu>
+        <div class="menu-items grid-x grid-container align-middle align-justify">
+          <div class="cell shrink">
+            <li class="top-bar-logo">
+              <a class="" href="/">
+                <img class="usac-logo" src="/images/USACycling_Logo.png" alt="USAC">
+              </a>
+            </li>
+            <li class="usac-menu"><a class="usac-menu-item" data-toggle="ridewithus">Ride With Us</a></li>
+            <li class="usac-menu"><a class="usac-menu-item" data-toggle="members">Members</a>
+              <div class="dropdown-pane bottom" id="members" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true; vOffset:11">
+                <div class="grid-container">
+                  <div class="grid-x grid-padding-x">
+                    <div class="cell medium-4">
+                      <ul class="menu vertical">
+                        <div class="grid-x nav-col-header">
+                          <div class="cell">
+                            <h6>Racer/Rider</h6>
+                          </div>
+                        </div>
+                        <div class="grid-x grid-padding-y nav-col-subheader">
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Tools</div>
+                            <li><a href="#">Results & Rankings</a>
+                              <li><a href="#">Resource</a></li>
+                              <li><a href="#">Upgrades</a></li>
+                              <li><a href="#">Rulebook</a></li>
+                            </li>
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Club</div>
+                            <li><a href="#">Find a Club</a></li>
+                            <li><a href="#">Start a Club</a></li>
+                            <li><a href="#">Club Tool Kit</a></li>
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Association</div>
+                            <li><a href="#">Local Associations</a></li>
+                            <li><a href="#">Local Contacts</a></li>
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Renew Membership</div>
+                          </div>
+                        </div>
+                      </ul>
+                    </div>
+                    <div class="cell medium-4">
+                      <ul class="menu vertical">
+                        <div class="grid-x nav-col-header">
+                          <div class="cell">
+                            <h6>Technical Members</h6>
+                          </div>
+                        </div>
+                        <div class="grid-x grid-padding-y nav-col-subheader">
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Officials</div>
+                            <li><a href="#">Clinics/Webinar</a></li>
+                            <li><a href="#">Upgrades</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Shop</a></li>
+                            <li><a href="#">Renew Membership</a></li>
+
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Coaches</div>
+                            <li><a href="#">Clinics/Webinar</a></li>
+                            <li><a href="#">Upgrades</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Renew Membership</a></li>
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Mechanics</div>
+                            <li><a href="#">Clinics</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Renew Membership</a></li>
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">UCI</div>
+                            <li><a href="#">UCI support license</a></li>
+                          </div>
+                        </div>
+                      </ul>
+                    </div>
+                    <div class="cell medium-4">
+                      <ul class="menu vertical">
+                        <div class="grid-x nav-col-header">
+                          <div class="cell">
+                            <h6>Membership Benefit & Programs</h6>
+                          </div>
+                        </div>
+                        <div class="grid-x grid-padding-y nav-col-subheader">
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Benefits</div>
+                            <li><a href="#">Member benefits</a></li>
+                            <li><a href="#">Insurance</a></li>
+                          </div>
+                          <div class="cell medium-6">
+                            <div class="submenu-header">Programs</div>
+                            <li><a href="#">RaceClean</a></li>
+                            <li><a href="#">SafeSport</a></li>
+                            <li><a href="#">Collegiate</a></li>
+                          </div>
+                          </div>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="usac-menu"><a class="usac-menu-item" data-toggle="events">Events</a>
+            <div class="dropdown-pane bottom" id="events" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true; vOffset:11">
+              <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                  <div class="cell medium-4">
+                    <ul class="menu vertical">
+                      <div class="grid-x nav-col-header">
+                        <div class="cell">
+                          <h6>Event Search</h6>
+                        </div>
+                      </div>
+                      <div class="grid-x grid-padding-y nav-col-subheader">
+                        <div class="cell medium-6">
+                          <div class="submenu-header">All Events</div>
+                        </div>
+                        <div class="cell medium-6">
+                          <div class="submenu-header">National Championships</div>
+                        </div>
+                        <div class="cell medium-6">
+                          <div class="submenu-header">National Calendars</div>
+                        </div>
+                      </div>
+                    </ul>
+                  </div>
+                  <div class="cell medium-4">
+                    <ul class="menu vertical">
+                      <div class="grid-x nav-col-header">
+                        <div class="cell">
+                          <h6>Event Tools</h6>
+                        </div>
+                      </div>
+                      <div class="grid-x grid-padding-y nav-col-subheader">
+                        <div class="cell medium-6">
+                          <div class="submenu-header">Results</div>
+                        </div>
+                        <div class="cell medium-6">
+                          <div class="submenu-header">Rankings</div>
+                        </div>
+                        <div class="cell medium-6">
+                          <div class="submenu-header">Rider Lookup</div>
+                        </div>
+                      </div>
+                    </ul>
+                  </div>
+                  <div class="cell medium-4">
+                    <ul class="menu vertical">
+                      <div class="grid-x nav-col-header">
+                        <div class="cell">
+                          <h6>National Championships</h6>
+                        </div>
+                      </div>
+                      <div class="grid-x grid-padding-x nav-col-subheader nav-events-widget">
+                        {% set entries = craft.entries.section('nationalChampionships').limit(2).find() %}
+                        {% for entry in entries if entry.eventDate > now %}
+                        <div class="cell medium-6 nav-event">
+                          <a href="{{ entry.url}}">
+                              <img class="grid-image" src="{{ entry.eventImage.first.getUrl('') }}"/>
+                                <div class="date-container text-center">
+                                  <p class="cal-month">{{ entry.eventDate |date("M") }}</p>
+                                  <h5 class="cal-day">{{ entry.eventDate |date("d") }}</h5>
+                                </div>
+                                  <div class="event-box-details text-center">
+                                  <h6 class="cal-desc">{{ entry.title }}</h6>
+                                </div>
+                                <div class="background-color-overlay"></div>
+                             </a>
+                        </div>
+                        {% endfor %}
+                        </div>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </li>
+            <li class="usac-menu"><a class="usac-menu-item" data-toggle="planyourevent">Plan Your Event</a></li>
+            <li class="usac-menu"><a class="usac-menu-item" data-toggle="teamusa">Team USA</a></li>
+          </div>
+          <div class="shrink cell">
+            <ul class="usac-search-menu">
+              <form class="usac-search" action="/search" role="form">
+                  <li><input class="desktop-search" title="search" type="search" name="q" placeholder=""  style="box-sizing: inherit !important;"></li>
+                  <li><i class="fa fa-2x fa-search" onclick="$('.usac-search').submit();"></i></li>
+              </form>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="off-canvas position-right nav-loader-mobile" id="usac-menu-accordian" data-off-canvas>
+    <div class="grid-x align-middle usac-mobile-logo-cell">
+      <div class="cell text-center">
+        <a href="/"><img src="/images/USACycling_Logo.png" alt="USAC"></a>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x align-middle">
+      <div class="cell">
+        {% if craft.request.getLastSegment() != "search" %}
+            <form class="usac-mobile-search" action="/search" role="form">
+                <input class="desktop-search" title="search" type="search" name="q" placeholder="Search">
+                <i class="fa fa-2x fa-search" onclick="$('.usac-search').submit();"></i>
+            </form>
+          </div>
+        </div>
+        {% endif %}
+        {% if getCookie('USACTOKEN')|length %}
+            <div class="mobile-account-bar grid-x align-middle">
+              <div class="cell small-6 mobile-red-button">
+                <a href="/account">My Account</a>
+              </div>
+              <div class="cell small-6 mobile-blue-button">
+                <a href="/API/logout/index.php">Sign Out</a>
+              </div>
+            </div>
+        {% else %}
+            <div class="mobile-account-bar grid-x align-middle">
+              <div class="cell small-6 mobile-red-button">
+                <a href="/user-login" class="">Log In</a>
+              </div>
+              <div class="cell small-6 mobile-blue-button">
+                <a href="http://legacy.usacycling.org/myusac/index.php?pagename=register" class="">Create Account</a>
+            </div>
+          </div>
+        {% endif %}
+      <div class="grid-x">
+        <div class="cell">
+        <ul class="vertical menu drilldown" data-drilldown data-auto-height="true" data-animate-height="true" id="m3">
+        <li class="main-items">
+          <a href="#"><span class="mobile-top-title">New Users</span><br>Members</a>
+          <ul class="menu">
+            <li class="main-items">
+              <a href="#">Racer/Rider</a>
+              <ul class="menu nested sublevel-2">
+                <li class="sublevel-header"><a href="#">Tools</a></li>
+                  <div class="sublevel-items">
+                  <li><a href="#">Results & Rankings</a></li>
+                  <li><a href="#">Resource</a></li>
+                  <li><a href="#">Upgrades</a></li>
+                  <li><a href="#">Rulebook</a></li>
+                </div>
+                <li class="sublevel-header"><a href="#">Club</a></li>
+                  <div class="sublevel-items">
+                <li><a href="#">Find a Club</a></li>
+                <li><a href="#">Start a Club</a></li>
+                <li><a href="#">Club Tool Kit</a></li>
+                  </div>
+
+                <li class="sublevel-header"><a href="#">Association</a></li>
+                  <div class="sublevel-items">
+                <li><a href="#">Local Associations</a></li>
+                <li><a href="#">Local Contacts</a></li>
+                <li><a href="#">Renew Membership</a></li>
+              </div>
+              </ul>
+          </li>
+          <li class="main-items">
+            <a href="#">Technical Members</a>
+            <ul class="menu vertical nested">
+                <li><a href="#">Officials</a></li>
+                <li><a href="#">Clinics/Webinar</a></li>
+                <li><a href="#">Upgrades</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Renew Membership</a></li>
+              <li><a href="#">Coaches</a></li>
+                <li><a href="#">Clinics/Webinar</a></li>
+                <li><a href="#">Upgrades</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Renew Membership</a></li>
+              <li><a href="#">Mechanics</a></li>
+                <li><a href="#">Clinics</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Renew Membership</a></li>
+              <li><a href="#">UCI</a></li>
+                <li><a href="#">UCI support license</a></li>
+            </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="main-items"><a href="#">Events</a></li>
+  </ul>
+</div>
+</div>
+<div class="grid-x mobile-bottom-nav">
+  <div class="cell">
+    <ul class="menu vertical">
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">Donate</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Renew Membership</a></li>
+    </ul>
+  </div>
+</div>
+  </div>
+  <div class="off-canvas-content nav-loader-mobile" style="display: none;" data-off-canvas-content>
+      <div class="title-bar hide-for-large">
+          <div class="title-bar-left">
+              <a href="/"><img class="usac-logo-mobile" src="/images/USACycling_Logo.png" alt="USAC"></a>
+          </div>
+          <div class="title-bar-right">
+              <!--<a href="#"><img src="http://via.placeholder.com/25x15"></a>-->
+              <!--<button class="menu-icon" type="button" data-open="usac-menu-accordian"></button>-->
+              <i class="fa-bars fa fa-2x" data-open="usac-menu-accordian"></i>
+              <i class="fa-close fa fa-2x" style="display: none;" data-open="usac-menu-accordian"></i>
+          </div>
+      </div>
+  </div>
+  <!-- End Mobile Navigation-->
+
+</header>

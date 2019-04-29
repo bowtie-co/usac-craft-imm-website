@@ -1,0 +1,382 @@
+{
+    "groups": [
+        "Article",
+        "Default"
+    ],
+    "sections": [
+        {
+            "name": "Article",
+            "handle": "article",
+            "type": "channel",
+            "enableVersioning": "1",
+            "typesettings": {
+                "hasUrls": "1",
+                "template": "article\/_entry",
+                "urlFormat": "article\/{slug}",
+                "nestedUrlFormat": null
+            }
+        }
+    ],
+    "fields": [
+        {
+            "group": "Article",
+            "name": "Article Author",
+            "handle": "articleAuthor",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Article Hero Image",
+            "handle": "articleHeroImage",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "",
+                "limit": "",
+                "viewMode": "list",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Article Matrix",
+            "handle": "articleMatrix",
+            "instructions": "",
+            "required": false,
+            "type": "Matrix",
+            "typesettings": {
+                "maxBlocks": null,
+                "blockTypes": {
+                    "new1": {
+                        "name": "h1",
+                        "handle": "h1",
+                        "fields": {
+                            "new1": {
+                                "name": "h1",
+                                "handle": "h1",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new2": {
+                        "name": "h2",
+                        "handle": "h2",
+                        "fields": {
+                            "new1": {
+                                "name": "h2",
+                                "handle": "h2",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new3": {
+                        "name": "h3",
+                        "handle": "h3",
+                        "fields": {
+                            "new1": {
+                                "name": "h3",
+                                "handle": "h3",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new4": {
+                        "name": "Text Block",
+                        "handle": "textBlock",
+                        "fields": {
+                            "new1": {
+                                "name": "Text",
+                                "handle": "text",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "Standard.json",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            }
+                        }
+                    },
+                    "new5": {
+                        "name": "Two Column Rich Text",
+                        "handle": "twoColumnRichText",
+                        "fields": {
+                            "new1": {
+                                "name": "Left Column",
+                                "handle": "leftColumn",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            },
+                            "new2": {
+                                "name": "Right Column",
+                                "handle": "rightColumn",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            },
+                            "new3": {
+                                "name": "Headline",
+                                "handle": "headline",
+                                "instructions": "Optional headline that spans the width of the two columns.",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            },
+                            "new4": {
+                                "name": "Text",
+                                "handle": "text",
+                                "instructions": "Optional text field that spans the width of both columns.",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            }
+                        }
+                    },
+                    "new6": {
+                        "name": "Description",
+                        "handle": "description",
+                        "fields": {
+                            "new1": {
+                                "name": "description",
+                                "handle": "description",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "Simple.json",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "1",
+                                    "purifyHtml": "1",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            }
+                        }
+                    },
+                    "new7": {
+                        "name": "Pull Quote",
+                        "handle": "pullQuote",
+                        "fields": {
+                            "new1": {
+                                "name": "Quote",
+                                "handle": "quote",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new8": {
+                        "name": "Full Width Image",
+                        "handle": "fullWidthImage",
+                        "fields": {
+                            "new1": {
+                                "name": "image",
+                                "handle": "image",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "Assets",
+                                "typesettings": {
+                                    "useSingleFolder": "1",
+                                    "sources": [
+                                        "folder:1"
+                                    ],
+                                    "defaultUploadLocationSource": "assets",
+                                    "defaultUploadLocationSubpath": "",
+                                    "singleUploadLocationSource": "assets",
+                                    "singleUploadLocationSubpath": "",
+                                    "restrictFiles": "1",
+                                    "allowedKinds": [
+                                        "image"
+                                    ],
+                                    "limit": "1",
+                                    "viewMode": "large",
+                                    "selectionLabel": ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Article Summary",
+            "handle": "articleSummary",
+            "instructions": "",
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "",
+                "availableAssetSources": "*",
+                "availableTransforms": "*",
+                "cleanupHtml": "1",
+                "purifyHtml": "1",
+                "purifierConfig": "",
+                "columnType": "text"
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Discipline Category",
+            "handle": "discplineCategory",
+            "instructions": "Select the discipline for which you want to display the 3 most recent article entries.",
+            "required": false,
+            "type": "Categories",
+            "typesettings": {
+                "source": "discipline",
+                "limit": "1",
+                "selectionLabel": "Add a discipline "
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Seo Meta ",
+            "handle": "seoMeta",
+            "instructions": "",
+            "required": false,
+            "type": "Seomatic_Meta",
+            "typesettings": {
+                "assetSources": [
+                    "folder:1"
+                ],
+                "seoMainEntityCategory": "CreativeWork",
+                "seoMainEntityOfPage": "WebPage",
+                "seoTitleSource": "field",
+                "seoTitleSourceField": "title",
+                "seoTitle": "",
+                "seoTitleSourceChangeable": "1",
+                "seoDescriptionSource": "custom",
+                "seoDescriptionSourceField": "description",
+                "seoDescription": "",
+                "seoDescriptionSourceChangeable": "1",
+                "seoKeywordsSource": "custom",
+                "seoKeywordsSourceField": "title",
+                "seoKeywords": "",
+                "seoKeywordsSourceChangeable": "1",
+                "seoImageIdSource": "custom",
+                "seoImageIdSourceField": "desktopHero",
+                "seoImageIdSourceChangeable": "1",
+                "seoImageTransform": "",
+                "twitterCardType": "",
+                "twitterCardTypeChangeable": "1",
+                "seoTwitterImageIdSource": "custom",
+                "seoTwitterImageIdSourceField": "desktopHero",
+                "seoTwitterImageIdSourceChangeable": "1",
+                "seoTwitterImageTransform": "",
+                "openGraphType": "",
+                "openGraphTypeChangeable": "1",
+                "seoFacebookImageIdSource": "custom",
+                "seoFacebookImageIdSourceField": "desktopHero",
+                "seoFacebookImageIdSourceChangeable": "1",
+                "seoFacebookImageTransform": "",
+                "robots": "",
+                "robotsChangeable": "1"
+            }
+        }
+    ],
+    "entryTypes": [
+        {
+            "sectionHandle": "article",
+            "hasTitleField": "1",
+            "titleLabel": "Article Title",
+            "name": "Article",
+            "handle": "article",
+            "fieldLayout": {
+                "Content": [
+                    "discplineCategory",
+                    "articleHeroImage",
+                    "articleSummary",
+                    "articleAuthor",
+                    "articleMatrix"
+                ],
+                "SEO Meta": [
+                    "seoMeta"
+                ]
+            }
+        }
+    ]
+}

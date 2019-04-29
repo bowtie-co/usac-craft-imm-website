@@ -1,0 +1,14 @@
+{
+	"name": "/usacoauth2",
+	"description": "Integration methods and properties for USAC OAuth",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Aaron Copeland",
+			"homepage": "http://www.imm.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

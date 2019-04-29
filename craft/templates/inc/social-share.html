@@ -1,0 +1,83 @@
+<!-- pinterest for websites -->
+<script
+        type="text/javascript"
+        async defer
+        src="//assets.pinterest.com/js/pinit.js"
+></script>
+<!-- end pinterest-->
+
+<!-- Facebook social share -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- End Facebook social share -->
+
+<!-- Twitter for websites -->
+<script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+
+    return t;
+}(document, "script", "twitter-wjs"));</script>
+<!-- end twitter for websites -->
+
+<!-- google plus for websites -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- end google plus for websites -->
+
+
+<div class="grid-x align-center align-middle">
+<!-- pinterest -->
+<div class="cell small-4 large-2">
+  <div class="external-social-item">
+    <a href="https://www.pinterest.com/pin/create/button/" data-pin-save="false" data-pin-do="buttonPin">
+        <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+    </a>
+</div>
+</div>
+<!-- Facebook -->
+  <div class="cell small-4 large-2">
+<div class="external-social-item">
+    <div class="fb-share-button" data-href="{{ craft.request.url }}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ craft.request.url }}">Share</a></div>
+</div>
+</div>
+<!-- Twitter -->
+  <div class="cell small-4 large-2">
+<div class="external-social-item">
+    <a class="twitter-share-button"
+       href="{{ craft.request.url }}">Tweet</a>
+</div>
+</div>
+<!-- Google plus-->
+<div class="cell small-4 large-2">
+<div class="external-social-item">
+    <g:plus action="share" data-href="{{ craft.request.url }}"></g:plus>
+</div>
+</div>
+<div class="cell small-4 large-2">
+<div class="external-social-item">
+    <!--<a class="mail-share" href="mailto:{{entry.athleteContactEmail}}">-->
+        <!--<img src="/images/mail-share-img.png"/>-->
+    <!--</a>-->
+    {% set body = "I wanted to share the following article from USA Cycling titled \""~entry.title~"\" with you. You can access the article by using the following link. "~entry.url %}
+    <a class="mail-share" href="mailto:?subject={{entry.title|url_encode}}&amp;body={{body|url_encode}}">
+        <img src="/images/mail-share-img.png"/>
+    </a>
+</div>
+</div>
+</div>

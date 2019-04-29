@@ -1,0 +1,7 @@
+{# This should only ever be used with widget templates in craft/templates/widgets #}
+{% set section_handle = entry.title %}
+{% set element_type = content.type %}
+{% set element_id = content.id %}
+{% set ga_id = section_handle~"_"~element_type~"_"~element_id %}
+{% set ga_id = ga_id|replace({" ": "_", "-" : "_", "," : "_"}) %}
+{{ga_id}}

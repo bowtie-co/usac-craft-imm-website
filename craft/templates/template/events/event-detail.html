@@ -1,0 +1,100 @@
+{% extends "_layout" %}
+{% block content %}
+
+<div class="event-detail grid-container">
+  <div class="event-detail-top">
+    <div class="grid-x grid-padding-x">
+        <div class="cell">
+          {% if craft.request.segments %}
+          <div class="breadcrumb">
+            {% for crumb in entry.getAncestors() %}
+            <span>{{ crumb.getLink() }} ></span> {% endfor %}
+            <span>{{ entry.title() }}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="cell">
+          <h1>Event Title</h1>
+          <h5>Event City, Event State</h5>
+          <img src="https://s3.amazonaws.com/imm-usac-uat-bucket-16e9mh4tuo6kc/assets/01_Hero_Widget_Event_Marketing_1440x500.jpg">
+        </div>
+      </div>
+      <div class="grid-x align-middle grid-padding-x">
+        <div class="cell medium-10">
+          <p>Sunday, April 8, 2018</p>
+        </div>
+        <div class="cell medium-2 text-right">
+          <a class="button primary" href="">Register</a>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="cell">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+      </div>
+    </div>
+  </div>
+    <div class="grid-x">
+      <div class="cell tab-titles hide-for-small-only">
+        <ul class="tabs grid-x grid-margin-x" data-tabs id="event-detail-tabs">
+          <li class="cell auto tabs-title is-active"><a href="#general">General Information</a></li>
+          <li class="cell auto tabs-title"><a href="#location">Location & Course Map</a></li>
+          <li class="cell auto tabs-title"><a href="#registration">Registration</a></li>
+          <li class="cell auto tabs-title"><a href="#resources">Resources</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tab-content-section hide-for-small-only">
+    <div class="grid-x align-center">
+      <div class="cell small-11">
+        <div class="tab-content" data-tabs-content="event-detail-tabs">
+          <div class="tabs-panel is-active" id="general">
+            <div class="grid-x grid-padding-x">
+              <div class="cell medium-8">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id erat sed elit aliquet cursus ut non massa. Pellentesque mauris tortor, aliquet nec eleifend ut.
+                  Sagittis pharetra neque. Fusce et aliquam diam, eu suscipit enim. Aenean sit amet dapibus nisl. Nunc nec metus ex. Donec auctor felis nec nulla hendrerit, ac aliquam nulla posuere. uspendisse potenti.
+                  Phasellus gravida erat tristique justo commodo euismod. Integer at leo a nulla auctor semper vel quis turpis. Mauris pulvinar metus vel mauris vulputate, sed suscipit odio rhoncus. Aenean rutrum suscipit fermentum.</p>
+              </div>
+              <div class="cell medium-4">
+                <p>Event Website</p>
+                <p>Contact</p>
+             </div>
+             <div class="cell">
+               <p>Sponsors</p>
+             </div>
+          </div>
+        </div>
+          <div class="tabs-panel" id="location">
+            <div class="grid-x">
+              <div class="cell">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id erat sed elit aliquet cursus ut non massa. Pellentesque mauris tortor, aliquet nec eleifend ut.
+                  Sagittis pharetra neque. Fusce et aliquam diam, eu suscipit enim. Aenean sit amet dapibus nisl. Nunc nec metus ex. Donec auctor felis nec nulla hendrerit, ac aliquam nulla posuere. uspendisse potenti.
+                  Phasellus gravida erat tristique justo commodo euismod. Integer at leo a nulla auctor semper vel quis turpis. Mauris pulvinar metus vel mauris vulputate, sed suscipit odio rhoncus. Aenean rutrum suscipit fermentum.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tabs-panel" id="registration">
+            <div class="grid-x">
+              <div class="cell">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id erat sed elit aliquet cursus ut non massa. Pellentesque mauris tortor, aliquet nec eleifend ut.
+                  Sagittis pharetra neque. Fusce et aliquam diam, eu suscipit enim. Aenean sit amet dapibus nisl. Nunc nec metus ex. Donec auctor felis nec nulla hendrerit, ac aliquam nulla posuere. uspendisse potenti.
+                  Phasellus gravida erat tristique justo commodo euismod. Integer at leo a nulla auctor semper vel quis turpis. Mauris pulvinar metus vel mauris vulputate, sed suscipit odio rhoncus. Aenean rutrum suscipit fermentum.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tabs-panel" id="resources">
+            <div class="grid-x">
+              <div class="cell">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id erat sed elit aliquet cursus ut non massa. Pellentesque mauris tortor, aliquet nec eleifend ut.
+                  Sagittis pharetra neque. Fusce et aliquam diam, eu suscipit enim. Aenean sit amet dapibus nisl. Nunc nec metus ex. Donec auctor felis nec nulla hendrerit, ac aliquam nulla posuere. uspendisse potenti.
+                  Phasellus gravida erat tristique justo commodo euismod. Integer at leo a nulla auctor semper vel quis turpis. Mauris pulvinar metus vel mauris vulputate, sed suscipit odio rhoncus. Aenean rutrum suscipit fermentum.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

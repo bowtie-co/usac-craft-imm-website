@@ -1,0 +1,54 @@
+{% extends "_layout" %} {% block content %}
+<div id="rr-app">
+    <div id="loader" v-bind:class="{ active: showLoader }">
+        <div class="half-circle-spinner">
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+        </div>
+      </div>
+      <transition name="slide-fade">
+        {% include "inc/results-rankings/search-form.html" %}
+      </transition>
+
+      <div class="grid-container grid-container-padded">
+          <div class="grid-x grid-padding-x grid-margin-x">
+            <div class="cell large-12">
+              <a @click="showForms" v-show="showReturnToResults" class="return-to-results" style="margin-bottom: 4px;position: relative;display: block;">&larr;&nbsp;Return to Search</a><br />
+            </div>
+          </div>
+      </div>
+
+      <div class="results-top"></div>
+
+      <transition name="slide-fade">
+          {% include "inc/results-rankings/race-results.html" %}
+      </transition>
+
+      <transition name="slide-fade">
+          {% include "inc/results-rankings/event-data.html" %}
+      </transition>
+
+      <transition name="slide-fade">
+          {% include "inc/results-rankings/discipline-results.html" %}
+      </transition>
+
+      <transition name="slide-fade">
+        {% include "inc/results-rankings/discipline-expanded.html" %}
+    </transition>
+
+      <transition name="slide-fade">
+          {% include "inc/results-rankings/individual-results.html" %}
+      </transition>
+
+      <transition name="slide-fade">
+          {% include "inc/results-rankings/individual-results-2.html" %}
+      </transition>
+      
+      <transition name="slide-fade">
+          <div v-show="showResultsRankings">
+            {% include "inc/results-rankings/rankings-results.html" %}
+          </div>
+      </transition>
+
+</div>
+{% endblock %}

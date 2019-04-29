@@ -1,0 +1,119 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/manifest.json">
+        <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#d60b30">
+        <meta name="theme-color" content="#ffffff">
+        {# SEO Start #}
+            {% hook 'seomaticRender' %}
+        {# SEO End #}
+        <link rel="home" href="{{ siteUrl }}" />
+        {% if craft.config.devMode == false %}
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5VTJMX');</script>
+        <!-- End Google Tag Manager -->
+        {% endif %}
+        {% if craft.config.devMode %}
+            <link rel="stylesheet" href="/css/app.css?cachebust={{date().timestamp}}">
+        {% else %}
+            <link rel="stylesheet" href="/css/app.css">
+        {% endif %}
+        <link rel="stylesheet" href="/css/swiper.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VTJMX"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div id="container">
+            {% include "inc/nav.html" %}
+            <div class="content-overlay">
+                <main id="content" role="main">
+                    {% block content %}
+                        <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+                        <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+                    {% endblock %}
+                </main>
+            </div>
+            {% include "inc/footer.html" %}
+
+            {{ craft.request.getLastSegment() }}
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+
+        {% if craft.config.devMode %}
+            <script src="/js/bundle.min.js?cachebust={{date().timestamp}}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/3.1.6/footable.min.js"></script>
+            {% switch craft.request.getLastSegment() %}
+                {% case "events" or "account" or "login" or "results-rankings" or "waivers" %}
+                    <script src="/js/vuebundle.min.js?cachebust={{date().timestamp}}"></script>
+                {% default %}
+                    <!-- no loading vue -->
+            {% endswitch %}
+        {% else %}
+            <script src="/js/bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/3.1.6/footable.min.js"></script>
+            {% switch craft.request.getLastSegment() %}
+                {% case "events" or "account" or "login" or "results-rankings" or "waivers" or "event-search" %}
+                    <script src="/js/vuebundle.min.js"></script>
+                {% default %}
+                    <!-- no loading vue -->
+            {% endswitch %}
+
+        {% endif %}
+
+        <script>
+            // big text script
+            // move this to module
+            var bt = BigText.noConflict(true);
+            $.fn.bt = bt.jQueryMethod;
+            $('.bigtext').bt();
+
+            // image cta widget script
+            // move this to module
+            $(function(){
+                $.each($(".image-cta-grid-widget"), function() {
+                    $this = $(this);
+                    var loadmore = $this.find(".load-more")
+                    $(loadmore).click(function(e) {
+                        e.preventDefault();
+                        for(var i=0; i <= 5; i++) {
+                            if($this.find(".load-more-cell:eq("+i+")").length) {
+                                $this.find(".load-more-cell:eq("+i+")").show()
+                            } else {
+                                loadmore.hide()
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+    </body>
+</html>

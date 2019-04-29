@@ -1,0 +1,30 @@
+<div id="{{content.type}}_{{content.id}}" class="two-col-video-widget">
+  <div class="grid-container grid-x align-middle">
+        <div class="small-12 medium-6 cell">
+            <div class="title">{{content.topTitle}}</div>
+            <div class="description">{{content.description}}</div>
+            <div class="cta button hollow secondary hero-cta"><a href="{{content.ctaUrl}}" {%if content.hrefTarget %}target="_blank"{% endif %}>{{content.ctaText}}</a></div>
+        </div>
+        <div class="small-12 medium-6 cell">
+            <div class="box-shadow">
+                {% if content.image|length %}
+                    <img src="{{content.image.first().getUrl('videoStill')}}"/>
+                {% endif %}
+                {% if content.vimeoUrl|length %}
+                    <div class="reveal" id="twoColWidgetModal" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                        <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span class="" aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="video-container">
+                            <iframe class="vimeo-iframe" src="{{content.vimeoUrl}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="box-shadow-content">
+                        <div class="vimeoSupportingSnippet">{{content.vimeoSupportingSnippet}}</div>
+                        <a class="modalCta" data-open="twoColWidgetModal">Play Video ></a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+</div>
+</div>

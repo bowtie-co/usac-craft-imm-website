@@ -1,0 +1,416 @@
+{% extends "template/_layout" %}
+{% block content %}
+
+<div id="events">
+
+    <section id="events-search" class="grid-container grid-container-padded align-center">
+      <ul class="breadcrumbs">
+        <li><a href="#">Breadcrumb One</a></li>
+        <li><a href="#">Breadcrumb Two</a></li>
+        <li>
+          <span class="show-for-sr">Current: </span> Breadcrumb Three
+        </li>
+      </ul>
+      <div class="grid-x grid-padding-x heading-links">
+        <div class="large-4 cell text-center">
+            <a class="heading-link" href="/">Title One</a>
+        </div>
+        <div class="large-4 cell text-center">
+            <a class="heading-link" href="/">Title Two</a>
+        </div>
+        <div class="large-4 cell text-center">
+            <a class="heading-link" href="/">Title Three</a>
+        </div>
+      </div>
+      <div class="search-container">
+        <div class="filters-toggler">
+            <a class="filter-toggle" href="#">
+              <span class="more"><img src="/images/plus.svg" alt="+"> More Filters</span>
+              <span class="less hide"><img src="/images/minus.svg" alt="-"> Less Filters</span>
+            </a>
+        </div>
+        <form class="search-form" @submit.prevent="search">
+          <div class="grid-x grid-margin-x grid-padding-x">
+            <div class="large-6 cell">
+              <select>
+                <option value="" selected>Disciplines</option>
+              </select>
+            </div>
+            <div class="large-6 cell">
+              <div class="grid-x grid-margin-x grid-padding-x">
+                <div class="large-6 cell">
+                  <input type="text" placeholder="State/Zip">
+                </div>
+                <div class="large-6 cell">
+                  <select>
+                    <option value="" selected>Radius</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="more-filters">
+
+            <div class="grid-x grid-margin-x grid-padding-x">
+              <div class="large-7 cell">
+                <input type="text" placeholder="Keyword">
+              </div>
+              <div class="large-5 cell">
+                <div class="grid-x grid-margin-x grid-padding-x">
+                  <div class="large-6 cell">
+                    <select>
+                      <option value="" selected>Age</option>
+                    </select>
+                  </div>
+                  <div class="large-6 cell">
+                    <select>
+                      <option value="" selected>Distance</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="grid-x grid-margin-x grid-padding-x">
+              <div class="large-6 cell">
+                <input id="eventStartDate" type="text" class="date-picker" placeholder="Event Start Date">
+              </div>
+              <div class="large-6 cell">
+                <input id="eventEndDate" type="text" class="date-picker" placeholder="Event End Date">
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-x grid-margin-x grid-padding-x">
+            <div class="large-12 cell text-center">
+              <button class="btn-search">Search</button>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x grid-padding-x">
+            <div class="large-12 cell">
+                <div class="map-switch">
+                    <span class="switch-label-map">Map</span>
+                    <div class="switch">
+                      <input type="radio" class="switch-input" name="view2" value="mapon" id="mapon" checked>
+                      <label for="mapon" class="switch-label switch-label-off">ON</label>
+                      <input type="radio" class="switch-input" name="view2" value="mapoff" id="mapoff">
+                      <label for="mapoff" class="switch-label switch-label-on">OFF</label>
+                      <span class="switch-selection"></span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x grid-padding-x" id="without-map">
+            <div class="large-12 cell">
+
+                <div class="grid-x grid-margin-x grid-padding-x">
+                  <div class="large-6 cell">
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                  </div>
+                  <div class="large-6 cell">
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                  </div>
+                </div>
+
+                <ul class="pagination center">
+                  <li class="pagination-previous">Previous <span class="show-for-sr">page</span></li>
+                  <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+                  <li><a href="#" aria-label="Page 2">2</a></li>
+                  <li><a href="#" aria-label="Page 3">3</a></li>
+                  <li><a href="#" aria-label="Page 4">4</a></li>
+                  <li><a href="#" aria-label="Page 5">5</a></li>
+                  <li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                </ul>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x grid-padding-x" id="with-map">
+              <div class="large-6 medium-6 cell large-push-6 medium-push-6 event-map-container">
+                <div class="event-map" style="background-image:url('/images/static-map.png')">
+
+                </div>
+              </div>
+              <div class="large-6 medium-6 cell large-pull-6 medium-pull-6">
+                <div class="event-listings-container">
+                  <div class="event-listings">
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                    <a href="#" class="event-listing" data-open="event-modal">
+                        <span class="event-heading">CY Memorial Lookout Time Trial</span>
+                        <div class="event-info">
+                          <span class="race-event">Race Event</span>
+                          <span class="pipe">|</span>
+                          <span class="road">Road</span>
+                          <span class="pipe">|</span>
+                          <span class="permit">Permit #</span>
+                        </div>
+                        <span class="event-date">Sunday, April 8, 2018</span>
+                        <span class="event-location">Lookout Mountain, Golden, CO 80401</span>
+                    </a>
+                  </div>
+                </div>
+                <ul class="pagination center">
+                  <li class="pagination-previous disabled">Previous <span class="show-for-sr">page</span></li>
+                  <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+                  <li><a href="#" aria-label="Page 2">2</a></li>
+                  <li><a href="#" aria-label="Page 3">3</a></li>
+                  <li><a href="#" aria-label="Page 4">4</a></li>
+                  <li><a href="#" aria-label="Page 5">5</a></li>
+                  <li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                </ul>
+              </div>
+          </div>
+        </form>
+      </div>
+      {#
+
+        Use the class usac-modal-open on the moval-wrapper to open the modal.
+
+      #}
+      <div class="modal-wrapper">
+        <div class="reveal modal" id="event-modal">
+          <h1>U.S. Olympic Training Center Velodrome Race Series</h1>
+          <p class="modal-date">Dates: 01/06/2018 - 12/22/2018</p>
+          <p>Address: <br> 250 S. Union Colorado Springs, CO 80910</p>
+          <p>Status: <span class="status-cancel">Cancelled</span></p>
+          <div class="grid-x grid-margin-x date-area">
+            <div class="large-6 cell">
+              <p class="one-day-permit">Get One Day License</p>
+            </div>
+            <div class="large-6 cell">
+              <select class="date-select">
+                <option value="" selected>Select Date</option>
+                <option value="DATE1">Date 1</option>
+                <option value="DATE2">Date 2</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x register-area">
+            <div class="large-6 medium-6 cell text-left">
+              <a class="btn-lg event-btn" href="#">View Event Flyer</a>
+            </div>
+            <div class="large-6 medium-6 cell text-right">
+              <a class="btn-lg inverse register-btn" href="#">Register for event</a>
+            </div>
+          </div>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true"><img src="/images/x.svg" alt="X"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="more-event-info">
+      <div class="info-container">
+        <h1>LOREM IPSUM</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce luctus lorem velit, a fringilla elit pellentesque vitae. Maecenas vitae consequat justo. In consectetur libero mi, non cursus nisl malesuada non.</p>
+        <button class="btn-lg red-inverse">Button</button>
+      </div>
+    </section>
+    <section class="social-links">
+      <a href="/"><img src="/images/insta.svg" alt=""></a>
+      <a href="/"><img src="/images/facebook.svg" alt=""></a>
+      <a href="/"><img src="/images/strava.svg" alt=""></a>
+      <a href="/"><img src="/images/youtube.svg" alt=""></a>
+      <a href="/"><img src="/images/twitter.svg" alt=""></a>
+    </section>
+</div>
+{% endblock %}

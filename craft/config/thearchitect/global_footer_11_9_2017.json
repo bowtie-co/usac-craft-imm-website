@@ -1,0 +1,225 @@
+{
+    "groups": [
+        "Footer Builder"
+    ],
+    "fields": [
+        {
+            "group": "Footer Builder",
+            "name": "Footer Builder",
+            "handle": "footerBuilder",
+            "instructions": "",
+            "required": false,
+            "type": "Matrix",
+            "typesettings": {
+                "maxBlocks": null,
+                "blockTypes": {
+                    "new1": {
+                        "name": "Footer Item",
+                        "handle": "footerItem",
+                        "fields": {
+                            "new1": {
+                                "name": "Footer Title",
+                                "handle": "footerTitle",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            },
+                            "new2": {
+                                "name": "Footer Href",
+                                "handle": "footerHref",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Image Left",
+            "handle": "imageLeft",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Image Left Link",
+            "handle": "imageLeftLink",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Image Right 1",
+            "handle": "imageRight1",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Image Right 1 Link",
+            "handle": "imageRight1Link",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Image Right 2",
+            "handle": "imageRight2",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Image Right 2 Link",
+            "handle": "imageRight2Link",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Privacy Policy Link",
+            "handle": "privacyPolicyLink",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Privacy Policy Text",
+            "handle": "privacyPolicyText",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Footer Builder",
+            "name": "Sub Footer Text",
+            "handle": "subFooterText",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "1",
+                "initialRows": "4"
+            }
+        }
+    ],
+    "globals": [
+        {
+            "name": "Footer",
+            "handle": "footer",
+            "fieldLayout": {
+                "Content": [
+                    "footerBuilder",
+                    "imageLeft",
+                    "imageLeftLink",
+                    "imageRight1",
+                    "imageRight1Link",
+                    "imageRight2",
+                    "imageRight2Link",
+                    "subFooterText",
+                    "privacyPolicyText",
+                    "privacyPolicyLink"
+                ]
+            }
+        }
+    ]
+}

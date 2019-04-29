@@ -1,0 +1,32 @@
+{% extends "_layout" %}
+{% block content %}
+
+  <div id="resources-app">
+    <resources></resources>
+
+    <section class="frequently-searched-widget grid-container grid-x grid-padding-x align-right">
+      <div class="cell large-8">
+        <hr class="spacer">
+        <div class="resource-heading">Frequently Searched</div>
+        {% for entry in entry.frequentlySearched %}
+        <a href="{{entry.resourceAssets.first.getUrl()}}" target="_blank" class="frequent-link">{{entry.title}}</a>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="faq-resource-widget grid-container grid-padding-x grid-x align-right">
+      <div class="cell large-8">
+        <span class="resource-heading">Frequently Asked Questions</span>
+        <ul class="accordion" data-accordion="data-accordion" data-multi-expand="false" data-allow-all-closed="true">
+          {% for entry in craft.entries.section('faqs') %}
+          <li class="accordion-item" data-accordion-item="data-accordion-item">
+            <a href="#" class="accordion-title">{{ entry.title }}</a>
+            <div class="accordion-content" data-tab-content="data-tab-content">
+              {{ entry.answer }}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+  </div>
+{% endblock %}

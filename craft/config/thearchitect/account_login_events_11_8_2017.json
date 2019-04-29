@@ -1,0 +1,194 @@
+{
+    "groups": [
+        "Default"
+    ],
+    "sections": [
+        {
+            "name": "Account",
+            "handle": "account",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "account\/_entry.html",
+                "urlFormat": "account",
+                "nestedUrlFormat": null
+            }
+        },
+        {
+            "name": "API Login",
+            "handle": "apiLogin",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "user-login.html",
+                "urlFormat": "user-login",
+                "nestedUrlFormat": null
+            }
+        },
+        {
+            "name": "Events",
+            "handle": "events",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "events.html",
+                "urlFormat": "events",
+                "nestedUrlFormat": null
+            }
+        },
+        {
+            "name": "Member Benefits",
+            "handle": "memberBenefits",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "benefitentry",
+                "urlFormat": "benefitEntry",
+                "nestedUrlFormat": null
+            }
+        },
+        {
+            "name": "Results Rankings",
+            "handle": "resultsRankings",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "results-rankings.html",
+                "urlFormat": "results-rankings",
+                "nestedUrlFormat": null
+            }
+        },
+        {
+            "name": "Search",
+            "handle": "search",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "search.html",
+                "urlFormat": "search",
+                "nestedUrlFormat": null
+            }
+        }
+    ],
+    "fields": [
+        {
+            "group": "Default",
+            "name": "Image",
+            "handle": "image",
+            "instructions": "Recommended size 1440x500 pixels.",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": "Add an Image"
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Member Benefit Content",
+            "handle": "memberBenefitContent",
+            "instructions": "",
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "Standard.json",
+                "availableAssetSources": "*",
+                "availableTransforms": "*",
+                "cleanupHtml": "",
+                "purifyHtml": "",
+                "purifierConfig": "",
+                "columnType": "text"
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Top Title",
+            "handle": "topTitle",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        }
+    ],
+    "entryTypes": [
+        {
+            "sectionHandle": "account",
+            "hasTitleField": "0",
+            "titleLabel": null,
+            "titleFormat": "{section.name|raw}",
+            "name": "Account",
+            "handle": "account",
+            "fieldLayout": []
+        },
+        {
+            "sectionHandle": "apiLogin",
+            "hasTitleField": "0",
+            "titleLabel": null,
+            "titleFormat": "{section.name|raw}",
+            "name": "API Login",
+            "handle": "apiLogin",
+            "fieldLayout": []
+        },
+        {
+            "sectionHandle": "events",
+            "hasTitleField": "0",
+            "titleLabel": null,
+            "titleFormat": "{section.name|raw}",
+            "name": "Events",
+            "handle": "events",
+            "fieldLayout": {
+                "Tab 1": [
+                    "image",
+                    "topTitle"
+                ]
+            }
+        },
+        {
+            "sectionHandle": "memberBenefits",
+            "hasTitleField": "0",
+            "titleLabel": null,
+            "titleFormat": "{section.name|raw}",
+            "name": "Member Benefits",
+            "handle": "benefitentry",
+            "fieldLayout": {
+                "Tab 1": [
+                    "memberBenefitContent"
+                ]
+            }
+        },
+        {
+            "sectionHandle": "resultsRankings",
+            "hasTitleField": "0",
+            "titleLabel": null,
+            "titleFormat": "{section.name|raw}",
+            "name": "Results Rankings",
+            "handle": "resultsRankings",
+            "fieldLayout": []
+        },
+        {
+            "sectionHandle": "search",
+            "hasTitleField": "0",
+            "titleLabel": null,
+            "titleFormat": "{section.name|raw}",
+            "name": "Search",
+            "handle": "search",
+            "fieldLayout": []
+        }
+    ]
+}

@@ -1,0 +1,91 @@
+// Image CTA Grid
+// ---------
+
+.image-cta-grid-widget {
+  padding: 2.0625rem 0;
+}
+
+.cta-grid-image {
+  position: relative;
+  overflow: hidden;
+  padding-left: 2rem !important;
+  margin-bottom: 2rem;
+  img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background: no-repeat center/cover;
+  }
+
+  @include breakpoint(medium only) {
+      padding-left: 1rem !important;
+    }
+}
+
+.cta-grid-content{
+    text-align: left;
+    text-transform: uppercase;
+    background-color: $red;
+    padding: 1rem;
+    padding-right: 4rem;
+    position: absolute;
+    line-height: 1;
+    bottom: 8%;
+    left: 0%;
+    margin-left: 5px;
+    // margin-right: 5px;
+
+}
+
+.grid-cta {
+  color: $white;
+  font-family: 'ProximaNovaBold';
+  margin-bottom: 0;
+  margin-left: 1rem;
+  line-height: 1;
+  letter-spacing: .10625rem;
+  text-transform: uppercase;
+
+  @include breakpoint(medium only) {
+      font-size: .8rem;
+      letter-spacing: .08rem;
+      margin-left: 0rem;
+    }
+}
+.grid-cta:hover {
+  color: $white;
+}
+
+
+.grid-cta::after {
+  content: "";
+  position: absolute;
+  background-image: url("/images/Arrow.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  right: 8%;
+  top: 50%;
+  transform:translateY(-50%);
+  width: 13px;
+  height: 20px;
+  // margin-left: 10px;
+  transition-property: margin-left, margin-right;
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  :hover{
+    cursor: pointer;
+  }
+}
+
+.grid-cta:hover:after{
+  margin-left: 10px;
+  margin-right: -10px;
+}
+
+.cta-grid-load-more {
+  text-align: center;
+}

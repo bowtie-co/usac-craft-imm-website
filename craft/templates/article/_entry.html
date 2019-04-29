@@ -1,0 +1,151 @@
+{% extends "_layout" %}
+
+{% block content %}
+<section id="article" class="grid-container grid-container-padded">
+  <div class="grid-x grid-margin-x grid-padding-x">
+    <div class="cell">
+
+      {###############################}
+      {# BEGIN ENTRY SPECIFIC FIELDS #}
+      {###############################}
+      {% if entry.articleHeroImage.first() %}
+        <img src="{{entry.articleHeroImage.first().getUrl()}}" width="100%" />
+      {% endif %}
+      {% for category in entry.articleCategory %}
+      <div class="blue-box article-categories">{{ category.title }}</div>
+      {% endfor %}
+      <h1>{{entry.title}}</h1>
+
+      {% if entry.articleAuthor %}
+        <div class="author-text">By:&nbsp;{{entry.articleAuthor}}&nbsp;&nbsp;{{entry.postDate|date("F d, Y")}}</div>
+      {% endif %}
+
+      {% if entry.articleSummary %}
+        <div class="teaser-text">{{entry.articleSummary}}</div>
+      {% endif %}
+
+
+      {############################}
+      {# BEGIN LOOP MATRIX FIELDS #}
+      {############################}
+      {% for content in entry.articleMatrix %}
+      {% switch content.type %}
+
+          {################}
+          {# HERO WIDGETS #}
+          {################}
+          {% case 'h2' %}
+            <h2>{{content.h2}}</h2>
+          {% case 'h3' %}
+            <h3>{{content.h3}}</h3>
+          {% case 'h4' %}
+            <h3>{{content.h4}}</h3>
+          {% case 'pullQuote' %}
+            <blockquote>{{content.quote}}</blockquote>
+          {% case 'description' %}
+            <div class="teaser-text">{{content.description}}</div>
+          {% case 'textBlock' %}
+            {{content.text}}
+
+          {% case 'fullWidthImage' %}
+            {% if content.image.first()|length %}
+              <img class="articleFullWidth" src="{{content.image.first().getUrl("articleFullWidth")}}"/>
+            {% endif %}
+          {% case 'twoColumnRichText' %}
+            {% if content.headline %}
+              <div class="grid-x align-center">
+                  <div class="cell small-12 medium-12 large-8 large-text-center">
+                      <h2>{{ content.headline }}</h2>
+                  </div>
+              </div>
+            {% endif %}
+            {% if content.text %}
+              <div class="grid-x align-center">
+                  <div class="cell small-12 medium-12 large-8">
+                      {{ content.text }}
+                  </div>
+              </div>
+            {% endif %}
+            <div class="grid-x align-center adjust-pad">
+                <div class="cell small-12 large-4">
+                    {{ content.leftColumn }}
+                </div>
+                <div class="cell small-12 large-4 align-center">
+                    {{ content.rightColumn }}
+                </div>
+            </div>
+            <div class="grid-x align-center">
+                {% if content.ctaText and content.ctaUrl %}
+                    <a class="button large secondary" {%if content.hrefTarget%}target="_blank" {%endif%}href="{{content.ctaUrl}}">{{content.ctaText}}</a>
+                {% endif %}
+            </div>
+        {% endswitch %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+    {# Set parameters for prev/next elements list #}
+    {% set params = craft.entries.section('article').order('title asc') %}
+
+    {# Get the prev/next elements #}
+    {% set prevEntry = entry.getPrev(params) %}
+    {% set nextEntry = entry.getNext(params) %}
+
+    {# And make sure to only output the links if the element exists #}
+    {% if nextEntry %}
+
+      <div class="grid-x align-center grid-margin-x grid-padding-x next-article">
+        <div class="cell small-12 large-4">
+          {% if nextEntry.articleHeroImage|length %}
+          <img src="{{nextEntry.articleHeroImage.first().getUrl()}}" width="100%" />
+          {% endif %}
+        </div>
+        <div class="cell small-12 large-4 align-self-middle">
+            <h2>COMING UP</h2>
+            <p>{{nextEntry.title}}</p>
+            <a href="{{nextEntry.url}}">VIEW ARTICLE</a>
+        </div>
+      </div>
+
+    {% endif %}
+
+
+    <div class="social-media-bar">
+        <div class="row grid-x grid-padding-x">
+            <div class="cell large-6">
+                {% if entry.authorContactEmail|length %}
+                <p class="article-update-time">This Article Updated {{ entry.postDate | date("F j, Y @ h:i A") }}</p>
+                <p class="article-author-email">For more information contact: <strong>{{entry.authorContactEmail}}</strong></p>
+                {% endif %}
+            </div>
+            <div class="cell large-6 external-button-container">
+                <!-- social media bar -->
+                {% include 'inc/social-share.html' %}
+                <!-- email -->
+                {% if entry.authorContactEmail|length %}
+                <div class="external-social-item">
+                    <!--<a class="mail-share" href="mailto:{{entry.authorContactEmail}}">-->
+                        <!--<img src="/images/mail-share-img.png"/>-->
+                    <!--</a>-->
+                    {% set body = "I wanted to share the following article from USA Cycling titled \""~entry.title~"\" with you. You can access the article by using the following link. "~entry.url %}
+                    <a class="mail-share" href="mailto:?subject={{entry.title|url_encode}}&amp;body={{body|url_encode}}">
+                        <img src="/images/mail-share-img.png"/>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="modal-widget">
+
+    {% for entry in entry.modalEntry %}
+
+      {% include 'inc/modal.html' %}
+
+    {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}

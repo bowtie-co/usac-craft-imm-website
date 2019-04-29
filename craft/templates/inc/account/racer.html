@@ -1,0 +1,173 @@
+<div v-show="currentState == 'racer'">
+    <div class="grid-x">
+      <div class="cell large-12" style="margin-bottom: 20px;">
+        <h4 style="color: #001B44;font-size: 28px;">My Licenses</h4>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            {% include "inc/account/modules/license-card.html" with { 'status': '', 'expression': '(item.licensetype === "" || item.licensetype === "R") && item.org != "RDR"'} %}
+        </div>
+      </div>
+      <div class="cell large-12">
+        <h3 style="text-transform: uppercase;">Your Race Results</h3>
+        <p v-if="results">Below are the results from your last 12 months of racing. To see all of your results <a :href="'https://legacy.usacycling.org/results/index.php?compid=' + userProfile.comp_id + '&all=1'" target="_blank">go here</a>.</p>
+        <p v-if="!results">There are currently no results associated with this account.</p>
+        
+        
+        <table class="race-results-listing show-for-medium" v-if="results">
+          <thead>
+              <tr>
+                <th>Name</th>
+                <th style="text-align:left;">Race</th>
+                <th style="text-align:left;">Race Date</th>
+                <th style="text-align:left;">Place</th>
+                <th style="text-align:left;">Points</th>
+              </tr>
+          </thead>
+          <tr v-for="(uresult, key, index) in results">
+            <td>
+              <a @click="showResults(uresult.results_race_id)"><span style="font-size: 14px;" v-text="uresult.event_name"></span></a>
+            </td>
+            <td>
+              <span v-text="uresult.category"></span>
+            </td>
+            <td>
+              <span v-text="uresult.race_date"></span>
+            </td>
+            <td>
+              <span v-if="uresult.place == 996">DNS</span>
+              <span v-else-if="uresult.place == 999">DNF</span>
+              <span v-else v-text="uresult.place"></span>
+            </td>
+            <td>
+              <span v-text="uresult.points"></span>
+            </td>
+          </tr>
+        </table>
+        <div class="race-results-listing show-for-small-only" v-if="results" style="margin-bottom: 15px;">
+          <div class="grid-x grid-margin-y">
+            <div class="cell small-12" v-for="(uresult, key, index) in results">
+              <strong>Name:</strong>&nbsp;<a @click="showResults(uresult.results_race_id)"><span style="font-size: 14px;" v-text="uresult.event_name"></span></a><br />
+              <strong>Race:</strong>&nbsp;<span v-text="uresult.category"></span><br />
+              <strong>Race Date:</strong>&nbsp;<span v-text="uresult.race_date"></span><br />
+              <strong>Place:</strong>&nbsp;<span v-if="uresult.place == 996">DNS</span><span v-else-if="uresult.place == 999">DNF</span><span v-else v-text="uresult.place"></span><br />
+              <strong>Points:</strong>&nbsp;<span v-text="uresult.points"></span><br />
+            </div>
+          </div>
+        </div>
+        <span class="race-results-tab"></span>
+        <div v-if="race_results" v-show="showRaceResults">
+          <h4 v-text="currentResultName"></h4>
+          <span v-text="currentResultCity"></span>,&nbsp;<span v-text="currentResultState"></span> on <span v-text="currentResultDate"></span><br /><br />
+          <a @click="returnToResults()" class="return-to-results">&larr;&nbsp;Return to Results &amp; Rankings</a><br />
+          
+          <table class="race-results-table show-for-medium" v-show="results">
+            <thead>
+              <tr>
+                <th>Place</th>
+                <th>Points</th>
+                <th>Name</th>
+                <th data-breakpoints="xs">City, State</th>
+                <th data-breakpoints="xs">USAC #</th>
+                <th data-breakpoints="xs">Bib</th>
+              </tr>
+            </thead>
+            <tr v-for="(rresult, key, index) in race_results">
+              <td v-if="userProfile.comp_id === rresult.compid" style="background-color: yellow;">
+                <span v-if="rresult.place == 996">DNS</span>
+                <span v-else-if="rresult.place == 999">DNF</span>
+                <span v-else v-text="rresult.place"></span>
+              </td>
+              <td v-else>
+                <span v-if="rresult.place == 996">DNS</span>
+                <span v-else-if="rresult.place == 999">DNF</span>
+                <span v-else v-text="rresult.place"></span>
+              </td>
+
+              <td v-if="userProfile.comp_id === rresult.compid" style="background-color: yellow;">
+                <span v-text="rresult.points"></span>
+              </td>
+              <td v-else>
+                <span v-text="rresult.points"></span>
+              </td>
+
+              <td v-if="userProfile.comp_id === rresult.compid" style="background-color: yellow;">
+                <span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span>
+              </td>
+              <td v-else>
+                <span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span>
+              </td>
+
+              <td v-if="userProfile.comp_id === rresult.compid" style="background-color: yellow;">
+                <span v-if="rresult.comp_city != null" v-text="rresult.comp_city + ', ' + rresult.comp_state">
+              </td>
+              <td v-else>
+                <span v-if="rresult.comp_city != null" v-text="rresult.comp_city + ', ' + rresult.comp_state">
+              </td>
+
+              <td v-if="userProfile.comp_id === rresult.compid" style="background-color: yellow;">
+                <span v-if="rresult.compid != 0" v-text="rresult.compid">
+              </td>
+              <td v-else>
+                <span v-if="rresult.compid != 0" v-text="rresult.compid">
+              </td>
+
+              <td v-if="userProfile.comp_id === rresult.compid" style="background-color: yellow;">
+                <span v-text="rresult.bib">
+              </td>
+              <td v-else>
+                <span v-text="rresult.bib">
+              </td>
+            </tr>
+          </table>
+
+          <div class="race-results-table show-for-small-only" v-show="results">
+              <div class="grid-x grid-margin-y">
+                  <div class="cell small-12" v-for="(rresult, key, index) in race_results" v-bind:class="[userProfile.comp_id === rresult.compid ? 'bg-yellow' : '', errorClass]">
+                    <strong>Place:</strong>&nbsp;<span v-if="rresult.place == 996">DNS</span><span v-else-if="rresult.place == 999">DNF</span><span v-else v-text="rresult.place"></span><br />
+                    <strong>Points:</strong>&nbsp;<span v-text="rresult.points"></span><br />
+                    <strong>Name:</strong>&nbsp;<span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span><br />
+                    <strong>City, State:</strong>&nbsp;<span v-if="rresult.comp_city != null" v-text="rresult.comp_city + ', ' + rresult.comp_state"></span><br />
+                    <strong>Usac #:</strong>&nbsp;<span v-if="rresult.compid != 0" v-text="rresult.compid"></span><br />
+                    <strong>Bib:</strong>&nbsp;<span v-text="rresult.bib"></span>
+                  </div>
+                </div>
+          </div>
+        </div>
+        <h3 v-if="rankings.tag" style="text-transform: uppercase;color: #031E41; font-size: 18px;" v-text="'YOUR ' + rankings.tag + ' STANDINGS'"></h3>
+        <table class="standings-table" v-if="rankings">
+          <tr v-if="rankings.by_zip">
+              <td v-text="rankings.by_zip.desc"></td>
+              <td data-title="Rank" data-breakpoints="xs" v-text="rankings.by_zip.rank + ' of ' + rankings.by_zip.total_racers"></td>
+              <td data-title="Percentage" data-breakpoints="xs" v-text="rankPerc(rankings.by_zip.rank,rankings.by_zip.total_racers)"></td>
+          </tr>
+          <tr v-if="rankings.by_state">
+            <td v-text="rankings.by_state.desc"></td>
+            <td v-text="rankings.by_state.rank + ' of ' + rankings.by_state.total_racers"></td>
+            <td v-text="rankPerc(rankings.by_state.rank,rankings.by_state.total_racers)"></td>
+          </tr>
+          <tr v-if="rankings.by_age">
+            <td v-text="rankings.by_age.desc"></td>
+            <td v-text="rankings.by_age.rank + ' of ' + rankings.by_age.total_racers"></td>
+            <td v-text="rankPerc(rankings.by_age.rank,rankings.by_age.total_racers)"></td>
+          </tr>
+          <tr v-if="rankings.by_agerange1">
+            <td v-text="rankings.by_agerange1.desc"></td>
+            <td v-text="rankings.by_agerange1.rank + ' of ' + rankings.by_agerange1.total_racers"></td>
+            <td v-text="rankPerc(rankings.by_agerange1.rank,rankings.by_agerange1.total_racers)"></td>
+          </tr>
+          <tr v-if="rankings.by_agerange2">
+            <td v-text="rankings.by_agerange2.desc"></td>
+            <td v-text="rankings.by_agerange2.rank + ' of ' + rankings.by_agerange2.total_racers"></td>
+            <td v-text="rankPerc(rankings.by_agerange2.rank,rankings.by_agerange2.total_racers)"></td>
+          </tr>
+          <tr v-if="rankings.overall">
+            <td v-text="rankings.overall.desc"></td>
+            <td v-text="rankings.overall.rank + ' of ' + rankings.overall.total_racers"></td>
+            <td v-text="rankPerc(rankings.overall.rank,rankings.overall.total_racers)"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="cell large-12 dynamic-text" v-html="racerDynText">
+
+      </div>
+    </div>
+</div>

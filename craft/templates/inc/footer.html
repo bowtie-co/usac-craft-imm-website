@@ -1,0 +1,34 @@
+<!--Footer-->
+<footer>
+    <div class="footer-top">
+        <ul class="footer-menu menu align-center">
+            {% if footer.footerBuilder|length %}
+                {% for content in footer.footerBuilder %}
+                    <li><a href="{{content.footerHref}}" target="_blank">{{content.footerTitle}}</a></li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+        <div class="footer-logo">
+            <img class="usac-footer-logo" src="/images/USACycling_Logo.png" alt="USAC">
+        </div>
+    </div>
+    <div class="grid-x footer-bottom">
+        <div class="footer-bottom-left medium-2 cell">
+            {% if footer.imageLeftLink|length and footer.imageLeft.first()|length %}
+                <a href="{{footer.imageLeftLink}}" target="_blank"><img src="{{footer.imageLeft.first().getUrl()}}"></a>
+            {% endif %}
+        </div>
+        <div class="footer-bottom-center medium-8 cell">
+            <p class="footer-text">{{footer.subFooterText}}</p>
+            <p class="footer-text"><a href="{{footer.privacyPolicyLink}}">{{footer.privacyPolicyText}}</a></p>
+        </div>
+        <div class="footer-bottom-right medium-2 cell">
+            {% if footer.imageRight1Link|length and footer.imageRight1.first()|length %}
+                <a href="{{footer.imageRight1Link}}" target="_blank"><img src="{{footer.imageRight1.first().getUrl()}}"></a>
+            {% endif %}
+            {% if footer.imageRight2Link|length and footer.imageRight2.first()|length %}
+                <a href="{{footer.imageRight2Link}}" target="_blank"><img class="footer-bottom-logo" src="{{footer.imageRight2.first().getUrl()}}"></a>
+            {% endif %}
+        </div>
+    </div>
+</footer>

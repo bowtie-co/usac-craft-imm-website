@@ -1,0 +1,156 @@
+{
+    "groups": [
+        "Default"
+    ],
+    "fields": [
+        {
+            "group": "Default",
+            "name": "Collage Image 1",
+            "handle": "collageImage1",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Collage Image 2",
+            "handle": "collageImage2",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Collage Image 3",
+            "handle": "collageImage3",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Default",
+            "name": "FAQ Matrix",
+            "handle": "faqMatrix",
+            "instructions": "",
+            "required": false,
+            "type": "Matrix",
+            "typesettings": {
+                "maxBlocks": null,
+                "blockTypes": {
+                    "new1": {
+                        "name": "FAQ Block",
+                        "handle": "faqBlock",
+                        "fields": {
+                            "new1": {
+                                "name": "FAQ",
+                                "handle": "faq",
+                                "instructions": "Enter the FAQ here.",
+                                "required": "1",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "100",
+                                    "multiline": "1",
+                                    "initialRows": "4"
+                                }
+                            },
+                            "new2": {
+                                "name": "FAQ Answer",
+                                "handle": "faqAnswer",
+                                "instructions": "Enter the answer to the FAQ here.",
+                                "required": "1",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "500",
+                                    "multiline": "1",
+                                    "initialRows": "4"
+                                }
+                            },
+                            "new3": {
+                                "name": "FAQ CTA",
+                                "handle": "faqCta",
+                                "instructions": "Do you want to link to additional information? If so enter the link here. If the field is blank the CTA underneath the FAQ will not display on the front-end. ",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "(e.g., http:\/\/example.com)",
+                                    "maxLength": "225",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "transforms": [
+        {
+            "name": "collage",
+            "handle": "collage",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "469",
+            "height": "235",
+            "quality": "82",
+            "format": "jpg"
+        },
+        {
+            "name": "video-still",
+            "handle": "videoStill",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "469",
+            "height": "235",
+            "quality": "82",
+            "format": "jpg"
+        }
+    ]
+}

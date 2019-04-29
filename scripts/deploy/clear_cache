@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Craft install base path
+BASEPATH="/var/www/usacycling_org/"
+DBNAME="usa_cycling_uat"
+USER="usac_user"
+PASS="KjYzK4N4b5iJaJactD"
+LOGDIR="/deploys/usacycling_org_codedeploy/clear_cache.log"
+TSTAMP=$(date +%D)
+# The permissions for files & directories that need to be writeable
+WRITEABLE_DIR_PERMS=775  # `-rwxrwxr-x`
+
+CRAFT_CACHE_DIRS=(
+  "craft/storage/runtime/cache/"
+  "craft/storage/runtime/compiled_templates/"
+  "craft/storage/runtime/state/"
+)
+
+# Craft Database tables to be emptied to clear the cache
+CRAFT_CACHE_TABLES=(
+  "cache"
+  "templatecaches"
+)
+# Time stamp for debug
+echo $TSAMP >> $LOGDIR
+# Delete the cache dirs
+for DIR in ${CRAFT_CACHE_DIRS[@]}
+do
+  FULLPATH="${BASEPATH}${DIR}"
+  if [[ -d "${FULLPATH}" ]]
+  then
+    echo "Removing cache dir ${FULLPATH} >> $LOGDIR"
+    rm -rf "${FULLPATH}"
+  else
+    echo "Creating directory ${FULLPATH} >> $LOGDIR"
+    mkdir "${FULLPATH}"
+    chmod -R $WRITEABLE_DIR_PERMS "${FULLPATH}"
+    chown -R apache "${FULLPATH}"
+  fi
+done
+
+# Empty the cache tables
+for TABLE in ${CRAFT_CACHE_TABLES[@]}
+do
+  FULLTABLE=${DBNAME}${TABLE}
+  echo "Emptying cache table $FULLTABLE >> $LOGDIR"
+  mysql -u ${USER} --password=${PASS} -e \
+    "DELETE FROM $FULLTABLE" &>/dev/null
+done
+
+echo "*** Caches cleared"
+
+# Normal exit
+exit 0

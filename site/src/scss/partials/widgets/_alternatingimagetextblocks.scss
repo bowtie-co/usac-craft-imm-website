@@ -1,0 +1,120 @@
+// Alternating Image Text Blocks Widget
+// ---------
+
+.alternating-image-text-blocks-widget{
+  // .block-row{
+  //   max-width: 75rem;
+  //   width:100%;
+  // }
+
+  .image-left-block {
+    position:relative;
+    padding: 0 10px 10px 0;
+    margin: 1rem 0;
+  }
+
+  .image-left-block:after {
+    position:absolute;
+    width:75%; height: 75%;
+    border-color: $red;
+    border-style: solid;
+    content: ' ';
+  }
+
+  .image-left-block:after {
+    bottom: 0;
+    right: 0;
+    border-width: 0 10px 10px 0;
+  }
+
+  .image-right-block {
+    position:relative;
+    padding: 0 0 10px 10px;
+    margin: 1rem 0;
+  }
+
+  .image-right-block:after {
+    position:absolute;
+    width:75%; height: 75%;
+    border-color: $red;
+    border-style: solid;
+    content: ' ';
+  }
+
+  .image-right-block:after {
+    bottom:0;
+    left:0;
+    border-width: 0 0 10px 10px;
+  }
+
+  // .block-image {
+  //   width:100%;
+  //   object-fit:cover;
+  //   height: auto;
+  //   max-width:unset;
+  // }
+
+  .vert-aligner {
+    display: flex;
+    align-items: center;
+    //justify-content: center;
+    .vert-align-content {
+      display: block;
+    }
+  }
+
+
+  @include breakpoint(small only) {
+    .block-row {
+      padding: 2.0625rem 0;
+      justify-content: center;
+      .vert-aligner {
+        justify-content: left;
+      }
+      .block-image {
+        width:auto;
+        height: auto;
+        max-width:100%;
+      }
+      .image-left-block:after {
+        right: 0px;
+      }
+    }
+  }
+  @include breakpoint(medium only) {
+    .block-row {
+      padding: 2.0625rem 0;
+      justify-content: center;
+      .vert-aligner {
+        justify-content: left;
+      }
+      .block-image {
+        width:100%;
+        height: 100%;
+        object-fit:cover;
+        height: auto;
+        max-width:100%;
+      }
+      .image-left-block:after {
+        right: 0px;
+      }
+    }
+  }
+  @include breakpoint(large) {
+    .block-row {
+      padding: 2.0625rem 0;
+      .block-image {
+        width:100%;
+        height: 100%;
+        object-fit:cover;
+        max-width: 100%;
+      }
+      .image-left-block:after {
+        right: 0px;
+      }
+      .text-block-right {
+        // padding-left: 25px;
+      }
+    }
+  }
+}

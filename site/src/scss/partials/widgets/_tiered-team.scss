@@ -1,0 +1,121 @@
+// HIGHLIGHTED DIRECTORS
+
+.tiered-team-highlighted {
+  padding: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  @include breakpoint(medium only) {
+    max-width:75%;
+    }
+
+  .highlighted-director-image {
+    padding: 5px;
+    border: 1px solid $light-gray;
+  }
+
+  .highlighted-director-name {
+    color: $blue;
+    @include breakpoint(small only) {
+      padding-top: 1rem;
+      text-align: center;
+    }
+  }
+
+  .team-content-cell {
+    padding-left: 1rem;
+  }
+
+  .team-image-cell {
+    @include breakpoint(small only) {
+        text-align: center;
+    }
+  }
+
+  .highlighted-director-title {
+    padding-bottom: 1rem;
+    @include breakpoint(small only) {
+        text-align: center;
+    }
+  }
+
+  .highlighted-director-social{
+    padding-top: 1rem;
+    i{
+      padding: 1rem 1.5rem;
+      border-right: 1px solid $light-gray;
+    }
+    @include breakpoint(small only) {
+        text-align: center;
+        padding-top: 0;
+      }
+    }
+
+  .no-border{
+    border: none !important;
+  }
+
+  .highlighted-director-background-section {
+    border-top: 4px double $light-gray;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    width:100%;
+  }
+
+  .highlighted-director-section{
+    border-bottom: 1px solid $light-gray;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+
+    @include breakpoint(small only) {
+        padding: 0 2rem;
+      }
+  }
+
+  .highlighted-director-bio{
+    padding-bottom: 2rem;
+    @include breakpoint(small only) {
+        padding-bottom: 1rem;
+      }
+  }
+}
+
+// FEATURED DIRECTORS & NORMAL DIRECTORS
+
+.tiered-team-heading{
+  text-align: center;
+  padding: 0 1rem 3rem 1rem;
+}
+
+.tiered-team-content {
+  text-align:center;
+  padding-bottom: 2rem;
+}
+
+// FEATURED DIRECTORS
+
+.tiered-team-featured{
+  background: $alternate-bg;
+  padding: 4rem 0;
+  .row {
+    justify-content:center;
+  }
+}
+
+.featured-director-name {
+  font-family: 'ProximaNovaBl', sans-serif;
+  color: $red;
+}
+
+// NORMAL DIRECTORS
+
+.tiered-team-normal {
+  margin: 4rem 0rem;
+  .row {
+    justify-content:center;
+  }
+}
+
+.normal-director-name {
+  font-family: 'ProximaNovaBl', sans-serif;
+  color: $blue;
+}

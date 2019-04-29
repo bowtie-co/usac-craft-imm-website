@@ -1,0 +1,9 @@
+<div id="{{content.type}}_{{content.id}}" class="grid-container grid-x long-form">
+<div class="cell tab-titles">
+  <ul class="tabs grid-x grid-padding-x grid-margin-x">
+    {% for block in content.tabMenuMatrix %}
+    <li class="cell auto tabs-title {% if block.activeTab %} is-active {% endif %}"><a href="{{ block.tabHref }}">{{ block.tabTitle }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+</div>

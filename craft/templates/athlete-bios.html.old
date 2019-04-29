@@ -1,0 +1,368 @@
+{% extends "_layout" %}
+
+{% block content %}
+<section id="athlete-bio-page">
+  <div class="row grid-x grid-padding-x align-middle">
+      <div class="cell medium-6 athlete-image-cell">
+          <img class="athlete-image" src="http://usacycling.dev/images/athlete-bio-image.jpg"/>
+      </div>
+      <div class="cell medium-6 athlete-content-cell">
+        <a class="button hollow secondary" href="">Road</a>
+          <h2 class="main-title athlete-name">Kristin Armstrong-Savola</h2>
+          <p class="athlete-description">Professional road bicycle racer and three-time Olympic gold medalist.</p>
+          <div class="athlete-social grid-x grid-padding-x align-middle">
+            <div class="cell medium-6">
+            <a href="" target="_blank">www.kristinarmstrongusa.com</a>
+          </div>
+          <div class="cell medium-6">
+            <table>
+              <tr>
+                <td><a href="" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></td>
+                <td><a href="" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a></td>
+                <td><a href="" target="_blank"><i class="fa fa-instagram fa-2x no-border" aria-hidden="true"></i></a></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+  </div>
+</div>
+  <div class="row grid-x grid-padding-x athlete-details">
+      <div class="cell medium-6">
+        <table class="unstriped">
+          <tbody>
+            <tr>
+              <td class="items">D.O.B</td>
+              <td class="response">August 11, 1973</td>
+            </tr>
+              <td class="items">Weight</td>
+              <td class="response">128 lbs./58kg./9.14 st.</td>
+            </tr>
+              <td class="items">Height</td>
+              <td class="response">5'8"/1.72m.</td>
+            </tr>
+              <td class="items">Birthplace</td>
+              <td class="response">Memphis, Tennessee</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        <div class="cell medium-6">
+          <table class="unstriped">
+            <tbody>
+            <tr>
+              <td class="items">Hometown</td>
+              <td class="response">Boise, Idaho</td>
+            </tr>
+              <td class="items">Residence</td>
+              <td class="response">Boise, Idaho</td>
+            </tr>
+            <tr>
+              <td class="items">Education</td>
+              <td class="response">University of Idaho</br>(B.S. Exercise Physiology)</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cell">
+            <table>
+              <tbody>
+                <tr class="pro-teams-row">
+                  <td class="items pro-teams-col">Pro Teams</td>
+                  <td class="response">Exergy TWENTY12 (2012), Peanut Butter & Co. TWENTY 12 (2011), Cervelo Lifeforce (2008-2009),
+Team Lipton (2006-2007), T-Mobile Women (2001-2005)</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+<div class="athlete-biography">
+  <div class="grid-x bio-title">
+        <div class="bigtext background-text-cell">
+          <h1 class="section-title-background">Biography</h1>
+        </div>
+        <div class="grid-x row align-middle bio-title-intro">
+          <div class="cell">
+              <div class="section-description">Born in 1973 into a military family, Armstrong spent her early childhood in Tennessee and California before attending high school in Japan.
+                She later earned an undergraduate degree in Exercise Physiology from the University of Idaho and worked as a project manager for an advertising agency.</div>
+          </div>
+        </div>
+    </div>
+    <div class="grid-x row bio-full-text">
+	     <p>Prior to becoming one of the world's top competitive road cyclists, Kristin was a world-class runner, swimmer and triathlete. She's even a veteran of multisport's most grueling event, having competed in the Ironman World Championships in Hawaii in 1999. During her career as a professional triathlete, Kristin was diagnosed was osteoarthritis of the hips and was forced away from high-impact activities such as running. Cycling was considered the best form of therapy for her condition, and by  2003 Kristin was recognized as one of the top American cyclists.</p>
+	      <div id="more-1" class="fulltext">
+		        <p>After placing eighth in the road race in her Olympic debut in Athens in 2004, Kristin Armstrong returned to the Olympics in 2008 and set such a scorching pace in the women's time trial that no rival could match it.
+              She went on to collect her second world time trial title in 2009 before retiring at the end of the season.</p>
+            <p>While pregnant in 2010, Kristin remained heavily involved in cycling. In addition to directing the Peanut Butter & Co.
+              TWENTY12 team, she also hosted the Kristin Armstrong Cycling Academy, which gave cyclists of all ages camp-style coaching that focuses on skill and technique, as well as goal-setting.</p>
+            <p>After taking a one-year break to give birth to her first child, Lucas, Kristin and her husband, Joe Savola, announced in the fall of 2010 that she would rejoin the sport.
+              Kristin returned to her gold-medal form to once again win the women's time trial at the 2012 London Olympic Games.</p>
+            <p>She is a co-owner of K-Edge Cycling Solutions, a component manufacturer that got its start designing and manufacturing chain catchers for Kristin's Olympic bikes.
+              Kristin is also active with the YMCA, the U.S. Anti-Doping Agency, and a number of community-building activities.</p>
+	     </div>
+	<button aria-expanded="false" aria-controls="more-1" class="toggle-content read-more-cta" hidden><span class="text">Read More</span></button>
+</div>
+</div>
+
+
+
+    <div class="points-of-interest">
+        <h1 class="wide-title">Points of Interest</h1>
+        <div class="grid-x grid-padding-x">
+        <div class="cell medium-4">
+          <img src="http://usacycling.dev/images/pointsofinterest1.jpg"/>
+          <p>Besides American cycling legend, Greg LeMond, Kristin is the only other American in history to win three career medals at the UCI Road World Championships.</p>
+        </div>
+        <div class="cell medium-4 grid-y">
+          <div class="cell small-order-2 large-order-1"><p>In her first season of international track competition, Kristin won a bronze medal in the individual pursuit at the 2005 UCI Track World Cup in Sydney.</p></div>
+          <div class="cell small-order-1 large-order-2"><img src="http://usacycling.dev/images/pointsofinterest2.png"/></div>
+        </div>
+        <div class="cell medium-4">
+          <img src="http://usacycling.dev/images/pointsofinterest3.jpg"/>
+          <p>Kristin is often asked if she was Lance's wife, referring to the seven-time Tour de France winner's former wife of the same name. She is not.</p>
+        </div>
+      </div>
+    </div>
+    <div class="experience-table">
+      <img src="http://usacycling.dev/images/olympicrings.png"/>
+      <h2 class="main-title">Olympic Experience</h2>
+    <div class="row grid-x grid-padding-x">
+          <div class="cell medium-6">
+            <table class="unstriped">
+              <tbody>
+                <tr>
+                  <td><p class="title">2012 Olympic Games</p>
+                    <p>London, England (Gold Medal in Time Trial; 35th in Road Race)</p>
+                  </td>
+               </tr>
+               <tr>
+                 <td><p class="title">2009 UCI Road World Championships</p>
+                <p>Mendrisio, Switzerland (1st in TIme Trial; 4th in Road Race)</p>
+              </td>
+              </tr>
+                <tr>
+                  <td><p class="title">2008 Olympic Games</p>
+                <p>Beijing, China (Gold Medal in Women's Time Trial)</p>
+              </td>
+              </tr>
+                <tr>
+                  <td><p class="title">2007 UCI Road World Championships</p>
+                <p>Stuttgart, Germany (2nd in Time Trial; 13th in Road Race)</p>
+              </td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+          <div class="cell medium-6">
+            <table class="unstriped">
+              <tbody>
+                <tr>
+                  <td><p class="title">2012 Olympic Games</p>
+                <p>London, England (Gold Medal in Time Trial; 35th in Road Race)</p>
+              </td>
+           </tr>
+           <tr>
+             <td>
+                <p class="title">2009 UCI Road World Championships</p>
+                <p>Mendrisio, Switzerland (1st in TIme Trial; 4th in Road Race)</p>
+              </td>
+           </tr>
+           <tr>
+             <td>
+                <p class="title">2008 Olympic Games</p>
+                <p>Beijing, China (Gold Medal in Women's Time Trial)</p>
+              </td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+    <div class="experience-table">
+      <img src="http://usacycling.dev/images/USACycling_Logo.png"/>
+      <h2 class="main-title">National Experience</h2>
+      <div class="row grid-x grid-padding-x">
+            <div class="cell medium-6">
+              <table class="unstriped">
+                <tbody>
+                  <tr>
+                    <td><p class="title">2007 USA Cycling Elite</p>
+                  <p>Time Trial National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2006 USA Cycling Elite</p>
+                  <p>Time Trial National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2006 USA Cycling Elite</p>
+                  <p>Road Race National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2005 USA Cycling Elite</p>
+                  <p>Time Trial National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2004 USA Cycling Elite</p>
+                  <p>Road Race National Champion</p></td>
+                </tr></tbody></table>
+            </div>
+            <div class="cell medium-6">
+              <table class="unstriped">
+                <tbody>
+                  <tr>
+                    <td><p class="title">2007 USA Cycling Elite</p>
+                  <p>Time Trial National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td>
+                  <p class="title">2006 USA Cycling Elite</p>
+                  <p>Time Trial National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2006 USA Cycling Elite</p>
+                  <p>Road Race National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2005 USA Cycling Elite</p>
+                  <p>Time Trial National Champion</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="title">2004 USA Cycling Elite</p>
+                  <p>Road Race National Champion</p></td>
+                  </tr>
+           </tbody>
+         </table>
+            </div>
+          </div>
+        </div>
+        <div class="experience-table">
+          <h2 class="main-title">Career Highlights</h2>
+        <div class="row grid-x grid-padding-x">
+              <div class="cell medium-6">
+                <table class="unstriped">
+                  <tbody>
+                    <tr>
+                      <td><p class="title">1st Pace • 2011 & 2012</p>
+                    <p>Amgen Tour of California Women's Time Trial</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                  </tr></tbody></table>
+              </div>
+              <div class="cell medium-6">
+                <table class="unstriped">
+                  <tbody>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p class="title">1st Pace • 2012</p>
+                    <p>Merco Cycling Classic, Merced, Calif.</p></td>
+                  </tr></tbody></table>
+              </div>
+            </div>
+</div>
+
+            <div>
+              <!-- articles widget -->
+            </div>
+          <div class="social-media-bar">
+            <div class="row grid-x grid-padding-x">
+              <div class="cell large-6">
+                <p>For more information contact: <strong>kloughery@usacycling.org</strong></p>
+              </div>
+              <div class="cell large-6">
+                  <!-- social media bar -->
+              </div>
+            </div>
+          </div>
+          <div class="other-athletes">
+            <div class="grid-x grid-padding-x">
+              <div class="cell large-6 other-athletes-cell left">
+                <div class="grid-x grid-padding-x align-middle">
+                  <div class="cell medium-6 small-order-2 medium-order-1 large-order-1 athlete-text-left">
+                    <div class="button hollow secondary" href="">Road</div>
+                    <h3 class="main-title athlete-name">Andrea Dvorak</h3>
+                    <a href="">View Athlete</a>
+                  </div>
+                  <div class="cell medium-6 small-order-1 medium-order-2 large-order-2">
+                    <img src="http://usacycling.dev/images/athlete-bio-image.jpg"/>
+                  </div>
+                </div>
+              </div>
+              <div class="cell large-6 other-athletes-cell">
+                <div class="grid-x grid-padding-x align-middle">
+                  <div class="cell medium-6">
+                    <img src="http://usacycling.dev/images/athlete-bio-image.jpg"/>
+                  </div>
+                  <div class="cell medium-6 athlete-text-right">
+                    <div class="button hollow secondary" href="">Road</div>
+                    <h3 class="main-title athlete-name">Theresa Cliff-Ryan</h3>
+                    <a href="">View Athlete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+
+
+<script>
+  if ('querySelector' in document &&
+    'addEventListener' in window) {
+    var toggleButtons = document.querySelectorAll('.toggle-content');
+    var fullTextWrappers = document.querySelectorAll('.fulltext');
+    var fullText;
+    var toggleButtonText;
+
+    [].forEach.call(fullTextWrappers, function(fullTextWrapper) {
+      fullTextWrapper.setAttribute('hidden', true);
+    });
+    [].forEach.call(toggleButtons, function(toggleButton) {
+      toggleButton.removeAttribute('hidden');
+      toggleButton.addEventListener('click', function () {
+        fullTextWrapper = this.parentElement.querySelector('.fulltext');
+        toggleButtonText = this.querySelector('.text');
+        console.log(fullTextWrapper.hasAttribute('hidden'));
+        if (!fullTextWrapper.hasAttribute('hidden')) {
+          toggleButtonText.innerText = 'Read More';
+          fullTextWrapper.setAttribute('hidden', true);
+          toggleButton.setAttribute('aria-expanded', false);
+        } else {
+          toggleButtonText.innerText = 'Show Less';
+          fullTextWrapper.removeAttribute('hidden');
+          toggleButton.setAttribute('aria-expanded', true);
+        }
+      });
+    });
+  }
+</script>
+
+
+
+{% endblock %}

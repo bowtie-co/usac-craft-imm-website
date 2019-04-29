@@ -1,0 +1,166 @@
+{% extends "_layout" %}
+{% block content %}
+{% if category is defined %}
+  {% set entries = craft.entries.section('blog')%}
+  {% for entry in entries %}
+  <div class="hero-widget"
+       style="{% if entry.image|length %}background-image:url({{entry.image.first().getUrl()}});{% endif %}">
+
+      {% if entry.backgroundColorOverlay != "none" %}
+          <div class="background-color-overlay" style="background-color:{{entry.backgroundColorOverlay}}"></div>
+      {% endif %}
+      <div class="hero-content grid-x grid-padding-x grid-container align-left align-middle">
+          <div class="cell medium-8">
+
+              {% if entry.displayUsaCyclingBadge %}
+                  <div class="hero-emblem"><img src="/images/USACycling_Logo.png"></div>
+              {% endif %}
+
+              {% if entry.displayUsaCyclingFoundationBadge %}
+                  <div class="hero-emblem"><img src="/images/usacf_badge.png"></div>
+              {% endif %}
+
+              {% if  entry.topTitle|length %}
+                  <div class="hero-top-title">{{ entry.topTitle }}</div>
+              {% endif %}
+
+              {% if  entry.subTitle|length %}
+                  <h1 class="hero-sub-title">{{ entry.subTitle }}</h1>
+              {% endif %}
+
+              {% if  entry.description|length %}
+                  <p class="description">{{ entry.description }}</p>
+              {% endif %}
+          </div>
+        </div>
+  </div>
+  {% endfor %}
+{% else %}
+<div class="hero-widget"
+     style="{% if entry.image|length %}background-image:url({{entry.image.first().getUrl()}});{% endif %}">
+
+    {% if entry.backgroundColorOverlay != "none" %}
+        <div class="background-color-overlay" style="background-color:{{entry.backgroundColorOverlay}}"></div>
+    {% endif %}
+    <div class="hero-content grid-x grid-padding-x grid-container align-left align-middle">
+        <div class="cell medium-8">
+
+            {% if entry.displayUsaCyclingBadge %}
+                <div class="hero-emblem"><img src="/images/USACycling_Logo.png"></div>
+            {% endif %}
+
+            {% if entry.displayUsaCyclingFoundationBadge %}
+                <div class="hero-emblem"><img src="/images/usacf_badge.png"></div>
+            {% endif %}
+
+            {% if  entry.topTitle|length %}
+                <div class="hero-top-title">{{ entry.topTitle }}</div>
+            {% endif %}
+
+            {% if  entry.subTitle|length %}
+                <h1 class="hero-sub-title">{{ entry.subTitle }}</h1>
+            {% endif %}
+
+            {% if  entry.description|length %}
+                <p class="description">{{ entry.description }}</p>
+            {% endif %}
+        </div>
+      </div>
+</div>
+{% endif %}
+<div class="grid-container blog-posts">
+  <div class="grid-x grid-padding-x category-dropdown">
+  {% set entryIds = craft.entries.section('article').ids() %}
+  {% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).groupId(1).find() %}
+
+    <div class="cell search-form small-11 medium-6 large-4">
+      {% set category_param = craft.request.lastSegment %}
+        <label>
+          <select class="postCategory" name="postCategory">
+            <option value="/blog" {% if category_param == "blog" %} selected {% endif %}>All</option>
+            {% for category in categories %}
+            <option value="{{ category.url }}" {% if category_param == category.slug  %} selected {% endif %}>{{ category.title }}</option>
+            {% endfor %}
+          </select>
+        </label>
+    </div>
+  </div>
+
+    {% set page = craft.request.getParam('page') ? craft.request.getParam('page')|number_format : 6 %}
+    {% set newPage = page + 3 %}
+    {% set params = { section: 'article', limit: page } %}
+  {% if category is defined %}
+    {% set params = params | merge({ relatedTo: category }) %}
+    {% set blogEntries = craft.entries(params) %}
+
+    <div id="featured-blog-posts" class="grid-container fluid featured-blogs" data-eid="blog">
+        <div class="grid-x grid-margin-x featured-blogs-grid">
+            {% for entry in blogEntries %}
+            <div class="small-11 medium-6 large-4 cell featured-posts-parent-container grid-y">
+                {% if entry.articleHeroImage.first()|length %}
+                <div class="post-image-block" style="background:url({{ entry.articleHeroImage.first().getUrl }});"></div>
+                {% endif %}
+                <div class="post-content-block flex-child-grow grid-x">
+                  <div class="cell">
+                    <h6 class="post-category"><a href="{{ category.url }}">{{ entry.articleCategory.first().title }}</a></h6>
+                    <h5><a href ="{{entry.url}}">{{entry.title}}</a></h5>
+                    {% if entry.articleSummary|length %}
+                    <p class="blog-date">{{ entry.postDate | date("m.d.Y") }}</p>
+                    <p class="description">{{entry.articleSummary}}</p>
+                    {% endif %}
+                  </div>
+                  <div class="cell align-self-bottom">
+                    <a class="post-cta" href="{{entry.url}}">Read Post</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% else %}
+<div id="featured-blog-posts" class="grid-container fluid featured-blogs" data-eid="blog">
+    <div class="grid-x grid-margin-x align-center">
+       {% set blogEntries = craft.entries(params) %}
+        {% for entry in blogEntries %}
+        <div class="small-11 medium-6 large-4 cell featured-posts-parent-container grid-y">
+            {% if entry.articleHeroImage.first()|length %}
+            <div class="post-image-block" style="background:url({{ entry.articleHeroImage.first().getUrl}});"></div>
+            {% endif %}
+            <div class="post-content-block flex-child-grow grid-x">
+              <div class="cell">
+                <h5><a href ="{{entry.url}}">{{entry.title}}</a></h5>
+                {% if entry.articleSummary|length %}
+                <p class="blog-date">{{ entry.postDate | date("m.d.Y") }}</p>
+                <p class="description">{{entry.articleSummary}}</p>
+                {% endif %}
+                </div>
+                <div class="cell align-self-bottom">
+                <a class="post-cta cell" href="{{entry.url}}">Read Post</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endif %}
+
+        <!-- <div class="grid-x row text-center">
+          <div id="end-blog"></div>
+            <div class="small-12 centered cell">
+                <a href="?page={{ newPage }}#end-blog" class="button">See More</a>
+            </div>
+        </div> -->
+        <div>
+      {% set total_ajaxable_entries = craft.entries.section('article').find()|length-(blogEntries|length) %}
+      <div class="load-blog-target" data-total-ajaxable-entries-count="{{ total_ajaxable_entries }}"></div>
+  </div>
+  <div class="row text-center">
+      <div class="small-12 centered cell">
+          <div class="button secondary ajax-more-articles">View More Articles</div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

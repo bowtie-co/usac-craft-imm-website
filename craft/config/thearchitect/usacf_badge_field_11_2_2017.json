@@ -1,0 +1,18 @@
+{
+    "groups": [
+        "Default"
+    ],
+    "fields": [
+        {
+            "group": "Default",
+            "name": "Display USA Cycling Foundation Badge",
+            "handle": "displayUsaCyclingFoundationBadge",
+            "instructions": "Toggle switch for USA Cycling Foundation badge.",
+            "required": false,
+            "type": "Lightswitch",
+            "typesettings": {
+                "default": ""
+            }
+        }
+    ]
+}

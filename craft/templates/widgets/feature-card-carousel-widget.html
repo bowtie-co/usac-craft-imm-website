@@ -1,0 +1,47 @@
+<div id="{{content.type}}_{{content.id}}" class="feature-card-carousel-widget" data-eid="{{content.id}}">
+  <div class="grid-x feature-card-carousel">
+    <div class="cell">
+  <div class="swiper-container swiper-feature-card">
+      <div class="swiper-wrapper">
+      {% for block in content.featureCardCarousel%}
+          {% set type = block.type.handle %}
+          {% switch type %}
+          {% case 'carouselCard' %}
+          <div class="swiper-slide">
+            <div class="feature-card-parent-container">
+                <div class="feature-card-container">
+                    {% if block.carouselCardImage.first()|length %}
+                    <div class="carousel-card-image-block">
+                      <img src="{{ block.carouselCardImage.first().getUrl}}">
+                    </div>
+                    {% endif %}
+                    <div class="carousel-card-content-block grid-x">
+                      <div class="cell">
+                        <h5>{{ block.carouselCardTitle }}</h5>
+                        {% if block.carouselCardText|length %}
+                        <p class="description">{{block.carouselCardText}}</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+              {% endswitch %}
+        {% endfor %}
+    </div>
+    <div class="grid-x align-middle swiper-controls">
+      <div class="cell small-2">
+        <div class="swiper-button-prev fcc-swiper-button-prev"></div>
+      </div>
+      <div class="cell small-8">
+        <div class="swiper-pagination fcc-swiper-pagination"></div>
+      </div>
+      <div class="cell small-2">
+        <div class="swiper-button-next fcc-swiper-button-next"></div>
+
+      </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

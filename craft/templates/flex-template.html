@@ -1,0 +1,15 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% if entry.contentBuilder|length %}
+
+        {% for content in entry.contentBuilder %}
+
+            {% include 'inc/widgets.twig' %}
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

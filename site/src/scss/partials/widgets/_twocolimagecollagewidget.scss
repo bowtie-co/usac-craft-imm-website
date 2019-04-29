@@ -1,0 +1,106 @@
+.two-col-image-collage-widget {
+  padding: 2rem 0;
+  .left-col {
+    //margin-top: 150px;
+    //margin-bottom: 150px;
+    .title {
+      color: #d60b30;
+      font-family: ProximaNovaBl, sans-serif;
+      line-height: 1;
+      letter-spacing: .15625rem;
+      text-transform: uppercase;
+      font-size: 2rem;
+      margin-bottom: .25em;
+    }
+    .description {
+      width: 80%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .right-col {
+    position: relative;
+    .image2 {
+      margin-top: -50px;
+    }
+    .image3 {
+      margin-top: -100px;
+    }
+  }
+}
+@include breakpoint(small only) {
+  .two-col-image-collage-widget {
+    margin-top: 0rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    .left-col {
+      //margin-top: 50px;
+      //margin-bottom: 50px;
+      .title {
+        color: #d60b30;
+        font-family: ProximaNovaBl, sans-serif;
+        line-height: 1;
+        letter-spacing: .15625rem;
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-bottom: .25em;
+      }
+      .description {
+        width: 80%;
+        margin-top: 20px;
+        margin:0 auto;
+      }
+    }
+    .right-col {
+      position: relative;
+      .image1,
+      .image2,
+      .image3 {
+        position: inherit;
+        top: unset;
+        right: unset;
+        left: unset;
+        margin: 10px;
+      }
+
+    }
+  }
+}
+@include breakpoint(medium only) {
+  .two-col-image-collage-widget {
+    margin-top: 0rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    .left-col {
+      //margin-top: 50px;
+      //margin-bottom: 50px;
+      .title {
+        color: #d60b30;
+        font-family: ProximaNovaBl, sans-serif;
+        line-height: 1;
+        letter-spacing: .15625rem;
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-bottom: .25em;
+      }
+      .description {
+        width: 80%;
+        margin-top: 20px;
+        margin:0 auto;
+      }
+    }
+    .right-col {
+      position: relative;
+      .image1,
+      .image2,
+      .image3 {
+        position: inherit;
+        top: unset;
+        right: unset;
+        left: unset;
+        margin: 10px;
+      }
+
+    }
+  }
+}

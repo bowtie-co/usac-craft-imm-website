@@ -1,0 +1,73 @@
+[v-cloak] {
+    display: none;
+}
+
+.certification-level {
+  input {
+    height: 10px;
+  }
+}
+
+.radio-container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 46px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid $blue;
+    color: $blue;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-family: 'ProximaNovaBold';
+    padding-top: .5rem;
+
+}
+
+.radio-container:hover input[type="checkbox"] + .radio-button {
+    background-color: #ccc;
+}
+
+.radio-container input[type="checkbox"]:checked ~ .radio-button {
+    background-color: $blue;
+    border: 2px solid $blue;
+    color: $white;
+}
+
+.radio-button:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container input[type="checkbox"]:checked + .radio-button:after {
+    display: block;
+}
+.radio-container .radio-button:after {
+ 	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  border: 2px solid $blue;
+  color: $white;
+}

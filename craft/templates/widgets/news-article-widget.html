@@ -1,0 +1,40 @@
+{% set entries = craft.entries.section('article').limit(3).find() %}
+
+<div id="{{content.type}}_{{content.id}}" class="news-article-widget news-article-widget-{{content.id}} grid-container" data-eid="{{content.id}}">
+    <div class="grid-x grid-padding-x">
+        {% for entry in entries %}
+            <div class="small-12 medium-4 cell">
+                <div class="news-article-content-parent-container">
+                    {% if entry.articleHeroImage.first()|length %}
+                        <a href="{{entry.url}}"><img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicFeaturedArticleList") }}"/></a>
+                    {% endif %}
+                    <div class="article-content-block">
+                        <!-- <div class="grid-x row">
+                            <div class="cell small-12 medium-12 large-6">
+                                <div class="cat button hollow secondary">{{ entry.articleCategory.first().title }}</div>
+                            </div>
+                            <div class="cell small-12 medium-12 large-6 date">
+                                <div>{{ entry.postDate | date("M d, Y") }}</div>
+                            </div>
+                        </div> -->
+
+                        <h5 class="article-title uppercase"><a href="{{entry.url}}">{{entry.title}}</a></h5>
+                        <div class="article-date">{{ entry.postDate | date("M d, Y") }}</div>
+
+                        {% if entry.articleSummary|length %}
+                            <div class="description">{{entry.articleSummary}}</div>
+                        {% endif %}
+                        <div class="news-article-content">
+                            <a class="news-article-cta" href="{{entry.url}}">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="grid-x align-center">
+        <div class="small-12 text-center cell">
+            <a href="/blog" class="button secondary">View More Articles</a>
+            </div>
+        </div>
+    </div>

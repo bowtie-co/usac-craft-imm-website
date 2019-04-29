@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  web:
+    build: .
+    ports:
+      - 80:80
+    env_file:
+      - .dev.env
+    volumes:
+      - ./conf/usac_org.conf:/etc/httpd/conf.d/usac_org.conf
+      - ./sql:/sql
+      - ./site:/var/www/usacycling_org/site
+      - ./craft:/var/www/usacycling_org/craft
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  mysql:
+    image: mysql:5.6
+    env_file:
+      - .dev.env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+volumes:
+  mysql:

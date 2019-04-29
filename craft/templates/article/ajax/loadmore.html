@@ -1,0 +1,52 @@
+{% if craft.request.isAjax %}
+    {% set queryString = craft.request.queryString|split("&") %}
+    {% set cat = "" %}
+    {% set page = "" %}
+    {% set remaining = "" %}
+    {% for param in queryString %}
+        {% set key = param|split("=")[0] %}
+        {% set val = param|split("=")[1] %}
+        {% switch key %}
+            {% case 'page' %}
+                {% set page = val %}
+            {% case 'category' %}
+                {% set cat = val|url_decode %}
+            {% case 'remaining' %}
+                {% set remaining = val %}
+        {% endswitch %}
+    {% endfor %}
+
+    {% set cat = craft.categories.title(cat).first() %}
+    {% set total_articles = craft.entries.relatedTo(cat)|length %}
+    {% set entries_on_display = total_articles - remaining %}
+
+    {% if page > 1 %}
+        {% set offset = entries_on_display + (6*(page-1)) %}
+    {% else %}
+        {% set offset = entries_on_display %}
+    {% endif %}
+
+    {% set entries = craft.entries.section('article').relatedTo(cat).offset(offset).limit(6).find() %}
+
+    <div class="grid-x grid-padding-x">
+        {% for entry in entries %}
+            <div class="small-12 medium-4 cell">
+                <div class="small-12 cell">
+                    <div class="news-article-content-parent-container">
+
+                        {% if entry.articleHeroImage.first()|length %}
+                        <img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicArticleList") }}"/>
+                        {% endif %}
+
+                        <div class="news-article-content">
+                            <div class="button hollow secondary">{{cat.title}}</div>
+                            <h2 class="news-article-title small-article-box">{{entry.title}}</h2>
+                            <a class="news-article-cta" href="{{entry.url}}">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endif %}

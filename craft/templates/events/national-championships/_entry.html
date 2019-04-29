@@ -1,0 +1,247 @@
+{% extends "_layout" %} {% block content %}
+
+<div id="national-championships-detail" class="event-detail grid-container event-details">
+  <div class="event-detail-top">
+    <div class="grid-x grid-padding-x">
+      <div class="cell">
+        <div class="breadcrumb">
+          <span><a href="/events">Events</a> ></span> <span><a href="/events/national-championships">National Championships</a> ></span>
+          <span>{{ entry.title() }}</span>
+        </div>
+      </div>
+      <div class="cell">
+        <h1>{{ entry.title() }}</h1>
+        <img src="{{ entry.eventImage.first.getUrl('') }}">
+      </div>
+    </div>
+    <div class="grid-x align-middle grid-padding-x event-date-grid">
+      <div class="cell small-5 medium-9">
+        {% for block in entry.eventAddress %}
+        {% set type = block.type.handle %}
+        {% switch type %}
+        {% case 'address' %}
+        <h5>{{block.city}}, {{block.state}}</h5>
+        {% endswitch %}
+        {% endfor %}
+        <p>{{ entry.eventDate |date("F d, Y") }}</p>
+      </div>
+      {% if entry.eventDate > now %}
+      <div class="cell small-7 medium-3 text-right">
+        <a class="button primary" href="{{ entry.registrationLink }}">Register For Event</a>
+      </div>
+      {% endif %}
+    </div>
+    <div class="grid-x grid-padding-x event-description-grid">
+      <div class="cell">
+        {{ entry.eventDescription }}
+      </div>
+    </div>
+  </div>
+  <div class="grid-x grid-container align-center show-for-small-only">
+    <div class="cell small-11">
+      <ul class="accordion" data-responsive-accordion-tabs="accordion" id="nc-detail-tabs-mobile" data-allow-all-closed="true">
+        <li class="accordion-item is-active" data-accordion-item><a class="accordion-name" href="#generalinformation">General Information</a></li>
+        <li class="accordion-item" data-accordion-item><a class="accordion-name" href="#location-mobile">Location & Course Map</a></li>
+        <li class="accordion-item" data-accordion-item><a class="accordion-name" href="#registrants-mobile">Registrants</a></li>
+        <li class="accordion-item" data-accordion-item><a class="accordion-name" href="#resources-mobile">Resources</a></li>
+      </ul>
+      <div class="accordion-content" data-tabs-content="nc-detail-tabs-mobile">
+        <div class="tabs-panel is-active" id="general-mobile">
+          <div class="grid-x grid-padding-y">
+            <div class="cell">
+              <h5>Entry Fees</h5>
+              {{ entry.entryFees }}
+            </div>
+            <div class="cell">
+              <h5>Lodging Website</h5>
+              <a href="{{ entry.eventWebsite }}" target="_blank">{{ entry.eventWebsite }}</a>
+            </div>
+            <div class="cell">
+              <h5>Contact</h5>
+              {{ entry.contactInformation }}
+            </div>
+            <div class="cell sponsors">
+              <h5>Sponsors</h5>
+              {% for asset in entry.eventSponsors %}
+              <img src="{{ asset.getUrl('') }}" />
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="tabs-panel" id="location-mobile">
+          <div class="grid-x grid-padding-y align-left">
+            <div class="cell">
+              <h5>Location</h5>
+              {% if entry.eventAddressDetails|length %}
+              {{ entry.eventAddressDetails }}
+              {% endif %}
+              {% for block in entry.eventAddress %}
+              {% set type = block.type.handle %}
+              {% switch type %}
+              {% case 'address' %}
+              <p>{{ block.streetAddress }}</br>
+                {{ block.city }}, {{ block.state }} {{ block.zipCode }}</p>
+              {% endswitch %}
+              {% endfor %}
+            </div>
+            <div class="cell">
+              <iframe src="{{ entry.eventMapLink }}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="cell course-map-cell">
+              <h5>Course Map</h5>
+
+              <div class="orbit" role="region" aria-label="" data-orbit data-auto-play="false">
+                <div class="orbit-wrapper">
+                  <div class="orbit-controls">
+                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
+                  </div>
+                  <ul class="orbit-container">
+                    {% for asset in entry.courseMapImages %}
+                    <li class="orbit-slide">
+                      <figure class="orbit-figure">
+                        <img src="{{ asset.getUrl('') }}">
+                      </figure>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tabs-panel" id="registrants-mobile">
+          <div class="grid-x grid-padding-y align-left">
+            <div class="cell">
+              {{ entry.eventRegistrants }}
+            </div>
+          </div>
+        </div>
+        <div class="tabs-panel" id="resources-mobile">
+          <div class="grid-x grid-padding-x grid-padding-y align-left align-top">
+            {% for asset in entry.eventResources %}
+            <div class="cell small-6 text-left">
+              <div class="grid-x">
+                <div class="cell">
+                  <h6><a href="{{ asset.getUrl('')}}" target="_blank">{{ asset.getTitle('')}}</a></h6>
+                </div>
+                <div class="cell">
+                  <a href="{{ asset.getUrl('')}}" target="_blank"><i class="far fa-file-pdf fa-5x"></i></a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-x hide-for-small-only">
+    <div class="cell tab-titles">
+      <ul class="tabs grid-x grid-margin-x" data-tabs id="nc-detail-tabs">
+        <li class="cell auto tabs-title is-active"><a href="#general" aria-selected="true">General Information</a></li>
+        <li class="cell auto tabs-title"><a data-tabs-target="location" href="#location">Location & Course Map</a></li>
+        <li class="cell auto tabs-title"><a data-tabs-target="registrants" href="#registrants">Registrants</a></li>
+        <li class="cell auto tabs-title"><a data-tabs-target="resources" href="#resources">Resources</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-content-section hide-for-small-only">
+    <div class="grid-x align-center">
+      <div class="cell small-10">
+        <div class="tab-content" data-tabs-content="nc-detail-tabs">
+          <div class="tabs-panel is-active" id="general">
+            <div class="grid-x grid-padding-x grid-padding-y">
+              <div class="cell medium-8">
+                <h5>Entry Fees</h5>
+                {{ entry.entryFees }}
+              </div>
+              <div class="cell medium-4">
+                <div class="grid-x general-info-right">
+                  <div class="lodging-website cell align-self-top">
+                    <h5>Lodging Website</h5>
+                    <a href="{{ entry.eventWebsite }}" target="_blank">{{ entry.eventWebsite }}</a>
+                  </div>
+                  <div class="cell align-self-middle">
+                    <h5>Contact</h5> {{ entry.contactInformation }}
+                  </div>
+                </div>
+              </div>
+              <div class="cell sponsors">
+                <h5>Sponsors</h5> {% for asset in entry.eventSponsors %}
+                <img src="{{ asset.getUrl('') }}" /> {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="tabs-panel" id="location">
+            <div class="grid-x grid-padding-y align-left">
+              <div class="cell large-8">
+                <h5>Location</h5>
+                {% if entry.eventAddressDetails|length %}
+                {{ entry.eventAddressDetails }}
+                {% endif %}
+                {% for block in entry.eventAddress %}
+                {% set type = block.type.handle %}
+                {% switch type %}
+                {% case 'address' %}
+                <p>{{ block.streetAddress }}</br>
+                  {{ block.city }}, {{ block.state }} {{ block.zipCode }}</p>
+                {% endswitch %}
+                {% endfor %}
+              </div>
+              <div class="cell large-8">
+                <iframe src="{{ entry.eventMapLink }}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+              <div class="cell large-8 course-map-cell">
+                <h5>Course Map</h5>
+                <div class="orbit" role="region" aria-label="" data-orbit data-auto-play="false">
+                  <div class="orbit-wrapper">
+                    <div class="orbit-controls">
+                      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
+                      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <ul class="orbit-container">
+                      {% for asset in entry.courseMapImages %}
+                      <li class="orbit-slide">
+                        <figure class="orbit-figure">
+                          <img src="{{ asset.getUrl('') }}">
+                        </figure>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tabs-panel" id="registrants">
+            <div class="grid-x grid-padding-y align-left">
+              <div class="cell">
+                {{ entry.eventRegistrants }}
+              </div>
+            </div>
+          </div>
+          <div class="tabs-panel" id="resources">
+            <div class="grid-x grid-padding-x grid-padding-y align-left align-top" data-equalizer>
+              {% for asset in entry.eventResources %}
+              <div class="cell medium-3 text-left">
+                <div class="grid-x">
+                  <div class="cell" data-equalizer-watch>
+                    <h6><a href="{{ asset.getUrl('')}}" target="_blank">{{ asset.getTitle('')}}</a></h6>
+                  </div>
+                  <div class="cell">
+                    <a href="{{ asset.getUrl('')}}" target="_blank"><i class="far fa-file-pdf fa-5x"></i></a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

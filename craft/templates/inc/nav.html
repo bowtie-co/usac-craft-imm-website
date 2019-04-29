@@ -1,0 +1,437 @@
+<header id="header">
+  {% if getCookie('USACTOKEN') %} {% set loginCookie = getCookie('USACTOKEN') %} {% endif %}
+  <nav id="desktop-navigation" class="desktop-header">
+    <div class="top-nav-bar">
+      <div class="grid-x grid-container align-right align-middle text-right">
+        <div class="cell top-nav-bar-links">
+          <ul>
+            {% for block in topNavigation.topNavigationBuilder %}
+                {% switch block.type %}
+                  {% case 'topNavigationItem' %}
+            <li><a data-toggle="{{ block.topItemTitle }}" href="{{ block.topItemHref }}">{{ block.topItemTitle }}</a></li>
+              {% if block.topItemSubmenu|length %}
+                <div class="dropdown-pane top-nav-dropdown" id="{{ block.topItemTitle }}" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true; vOffset:11">
+                  <div class="grid-x text-left">
+                {% for row in block.topItemSubmenu %}
+                <div class="cell top-sub-item"><a href="{{row.submenuItemLink}}">{{ row.submenuItemTitle }}</a></div>
+                {% endfor %}
+              </div>
+              </div>
+              {% endif %}
+            {% endswitch %}
+            {% endfor %}
+            <li>|</li>
+            {% if getCookie('USACTOKEN')|length %}
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/API/logout/index.php">Sign Out</a></li>
+            {% else %}
+            <li><a href="http://legacy.usacycling.org/myusac/index.php?pagename=register">Create Account</a></li>
+            <li><a href="/user-login">Sign In</a></li>
+            {% endif %}
+            <!-- <li class="desktop-cart-icon"><a href="#">
+              <svg width="25px" height="16px" viewBox="0 0 25 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-1351.000000, -37.000000)" fill="#ffffff">
+                          <g id="cart-icon">
+                              <path d="M1359.47929,42.3082886 L1372.94502,42.3082886 L1372.23762,44.5433575 L1360.32163,44.5433575 L1361.14246,46.7784264 L1371.52995,46.7784264 L1370.55713,49.8516462 L1359.93106,49.8516462 L1355.3704,37.7509832 C1355.20584,37.3196149 1354.78649,37 1354.32187,37 L1351,37 L1351,39.2350689 L1353.55021,39.2350689 L1358.3598,52.0867151 L1372.22449,52.0867151 L1375.9998,40.0732197 L1358.66629,40.0732197 L1359.47929,42.3082886 Z"></path>
+                        </g>
+                    </g>
+                  </g>
+              </svg>
+            </a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar" id="usac-main-menu">
+      <ul class="dropdown menu main-menu" data-dropdown-menu>
+        <div class="menu-items grid-x grid-container align-middle align-justify">
+          <div class="cell auto">
+            <li class="top-bar-logo">
+              <a class="" href="/">
+                <img class="usac-logo" src="/images/USACycling_Logo.png" alt="USAC">
+              </a>
+            </li>
+            {% if mainNavigation.navigationItemBuilder|length %}
+              {% for content in mainNavigation.navigationItemBuilder %}
+                  {% switch content.type %}
+                    {% case 'navigationItem' %}
+            <li class="usac-menu">
+                {% if content.navigationTopTitle|length %}
+                <a class="item-top-title" data-toggle="{{content.navigationTitle}}" href="{{content.navigationHref}}">{{content.navigationTopTitle}}</a>
+                {% endif %}
+                <a class="usac-menu-item" data-toggle="{{content.navigationTitle}}" href="{{content.navigationHref}}">{{content.navigationTitle}}</a>
+            </li>
+              <div class="dropdown-pane main-nav-dropdown bottom" id="{{content.navigationTitle}}" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true; vOffset:11">
+                <div class="grid-container">
+                  <div class="grid-x grid-padding-x">
+                    <div class="cell medium-4">
+                      <ul class="menu vertical">
+                        {% if content.dropdownColumn1Heading | length %}
+                        <div class="grid-x nav-col-header">
+                          <div class="cell">
+                            <h6>{{ content.dropdownColumn1Heading }}</h6>
+                          </div>
+                        </div>
+                        {% endif %}
+                        <div class="grid-x grid-padding-y nav-col-subheader">
+                          {% for block in content.column1SubmenuItems %}
+                              {% switch block.type %}
+                                {% case 'submenuItem' %}
+                          <div class="cell medium-6">
+                            <div class="submenu-header">{% if block.submenuHref | length %}<a href="{{block.submenuHref}}">{% endif %}{{ block.submenuTitle }}{% if block.submenuHref | length %}</a>{% endif %} </div>
+                              {% if block.submenuChildrenMatrix|length %}
+                              {% for row in block.submenuChildrenMatrix %}
+                              <li><a href="{{ row.submenuChildHref }}">{{ row.submenuChildTitle }}</a></li>
+                                {% if row.subchildrenMatrix|length %}
+                                <div class="nested">
+                                  {% for childblock in row.subchildrenMatrix %}
+                                    {% switch childblock.type %}
+                                      {% case 'subchildItem' %}
+                                          <li><a href="{{ childblock.subchildHref }}">{{ childblock.subchildTitle }}</a></li>
+                                      {% endswitch %}
+                                      {% endfor %}
+                                </div>
+                                {% endif %}
+                              {% endfor %}
+                              {% endif %}
+                          </div>
+                          {% endswitch %}
+                          {% endfor %}
+                        </div>
+                      </ul>
+                    </div>
+                    <div class="cell medium-4">
+                      <ul class="menu vertical">
+                        {% if content.dropdownColumn2Heading | length %}
+                        <div class="grid-x nav-col-header">
+                          <div class="cell">
+                            <h6>{{ content.dropdownColumn2Heading }}</h6>
+                          </div>
+                        </div>
+                        {% endif %}
+                        <div class="grid-x grid-padding-y nav-col-subheader">
+                          {% for block in content.column2SubmenuItems %}
+                              {% switch block.type %}
+                                {% case 'submenuItem' %}
+                          <div class="cell medium-6">
+                            <div class="submenu-header">{% if block.submenuHref | length %}<a href="{{block.submenuHref}}">{% endif %}{{ block.submenuTitle }}{% if block.submenuHref | length %}</a>{% endif %} </div>
+                              {% if block.submenuChildrenMatrix|length %}
+                              {% for row in block.submenuChildrenMatrix %}
+                              <li><a href="{{ row.submenuChildHref }}">{{ row.submenuChildTitle }}</a></li>
+
+                                {% if row.subchildrenMatrix|length %}
+                                <div class="nested">
+                                  {% for childblock in row.subchildrenMatrix %}
+                                    {% switch childblock.type %}
+                                      {% case 'subchildItem' %}
+                                          <li><a href="{{ childblock.subchildHref }}">{{ childblock.subchildTitle }}</a></li>
+                                      {% endswitch %}
+                                      {% endfor %}
+                                </div>
+                                {% endif %}
+                              {% endfor %}
+                              {% endif %}
+                          </div>
+                          {% endswitch %}
+                          {% endfor %}
+                        </div>
+                      </ul>
+                    </div>
+                    <div class="cell medium-4">
+                      <ul class="menu vertical">
+                        {% if content.dropdownColumn3Heading | length %}
+                        <div class="grid-x nav-col-header">
+                          <div class="cell">
+                            <h6>{{ content.dropdownColumn3Heading }}</h6>
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% if content.displayEventsWidget %}
+                        <div class="grid-x grid-padding-x nav-col-subheader nav-events-widget">
+                          {% set currentDate = now %}
+                          {% set entries = craft.entries.section('nationalChampionships').eventDate('and', '>= ' ~ currentDate).limit(2) %}
+                          {% for entry in entries %}
+                          <div class="cell medium-6 nav-event">
+                            <a href="{{ entry.url}}" style="background:url({{ entry.eventImage.first.getUrl('') }});">
+                                <!-- <img class="grid-image" src="{{ entry.eventImage.first.getUrl('') }}"/> -->
+                                  <div class="date-container text-center">
+                                    <p class="cal-month">{{ entry.eventDate |date("M") }}</p>
+                                    <h5 class="cal-day">{{ entry.eventDate |date("d") }}</h5>
+                                  </div>
+                                    <div class="event-box-details text-center">
+                                    <h6 class="cal-desc">{{ entry.title }}</h6>
+                                  </div>
+                                  <div class="background-color-overlay"></div>
+                               </a>
+                          </div>
+                          {% endfor %}
+                          </div>
+                          {% else %}
+                        <div class="grid-x grid-padding-y nav-col-subheader">
+                          {% for block in content.column3SubmenuItems %}
+                              {% switch block.type %}
+                                {% case 'submenuItem' %}
+                          <div class="cell medium-6">
+                            <div class="submenu-header">{% if block.submenuHref | length %}<a href="{{block.submenuHref}}">{% endif %}{{ block.submenuTitle }}{% if block.submenuHref | length %}</a>{% endif %} </div>
+                              {% if block.submenuChildrenMatrix|length %}
+                              {% for row in block.submenuChildrenMatrix %}
+                              <li><a href="{{ row.submenuChildHref }}">{{ row.submenuChildTitle }}</a></li>
+                                {% if row.subchildrenMatrix|length %}
+                                <div class="nested">
+                                  {% for childblock in row.subchildrenMatrix %}
+                                    {% switch childblock.type %}
+                                      {% case 'subchildItem' %}
+                                          <li><a href="{{ childblock.subchildHref }}">{{ childblock.subchildTitle }}</a></li>
+                                      {% endswitch %}
+                                      {% endfor %}
+                                </div>
+                                {% endif %}
+
+                              {% endfor %}
+                              {% endif %}
+                          </div>
+                          {% endswitch %}
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% endswitch %}
+            {% endfor %}
+            {% endif %}
+          </div>
+          {% if craft.request.getLastSegment() != "search" %}
+          <div class="shrink cell">
+            <ul class="usac-search-menu">
+              <form class="usac-search" action="/search" role="form">
+                  <li><input class="desktop-search search-field" title="search" type="search" name="q" placeholder="" maxlength="100" style="box-sizing: inherit !important;">
+                  </li>
+                  <li><input style="display:none" class="search-reset button" type="reset" value="x"></li>
+
+                  <li><i class="fa fa-2x fa-search" onclick="$('.usac-search').submit();"></i></li>
+              </form>
+            </ul>
+          </div>
+        {% endif %}
+        </div>
+      </ul>
+    </div>
+  </nav>
+<nav id="mobile-navigation">
+  <div class="title-bar grid-x grid-container align-middle">
+      <div class="title-bar-left cell auto">
+          <a href="/"><img class="usac-logo-mobile" src="/images/USACycling_Logo.png" alt="USAC"></a>
+      </div>
+      <div class="title-bar-right cell shrink">
+          <!--<a href="#"><img src="http://via.placeholder.com/25x15"></a>-->
+          <!-- <button class="menu-icon" type="button" data-open="usac-menu-accordian"></button> -->
+          <!-- <button class="menu-icon" type="button" data-toggle="usac-menu-accordian"></button> -->
+
+          <button class="hamburger-menu" type="button" data-toggle="usac-menu-accordian"><img class="" src="/images/hamburger.svg" alt="USAC"></button>
+      </div>
+  </div>
+  <div class="off-canvas position-right nav-loader-mobile" id="usac-menu-accordian" data-off-canvas data-content-scroll="false">
+    <div class="grid-x align-middle usac-mobile-logo-cell">
+      <div class="cell small-4 text-center">
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+          <span aria-hidden="true">&times;</span></button>
+        </div>
+
+      <div class="cell small-4 text-center">
+        <a href="/"><img src="/images/USACycling_Logo.png" alt="USAC"></a>
+      </div>
+      <!-- <div class="cell small-4 mobile-cart-icon text-center"><a href="#">
+        <svg width="25px" height="16px" viewBox="0 0 25 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-1351.000000, -37.000000)" fill="#ffffff">
+                    <g id="cart-icon">
+                        <path d="M1359.47929,42.3082886 L1372.94502,42.3082886 L1372.23762,44.5433575 L1360.32163,44.5433575 L1361.14246,46.7784264 L1371.52995,46.7784264 L1370.55713,49.8516462 L1359.93106,49.8516462 L1355.3704,37.7509832 C1355.20584,37.3196149 1354.78649,37 1354.32187,37 L1351,37 L1351,39.2350689 L1353.55021,39.2350689 L1358.3598,52.0867151 L1372.22449,52.0867151 L1375.9998,40.0732197 L1358.66629,40.0732197 L1359.47929,42.3082886 Z"></path>
+                  </g>
+              </g>
+            </g>
+        </svg>
+      </a>
+    </div> -->
+    </div>
+    {% if craft.request.getLastSegment() != "search" %}
+    <form class="usac-mobile-search" action="/search" role="form">
+      <div class="grid-x grid-padding-x align-middle">
+
+          <div class="cell small-10">
+                <input class="desktop-search search-field" title="search" type="search" name="q" maxlength="100" placeholder="Search">
+                <input style="display:none" class="search-reset button" type="reset" value="x">
+              </div>
+              <div class="cell small-2">
+                <i class="fa fa-2x fa-search" onclick="$('.usac-search').submit();"></i>
+              </div>
+
+          </div>
+        </form>
+        {% endif %}
+        {% if getCookie('USACTOKEN')|length %}
+            <div class="mobile-account-bar grid-x align-middle">
+              <div class="cell small-6 mobile-red-button">
+                <a class="button expanded secondary" href="/account">My Account</a>
+              </div>
+              <div class="cell small-6 mobile-blue-button">
+                <a class="button expanded secondary" href="/API/logout/index.php">Sign Out</a>
+              </div>
+            </div>
+        {% else %}
+            <div class="mobile-account-bar grid-x align-middle">
+              <div class="cell small-6 mobile-red-button">
+                <a class="button expanded secondary" href="/user-login" class="">Log In</a>
+              </div>
+              <div class="cell small-6 mobile-blue-button">
+                <a class="button expanded secondary" href="http://legacy.usacycling.org/myusac/index.php?pagename=register" class="">Create Account</a>
+            </div>
+          </div>
+        {% endif %}
+      <div class="grid-x">
+        <div class="cell">
+        <ul class="vertical menu drilldown" data-drilldown data-auto-height="true" data-animate-height="true" id="m3">
+          {% if mainNavigation.navigationItemBuilder|length %}
+            {% for content in mainNavigation.navigationItemBuilder %}
+                {% switch content.type %}
+                  {% case 'navigationItem' %}
+          <li class="main-items">
+          <a href="{{content.navigationTitle}}">
+            <div class="grid-y">
+              {% if content.navigationTopTitle|length %}
+            <div class="mobile-top-title">{{content.navigationTopTitle}}</div>{% endif %}
+            <div>{{content.navigationTitle}}</div>
+            </div>
+          </a>
+          <ul class="menu">
+            {% if content.dropdownColumn1Heading | length %}
+            <li class="main-items">
+              <a href="#">{{ content.dropdownColumn1Heading }}</a>
+              <ul class="menu nested sublevel-2">
+                {% for block in content.column1SubmenuItems %}
+                    {% switch block.type %}
+                      {% case 'submenuItem' %}
+                <li class="sublevel-header">{% if block.submenuHref | length %}<a href="{{block.submenuHref}}">{% endif %}{{ block.submenuTitle }}{% if block.submenuHref | length %}</a>{% endif %}</li>
+                {% if block.submenuChildrenMatrix|length %}
+                  <div class="sublevel-items">
+                    {% for row in block.submenuChildrenMatrix %}
+                  <li><a href="{{ row.submenuChildHref }}">{{ row.submenuChildTitle }}</a></li>
+                    {% if row.subchildrenMatrix|length %}
+                    <div class="sublevel-items nested">
+                      {% for childblock in row.subchildrenMatrix %}
+                        {% switch childblock.type %}
+                          {% case 'subchildItem' %}
+                          <li><a href="{{ childblock.subchildHref }}">{{ childblock.subchildTitle }}</a></li>
+                          {% endswitch %}
+                          {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  {% endswitch %}
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endif %}
+              {% if content.dropdownColumn2Heading | length %}
+              <li class="main-items">
+                <a href="#">{{ content.dropdownColumn2Heading }}</a>
+                <ul class="menu nested sublevel-2">
+                  {% for block in content.column2SubmenuItems %}
+                      {% switch block.type %}
+                        {% case 'submenuItem' %}
+                  <li class="sublevel-header">{% if block.submenuHref | length %}<a href="{{block.submenuHref}}">{% endif %}{{ block.submenuTitle }}{% if block.submenuHref | length %}</a>{% endif %}</li>
+                  {% if block.submenuChildrenMatrix|length %}
+                    <div class="sublevel-items">
+                      {% for row in block.submenuChildrenMatrix %}
+                    <li><a href="{{ row.submenuChildHref }}">{{ row.submenuChildTitle }}</a></li>
+                      {% if row.subchildrenMatrix|length %}
+                      <div class="sublevel-items nested">
+                        {% for childblock in row.subchildrenMatrix %}
+                          {% switch childblock.type %}
+                            {% case 'subchildItem' %}
+                            <li><a href="{{ childblock.subchildHref }}">{{ childblock.subchildTitle }}</a></li>
+                            {% endswitch %}
+                            {% endfor %}
+                      </div>
+                      {% endif %}
+
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endswitch %}
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endif %}
+                {% if not content.displayEventsWidget %}
+                {% if content.dropdownColumn3Heading | length %}
+                <li class="main-items">
+                  <a href="#">{{ content.dropdownColumn3Heading }}</a>
+                  <ul class="menu nested sublevel-2">
+                    {% for block in content.column3SubmenuItems %}
+                        {% switch block.type %}
+                          {% case 'submenuItem' %}
+                    <li class="sublevel-header">{% if block.submenuHref | length %}<a href="{{block.submenuHref}}">{% endif %}{{ block.submenuTitle }}{% if block.submenuHref | length %}</a>{% endif %}</li>
+                    {% if block.submenuChildrenMatrix|length %}
+                      <div class="sublevel-items">
+                        {% for row in block.submenuChildrenMatrix %}
+                      <li><a href="{{ row.submenuChildHref }}">{{ row.submenuChildTitle }}</a></li>
+                        {% if row.subchildrenMatrix|length %}
+                        <div class="sublevel-items nested">
+                          {% for childblock in row.subchildrenMatrix %}
+                            {% switch childblock.type %}
+                              {% case 'subchildItem' %}
+                              <li><a href="{{ childblock.subchildHref }}">{{ childblock.subchildTitle }}</a></li>
+                              {% endswitch %}
+                              {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% endfor %}
+                      </div>
+                      {% endif %}
+                      {% endswitch %}
+                      {% endfor %}
+                    </ul>
+                  </li>
+                  {% endif %}
+                    {% endif %}
+                </ul>
+              </li>
+              {% endswitch %}
+              {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="grid-x mobile-bottom-nav">
+          <div class="cell">
+            <ul class="menu vertical accordion-menu" data-accordion-menu>
+              {% for block in topNavigation.topNavigationBuilder %}
+                  {% switch block.type %}
+                    {% case 'topNavigationItem' %}
+              <li>
+                <a href="{{ block.topItemHref }}">{{ block.topItemTitle }}</a>
+                {% if block.topItemSubmenu|length %}
+                  <ul class="menu vertical nested">
+                    {% for row in block.topItemSubmenu %}
+                      <li class="top-nav-sub-mobile"><a href="{{row.submenuItemLink}}">{{ row.submenuItemTitle }}</a></li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+              </li>
+              {% endswitch %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+      <!-- End Mobile Navigation-->
+</header>

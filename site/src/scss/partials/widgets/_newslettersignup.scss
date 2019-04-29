@@ -1,0 +1,52 @@
+// Newsletter Sign up Widget
+// ---------
+
+.newsletter-signup-widget {
+  //padding: 3rem 0;
+
+  @include breakpoint(small only) {
+      padding: 2rem 0;
+    }
+}
+
+.newsletter-signup-container {
+  background-image: url("/images/newsletterbackground.jpg");
+  padding: 3rem 2rem;
+  width: 100%;
+  background-size: cover;
+
+  @include breakpoint(small only) {
+      padding: 2rem;
+    }
+}
+
+.newsletter-message-container {
+  text-transform: uppercase;
+  color: $white;
+  margin-bottom: 0;
+
+  @include breakpoint(small only) {
+      display: none;
+    }
+}
+
+.newsletter-submit {
+  margin-bottom: 0 !important;
+  border-color: $white !important;
+  color: $white !important;
+}
+
+.newsletter-submit:hover, .newsletter-submit:focus {
+      border-color: $light-gray !important;
+      color: $light-gray !important;
+}
+
+.newsletter-email-input {
+  border: none !important;
+  margin-bottom: 0 !important;
+}
+
+.submit-mobile {
+  text-align: center;
+  margin-top: .5rem;
+}

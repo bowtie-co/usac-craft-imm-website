@@ -1,0 +1,753 @@
+ {% extends "_layout" %} {% block content %}
+ {% set waiver = craft.request.getQuery('wa') %}
+ <style type="text/css">
+  [v-cloak] {
+    display: none;
+  }
+ </style>
+ <div id="important-message" style="width: 100%;position: relative;display: none;background-color: #f7f7f7;color: #000;font-family: ProximaNovaSb;text-align: center;padding-top: 18px;padding-bottom: 10px;padding-left: 10px; padding-right: 10px;">
+   Welcome to the new USA Cycling "My Account" page.  If you can't find what you're looking for here, head over to our <a href="https://legacy.usacycling.org/myusac/index.php?pagename=mypage" target="_blank" style="color: #000; text-decoration: underline;">legacy site</a>.
+   <br />
+   <a class="close-message" style="text-decoration:underline;color: #000;display: block; padding-top: 4px;">Close Message</a>
+ </div>
+ {% if waiver == 'yes' %}
+ <div id="important-message2" style="width: 100%;position: relative;display: none;background-color: #f7f7f7;color: #000;font-family: ProximaNovaSb;text-align: center;padding-top: 18px;padding-bottom: 10px;padding-left: 10px; padding-right: 10px;">
+    Thank you for signing your USA Cycling waiver. You may need to wait a moment and refresh this page to remove the Pending status from your membership.
+   <br />
+   <a class="close-message2" style="text-decoration:underline;color: #000;display: block; padding-top: 4px;">Close Message</a>
+ </div>
+ {% endif %}
+<div id="account-app" style="padding-top: 20px;">
+  <div class="grid-y large-grid-frame grid-margin-x grid-padding-x">
+    <div class="cell large-auto medium-cell-block-container">
+      <div class="grid-x grid-padding-x account-body" style="display:none;">
+        <div v-show="user_account.comp_id" class="cell small-12 medium-4 large-3 small-cell-block-x large-cell-block-y user-panel">
+          <div class="grid-x user-info-left">
+            <div class="loader" v-show="uInfoLoad">
+              <div id="fountainG">
+               <div id="fountainG_1" class="fountainG"></div>
+               <div id="fountainG_2" class="fountainG"></div>
+               <div id="fountainG_3" class="fountainG"></div>
+               <div id="fountainG_4" class="fountainG"></div>
+               <div id="fountainG_5" class="fountainG"></div>
+               <div id="fountainG_6" class="fountainG"></div>
+               <div id="fountainG_7" class="fountainG"></div>
+               <div id="fountainG_8" class="fountainG"></div>
+              </div>
+            </div>
+            <div class="cell user-info">
+              <h2 style="padding-top: 15px;" v-text="user_account.first_name + ' ' + user_account.last_name"></h2>
+              <a class="expand-profile show-for-small-only" style="display: block;">+&nbsp;Expand Profile Details</a>
+              <a href="https://legacy.usacycling.org/myusac/index.php?pagename=mypage" target="_blank">Update Profile</a>&nbsp;|&nbsp;
+              <a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=editaccount&subpage=changepass&compid='+user_account.comp_id" target="_blank">Change Password</a>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>USA Cycling #:</strong>
+              <span v-text="user_account.comp_id"></span>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>Username:</strong>
+              <span v-text="user_account.user_id"></span>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>Address:</strong>
+              <span v-text="user_account.address"></span>
+              <span v-text="user_account.city + ', ' + user_account.state + ' ' + user_account.zip"></span>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>DOB:</strong>
+              <span v-text="user_account.dob"></span>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>GENDER:</strong>
+              <span v-text="user_account.gender"></span>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>EMERGENCY CONTACT:</strong>
+              <span v-text="'Name: ' + user_account.emergency_name"></span>
+              <span v-text="'Phone: ' + user_account.emergency_phone"></span>
+            </div>
+            <div class="cell user-info" v-show="uProfileLoaded">
+              <strong>COMMUNICATION PREFERENCES:</strong>
+              <span><a href="https://legacy.usacycling.org/myusac/index.php?pagename=mypage" target="_blank">Update Preferences</a></span>
+            </div>
+          </div>
+
+        </div>
+        <div class="cell small-12 medium-8 large-9 small-cell-block-x large-cell-block-y content-desktop" v-cloak>
+            <ul class="tabs">
+              <li class="tab-link current" data-tab="tab-1" v-cloak>Licenses</li>
+              <li class="tab-link" data-tab="tab-2">Results &amp; Rankings</li>
+              <li class='tab-link' data-tab="tab-3">Tools</a>
+                <li class='tab-link' data-tab="tab-4">Benefits</a>
+            </ul>
+            <div id="tab-1" v-show="licenses" class="tab-content current">
+              <div class="grid-x">
+                <div class="cell">
+                  Filter by:&nbsp;&nbsp;
+                  <select v-model="licenseFilterSelected" style="width:100px;">
+                      <option value="all" selected>All</option>
+                      <option value="active">Active</option>
+                      <option value="expired">Expired</option>
+                      <option value="pending">Pending</option>
+                      <option value="suspended">Suspended</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid-x">
+                <div class="loader" v-show="tabOneLoad" style="margin-top: 20px;">
+                  <div id="fountainG">
+                   <div id="fountainG_1" class="fountainG"></div>
+                   <div id="fountainG_2" class="fountainG"></div>
+                   <div id="fountainG_3" class="fountainG"></div>
+                   <div id="fountainG_4" class="fountainG"></div>
+                   <div id="fountainG_5" class="fountainG"></div>
+                   <div id="fountainG_6" class="fountainG"></div>
+                   <div id="fountainG_7" class="fountainG"></div>
+                   <div id="fountainG_8" class="fountainG"></div>
+                  </div>
+                </div>
+                <div v-show="filterMessage">
+                    You currently have no licenses that match this filter.
+                </div>
+
+
+
+                <!--Begin Race Licenses-->
+                <div v-for="(item, key, index) in licenses" class="license-card" v-if="item.licensetype === '' || item.licensetype === 'R'">
+                  <div class="license-top">
+                    <div class="grid-x align-middle">
+
+                      <div class="cell large-5">
+
+                        <div class="grid-x">
+                            <div class="cell small-12 medium-12 large-12">
+                              <div class="license-name" v-text="item.label"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-12">
+                              <div v-if="Date.now() <= new Date(item.date_exp)" v-text="'Expires: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float:left;"></div>
+                              <div v-else v-text="'Expired: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float: left;"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-4">
+                              <div class="renew-license" v-if="!item.licensetype"><a href="https://register.usacycling.org/#!/memberships/builder/usa-cycling-race-membership-2018" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'X'"><a href="https://register.usacycling.org/#!/memberships/builder/usac" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'O'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'C'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'M'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'D'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'V'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                            </div>
+                            <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''" class="cell small-12 medium-4 large-4">
+                              <nav id="primary_nav_wrap">
+                                <ul class="first-ul">
+                                  <li>
+                                    <a>
+                                      <div style="width: 160px;display:inline-flex;float: left;position: relative; top: 1px;font-size: 12px;text-decoration:underline;">
+                                        Edit License Details
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li v-if="item.updown_type == 'ncca'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=ncca&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'intlracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=intlracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'usaracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=usaracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserclub&compid='+user_account.comp_id">Edit Club</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserteam&compid='+user_account.comp_id">Edit Team</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://register.usacycling.org/#!/mysubscriptions'">Auto-Renewal</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </nav>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="cell large-5">
+                          <!-- <img class="status-dot" src="./assets/icon-active.png" style="margin-right: 15px;" /> -->
+                          <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''">
+                            <div class="active-button">Active</div>
+                          </div>
+                          <div v-else-if="Date.now() > new Date(item.date_exp) && item.license_status == ''" class="inactive-button">Expired</div>
+                          <div v-else-if="item.license_status == 'P'" class="pending-button" style="width: 115px;">
+                            Pending&nbsp;&nbsp;
+                            <a href="#" :data-tooltip="'Pend reason:    ' + [[item.pend_reason]]">
+                              <svg viewBox="0 0 95 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 20px;position: relative;top: 4px;">
+                                  <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                      <path d="M76.28125,19.71875 C68.46871,11.90621 59.04172,8 48,8 C36.95828,8 27.53129,11.90621 19.71875,19.71875 C11.906211,27.53129 8,36.95828 8,48 C8,59.04172 11.906211,68.46871 19.71875,76.28125 C27.53129,84.093789 36.95828,88 48,88 C59.04172,88 68.46871,84.093789 76.28125,76.28125 C84.09379,68.46871 88,59.04172 88,48 C88,36.95828 84.09379,27.53129 76.28125,19.71875 Z M72.6875,72.84375 C65.91663,79.614617 57.68755,83 48,83 C38.31245,83 30.05733,79.588576 23.23438,72.76562 C16.411424,65.94267 13,57.68755 13,48 C13,38.31245 16.411424,30.05733 23.23438,23.23438 C30.05733,16.41142 38.31245,13 48,13 C57.68755,13 65.94267,16.41142 72.76562,23.23438 C79.58858,30.05733 83,38.31245 83,48 C83,57.68755 79.56253,65.96872 72.6875,72.84375 Z M51.4375,39.5625 C50.5,38.52083 49.35417,38 48,38 C46.64583,38 45.47396,38.49479 44.48438,39.48438 C43.49479,40.47396 43,41.64583 43,43 L43,68 C43,69.35417 43.49479,70.52604 44.48438,71.51562 C45.47396,72.50521 46.64583,73 48,73 C49.35417,73 50.52604,72.50521 51.51562,71.51562 C52.50521,70.52604 53,69.35417 53,68 L53,43 C53,41.64583 52.47917,40.5 51.4375,39.5625 Z M44.40625,24.5625 C43.46875,25.5 43,26.67187 43,28.07812 C43,29.48438 43.49479,30.68229 44.48438,31.67188 C45.47396,32.66146 46.64583,33.15625 48,33.15625 C49.35417,33.15625 50.52604,32.66146 51.51562,31.67188 C52.50521,30.68229 53,29.48438 53,28.07812 C53,26.67187 52.50521,25.5 51.51562,24.5625 C50.52604,23.625 49.35417,23.15625 48,23.15625 C46.64583,23.15625 45.44792,23.625 44.40625,24.5625 Z" id="Page-1" fill="#000000"></path>
+                                  </g>
+                              </svg>
+                            </a>
+                          </div>
+                          <div v-else-if="item.license_status == 'S'" class="inactive-button">Suspended</div>
+                          <div v-else></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="license-content">
+                    <div class="grid-x">
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(club, key, index) in item.clubs" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Collegiate Club/Team'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="club.club" class="club-org"></span>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li v-if="item.la_name" style="list-style: none;">
+                            <span class="club-name">Local Association</span>
+                            <ul>
+                              <li>
+                                <a target="_blank" v-text="item.la_name" v-bind:href="'http://'+item.la_website"></a>
+                              </li>
+                            </ul>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(license, key, index) in item.categories" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Categories'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="catFullName(key)"></span>&nbsp;<span v-text="license"></span>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End Race Licenses-->
+
+                <!--Begin Coach Licenses-->
+                <div v-for="(item, key, index) in licenses" class="license-card" v-if="item.licensetype === 'C'">
+                  <div class="license-top">
+                    <div class="grid-x align-middle">
+
+                      <div class="cell large-5">
+
+                        <div class="grid-x">
+                            <div class="cell small-12 medium-12 large-12">
+                              <div class="license-name" v-text="item.label"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-12">
+                              <div v-if="Date.now() <= new Date(item.date_exp)" v-text="'Expires: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float:left;"></div>
+                              <div v-else v-text="'Expired: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float: left;"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-4">
+                              <div class="renew-license" v-if="!item.licensetype"><a href="https://register.usacycling.org/#!/memberships/builder/usa-cycling-race-membership-2018" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'X'"><a href="https://register.usacycling.org/#!/memberships/builder/usac" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'O'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'C'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'M'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'D'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'V'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                            </div>
+                            <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''" class="cell small-12 medium-4 large-4">
+                              <nav id="primary_nav_wrap">
+                                <ul class="first-ul">
+                                  <li>
+                                    <a>
+                                      <div style="width: 160px;display:inline-flex;float: left;position: relative; top: 1px;font-size: 12px;text-decoration:underline;">
+                                        Edit License Details
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li v-if="item.updown_type == 'ncca'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=ncca&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'intlracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=intlracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'usaracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=usaracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserclub&compid='+user_account.comp_id">Edit Club</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserteam&compid='+user_account.comp_id">Edit Team</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://register.usacycling.org/#!/mysubscriptions'">Auto-Renewal</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </nav>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="cell large-5">
+                          <!-- <img class="status-dot" src="./assets/icon-active.png" style="margin-right: 15px;" /> -->
+                          <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''">
+                            <div class="active-button">Active</div>
+                          </div>
+                          <div v-else-if="Date.now() > new Date(item.date_exp) && item.license_status == ''" class="inactive-button">Expired</div>
+                          <div v-else-if="item.license_status == 'P'" class="pending-button">Pending</div>
+                          <div v-else-if="item.license_status == 'S'" class="inactive-button">Suspended</div>
+                          <div v-else></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="license-content">
+                    <div class="grid-x">
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(club, key, index) in item.clubs" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Collegiate Club/Team'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="club.club" class="club-org"></span>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li v-if="item.la_name" style="list-style: none;">
+                            <span class="club-name">Local Association</span>
+                            <ul>
+                              <li>
+                                <a target="_blank" v-text="item.la_name" v-bind:href="'http://'+item.la_website"></a>
+                              </li>
+                            </ul>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(license, key, index) in item.categories" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Categories'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="catFullName(key)"></span>&nbsp;<span v-text="license"></span>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End Coach Licenses-->
+
+                <!--Begin Mechanic Licenses-->
+                <div v-for="(item, key, index) in licenses" class="license-card" v-if="item.licensetype === 'M'">
+                  <div class="license-top">
+                    <div class="grid-x align-middle">
+
+                      <div class="cell large-5">
+
+                        <div class="grid-x">
+                            <div class="cell small-12 medium-12 large-12">
+                              <div class="license-name" v-text="item.label"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-12">
+                              <div v-if="Date.now() <= new Date(item.date_exp)" v-text="'Expires: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float:left;"></div>
+                              <div v-else v-text="'Expired: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float: left;"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-4">
+                              <div class="renew-license" v-if="!item.licensetype"><a href="https://register.usacycling.org/#!/memberships/builder/usa-cycling-race-membership-2018" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'X'"><a href="https://register.usacycling.org/#!/memberships/builder/usac" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'O'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'C'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'M'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'D'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'V'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                            </div>
+                            <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''" class="cell small-12 medium-4 large-4">
+                              <nav id="primary_nav_wrap">
+                                <ul class="first-ul">
+                                  <li>
+                                    <a>
+                                      <div style="width: 160px;display:inline-flex;float: left;position: relative; top: 1px;font-size: 12px;text-decoration:underline;">
+                                        Edit License Details
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li v-if="item.updown_type == 'ncca'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=ncca&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'intlracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=intlracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'usaracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=usaracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserclub&compid='+user_account.comp_id">Edit Club</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserteam&compid='+user_account.comp_id">Edit Team</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://register.usacycling.org/#!/mysubscriptions'">Auto-Renewal</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </nav>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="cell large-5">
+                          <!-- <img class="status-dot" src="./assets/icon-active.png" style="margin-right: 15px;" /> -->
+                          <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''">
+                            <div class="active-button">Active</div>
+                          </div>
+                          <div v-else-if="Date.now() > new Date(item.date_exp) && item.license_status == ''" class="inactive-button">Expired</div>
+                          <div v-else-if="item.license_status == 'P'" class="pending-button">Pending</div>
+                          <div v-else-if="item.license_status == 'S'" class="inactive-button">Suspended</div>
+                          <div v-else></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="license-content">
+                    <div class="grid-x">
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(club, key, index) in item.clubs" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Collegiate Club/Team'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="club.club" class="club-org"></span>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li v-if="item.la_name" style="list-style: none;">
+                            <span class="club-name">Local Association</span>
+                            <ul>
+                              <li>
+                                <a target="_blank" v-text="item.la_name" v-bind:href="'http://'+item.la_website"></a>
+                              </li>
+                            </ul>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(license, key, index) in item.categories" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Categories'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="catFullName(key)"></span>&nbsp;<span v-text="license"></span>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End Mechanic Licenses-->
+
+
+
+                <!--Begin Official Licenses-->
+                <div v-for="(item, key, index) in licensesComp" class="license-card" v-if="item.section_header === 'TECHNICAL' && item.section_subtitle === 'OFFICIAL'">
+                  <div class="license-top">
+                    <div class="grid-x align-middle">
+
+                      <div class="cell large-5">
+
+                        <div class="grid-x">
+                            <div class="cell small-12 medium-12 large-12">
+                              <div class="license-name" v-text="item.section_header + ' - ' + item.section_subtitle"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-12">
+                              <div v-if="Date.now() <= new Date(item.date_exp)" v-text="'Expires: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float:left;"></div>
+                              <div v-else v-text="'Expired: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float: left;"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-4">
+                              <div class="renew-license" v-if="!item.licensetype"><a href="https://register.usacycling.org/#!/memberships/builder/usa-cycling-race-membership-2018" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'X'"><a href="https://register.usacycling.org/#!/memberships/builder/usac" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'O'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'C'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'M'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'D'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'V'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                            </div>
+                            <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''" class="cell small-12 medium-4 large-4">
+                              <nav id="primary_nav_wrap">
+                                <ul class="first-ul">
+                                  <li>
+                                    <a>
+                                      <div style="width: 160px;display:inline-flex;float: left;position: relative; top: 1px;font-size: 12px;text-decoration:underline;">
+                                        Edit License Details
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li v-if="item.updown_type == 'ncca'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=ncca&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'intlracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=intlracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'usaracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=usaracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserclub&compid='+user_account.comp_id">Edit Club</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserteam&compid='+user_account.comp_id">Edit Team</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://register.usacycling.org/#!/mysubscriptions'">Auto-Renewal</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </nav>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="cell large-5">
+                          <!-- <img class="status-dot" src="./assets/icon-active.png" style="margin-right: 15px;" /> -->
+                          <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''">
+                            <div class="active-button">Active</div>
+                          </div>
+                          <div v-else-if="Date.now() > new Date(item.date_exp) && item.license_status == ''" class="inactive-button">Expired</div>
+                          <div v-else-if="item.license_status == 'P'" class="pending-button">Pending</div>
+                          <div v-else-if="item.license_status == 'S'" class="inactive-button">Suspended</div>
+                          <div v-else></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="license-content">
+                      <div class="grid-x">
+                        <div v-for="(itemX, key, index) in item.categories" class="cell large-3" style="display: inline-block;" v-if="itemX.ROAD">
+                          ROAD:&nbsp;[[itemX.ROAD]]
+                        </div>
+                        <div v-for="(itemX, key, index) in item.categories" class="cell large-3" style="display: inline-block;" v-if="itemX.TRACK">
+                          TRACK:&nbsp;[[itemX.TRACK]]
+                        </div>
+                        <div v-for="(itemX, key, index) in item.categories" class="cell large-3" style="display: inline-block;" v-if="itemX.MTB">
+                          MOUNTAIN BIKE:&nbsp;[[itemX.MTB]]
+                        </div>
+                        <div v-for="(itemX, key, index) in item.categories" class="cell large-3" style="display: inline-block;" v-if="itemX.BMX">
+                          BMX:&nbsp;[[itemX.BMX]]
+                        </div>
+                      </div>
+                      <div class="grid-x" style="margin-top: 10px;">
+                            <div class="cell large-3" v-text="'MOTOREF: ' + convertYN(item.MOTOREF)"></div>
+                            <div class="cell large-3" v-text="'STARTER: ' + convertYN(item.extra[0].starter)"></div>
+                            <div class="cell large-3" v-text="'SECRETARY: ' + convertYN(item.extra[0].secretary)"></div>
+                      </div>
+                  </div>
+                </div>
+                <!--End Official Licenses-->
+
+                <!--Begin Driver Licenses-->
+                <div v-for="(item, key, index) in licenses" class="license-card" v-if="item.licensetype === 'V'">
+                  <div class="license-top">
+                    <div class="grid-x align-middle">
+
+                      <div class="cell large-5">
+
+                        <div class="grid-x">
+                            <div class="cell small-12 medium-12 large-12">
+                              <div class="license-name" v-text="item.label"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-12">
+                              <div v-if="Date.now() <= new Date(item.date_exp)" v-text="'Expires: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float:left;"></div>
+                              <div v-else v-text="'Expired: ' + item.date_exp" style="font-family: ProximaNovaSb;font-size: 14px;line-height: 34px;display:inline-block;float: left;"></div>
+                            </div>
+                            <div class="cell small-12 medium-4 large-4">
+                              <div class="renew-license" v-if="!item.licensetype"><a href="https://register.usacycling.org/#!/memberships/builder/usa-cycling-race-membership-2018" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'X'"><a href="https://register.usacycling.org/#!/memberships/builder/usac" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'O'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'C'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'M'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'D'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                              <div class="renew-license" v-if="item.licensetype == 'V'"><a href="https://legacy.usacycling.org/myusac/index.php?pagename=buy#supportlicenses" target="_blank">Renew License</a></div>
+                            </div>
+                            <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''" class="cell small-12 medium-4 large-4">
+                              <nav id="primary_nav_wrap">
+                                <ul class="first-ul">
+                                  <li>
+                                    <a>
+                                      <div style="width: 160px;display:inline-flex;float: left;position: relative; top: 1px;font-size: 12px;text-decoration:underline;">
+                                        Edit License Details
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li v-if="item.updown_type == 'ncca'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=ncca&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'intlracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=intlracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="item.updown_type == 'usaracer'"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=upgradedowngrade&type=usaracer&compid='+user_account.comp_id" target="_blank">Upgrade/Downgrade</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserclub&compid='+user_account.comp_id">Edit Club</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserteam&compid='+user_account.comp_id">Edit Team</a></li>
+                                      <li v-if="Date.now() <= new Date(item.date_exp)"><a v-bind:href="'https://register.usacycling.org/#!/mysubscriptions'">Auto-Renewal</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </nav>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="cell large-5">
+                          <!-- <img class="status-dot" src="./assets/icon-active.png" style="margin-right: 15px;" /> -->
+                          <div v-if="Date.now() <= new Date(item.date_exp) && item.license_status == ''">
+                            <div class="active-button">Active</div>
+                          </div>
+                          <div v-else-if="Date.now() > new Date(item.date_exp) && item.license_status == ''" class="inactive-button">Expired</div>
+                          <div v-else-if="item.license_status == 'P'" class="pending-button">Pending</div>
+                          <div v-else-if="item.license_status == 'S'" class="inactive-button">Suspended</div>
+                          <div v-else></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="license-content">
+                    <div class="grid-x">
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(club, key, index) in item.clubs" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Collegiate Club/Team'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="club.club" class="club-org"></span>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li v-if="item.la_name" style="list-style: none;">
+                            <span class="club-name">Local Association</span>
+                            <ul>
+                              <li>
+                                <a target="_blank" v-text="item.la_name" v-bind:href="'http://'+item.la_website"></a>
+                              </li>
+                            </ul>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div class="cell large-6">
+                        <ul>
+                          <li v-for="(license, key, index) in item.categories" style="list-style: none;">
+                            <span v-text="catFullName(key) + ' Categories'" class="club-name"></span>
+                            <ul style="padding-left: 15px;">
+                              <li>
+                                <span v-text="catFullName(key)"></span>&nbsp;<span v-text="license"></span>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End Driver Licenses-->
+              </div>
+            </div>
+            <div id="tab-2" class="tab-content">
+              <h3 style="text-transform: uppercase;">Your Race Results</h3>
+              <div v-show="resultsError">
+                <p>There are currently no results associated with this account.</p>
+              </div>
+              <table class="race-results-listing" v-if="results.length > 0">
+                <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th style="text-align:left;">Race</th>
+                      <th style="text-align:left;">Race Date</th>
+                      <th style="text-align:left;">Place</th>
+                      <th style="text-align:left;">Points</th>
+                    </tr>
+                </thead>
+                <tr v-for="(uresult, key, index) in results">
+                  <td>
+                    <a @click="showResults(uresult.results_race_id)"><span v-text="uresult.event_name"></span></a>
+                  </td>
+                  <td>
+                    <span v-text="uresult.category"></span>
+                  </td>
+                  <td>
+                    <span v-text="uresult.race_date"></span>
+                  </td>
+                  <td>
+                    <span v-if="uresult.place == 996">DNS</span>
+                    <span v-else-if="uresult.place == 999">DNF</span>
+                    <span v-else v-text="uresult.place"></span>
+                  </td>
+                  <td>
+                    <span v-text="uresult.points"></span>
+                  </td>
+                </tr>
+              </table>
+              <div v-if="race_results" v-show="showRaceResults">
+                <h4 v-text="currentResultName"></h4>
+                <span v-text="currentResultCity"></span>,&nbsp;<span v-text="currentResultState"></span> on <span v-text="friendlyDate(currentResultDate)"></span><br /><br />
+                <a @click="returnToResults()" class="return-to-results">&larr;&nbsp;Return to Results &amp; Rankings</a><br />
+                <table class="race-results-table" v-show="results">
+                  <thead>
+                    <tr>
+                      <th>Place</th>
+                      <th>Points</th>
+                      <th>Name</th>
+                      <th data-breakpoints="xs">City, State</th>
+                      <th data-breakpoints="xs">USAC #</th>
+                      <th data-breakpoints="xs">Bib</th>
+                    </tr>
+                  </thead>
+                  <tr v-for="(rresult, key, index) in race_results">
+                    <td v-if="user_account.comp_id === rresult.compid" style="background-color: yellow;">
+                      <span v-if="rresult.place == 996">DNS</span>
+                      <span v-else-if="rresult.place == 999">DNF</span>
+                      <span v-else v-text="rresult.place"></span>
+                    </td>
+                    <td v-else>
+                      <span v-if="rresult.place == 996">DNS</span>
+                      <span v-else-if="rresult.place == 999">DNF</span>
+                      <span v-else v-text="rresult.place"></span>
+                    </td>
+
+                    <td v-if="user_account.comp_id === rresult.compid" style="background-color: yellow;">
+                      <span v-text="rresult.points"></span>
+                    </td>
+                    <td v-else>
+                      <span v-text="rresult.points"></span>
+                    </td>
+
+                    <td v-if="user_account.comp_id === rresult.compid" style="background-color: yellow;">
+                      <span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span>
+                    </td>
+                    <td v-else>
+                      <span v-text="rresult.first"></span>&nbsp;&nbsp;<span v-text="rresult.last"></span>
+                    </td>
+
+                    <td v-if="user_account.comp_id === rresult.compid" style="background-color: yellow;">
+                      <span v-text="rresult.comp_city + ', ' + rresult.comp_state">
+                    </td>
+                    <td v-else>
+                      <span v-text="rresult.comp_city + ', ' + rresult.comp_state">
+                    </td>
+
+                    <td v-if="user_account.comp_id === rresult.compid" style="background-color: yellow;">
+                      <span v-text="rresult.compid">
+                    </td>
+                    <td v-else>
+                      <span v-text="rresult.compid">
+                    </td>
+
+                    <td v-if="user_account.comp_id === rresult.compid" style="background-color: yellow;">
+                      <span v-text="rresult.bib">
+                    </td>
+                    <td v-else>
+                      <span v-text="rresult.bib">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <h3 v-if="rankings.tag" style="text-transform: uppercase;" v-text="'YOUR ' + rankings.tag + ' STANDINGS'"></h3>
+              <table class="standings-table" v-if="rankings">
+                <tr v-if="rankings.by_zip">
+                    <td v-text="rankings.by_zip.desc"></td>
+                    <td data-title="Rank" data-breakpoints="xs" v-text="rankings.by_zip.rank + ' of ' + rankings.by_zip.total_racers"></td>
+                    <td data-title="Percentage" data-breakpoints="xs" v-text="rankPerc(rankings.by_zip.rank,rankings.by_zip.total_racers)"></td>
+                </tr>
+                <tr v-if="rankings.by_state">
+                  <td v-text="rankings.by_state.desc"></td>
+                  <td v-text="rankings.by_state.rank + ' of ' + rankings.by_state.total_racers"></td>
+                  <td v-text="rankPerc(rankings.by_state.rank,rankings.by_state.total_racers)"></td>
+                </tr>
+                <tr v-if="rankings.by_age">
+                  <td v-text="rankings.by_age.desc"></td>
+                  <td v-text="rankings.by_age.rank + ' of ' + rankings.by_age.total_racers"></td>
+                  <td v-text="rankPerc(rankings.by_age.rank,rankings.by_age.total_racers)"></td>
+                </tr>
+                <tr v-if="rankings.by_agerange1">
+                  <td v-text="rankings.by_agerange1.desc"></td>
+                  <td v-text="rankings.by_agerange1.rank + ' of ' + rankings.by_agerange1.total_racers"></td>
+                  <td v-text="rankPerc(rankings.by_agerange1.rank,rankings.by_agerange1.total_racers)"></td>
+                </tr>
+                <tr v-if="rankings.by_agerange2">
+                  <td v-text="rankings.by_agerange2.desc"></td>
+                  <td v-text="rankings.by_agerange2.rank + ' of ' + rankings.by_agerange2.total_racers"></td>
+                  <td v-text="rankPerc(rankings.by_agerange2.rank,rankings.by_agerange2.total_racers)"></td>
+                </tr>
+                <tr v-if="rankings.overall">
+                  <td v-text="rankings.overall.desc"></td>
+                  <td v-text="rankings.overall.rank + ' of ' + rankings.overall.total_racers"></td>
+                  <td v-text="rankPerc(rankings.overall.rank,rankings.overall.total_racers)"></td>
+                </tr>
+              </table>
+            </div>
+            <div id="tab-3" class="tab-content">
+            </div>
+            <div id="tab-4" class="tab-content">
+              {% set benefitEntry = craft.entries.section('memberBenefits').first() %}
+              {{ benefitEntry.memberBenefitContent }}
+            </div>
+          </div>
+      </div>
+    </div>
+{% endblock %}

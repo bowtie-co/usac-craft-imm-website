@@ -1,0 +1,44 @@
+{#
+ # 404 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 404 page working; you just need to call it 404.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title = "404" %}
+
+{% block content %}
+
+{% set rPath = craft.request.path %}
+{% set qPath = craft.request.queryStringWithoutPath %}
+
+{% if qPath %}
+  {% redirect "https://legacy.usacycling.org/" ~ rPath ~ "?" ~ qPath 301 %}
+{% else %}
+  {% redirect "https://legacy.usacycling.org/" ~ rPath 301 %}
+{% endif %}
+  <div id="error-page" class="grid-container" style="height: 70vh;">
+      <div class="grid-x grid-margin-x grid-padding-x align-center">
+          <div class="cell small-12 medium-6 text-center align-center">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <p>Uh oh, we couldn't find the page you were looking for. However, there is still hope!  Check out our legacy site for additional content.</p>
+            <p><br /><a class="legacy-search-btn" href="http://legacy.usacycling.org/sitesearch.php" target="_blank">Search Legacy Site</a>
+          </div>
+      </div>
+  </div>
+
+
+{% endblock %}

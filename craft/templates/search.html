@@ -1,0 +1,304 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+{% set query = craft.request.getParam('q') %}
+{% set searchTerms = query | trim | split( ' ' ) %}
+{% set searchTerms2 = query|lower | trim | split( ' ' ) %}
+{% set searchTerms3 = query|capitalize | trim | split( ' ' ) %}
+
+{# Build an associated array w/ terms and the replacement string #}
+{% set replace = {} %}
+
+
+{% for term in searchTerms %}
+{% set replace = replace | merge( { (term) : '<strong style="background-color: yellow;">' ~ term ~ '</strong>' } ) %}
+{% endfor %}
+
+{% for term in searchTerms2 %}
+{% set replace = replace | merge( { (term) : '<strong style="background-color: yellow;">' ~ term ~ '</strong>' } ) %}
+{% endfor %}
+
+{% for term in searchTerms3 %}
+{% set replace = replace | merge( { (term) : '<strong style="background-color: yellow;">' ~ term ~ '</strong>' } ) %}
+{% endfor %}
+
+{# Loop through your search results, replacing the terms for all neccessary fields..#}
+
+{% set hpEntry = craft.entries.section('homepage').ids() %}
+
+{% set searchOrder = 'score' %}
+
+{% if query == '' %}
+
+    {% set searchOrder = 'dateCreated desc' %}
+
+{% else %}
+
+{% set entries = craft.entries({
+  search:         query,
+  order:          searchOrder,
+  id:             'not ' ~ hpEntry[0]
+}) %}
+
+{% set athleteEntries = craft.entries({
+  section:        'team',
+  search:         query,
+  order:          searchOrder,
+  id:             'not ' ~ hpEntry[0]
+}) %}
+
+{% set biosEntries = craft.entries({
+  section:        'athleteBios',
+  search:         query,
+  order:          searchOrder,
+  id:             'not ' ~ hpEntry[0]
+}) %}
+
+{% set articleEntries = craft.entries({
+  section:        'article',
+  search:         query,
+  order:          searchOrder,
+  id:             'not ' ~ hpEntry[0]
+}) %}
+
+{% set resourcesEntries = craft.entries({
+  section:        'resources',
+  search:         query,
+  order:          searchOrder,
+  id:             'not ' ~ hpEntry[0]
+}) %}
+
+{% set flexEntries = craft.entries({
+    section:        ['uniquePages', 'findAClub', 'findACoach', 'eventsSection', 'resultsRankings', 'resourcesSearch', 'nationalChampionships', 'blog' ],
+    search:         query,
+    order:          searchOrder,
+    id:             'not ' ~ hpEntry[0]
+}) %}
+
+{% set _featuredArticles = craft.entries({
+  search:         'featured:1',
+  order:          'postDate desc'
+}).limit(3) %}
+
+{# paginate entries.limit(10) as pageInfo, pageEntries #}
+<!--Get the subcategory from the request url-->
+
+{% set teamCount = 0 %}
+{% set articleCount = 0 %}
+{% set resourcesCount = 0 %}
+{% set athleteBiosCount = 0 %}
+{% set totalCount = 0 %}
+{% for entry in entries %}
+  {% if entry.type == "team" %}
+    {% set teamCount = teamCount + 1 %}
+    {% set totalCount = totalCount + 1 %}
+  {% endif %}
+
+  {% if entry.type == "resources" %}
+    {% set resourcesCount = resourcesCount + 1 %}
+    {% set totalCount = totalCount + 1 %}
+  {% endif %}
+
+  {% if entry.type == "athleteBios" %}
+    {% set athleteBiosCount = athleteBiosCount + 1 %}
+    {% set totalCount = totalCount + 1 %}
+  {% endif %}
+
+  {% if entry.type == "article" %}
+    {% set articleCount = articleCount + 1 %}
+    {% set totalCount = totalCount + 1 %}
+  {% endif %}
+{% endfor %}
+{% for entry in flexEntries %}
+  {% set totalCount = totalCount + 1 %}
+{% endfor %}
+{% endif %}
+
+<section id="search-page" style="margin-top: 30px;height: 100%;">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-padding-x">
+            <div class="cell large-12">
+                <h1>{{ entry.title }}</h1>
+                <p>{{ entry.body }}</p>
+                <form id="search" method="get" action="{{siteUrl}}search" style="margin-top: 15px;margin-bottom: 15px;" accept-charset="UTF-8">
+                    <input class="search-text-q" name="q" type="hidden">
+                    <input class="search-text" type="text" type="search" placeholder="Search" maxlength="100">
+                    <input class="search-button" type="submit" value="Submit" style="display: inline-block;">
+                </form>
+            </div>
+
+            {% if query != '' %}
+                <div class="cell large-12" style="padding-top: 10px; padding-bottom: 20px;color: #D60B30;">
+                    {% if totalCount > 0 %}
+                        <strong>Displaying {{ totalCount }} results.</strong>
+                    {% endif %}
+                    {% if totalCount == 0 %}
+                        <strong>Your search returned no results.  Please check your input and try again.</strong>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <div class="cell large-12">
+            {% if query != '' %}
+                {% if articleCount > 0 %}
+                    <h2>Articles</h2>
+                    <div class="grid-x grid-padding-x">
+                        {% for entry in articleEntries %}
+                            {% if entry.type == "article" %}
+                                <a href="{{ entry.url }}">
+                                    <div class="cell small-12 medium-6 large-4 bio">
+                                        <div class="grid-x">
+                                            <div class="cell small-12 large-12 article-style">
+                                                <h5 style="padding-top: 30px;">{{ entry.title }}</h5>
+                                            </div>
+                                            <div class="cell small-12 large-12 article-style">
+                                                <p>{{ entry.articleSummary|hacksaw(hack='characters', limit='200', allow='<a>')}}</p>
+                                            </div>
+                                            <div class="cell small-12 large-12 article-style">
+                                                <a href="{{ entry.url }}" style="text-decoration: underline;">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <br/>
+                    <br/>
+                {% endif %}
+
+                {% if resourcesCount > 0 %}
+                    <h2>Resources</h2>
+                    <div class="grid-x grid-padding-x">
+                        {% for entry in resourcesEntries %}
+                            {% if entry.type == "resources" %}
+                                    <div class="cell small-12 medium-6 large-4 bio">
+                                        <div class="grid-x">
+                                            <div class="cell small-12 large-12 article-style">
+                                              <a target="_blank" href="{% if entry.resourceAssets|length %}{% for asset in entry.resourceAssets %}{{ asset.url }}{% endfor %}{% else %}{{ entry.resourceUrl }}{% endif %}">
+                                                <h5 style="padding-top: 30px;">{{ entry.title }}</h5>
+                                              </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <br/>
+                    <br/>
+                {% endif %}
+
+                {% if athleteBiosCount > 0 %}
+                    <h2>Athlete Bios</h2>
+                    <div class="grid-x grid-padding-x" style="padding: 35px 0 0;" >
+                        {% for entry in biosEntries %}
+                            {% if entry.type == "athleteBios" %}
+                                <div class="cell small-12 medium-6 large-3 bio" >
+                                    <a href="{{ entry.url }}">
+                                        <div class="grid-x">
+                                            <div class="cell small-12 large-12">
+                                                <img style="width:100%; height: 296px; object-fit: cover; max-width: 296px;" src="{{entry.athletePortrait.first().getUrl()}}" />
+                                            </div>
+                                            <div class="cell small-12 large-12" style="padding-left: 5px; padding-right: 5px;margin-top: 10px;">
+                                                <strong>{{ entry.firstName }} {{entry.lastName }}</strong>
+                                                <p>{{ entry.athleteDescription }}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <br/>
+                    <br/>
+                {% endif %}
+
+                {% if teamCount > 0 %}
+                    <h2>Teams</h2>
+                    <div class="grid-x">
+                        {% for entry in teamEntries %}
+                            {% if entry.type == "team" %}
+                                <div class="cell small-12 medium-6 large-4" style="padding: 35px 35px 35px 0px;">
+                                    <div class="grid-x align-center">
+                                        <div class="cell small-12 large-6" >
+                                            {% if entry.teamMemberImage.first() %}
+                                                <img style="max-height: 296px;" src="{{entry.teamMemberImage.first().getUrl()}}" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="cell small-12 large-6 text-center" style="">
+                                            <a style="padding-top: 4px;padding-bottom: 4px;" href="{{ entry.teamCta }}" target="_blank">
+                                                <strong>{{ entry.teamFirstName }}</strong>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <br/>
+                    <br/>
+                {% endif %}
+
+                {% if flexEntries|length > 0 %}
+                    <h2>Pages</h2>
+                    <div class="grid-x">
+                        {% for entry in flexEntries %}
+                            <div class="cell small-12 medium-6 large-4" style="padding: 35px 35px 35px 0px; text-align: left; min-height: 300px;">
+                                <a style="padding-top: 4px;padding-bottom: 4px;" href="{{entry.url}}" target="_blank">
+                                    <div class="grid-x">
+                                        {% if entry.contentBuilder|length %}
+                                            {% set oneImage = false %}
+                                            {% for content in entry.contentBuilder %}
+                                                {% switch content.type %}
+                                                    {% case "leftOrRightHeroWidget" or "centeredHeroWidget" or "wideFeatureHeroWidget" or "leftOrRightImageTextFeatureWidget" or "sectionTitleWidget" or "imageTextCarouselWidget" or "insetImageWidget" or "alternatingImageTextBlocks"%}
+                                                        {% if content.image|length and not oneImage %}
+                                                            <div class="cell small-12 large-12">
+                                                                <img src="{{content.image.first().getUrl('search')}}" />
+                                                            </div>
+                                                            {% set oneImage = true %}
+                                                        {% endif %}
+                                                {% endswitch %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="cell small-12 large-12 text-center" style="">
+                                            <h3 style="padding-top: 30px; text-align: left;">{{ entry.title }}</h3>
+                                            {% if entry.contentBuilder|length %}
+                                                {% set oneImage = false %}
+                                                {% for content in entry.contentBuilder %}
+                                                    {% switch content.type %}
+                                                        {% case "leftOrRightHeroWidget" or "centeredHeroWidget" or "wideFeatureHeroWidget" or "leftOrRightImageTextFeatureWidget" or "sectionTitleWidget" or "imageTextCarouselWidget" or "insetImageWidget" or "alternatingImageTextBlocks"%}
+                                                            {% if content.description|length and not oneImage %}
+                                                                <p style="text-align: left;">{{content.description}}</p>
+                                                                {% set oneImage = true %}
+                                                            {% endif %}
+                                                        {% case "wysiwygWidget" %}
+                                                            {% if content.wysiwygWidget|length and not oneImage %}
+                                                                <p style="text-align: left;">{{content.wysiwygWidget|hacksaw(hack='characters', limit='200', allow='<a>')}}...</p>
+                                                                {% set oneImage = true %}
+                                                            {% endif %}
+                                                    {% endswitch %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="cell small-12 large-12 article-style">
+                                            <a href="{{entry.url}}" style="text-decoration: underline;" target="_blank">Read More</a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <br/>
+                    <br/>
+                {% endif %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

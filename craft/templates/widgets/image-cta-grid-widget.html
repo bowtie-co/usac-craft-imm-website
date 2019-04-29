@@ -1,0 +1,51 @@
+<div id="{{content.type}}_{{content.id}}" class="image-cta-grid-widget grid-container">
+    <div class="grid-x grid-padding-x">
+      {% for block in content.imageCtaGridMatrixWidget %}
+            {% if loop.index <= 6 %}
+                {% set type = block.type.handle %}
+                {% switch type %}
+                    {% case 'imageCtaGridBlocks' %}
+                        {% if block.backgroundImage.first().getUrl() is defined %}
+                            <div class="medium-4 cell cta-grid-image">
+                              <a href="{{block.ctaUrl}}" {% if block.ctaHrefTarget %} target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                                <img src="" style="background-image:url({{block.backgroundImage.first().getUrl("imageCtaGrid")}});">
+                              </a>
+                                <div class="cta-grid-content">
+                                  <a class="grid-cta" href="{{block.ctaUrl}}" {% if block.ctaHrefTarget %} target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                                    {{block.ctaText}}
+                                  </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                {% endswitch %}
+            {% else %}
+
+                <!-- print other cubes hidden and show 6 more at a time... -->
+                {% set type = block.type.handle %}
+                {% switch type %}
+                    {% case 'imageCtaGridBlocks' %}
+                    {% if block.backgroundImage.first().getUrl() is defined %}
+                        <div class="medium-4 cell cta-grid-image load-more-cell" style="display: none;">
+                          <a href="{{block.ctaUrl}}" {% if block.ctaHrefTarget %} target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                            <img src="" style="background-image:url({{block.backgroundImage.first().getUrl("imageCtaGrid")}});">
+                          </a>
+                            <div class="cta-grid-content">
+                              <a class="grid-cta" href="{{block.ctaUrl}}" {% if block.ctaHrefTarget %} target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                                {{block.ctaText}}
+                              </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endswitch %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if content.imageCtaGridMatrixWidget|length > 6 %}
+    <div class="grid-x">
+        <div class="small-12 cell cta-grid-load-more">
+            <a class="button hollow secondary load-more" href="#">{{content.ctaTextLoadMore}}</a>
+        </div>
+    </div>
+    {% endif %}
+</div>

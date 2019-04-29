@@ -1,0 +1,26 @@
+<div id="{{content.type}}_{{content.id}}" class="dropdown-widget">
+  <div class="grid-x grid-container grid-padding-y align-middle align-center">
+    <div class="cell">
+      <div class="description">{{ content.wysiwygWidget }}</div>
+    </div>
+    <div class="cell small-10 large-7">
+      <div class="grid-x grid-padding-x">
+        <div class="cell medium-7 large-8 search-form">
+          <select id="dropdown-select" class="input-group-field" name="">
+          <option value="" selected disabled>{{ content.dropdownPlaceholder }}</option>
+          {% for block in content.dropdownOptions%}
+              {% set type = block.type.handle %}
+              {% switch type %}
+              {% case 'option' %}
+            <option value="{{ block.dropdownOptionHref }}">{{ block.dropdownOptionTitle }}</option>
+            {% endswitch %}
+          {% endfor %}
+        </select>
+        </div>
+        <div class="cell medium-5 large-4 dropdown-select-button">
+            <input id="dropdown-button" type="submit" class="button" value="{{ content.dropdownButtonText }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

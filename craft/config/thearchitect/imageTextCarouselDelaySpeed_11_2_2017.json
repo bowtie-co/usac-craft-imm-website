@@ -1,0 +1,17 @@
+{
+    "fields": [
+        {
+            "group": "Default",
+            "name": "Image Text Carousel Delay Speed",
+            "handle": "imageTextCarouselDelaySpeed",
+            "instructions": "This is the time delay (in seconds) to rotate through the display image of the carousel items.",
+            "required": false,
+            "type": "Number",
+            "typesettings": {
+                "min": "3",
+                "max": "10",
+                "decimals": "0"
+            }
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{# Events section of My Account #}
+<div v-show="currentState == 'events'">
+<div style="position: relative;">
+<div id="cal-info">
+  <a id="close-info" class="text-right" style="padding: 15px;">Close</a>
+  <div class="grid-x grid-margin-x grid-padding-x">
+      <div class="cell large-12">
+          <h5 class="event-name"></h5>
+      </div>
+      <div class="cell large-3">
+        <span class="event-location"></span>
+      </div>
+      <div class="cell large-4">
+        <span class="event-date"></span>
+      </div>
+      <!-- <div class="cell large-2">
+        <span class="event-time"></span>
+      </div> -->
+      <div class="cell large-3">
+        <span class="event-flyer"></span>
+      </div>
+  </div>
+</div>
+<div id='calendar'></div>
+</div>
+{% set myJs %}
+$(document).ready(function() {
+  var d = new Date();
+
+  $.get("/API/user-events/index.php", function(responseData, status){
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      buttonIcons:
+      {
+        prev: 'left-single-arrow',
+        next: 'right-single-arrow',
+        prevYear: 'left-double-arrow',
+        nextYear: 'right-double-arrow'
+      },
+      eventAfterAllRender: function(view) {
+        if ( !$( ".fc-heading-copy-dynamic" ).length ) {
+          $( ".fc-toolbar" ).after( "<p class='fc-heading-copy-dynamic' style='text-align:center;'>Showing events you've registered for through the USA Cycling website.</p>" );
+        }
+      },
+      eventClick: function(calEvent, jsEvent, view) {
+        var d = document.getElementById('cal-info');
+        var startD = new Date(calEvent.start);
+        var endD = new Date(calEvent.end);
+
+        startD.setDate(startD.getDate() + 1);
+        //endD.setDate(endD.getDate() + 1);
+
+        d.style.position = "absolute";
+        d.style.top = (jsEvent.pageY - 300)+'px';
+  
+        $('.event-name').html(calEvent.title);
+        $('.event-location').html(calEvent.location);
+        $('.event-date').html(startD.toLocaleDateString('en-US'));
+        $('.event-time').html("");
+        $('.event-flyer').html('<a href="https://legacy.usacycling.org/events/getflyer.php?permit='+calEvent.id +'" target="_blank">Website Flyer</a>');
+  
+        $('#cal-info').addClass('active-cal');
+        /*alert('Event: ' + calEvent.description);
+        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+        alert('View: ' + view.name);
+  
+        // change the border color just for fun
+        $(this).css('border-color', 'red');*/
+  
+  
+      },
+      defaultDate: d,
+      contentHeight: 600,
+      navLinks: true, // can click day/week names to navigate views
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: responseData
+    });    
+  });
+  
+  $('#prev').on('click', function() {
+    $('#calendar').fullCalendar('prev'); // call method
+  });
+
+  $('#next').on('click', function() {
+    $('#calendar').fullCalendar('next'); // call method
+  });
+  $('#close-info').on('click', function() {
+    $('#cal-info').removeClass('active-cal');
+  });
+
+});
+{% endset %}
+
+{% includeJs myJs %}
+</div>

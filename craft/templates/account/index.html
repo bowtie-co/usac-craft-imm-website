@@ -1,0 +1,82 @@
+ {% extends "_layout" %} {% block content %}
+ <div id="profile-app">
+<div id="account-new" class="grid-container">
+  <div id="loader" v-bind:class="{ active: showLoader }">
+    <div class="half-circle-spinner">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+    </div>
+  </div>
+  <div class="grid-x grid-margin-x grid-padding-x">
+    <div class="cell large-12">
+      <h1 class="hide-for-print">My Account</h1>
+    </div>
+    <div class="cell large-12">
+      <p class="user-name hide-for-print" v-text="userProfile.first_name + ' ' + userProfile.last_name"></p>
+    </div>
+    <div class="cell large-4">
+      {# NAV #}
+      {% include "inc/account/nav.html" %}
+    </div>
+    <div class='cell large-8' v-cloak>
+        {# PROFILE #}
+        <transition name="slide-fade">
+          {% include "inc/account/profile.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+        {# MEMBERSHIP #}
+          {% include "inc/account/membership.html" %}
+        </transition>
+
+        {# LICENSES #}
+        <transition name="slide-fade">
+          {% include "inc/account/licenses.html" %}
+        </transition>
+        </transition>
+
+        <transition name="slide-fade">
+        {# EVENTS #}
+          {% include "inc/account/events.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+        {# RACER #}
+          {% include "inc/account/racer.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+        {# EVENT DIRECTOR #}
+          {% include "inc/account/event-director.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+        {# CLUB ADMIN #}
+          {% include "inc/account/club-admin.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+        {# OFFICIAL #}
+          {% include "inc/account/official.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+        {# COACH #}
+          {% include "inc/account/coach.html" %}
+        </transition>
+
+        <transition name="slide-fade">
+          {# PRECOACH #}
+            {% include "inc/account/pre-coach.html" %}
+          </transition>
+
+        <transition name="slide-fade">
+        {# TECHNICAL SUPPORT #}
+          {% include "inc/account/technical-support.html" %}
+        </transition>
+        <input type="hidden" value="{{accountAdmin.ctaUrl}}" id="adUrl" v-if="revealAdmin" />
+        </div>
+    </div>
+ </div>
+</div>
+ {% endblock %}

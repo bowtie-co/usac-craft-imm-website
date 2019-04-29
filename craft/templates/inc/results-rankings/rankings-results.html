@@ -1,0 +1,42 @@
+<section v-show="results" class="grid-container grid-container-padded container">
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="cell small-12">
+            <h2>Rankings Search</h2>
+          </div>
+          <div class="cell">
+              <table class="resultsrankings show-for-medium">
+                  <tr>
+                    <th>Rank</th>
+                    <th>Points</th>
+                    <th>Name</th>
+                    <th data-breakpoints="xs">City, State</th>
+                    <th>License</th>
+                    <th data-breakpoints="xs">Age</th>
+                  </tr>
+                  <tr v-for="(result, key, index) in results">
+                    <td v-text="key + 1"></td>
+                    <td v-text="result.points"></td>
+                    <td v-text="result.first + ' ' + result.last"></td>
+                    <td style="text-transform:uppercase;" v-text="result.city + ', ' + result.state"></td>
+                    <td @click="loadResults(result.compid,result.first + ' ' + result.last)"><a class="license-link" v-text="result.compid"></a></td>
+                    <td v-text="result.age"></td>
+                  </tr>
+              </table>
+              <div class="resultsrankings hide-for-medium hide-for-large">
+                <div v-for="(result, key, index) in results" class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y">
+                    <div class="cell large-12">
+                      <strong>Rank:</strong>&nbsp;<span v-text="key + 1"></span><br />
+                      <strong>Points:</strong>&nbsp;<span v-text="result.points"></span><br />
+                      <strong>Name:</strong>&nbsp;<span v-text="result.first + ' ' + result.last"></span><br />
+                      <strong>City, State:</strong>&nbsp;<span v-text="result.city + ', ' + result.state"></span><br />
+                      <strong>License:</strong>&nbsp;<span @click="loadResults(result.compid,result.first + ' ' + result.last);"><a class="license-link" v-text="result.compid"></a></span><br />
+                      <strong>Age:</strong>&nbsp;<span v-text="result.age"></span><br />
+                    </div>
+                </div>
+              </div>
+              <div class="cell large-12 text-center">
+                  <a class="btn-search" style="float:none;margin-top:30px;" @click="loadMoreResults">Load More</a>
+              </div>
+          </div>
+        </div>
+      </section>

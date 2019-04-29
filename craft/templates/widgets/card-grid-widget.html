@@ -1,0 +1,65 @@
+<div id="{{content.type}}_{{content.id}}" class="card-grid-widget">
+    <div class="show-for-small-only">
+        <div class="swiper-container swiper-card-grid">
+            <div class="swiper-wrapper">
+                {% for block in content.cardGridMatrixWidget %}
+
+                    {% set type = block.type.handle %}
+
+                    {% switch type %}
+                        {% case 'cardGridBlocks' %}
+                        {% if block.cardGridImage.first().getUrl() is defined %}
+
+                            <div class="swiper-slide" style="width:314px;height:314px;">
+
+                                {% if block.cardGridCtaUrl|length %}
+                                <a href="{{block.cardGridCtaUrl}}" {% if block.cardGridCtaHrefTarget %}target="_blank"{% endif %} data-ga-push="{% if content.gaOverrideValue|length %}{{content.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                                {% endif %}
+
+                                <img class="swipper-slide-image" src="{{block.cardGridImage.first().getUrl()}}"/>
+
+                                <div class="card-grid-content">
+                                    {% if block.cardGridTitle|length %}
+                                        <h2 class="card-grid-title-mobile">{{ block.cardGridTitle }}</h2>
+                                    {% endif %}
+                                    {% if block.cardGridSubTitle|length %}
+                                        <div class="top-title card-grid-subtitle-mobile">{{ block.cardGridSubTitle }}</div>
+                                    {% endif %}
+                                </div>
+
+                                {% if block.cardGridCtaUrl|length %}
+                                </a>
+                                {% endif %}
+
+                            </div>
+
+                        {% endif %}
+                    {% endswitch %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="hide-for-small-only grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y card-grid align-center">
+            {% for block in content.cardGridMatrixWidget %}
+                {% if block.cardGridImage.first().getUrl() is defined %}
+                    <div class="medium-4 cell card-grid-image">
+                        <a href="{{block.cardGridCtaUrl}}" {% if block.cardGridCtaHrefTarget %}target="_blank"{% endif %} data-ga-push="{% if content.gaOverrideValue|length %}{{content.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                        <img src="" style="background-image:url({{block.cardGridImage.first().getUrl('')}});">
+
+                            <!-- <img src="{{block.cardGridImage.first().getUrl()}}"/> -->
+                            <div class="card-grid-content">
+                              {% if block.cardGridTitle|length %}
+                              <h2 class="card-grid-title">{{ block.cardGridTitle }}</h2>
+                              {% endif %}
+                              {% if block.cardGridSubTitle|length %}
+                              <div class="top-title card-grid-subtitle">{{ block.cardGridSubTitle }}</div>
+                              {% endif %}
+                          </div>
+                      </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,399 @@
+.athlete-breadcrumb {
+  background-color: $blue;
+  .row {
+    font-family: ProximaNovaBold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: .7em;
+    padding: 2.5em;
+    a {
+      color: #fff;
+    }
+    @include breakpoint(small only) {
+      font-size: .4em;
+    }
+  }
+}
+
+#athlete-bio-page {
+  padding: 3rem 0rem;
+
+  .athlete-row {
+    max-width: 60rem;
+    margin:0 auto;
+    @include breakpoint(small only) {
+      padding:1rem;
+    }
+  }
+
+  .athlete-image {
+      padding: 5px;
+      border: 1px solid $light-gray;
+  }
+
+  .athlete-content-cell {
+    .athlete-categories {
+      margin-right: 10px;
+    }
+    .athlete-name {
+    color: $blue;
+    }
+    .athlete-description {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $light-gray;
+    }
+    .athlete-social {
+      .cell {
+        text-align:center;
+      }
+      a {
+        font-family: 'ProximaNovaBold';
+      }
+      td{
+        @include breakpoint(small only) {
+
+        }
+      }
+      td:first-child{
+        padding: 0;
+        border-left: 4px double $light-gray;
+        @include breakpoint(small only) {
+          border-left: 0px;
+          text-align: center;
+        }
+        @include breakpoint(medium only) {
+          border-left: 0px;
+          text-align: center;
+        }
+      }
+      @include breakpoint(small only) {
+        text-align:center;
+      }
+    }
+    @include breakpoint(small only) {
+      padding-top:1rem;
+    }
+}
+
+  .athlete-details {
+    padding-top: 3rem;
+    .items {
+      font-family: "AlternateGothicNo2D", sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.125rem;
+      color: $red;
+      border-right: 4px double $light-gray;
+      width: 100px;
+    }
+  .response {
+    padding-left: 2.5rem;
+    word-break: break-word;
+  }
+}
+
+  table {
+    margin-bottom: 0 !important;
+    tbody {
+      border: none;
+      tr {
+        border-bottom: 1px solid $light-gray;
+        td {
+          padding: 0.875rem 0.625rem;
+        }
+      }
+      tr:last-child {
+        background-color: none;
+        border-bottom:none;
+        @include breakpoint(small only) {
+          border-bottom: 1px solid $light-gray;
+        }
+      }
+    }
+  }
+
+  .social-table {
+    td {
+      width: 33.3%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  .pro-teams-row {
+      border-bottom: 1px solid $light-gray;
+      border-top: 4px double $light-gray;
+  }
+
+  .pro-teams-col {
+    width: 100px;
+  }
+
+  .athlete-biography {
+    padding: 4rem 0 1rem;
+    .section-description {
+      font-family: 'ProximaNovaBold';
+      color: $blue;
+      padding: 0 2rem;
+    }
+     p {
+       margin-bottom: 1.5rem;
+       @include breakpoint(small only) {
+         margin-bottom: 1rem;
+       }
+     }
+  }
+
+  .bio-title {
+      position: relative;
+      .wide-title {
+        color: $red;
+      }
+    }
+
+  .bio-title-intro {
+    position: absolute;
+    text-align:left;
+    top: 62%;
+    left: 5%;
+    right: 5%;
+    padding: 0 2rem;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    @include breakpoint(medium only) {
+          left: 0;
+          right: 0;
+        }
+    @include breakpoint(small only) {
+          margin: 0 !important;
+          left: 0;
+          right: 0;
+        }
+  }
+
+  .bio-full-text {
+    padding: 0 2rem;
+    @include breakpoint(medium only) {
+        padding-top:1rem;
+        }
+    @include breakpoint(small only) {
+        padding-top:2rem;
+        }
+  }
+
+  .read-more-cta {
+    text-transform: uppercase;
+    font-family: 'ProximaNovaBold';
+    color: $blue;
+    border-bottom: 2px solid $red;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  .points-of-interest {
+    position: relative;
+    margin-top: 4rem;
+    padding-top: 4rem;
+    .wide-title{
+      position: relative;
+      margin-left: 20%;
+      margin-right: 20%;
+      top: -1.5rem;
+      color: $red;
+      text-indent: 0;
+      width:60%;
+      @include breakpoint(small only) {
+        top: -2.5rem;
+        padding-left: .25em;
+      }
+
+    }
+    background-color: #F8F8F8;
+    text-align: center;
+    .grid-x {
+      padding: 2rem;
+      margin-top: -3rem;
+    }
+    p {
+      padding: 30px;
+    }
+
+  }
+
+  .experience-table {
+    padding: 3rem 0;
+    text-align: center;
+    img {
+      padding-bottom: 30px;
+    }
+    .main-title {
+      padding-bottom:1rem;
+    }
+    .title {
+      font-family: 'ProximaNovaBold';
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .other-athletes {
+    padding: 3rem;
+    .athlete-img {
+      text-align: center;
+    }
+  }
+
+  .other-athletes-cell{
+    padding: 1rem 1rem;
+  }
+
+  .left {
+     @include breakpoint(large) {
+      border-right: 1px solid $light-gray;
+    }
+  }
+
+  .athlete-text-left {
+    text-align: right;
+    .main-title {
+      color: $blue;
+      font-family:ProximaNovaBold;
+    }
+    @include breakpoint(small only) {
+      text-align: left;
+      padding-top: 20px;
+    }
+    a{
+     text-transform:uppercase;
+     font-family: 'ProximaNovaBold';
+   }
+   @include breakpoint(medium) {
+    a:before {
+          content: "";
+          position: absolute;
+          background-image: url('/images/redarrow.svg');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          transform:rotate(180deg);
+          display: inline-block;
+          width: 12px;
+          height: 20px;
+          margin-left: -25px;
+          margin-top: 2px;
+        }
+      }
+      @include breakpoint(small only) {
+        a:after {
+              content: "";
+              position: absolute;
+              background-image: url('/images/redarrow.svg');
+              background-size: cover;
+              background-position: center center;
+              background-repeat: no-repeat;
+              display: inline-block;
+              width: 12px;
+              height: 20px;
+              margin-left: 5px;
+              margin-top: 2px;
+            }
+      }
+  }
+
+  .athlete-text-right {
+    .main-title {
+      color: $blue;
+      font-family:ProximaNovaBold;
+    }
+    @include breakpoint(small only) {
+      padding-top: 20px;
+    }
+    a{
+     text-transform:uppercase;
+     font-family: 'ProximaNovaBold';
+   }
+
+    a:after {
+          content: "";
+          position: absolute;
+          background-image: url('/images/redarrow.svg');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          display: inline-block;
+          width: 12px;
+          height: 20px;
+          margin-left: 5px;
+          margin-top: 2px;
+        }
+      }
+
+  // #article-widget {
+  //   padding: 3.0625rem;
+  //   .news-article-content-parent-container {
+  //     position: relative;
+  //     padding-bottom:39px;
+  //     .news-article-image {
+  //       width:100%;
+  //     }
+  //
+  //     .article-content-block {
+  //       margin-top:2em;
+  //       .date {
+  //         text-align: right;
+  //         @include breakpoint(small only) {
+  //           text-align: left;
+  //         }
+  //         @include breakpoint(medium only) {
+  //           text-align: left;
+  //         }
+  //       }
+  //       .button{
+  //         padding: .35em;
+  //         min-width: 8em;
+  //       }
+  //       .top-title {
+  //         margin-top:.75em;
+  //         color: #031E41;
+  //         font-family:ProximaNovaBold;
+  //         font-size:28px;
+  //       }
+  //       .description {
+  //         margin-top:.75em;
+  //         font-family:ProximaNova-Light;
+  //         color: #4A4A4A;
+  //         font-size:16px;
+  //       }
+  //
+  //
+  //       .news-article-content {
+  //         font-family:ProximaNovaBold;
+  //         color: #031E41;
+  //         text-transform: uppercase;
+  //         margin-top:2em;
+  //       }
+  //       .news-article-cta:after {
+  //         content: "";
+  //         position: absolute;
+  //         background-image: url(/images/redarrow.svg);
+  //         background-size: cover;
+  //         background-position: center center;
+  //         background-repeat: no-repeat;
+  //         display: inline-block;
+  //         width: 25px;
+  //         height: 25px;
+  //         bottom: 38px;
+  //         margin-left: 10px;
+  //         transition-property: margin-left,margin-right;
+  //         transition-duration: .5s;
+  //         transition-timing-function: ease-out;
+  //       }
+  //
+  //     }
+  //
+  //   }
+  // }
+}

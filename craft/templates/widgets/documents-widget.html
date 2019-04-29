@@ -1,0 +1,32 @@
+{% set entries = craft.entries.section('documents').relatedTo(content.documentRow).order("documentYear desc").find() %}
+{% if entries|length %}
+    {% set rowCount = (entries|length / 3)|round(0, "ceil") %}
+    <div id="{{content.type}}_{{content.id}}" class="document-widget grid-container">
+        <div class="grid-x">
+            <div class="row-title">{{content.documentRowTitle}}</div>
+        </div>
+        <div class="grid-x">
+            {% for entryBatch in entries|batch(rowCount) %}
+            <div class="small-12 medium-12 large-4">
+                <div class="grid-x">
+                    {% for e in entryBatch %}
+                        <div class="large-12 cell">
+                            <div class="doc-row">
+                                {% if e.documentUpload.first()|length %}
+                                <a href="{{e.documentUpload.first().getUrl()}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_{{loop.index}}">
+                                    {% if e.documentDisplayYear %}
+                                        <div class="row-year">{{e.documentYear.label}}</div>
+                                    {% endif %}
+                                    <div class="document-title">{{e.title}}</div>
+                                    <div class="download-document"><img src="/images/download-document.png"/></div>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

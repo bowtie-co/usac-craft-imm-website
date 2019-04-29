@@ -1,0 +1,14 @@
+{
+	"name": "cgiordan-IMM/usacapi",
+	"description": "usac api",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "IMM",
+			"homepage": "https://imm.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

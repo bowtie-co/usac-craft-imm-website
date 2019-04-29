@@ -1,0 +1,109 @@
+// .content-overlay {
+//   margin-top: 84px;
+//   @include breakpoint (small only) {
+//     margin-top: 20px;
+//   }
+//
+//   @include breakpoint (medium only) {
+//     margin-top: 10px;
+//   }
+// }
+
+  // Footer
+  // ---------
+  .footer-top {
+    background: $blue;
+    padding-bottom: 2rem;
+    ::before {
+      content: '';
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -4px;
+      height: 4px;
+      background: $red;
+      background-image: linear-gradient(to right, $red 0%, $blue 100%);
+    }
+  }
+  .footer-menu {
+    li {
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+
+      @include breakpoint(small only) {
+        padding: 0rem;
+      }
+
+      a {
+        color: $white;
+        font-family: "AlternateGothicNo2D", sans-serif;
+        font-style: normal;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: .875rem;
+        letter-spacing: 0.109375rem;
+      }
+    }
+    @include breakpoint(small only) {
+      //padding-top: 1rem !important;
+      //padding-bottom: 1rem !important;
+    }
+  }
+
+  .footer-logo {
+    text-align: center;
+  }
+
+  .footer-bottom {
+    padding: 1.5rem;
+  }
+
+  .footer-bottom-left {
+    @include breakpoint(small only) {
+      text-align: center;
+      padding: 0.5rem;
+    }
+  }
+
+  .footer-bottom-right {
+    text-align: right;
+    @include breakpoint(small only) {
+      text-align: center;
+      padding: 0.5rem;
+    }
+  }
+
+  .footer-text {
+    text-align: center;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.005rem;
+    font-size: 0.6875rem;
+    a {
+      color: $red;
+    }
+  }
+
+  .footer-bottom-logo {
+    width: 41px;
+    height: 55px;
+  }
+
+  @include breakpoint(small only) {
+
+  }
+  @include breakpoint(medium only) {
+
+  }
+  @include breakpoint(large only) {
+    .top-bar {
+      .top-bar-logo {
+        padding-right: 0em;
+      }
+    }
+  }
+  @include breakpoint(xlarge only) {
+
+  }
+
+//}

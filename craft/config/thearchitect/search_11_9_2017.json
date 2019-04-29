@@ -1,0 +1,46 @@
+{
+    "groups": [
+        "Default"
+    ],
+    "sections": [
+        {
+            "name": "Search",
+            "handle": "search",
+            "type": "single",
+            "enableVersioning": "1",
+            "typesettings": {
+                "template": "search.html",
+                "urlFormat": "search",
+                "nestedUrlFormat": null
+            }
+        }
+    ],
+    "fields": [
+        {
+            "group": "Default",
+            "name": "Body",
+            "handle": "body",
+            "instructions": null,
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "Standard.json",
+                "columnType": "text"
+            }
+        }
+    ],
+    "entryTypes": [
+        {
+            "sectionHandle": "search",
+            "hasTitleField": "1",
+            "titleLabel": "Title",
+            "name": "Search",
+            "handle": "search",
+            "fieldLayout": {
+                "Tab 1": [
+                    "body"
+                ]
+            }
+        }
+    ]
+}

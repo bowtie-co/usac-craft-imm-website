@@ -1,0 +1,13 @@
+<div v-show="currentState == 'event-director'">
+  <div class="grid-x">
+    <div class="cell large-12" style="margin-bottom: 20px;">
+      <h4 style="color: #001B44;font-size: 28px;">My Licenses</h4>
+      <div class="grid-x grid-margin-x grid-margin-y">
+          {% include "inc/account/modules/license-card.html" with { 'status': '', 'expression': 'item.licensetype === "D" && item.org != "RDR"'} %}
+      </div>
+    </div>
+    <div class="cell large-12 dynamic-text" v-html="racerDynText">
+
+    </div>
+  </div>
+</div>

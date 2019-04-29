@@ -1,0 +1,19 @@
+<div id="{{content.type}}_{{content.id}}" class="accordion-faq-widget faq-resource-widget">
+  <div class="grid-container grid-x grid-padding-x align-center">
+  <div class="cell text-center">
+    <h2>{{content.topTitle}}</h2>
+  </div>
+  <div class="cell large-8">
+    <ul class="accordion" data-accordion="data-accordion" data-multi-expand="false" data-allow-all-closed="true">
+      {% for entry in content.faqSelection %}
+      <li class="accordion-item" data-accordion-item="data-accordion-item">
+        <a href="#" class="accordion-title">{{ entry.title }}</a>
+        <div class="accordion-content" data-tab-content="data-tab-content">
+          {{ entry.answer }}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>

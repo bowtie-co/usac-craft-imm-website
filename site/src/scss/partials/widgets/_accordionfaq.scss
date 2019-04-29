@@ -1,0 +1,16 @@
+.accordion-faq-widget {
+  position:relative;
+  padding: 3rem 0;
+  background: $light-gray;
+  a {
+    text-transform: none !important;
+  }
+  h2 {
+    color: $red;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .accordion-content {
+    background-color: $light-gray;
+  }
+}

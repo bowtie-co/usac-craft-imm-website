@@ -1,0 +1,273 @@
+{% extends "_layout" %} {% block content %}
+
+<div id="clubs">
+  <div id="clubs-app">
+    <section id="clubs-search" class="grid-container grid-container-padded align-center">
+      <div class="cell">
+        {% if craft.request.segments %}
+        <div class="breadcrumb">
+          {% for crumb in entry.getAncestors() %}
+          <span>{{ crumb.getLink() }} ></span> {% endfor %}
+          <span>{{ entry.title() }}</span>
+        </div>
+        {% endif %}
+      </div>
+      <div class="cell header">
+        <h1>{{ entry.title }}</h1>
+      </div>
+      <div id="club-search" class="search-container">
+        <div class="filters-toggler">
+          <a class="filter-toggle" href="">
+                        <span class="more"><i class="fas fa-plus"></i> More Filters</span>
+                        <span class="less hide"><i class="fas fa-minus"></i> Less Filters</span>
+                    </a>
+        </div>
+        <form class="search-form" v-on:submit.prevent>
+          <div class="grid-x grid-margin-x">
+            <div class="large-4 cell">
+              <label>Type</label>
+              <select v-on:change="setOrgType">
+                                <option value="" selected>All</option>
+                                <option value="Collegiate">Collegiate</option>
+                                <option value="USAC">USAC</option>
+                                <option value="High School">High School</option>
+                            </select>
+            </div>
+            <div class="large-8 cell">
+              <div class="grid-x grid-margin-x align-middle">
+                <div class="large-5 cell">
+                  <label>
+                                        State
+                                        <select v-on:change="setState" name="state" id="state">
+                                            <option value="" selected="">Select State</option>
+                                            <option value="AE">Overseas Military</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="DC">District Of Columbia</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="PR">Puerto Rico</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                    </label>
+                </div>
+                <div class="large-1 cell text-center">
+                  <h6 class="form-text">OR</h6>
+                </div>
+                <div class="large-6 cell">
+                  <div class="grid-x grid-margin-x align-middle">
+                    <div class="large-6 cell">
+                      <label>Zip Code
+                                                <input type="text" v-on:keyup="setZip" placeholder="Zip Code" />
+                                            </label>
+                    </div>
+                    <div class="large-6 cell">
+                      <label>
+                                                Within
+                                                <select v-on:change="setRadius" name="radius" id="radius">
+                                                    <option value="5" selected>5 Miles</option>
+                                                    <option value="15">15 Miles</option>
+                                                    <option value="25">25 Miles</option>
+                                                    <option value="50">50 Miles</option>
+                                                    <option value="75">75 Miles</option>
+                                                    <option value="100">100 Miles</option>
+                                                </select>
+                                            </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="more-filters">
+            <div class="grid-x grid-margin-x">
+              <div class="large-6 cell">
+                <label>Club Name or Keyword
+                                    <input type="text" id="clubName" v-on:change="setClubName" placeholder="Search">
+                                </label>
+              </div>
+              <div class="large-6 cell">
+                <label>
+                                    Preference
+                                    <select id="genderPreference" v-on:change="setGenderPreference">
+                                        <option value="">None</option>
+                                        <option value="Women">Women Only</option>
+                                        <option value="Junior">Juniors Only</option>
+                                        <option value="Master">Masters Only</option>
+                                    </select>
+                                </label>
+              </div>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x">
+            <div class="large-12 cell text-center btn-container">
+              <button v-on:click="submitSearch" class="btn-search">
+                                <span v-if="!loader">Search</span>
+                                <div v-if="loader" v-cloak class="loader">
+                                    <div id="fountainG">
+                                        <div id="fountainG_1" class="fountainG"></div>
+                                        <div id="fountainG_2" class="fountainG"></div>
+                                        <div id="fountainG_3" class="fountainG"></div>
+                                        <div id="fountainG_4" class="fountainG"></div>
+                                        <div id="fountainG_5" class="fountainG"></div>
+                                        <div id="fountainG_6" class="fountainG"></div>
+                                        <div id="fountainG_7" class="fountainG"></div>
+                                        <div id="fountainG_8" class="fountainG"></div>
+                                    </div>
+                                </div>
+                            </button>
+            </div>
+          </div>
+
+
+          <div class="grid-x grid-margin-x">
+            <div class="large-12 cell">
+              <div class="map-switch">
+                {#
+                <span class="switch-label-map">Map</span>
+                <div class="switch">
+                  <input type="radio" class="switch-input" name="view2" value="mapon" id="mapon" checked>
+                  <label for="mapon" class="switch-label switch-label-off">ON</label>
+                  <input type="radio" class="switch-input" name="view2" value="mapoff" id="mapoff">
+                  <label for="mapoff" class="switch-label switch-label-on">OFF</label>
+                  <span class="switch-selection"></span>
+                </div>
+                #}
+              </div>
+            </div>
+          </div>
+          <!--<div class="grid-x grid-padding-x grid-margin-x" id="without-map">-->
+          <div class="grid-x grid-padding-x grid-margin-x">
+            <div class="cell">
+              <div class="grid-x grid-padding-x grid-margin-x">
+                <!-- Club Listing Sample 1 -->
+                <div v-for="club in paginatedData" class="large-6 cell" v-cloak>
+                  <!-- <div v-for="result in results" class="result" v-bind:id="'event-'+ result.id" style=""  @click="result.showDetails = !result.showDetails"> -->
+                  <div v-if="club.web_page !== ''" class="grid-x listing-block">
+                    <div class="cell large-8">
+                      <h6>[[club.name]]</h6>
+                      <div class="event-info">
+                        <span class="club-category">[[club.cyc_org]]</span>
+                        <span class="pipe">|</span>
+                        <span class="club-status">Active</span>
+                      </div>
+                    </div>
+                    <div class="cell large-4 text-right">
+                      <a :href="'http://' + club.web_page" target="_blank" class="button hollow club-button" data-open="club-modal">More Info</a>
+                    </div>
+                  </div>
+                  <div v-else-if="club.web_page == ''" class="grid-x listing-block">
+                    <div class="cell large-12">
+                      <h6>[[club.name]]</h6>
+                      <div class="event-info">
+                        <span class="club-category">[[club.cyc_org]]</span>
+                        <span class="pipe">|</span>
+                        <span class="club-status">Active</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div v-if="paginatedData.length === 0">
+                    No results
+                  </div>
+                </div>
+                <ul class="pagination center" v-if="paginatedData.length > 0 && pageCount" v-cloak>
+                  <li @click="prevPage" class="pagination-previous" v-if="pageNumber > 0">
+                    <a href="javascript:void(0)" aria-label="Previous page">Previous</a>
+                  </li>
+
+                  <li v-for="n in (pageCount)" @click="goToPage(n-1)">
+                    <a href="javascript:void(0)" :aria-label="n" v-bind:class="[pageNumber === n-1 ? 'current' : '']">[[n]]</a>
+                  </li>
+                  <li @click="nextPage" v-if="pageNumber < pageCount-1">
+                    <a href="javascript:void(0)" aria-label="Next page">Next</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </form>
+        </div>
+        {# Use the class usac-modal-open on the moval-wrapper to open the modal. #}
+        <div class="modal-wrapper">
+          <div class="reveal modal" id="club-modal">
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true"><img src="/images/x.svg" alt="X"></span>
+            </button>
+          </div>
+        </div>
+    </section>
+    <section class="grid-x social-icons-widget align-center">
+      <div class="cell small-8 medium-6">
+        <div class="grid-x grid-padding-x align-center">
+          {% if entry.facebookButton %}
+          <div class="cell small-2 text-center">
+            <a class="social-cta" href="{{entry.facebookLink}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          </div>
+          {% endif %} {% if entry.twitterButton %}
+          <div class="cell small-2  text-center">
+            <a class="social-cta" href="{{entry.twitterLink}}" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+          {% endif %} {% if entry.stravaButton %}
+          <div class="cell small-2  text-center">
+            <a class="social-cta" href="{{entry.stravaLink}}" target="_blank"><i class="fab fa-strava"></i></a>
+          </div>
+          {% endif %} {% if entry.instagramButton %}
+          <div class="cell small-2  text-center">
+            <a class="social-cta" href="{{entry.instagramLink}}" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+          {% endif %} {% if entry.youtubeButton %}
+          <div class="cell small-2  text-center">
+            <a class="social-cta" href="{{entry.youtubeLink}}" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    </div>
+  </div>
+  {% endblock %}

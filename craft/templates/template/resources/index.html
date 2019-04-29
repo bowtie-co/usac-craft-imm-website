@@ -1,0 +1,178 @@
+{% extends "template/_layout" %}
+{% block content %}
+
+<div id="resources-app">
+  <section id="resources-search" class="grid-container grid-container-padded align-center">
+    <h1>LOREM IPSUM</h1>
+    <ul class="pagination center">
+      <li class="active"><a href="#" aria-label="Search A">A</a></li>
+      <li><a href="#" aria-label="Search B">B</a></li>
+      <li><a href="#" aria-label="Search C">C</a></li>
+      <li><a href="#" aria-label="Search D">D</a></li>
+      <li class="active"><a href="#" aria-label="Search E">E</a></li>
+      <li class="active"><a href="#" aria-label="Search F">F</a></li>
+      <li class="active"><a href="#" aria-label="Search G">G</a></li>
+      <li><a href="#" aria-label="Search H">H</a></li>
+      <li><a href="#" aria-label="Search I">I</a></li>
+      <li><a href="#" aria-label="Search J">J</a></li>
+      <li><a href="#" aria-label="Search K">K</a></li>
+      <li><a href="#" aria-label="Search L">L</a></li>
+      <li><a href="#" aria-label="Search M">M</a></li>
+      <li><a href="#" aria-label="Search N">N</a></li>
+      <li><a href="#" aria-label="Search O">O</a></li>
+      <li><a href="#" aria-label="Search P">P</a></li>
+      <li class="active"><a href="#" aria-label="Search Q">Q</a></li>
+      <li><a href="#" aria-label="Search R">R</a></li>
+      <li><a href="#" aria-label="Search S">S</a></li>
+      <li><a href="#" aria-label="Search T">T</a></li>
+      <li><a href="#" aria-label="Search U">U</a></li>
+      <li><a href="#" aria-label="Search V">V</a></li>
+      <li><a href="#" aria-label="Search W">W</a></li>
+      <li><a href="#" aria-label="Search X">X</a></li>
+      <li><a href="#" aria-label="Search Y">Y</a></li>
+      <li><a href="#" aria-label="Search Z">Z</a></li>
+    </ul>
+    <form class="search-form">
+      <input type="search" id="searchResource" placeholder="Search">
+      <button type="submit" id="searchSubmit"><img src="/images/search.svg" alt="search"></button>
+    </form>
+    <button class="filter-toggle-resources"><img src="/images/filter-toggle.png" alt="Filter Toggle"></button>
+    <div class="grid-x grid-margin-x grid-padding-x">
+      <div class="large-4 cell filters-area">
+        <div class="mobile-filter text-center">
+          <span class="mobile-filter-title">Filter</span>
+        </div>
+        <span class="filter-heading">Types</span>
+        <div class="checkboxes">
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="lorem" value="Lorem">
+            <label for="lorem">Lorem</label>
+          </div>
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="ipsum" value="Ipsum Dolor">
+            <label for="ipsum">Ipsum Dolor</label>
+          </div>
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="sit" value="Sit Amet">
+            <label for="sit">Sit Amet</label>
+          </div>
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="fusce" value="Fusce">
+            <label for="fusce">Fusce</label>
+          </div>
+        </div>
+        <span class="filter-heading">Categories</span>   
+        <div class="checkboxes">
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="lorem2" value="Lorem">
+            <label for="lorem2">Lorem</label>
+          </div>
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="ipsum2" value="Ipsum Dolor">
+            <label for="ipsum2">Ipsum Dolor</label>
+          </div>
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="sit2" value="Sit Amet">
+            <label for="sit2">Sit Amet</label>
+          </div>
+          <div class="styled-checkbox">
+            <input type="checkbox" class="filter-checkbox" id="fusce2" value="Fusce">
+            <label for="fusce2">Fusce</label>
+          </div>
+        </div>
+        <div class="mobile-filter button-area text-center">
+          <button class="btn-lg btn-clear"><span>Clear</span></button>
+          <button class="btn-lg btn-apply">Apply</button>
+        </div>
+      </div>
+      <div class="filter-pills-container hide">
+        <div class="filter-pills">
+          <span class="filter-pill-title">Types</span>
+          <div class="type-pills">
+            <button href="#" class="filter-pill">General Information</button>
+            <button href="#" class="filter-pill">Forms and Information</button>
+          </div>
+          <span class="filter-pill-title">Categories</span>
+          <div class="cat-pills">
+            <button href="#" class="filter-pill">Rider</button>
+            <button href="#" class="filter-pill">Official</button>            
+          </div>
+        </div>
+      </div>
+      <div class="large-8 cell resources-output">
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <div class="large-12 cell">
+            <span class="nothing-found">No resources found using your search criteria</span>
+          </div>
+          <div class="large-6 cell hide">
+            <div class="resource-letter">E</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">Event Annual and One Day License Application</a>
+              <a href="/" class="resource-link">Event Medical Plan and Checklist</a>
+              <a href="/" class="resource-link">Event Release Form</a>
+              <a href="/" class="resource-link">Event Cancellation Protection Program</a>
+            </div>
+            <div class="resource-letter">F</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">File a Report - Sexual Misconduct</a>
+              <a href="/" class="resource-link">File a Report- Other Misconduct</a>
+              <a href="/" class="resource-link">First Report of Occurrence</a>
+            </div>  
+            <div class="resource-letter">G</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">Gran Fondo and Gravel Roster</a>
+            </div>
+          </div>
+          <div class="large-6 cell hide">
+            <div class="resource-letter">I</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">International Athlete</a>
+              <a href="/" class="resource-link">Insurance Information</a>
+            </div>
+            <div class="resource-letter">M</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">Mountain Biking Event Report</a>
+            </div>
+            <div class="resource-letter">N</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">Non-Competitive Roster</a>
+              <a href="/" class="resource-link">Non-Owned Hired Auto Supplement Insurance</a>
+            </div>
+            <div class="resource-letter">R</div>
+            <div class="resource-links">
+              <a href="/" class="resource-link">Road/Track/Cyclocross Post Event Report</a>
+            </div>
+          </div>
+        </div>
+        <hr class="spacer">
+        <span class="resource-heading">Frequently Searched</span>
+        <a href="#" class="frequent-link">Lorem Ipsum</a>
+        <a href="#" class="frequent-link">Lorem Ipsum</a>
+        <a href="#" class="frequent-link">Lorem Ipsum</a>
+        <a href="#" class="frequent-link">Lorem Ipsum</a>
+        <span class="resource-heading">Frequently Asked Questions</span>
+        <ul class="accordion" data-accordion data-multi-expand="false" data-allow-all-closed="true">
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">Lorem ipsum dolor sit amet?</a>
+            <div class="accordion-content" data-tab-content >
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id finibus ex. Proin sit amet risus ut massa elementum lobortis eu vitae ligula. In eget dolor nibh. Nulla quis odio augue. Cras a pretium risus, id efficitur eros. Nulla facilisi. Nam in sapien.</p>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">Fusce luctus lorem velit, a fringilla elit?</a>
+            <div class="accordion-content" data-tab-content>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id finibus ex. Proin sit amet risus ut massa elementum lobortis eu vitae ligula. In eget dolor nibh. Nulla quis odio augue. Cras a pretium risus, id efficitur eros. Nulla facilisi. Nam in sapien.</p>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">Integer neque velit, tempor quis magna et?</a>
+            <div class="accordion-content" data-tab-content>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id finibus ex. Proin sit amet risus ut massa elementum lobortis eu vitae ligula. In eget dolor nibh. Nulla quis odio augue. Cras a pretium risus, id efficitur eros. Nulla facilisi. Nam in sapien.</p>
+            </div>
+          </li>
+        </ul>
+      </div>  
+    </div>
+  </section>
+</div>
+{% endblock %}

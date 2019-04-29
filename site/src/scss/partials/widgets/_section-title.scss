@@ -1,0 +1,88 @@
+// Section Title Widget
+// ---------
+
+.section-title-widget {
+  position: relative;
+  width: 100%;
+  margin:0 auto;
+  text-align: center;
+
+  .wide-title {
+    font-family:'AlternateGothicNo2D';
+  }
+  .section-description {
+    font-size:1em;
+  }
+
+}
+
+.background-text-cell {
+  width: 100%;
+	margin: 0px auto;
+}
+
+.section-title-background {
+  text-transform: uppercase;
+  color: rgba(155,155,155,0.2);
+  line-height: 1;
+}
+
+.section-title-content {
+  position: absolute;
+  margin: 0;
+  text-align: center;
+  top: 45%;
+  left: 5%;
+  right: 5%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  @include breakpoint(small only) {
+        margin: 0 !important;
+      }
+}
+
+.section-title {
+  color: $red;
+  text-indent: 0;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 3rem;
+
+  @include breakpoint(medium only) {
+      font-size: 1.5rem;
+      letter-spacing: 1rem !important;
+      line-height: 1.2;
+    }
+
+  @include breakpoint(small only) {
+        font-size: 1rem;
+        letter-spacing: 0.5rem !important;
+        line-height: 1.2;
+      }
+}
+
+.section-description {
+
+  @include breakpoint(small only) {
+        font-size: 1em;
+        line-height: 1;
+      }
+}
+
+
+@include breakpoint(small only) {
+
+  .section-title-widget {
+    .section-title-content {
+      top: 38%;
+    }
+    .show-for-small-only {
+      .section-description {
+        margin-bottom: 2em;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,22 @@
+{
+    "groups": [
+        "Hero"
+    ],
+    "fields": [
+        {
+            "group": "Hero",
+            "name": "Article Hero Matrix",
+            "handle": "articleHeroMatrix",
+            "instructions": "Select which articles you would like to display in a hero carousel (max 4).",
+            "required": false,
+            "type": "Entries",
+            "typesettings": {
+                "sources": [
+                    "article"
+                ],
+                "limit": "4",
+                "selectionLabel": ""
+            }
+        }
+    ]
+}

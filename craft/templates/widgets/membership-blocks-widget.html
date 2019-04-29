@@ -1,0 +1,31 @@
+<div id="{{content.type}}_{{content.id}}" class="membership-blocks membership-blocks-widget">
+  <div class="grid-container">
+      <div class="grid-x grid-margin-x align-center align-middle">
+    {% if content.wysiwygWidget|length %}
+    <div class="cell large-5">
+      {{ content.wysiwygWidget }}
+    </div>
+    {% endif %}
+    {% for block in content.membershipBlocksMatrix %}
+    <div class="cell auto membership-type">
+      <div class="grid-x">
+        <div class="cell membership-description">
+      <h5 class="membership-name text-center">{{ block.membershipName }}</h5>
+      <div class="membership-price text-center">{{ block.membershipPrice }}</div>
+    </div>
+      <div class="cell membership-feature-list">
+        <ul>
+          {% for row in block.membershipFeatures %}
+          <li>{{row.feature}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="cell text-center align-self-bottom">
+      <a class="button expanded" href="{{block.membershipCtaHref}}">{{ block.membershipCtaText }}</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>

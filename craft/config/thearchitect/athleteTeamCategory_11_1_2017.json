@@ -1,0 +1,36 @@
+{
+    "groups": [
+        "Team"
+    ],
+    "fields": [
+        {
+            "group": "Team",
+            "name": "Athlete Team Category",
+            "handle": "athleteTeamCategory",
+            "instructions": "",
+            "required": false,
+            "type": "Categories",
+            "typesettings": {
+                "source": "athleteTeamCategory",
+                "limit": "",
+                "selectionLabel": ""
+            }
+        }
+    ],
+    "categories": [
+        {
+            "name": "Athlete Team Category",
+            "handle": "athleteTeamCategory",
+            "hasUrls": "0",
+            "template": null,
+            "maxLevels": null,
+            "locales": {
+                "en_us": {
+                    "urlFormat": null,
+                    "nestedUrlFormat": null
+                }
+            },
+            "fieldLayout": []
+        }
+    ]
+}

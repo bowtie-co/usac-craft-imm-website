@@ -1,0 +1,345 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+<div class="athlete-breadcrumb">
+    <div class="row grid-x grid-padding-x">
+        <a href="/" style="color: #fff;">USACYCLING&nbsp;</a> • {{entry.firstName}} {{entry.lastName}}
+    </div>
+</div>
+<section id="athlete-bio-page">
+    <div class="grid-x grid-padding-x align-middle athlete-row">
+        <div class="cell medium-6 athlete-image-cell">
+            <img class="athlete-image" src="{{entry.athletePortrait.first().getUrl('athletePortrait')}}"/>
+        </div>
+        <div class="cell medium-6 athlete-content-cell">
+            {% for category in entry.teamDesignation %}
+            <div class="red-box athlete-categories">{{ category.title }}</div>
+            {% endfor %}
+            <h2 class="main-title athlete-name">{{entry.firstName}} {{entry.lastName}}</h2>
+            {% if entry.athleteDescription|length > 0 %}
+            <p class="athlete-description">{{entry.athleteDescription}}</p>
+            {% endif %}
+            <div class="athlete-social grid-x grid-padding-x align-middle">
+                {% if entry.athleteExternalWebsiteUrl|length > 0 %}
+                <div class="cell medium-12 large-6">
+                    <a href="{{entry.athleteExternalWebsiteUrl}}" target="_blank">{{entry.athleteExternalWebsiteUrl|replace({"https://":"","http://":""})}}</a>
+                </div>
+                {% endif %}
+                <div class="cell medium-12 large-6">
+                    <table class="social-table">
+                        <tr>
+                            {% if entry.athleteTwitterProfile|length > 0 %}
+                                <td><a href="{{entry.athleteTwitterProfile}}" target="_blank"><i class="fab fa-twitter fa-2x" aria-hidden="true"></i></a></td>
+                            {% endif %}
+                            {% if entry.athleteFacebookProfile|length > 0 %}
+                                <td><a href="{{entry.athleteFacebookProfile}}" target="_blank"><i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i></a></td>
+                            {% endif %}
+                            {% if entry.athleteInstagramProfile|length > 0 %}
+                                <td><a href="{{entry.athleteInstagramProfile}}" target="_blank"><i class="fab fa-instagram fa-2x no-border" aria-hidden="true"></i></a></td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x grid-padding-x athlete-details athlete-row">
+        <div class="cell medium-6">
+            <table class="unstriped">
+                <tbody>
+                  {% if entry.dateOfBirth|length > 0  %}
+                    <tr>
+                        <td class="items">D.O.B</td>
+                        <td class="response">
+                                {{entry.dateOfBirth}}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% if entry.hometown|length > 0  %}
+                    <tr>
+                        <td class="items">Hometown</td>
+                        <td class="response">
+                                {{entry.hometown}}
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="cell medium-6">
+            <table class="unstriped">
+                <tbody>
+                  {% if entry.education|length > 0  %}
+                <tr>
+                    <td class="items">School</td>
+                    <td class="response">
+                            {{entry.education}}
+                    </td>
+                </tr>
+                {% endif %}
+                {% if entry.residence|length > 0  %}
+                <tr>
+                <td class="items">Residence</td>
+                <td class="response">
+                        {{entry.residence}}
+                </td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+        {% if entry.proTeams|length > 0  %}
+        <div class="cell">
+            <table>
+                <tbody>
+                <tr class="pro-teams-row">
+                    <td class="items pro-teams-col">Pro Teams</td>
+                    <td class="response">
+                            {{entry.proTeams}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+    <div class="athlete-biography">
+        <div class="grid-x bio-title align-center">
+          <div class="cell large-6">
+            <h1 class="wide-title">Meet the Athlete</h1>
+            <!-- <div class="bigtext background-text-cell">
+                <h1 class="section-title-background">Meet the Athlete</h1>
+            </div> -->
+
+            <!--<div class="grid-x row align-middle bio-title-intro">-->
+                <!--<div class="cell">-->
+                    <!--<div class="section-description">{{entry.biographyIntro}}</div>-->
+                <!--</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+            <!-- <div class="section-title-content grid-x align-middle">
+                <div class="cell">
+                    {% if  entry.biographyIntro %}
+                    <div class="section-description hide-for-small-only">{{entry.biographyIntro}}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="show-for-small-only">
+                <div class="cell">
+                    <div class="section-description">{{entry.biographyIntro}}</div>
+                </div>
+            </div> -->
+        <div class="grid-x row bio-full-text">
+            {% set arrBio = entry.biography|split("\n") %}
+            {% if arrBio| length > 1 %}
+                <p>{{arrBio[0]|replace({"<p>":"","</p>":"","<br />":"","&amp;":"&"})}}</p>
+
+                <div id="more-1" class="fulltext">
+                    {% for ptag in arrBio %}
+                        {% if loop.index != 1 %}
+                            <p>{{ptag|replace({"<p>":"","</p>":"","<br />":"","&amp;":"&"})}}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <button aria-expanded="false" aria-controls="more-1" class="toggle-content read-more-cta" hidden><span class="text">Read More</span></button>
+            {% else %}
+                {{entry.biography}}
+            {% endif %}
+        </div>
+    </div>
+    <div class="faq-widget">
+            {% for block in entry.faqMatrix %}
+                <div class="small-12 medium-6 large-4 cell">
+
+                    <div class="faq">{{block.faq}}</div>
+
+                    {% if block.faqAnswer|length > 500 %}
+                    <div class="faqAnswerHacksaw">{{block.faqAnswer|hacksaw(hack='characters', limit='500', allow='<a>')}}...</div>
+                    {% else %}
+                    <div class="faqAnswerHacksaw">{{block.faqAnswer}}</div>
+                    {% endif %}
+
+                    <div class="faqAnswerFull">{{block.faqAnswer}}</div>
+
+                    {% if block.faqAnswer|length > 500 %}
+                    <div class="learn-more-expand">
+                        <a href="#" >Learn More</a>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+    </div>
+    {% if entry.pointsOfInterestMatrix|length %}
+        <div class="points-of-interest">
+            <h1 class="wide-title">Points of Interest</h1>
+            <div class="grid-x grid-padding-x">
+                {% for poiBlock in entry.pointsOfInterestMatrix %}
+                    {% switch poiBlock.type %}
+                        {% case 'poiBlock' %}
+                            {% if loop.index is odd %}
+                                <!-- image on top -->
+                                <div class="cell medium-4">
+                                    <img src="{{poiBlock.poiImage.first().getUrl('athletePointsOfInterest')}}"/>
+                                    <p>{{poiBlock.poiDescription}}</p>
+                                </div>
+                            {% else %}
+                                <!-- image on bottom -->
+                                <div class="cell medium-4 grid-y">
+                                    <div class="cell small-order-2 large-order-1"><p>{{poiBlock.poiDescription}}</p></div>
+                                    <div class="cell small-order-1 large-order-2"><img src="{{poiBlock.poiImage.first().getUrl('athletePointsOfInterest')}}"/></div>
+                                </div>
+                            {% endif %}
+                    {% endswitch %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- experience tables -->
+    {% if entry.athleteWysiwyg|length > 0 %}
+        {{entry.athleteWysiwyg}}
+    {% endif %}
+
+    <!-- articles widget -->
+    <!-- <div id="article-widget" class="news-article-widget grid-container">
+        <div class="grid-x grid-padding-x">
+            {% set entries = craft.entries.section('article').limit(3).find() %}
+            {% for entry in entries %}
+            <div class="small-12 medium-4 cell">
+                <div class="news-article-content-parent-container">
+                    {% if entry.articleHeroImage.first()|length %}
+                        <a href="{{entry.url}}"><img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicFeaturedArticleList") }}"/></a>
+                    {% endif %}
+                    <div class="article-content-block">
+                        <div class="grid-x row">
+                            <div class="cell small-12 medium-12 large-6">
+                                <div class="cat button hollow secondary">{{ entry.articleCategory.first().title }}</div>
+                            </div>
+                            <div class="cell small-12 medium-12 large-6 date">
+                                <div>{{ entry.postDate | date("M d, Y") }}</div>
+                            </div>
+                        </div>
+
+                        <h5 class="article-title uppercase"><a href="{{entry.url}}">{{entry.title}}</a></h5>
+                        <div class="article-date">{{ entry.postDate | date("M d, Y") }}</div>
+
+                        {% if entry.articleSummary|length %}
+                            <div class="description">{{entry.articleSummary}}</div>
+                        {% endif %}
+                        <div class="news-article-content">
+                            <a class="news-article-cta" href="{{entry.url}}">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="grid-x align-center">
+            <div class="small-12 text-center cell">
+                <a href="/blog" class="button secondary">View More Articles</a>
+                </div>
+            </div>
+    </div> -->
+
+
+    <div class="social-media-bar grid-container">
+        <div class="social-row grid-x grid-padding-x align-center">
+          {% if entry.athleteContactEmail|length %}
+
+            <div class="cell medium-6 large-4">
+                <p>For more information contact: <a href="mailto:{{entry.athleteContactEmail}}"><strong>{{entry.athleteContactEmail}}</strong></a></p>
+            </div>
+            {% endif %}
+
+            <div class="cell medium-6 large-8 external-button-container">
+                <!-- social media bar -->
+                {% include 'inc/social-share.html' %}
+                <!-- email -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="other-athletes grid-container">
+        <div class="grid-x grid-padding-x">
+            {# Set parameters for prev/next elements list #}
+            {% set params = craft.entries.section('athleteBios').order('title asc') %}
+
+            {# Get the prev/next elements #}
+            {% set prevEntry = entry.getPrev(params) %}
+            {% set nextEntry = entry.getNext(params) %}
+            {# And make sure to only output the links if the element exists #}
+
+
+            <div class="cell large-6 other-athletes-cell left">
+                <div class="grid-x grid-padding-x align-middle">
+                    {% if prevEntry %}
+                        <div class="cell medium-6 small-order-2 medium-order-1 large-order-1 athlete-text-left">
+                            <!-- <div class="button hollow secondary">{{prevEntry.teamDesignation.first()}}</div> -->
+                            <h3 class="main-title athlete-name">{{prevEntry.firstName}} {{prevEntry.lastName}}</h3>
+                            <a href="{{prevEntry.getUrl()}}">View Athlete</a>
+                        </div>
+                        <div class="athlete-img cell medium-6 small-order-1 medium-order-2 large-order-2">
+                            <img src="{{prevEntry.athletePortrait.first().getUrl('athletePrevNext')}}"/>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="cell large-6 other-athletes-cell">
+                <div class="grid-x grid-padding-x align-middle">
+                    {% if nextEntry %}
+                        <div class="athlete-img cell medium-6">
+                            <img src="{{nextEntry.athletePortrait.first().getUrl('athletePrevNext')}}"/>
+                        </div>
+                        <div class="cell medium-6 athlete-text-right">
+                            <!-- <div class="button hollow secondary">{{nextEntry.teamDesignation.first()}}</div> -->
+                            <h3 class="main-title athlete-name">{{nextEntry.firstName}} {{nextEntry.lastName}}</h3>
+                            <a href="{{nextEntry.getUrl()}}">View Athlete</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    if ('querySelector' in document &&
+            'addEventListener' in window) {
+        var toggleButtons = document.querySelectorAll('.toggle-content');
+        var fullTextWrappers = document.querySelectorAll('.fulltext');
+        var fullText;
+        var toggleButtonText;
+
+        [].forEach.call(fullTextWrappers, function(fullTextWrapper) {
+            fullTextWrapper.setAttribute('hidden', true);
+        });
+        [].forEach.call(toggleButtons, function(toggleButton) {
+            toggleButton.removeAttribute('hidden');
+            toggleButton.addEventListener('click', function () {
+                fullTextWrapper = this.parentElement.querySelector('.fulltext');
+                toggleButtonText = this.querySelector('.text');
+                console.log(fullTextWrapper.hasAttribute('hidden'));
+                if (!fullTextWrapper.hasAttribute('hidden')) {
+                    toggleButtonText.innerText = 'Read More';
+                    fullTextWrapper.setAttribute('hidden', true);
+                    toggleButton.setAttribute('aria-expanded', false);
+                } else {
+                    toggleButtonText.innerText = 'Show Less';
+                    fullTextWrapper.removeAttribute('hidden');
+                    toggleButton.setAttribute('aria-expanded', true);
+                }
+            });
+        });
+    }
+</script>
+
+
+
+{% endblock %}

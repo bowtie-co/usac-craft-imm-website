@@ -1,0 +1,46 @@
+<div id="{{content.type}}_{{content.id}}" class="alternating-image-text-blocks-widget grid-container align-middle">
+    {% for block in content.alternatingImageTextBlocksWidget %}
+        {% set type = block.type.handle %}
+        {% switch type %}
+            {% case 'imageTextBlock' %}
+                {% if block.imageTextBlockImagePosition == 'left' %}
+                    <div class="grid-x block-row">
+                        <div class="cell large-6 medium-8 image-left-block text-right">
+                            <img class="block-image" src="{{ block.imageTextBlockImage.first.getUrl('alternatingBlocks') }}"/>
+                        </div>
+                        <div class="vert-aligner large-6 medium-8 text-block text-block-right">
+                          <div class="grid-x align-right">
+                            <div class="cell large-11 vert-align-content">
+                                <h2 class="main-title">{{ block.imageTextBlockTitle }}</h2>
+                                <div class="top-title">{{ block.imageTextBlockSubTitle }}</div>
+                                <div class="description">{{ block.imageTextBlockDescription }}</div>
+                                {% if block.imageTextBlockCtaText|length %}
+                                    <a class="button hollow secondary" href="{{ block.imageTextBlockCtaUrl }}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_left">{{ block.imageTextBlockCtaText }}</a>
+                                {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if block.imageTextBlockImagePosition == 'right' %}
+                <div class="grid-x block-row">
+                    <div class="vert-aligner cell large-6 medium-8 text-block small-order-2 medium-order-2 large-order-1">
+                      <div class="grid-x align-left">
+                        <div class="cell large-11 vert-align-content">
+                            <h2 class="main-title">{{ block.imageTextBlockTitle }}</h2>
+                            <div class="top-title">{{ block.imageTextBlockSubTitle }}</div>
+                            <div class="description">{{ block.imageTextBlockDescription }}</div>
+                            {% if block.imageTextBlockCtaText|length %}
+                                <a class="button hollow secondary" href="{{ block.imageTextBlockCtaUrl }}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_right">{{ block.imageTextBlockCtaText }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                  </div>
+                    <div class="large-6 medium-8 image-right-block small-order-1 medium-order-1 large-order-2 text-left">
+                        <img class="block-image" src="{{ block.imageTextBlockImage.first.getUrl('alternatingBlocks') }}"/>
+                    </div>
+                </div>
+                {% endif %}
+        {% endswitch %}
+    {% endfor %}
+</div>

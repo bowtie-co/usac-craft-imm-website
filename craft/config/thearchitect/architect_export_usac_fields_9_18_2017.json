@@ -1,0 +1,3059 @@
+{
+  "groups": [
+    "Default",
+    "Article",
+    "Content Builder",
+    "Documents",
+    "Social",
+    "Image Grid Widget",
+    "Navigation Builder",
+    "Sponsors",
+    "Team"
+  ],
+  "sections": [
+    {
+      "name": "Article",
+      "handle": "article",
+      "type": "channel",
+      "enableVersioning": "1",
+      "typesettings": {
+        "hasUrls": "1",
+        "template": "article\/_entry",
+        "urlFormat": "article\/{slug}",
+        "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "Athlete Bios",
+      "handle": "athleteBios",
+      "type": "single",
+      "enableVersioning": "1",
+      "typesettings": {
+        "template": "athlete-bios.html",
+        "urlFormat": "athlete-bios",
+        "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "Documents",
+      "handle": "documents",
+      "type": "structure",
+      "enableVersioning": "1",
+      "typesettings": {
+        "hasUrls": "0",
+        "template": null,
+        "locales": {
+          "en_us": "1"
+        }
+      }
+    },
+    {
+      "name": "Homepage",
+      "handle": "homepage",
+      "type": "single",
+      "enableVersioning": "1",
+      "typesettings": {
+        "template": "index",
+        "urlFormat": "__home__",
+        "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "Team",
+      "handle": "team",
+      "type": "structure",
+      "enableVersioning": "1",
+      "typesettings": {
+        "hasUrls": "0",
+        "template": null,
+        "locales": {
+          "en_us": "1"
+        }
+      }
+    }
+  ],
+  "fields": [
+    {
+      "group": "Default",
+      "name": "Alternating Image\/Text Blocks Widget",
+      "handle": "alternatingImageTextBlocksWidget",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Image\/Text Block",
+            "handle": "imageTextBlock",
+            "fields": {
+              "new1": {
+                "name": "Image Text Block Image Position",
+                "handle": "imageTextBlockImagePosition",
+                "instructions": "This designates the position of the image in the row. Left will place the image to the left and the content to the right. Right will place the image to the right and the content to the left.",
+                "required": "0",
+                "type": "RadioButtons",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": "1"
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Image Text Block Image",
+                "handle": "imageTextBlockImage",
+                "instructions": "",
+                "required": "0",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "",
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new3": {
+                "name": "Image Text Block Title",
+                "handle": "imageTextBlockTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new4": {
+                "name": "Image Text Block Sub Title",
+                "handle": "imageTextBlockSubTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new5": {
+                "name": "Image Text Block Description",
+                "handle": "imageTextBlockDescription",
+                "instructions": "",
+                "required": "0",
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": "",
+                  "purifyHtml": "1",
+                  "purifierConfig": "",
+                  "columnType": "text"
+                }
+              },
+              "new6": {
+                "name": "Image Text Block CTA Text",
+                "handle": "imageTextBlockCtaText",
+                "instructions": "*Leave this field blank if you do not want the content area to have a CTA.",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new7": {
+                "name": "Image Text Block CTA URL",
+                "handle": "imageTextBlockCtaUrl",
+                "instructions": "*Leave this field blank if you do not want the content area to have a CTA.",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new8": {
+                "name": "GA Override Value",
+                "handle": "gaOverrideValue",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Article",
+      "name": "Article Matrix",
+      "handle": "articleMatrix",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Hero Image",
+            "handle": "heroImage",
+            "fields": {
+              "new1": {
+                "name": "Hero",
+                "handle": "hero",
+                "instructions": "",
+                "required": "0",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "1",
+                  "sources": [
+                    "folder:1"
+                  ],
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              }
+            }
+          },
+          "new2": {
+            "name": "Supporting Image",
+            "handle": "supportingImage",
+            "fields": {
+              "new1": {
+                "name": "Supporting",
+                "handle": "supporting",
+                "instructions": "",
+                "required": "0",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "1",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              }
+            }
+          },
+          "new3": {
+            "name": "h1",
+            "handle": "h1",
+            "fields": {
+              "new1": {
+                "name": "h1",
+                "handle": "h1",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          },
+          "new4": {
+            "name": "h2",
+            "handle": "h2",
+            "fields": {
+              "new1": {
+                "name": "h2",
+                "handle": "h2",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          },
+          "new5": {
+            "name": "h3",
+            "handle": "h3",
+            "fields": {
+              "new1": {
+                "name": "h3",
+                "handle": "h3",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          },
+          "new6": {
+            "name": "Description",
+            "handle": "description",
+            "fields": {
+              "new1": {
+                "name": "description",
+                "handle": "description",
+                "instructions": "",
+                "required": "0",
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Simple.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": "1",
+                  "purifyHtml": "1",
+                  "purifierConfig": "",
+                  "columnType": "text"
+                }
+              }
+            }
+          },
+          "new7": {
+            "name": "Text Image Columns",
+            "handle": "textImageColumns",
+            "fields": {
+              "new1": {
+                "name": "Text",
+                "handle": "text",
+                "instructions": "",
+                "required": "0",
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Standard.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": "",
+                  "purifyHtml": "1",
+                  "purifierConfig": "",
+                  "columnType": "text"
+                }
+              },
+              "new2": {
+                "name": "Image",
+                "handle": "image",
+                "instructions": "",
+                "required": "0",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "1",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new3": {
+                "name": "Image Caption",
+                "handle": "imageCaption",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          },
+          "new8": {
+            "name": "Text Block",
+            "handle": "textBlock",
+            "fields": {
+              "new1": {
+                "name": "Text",
+                "handle": "text",
+                "instructions": "",
+                "required": "0",
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Standard.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": "",
+                  "purifyHtml": "1",
+                  "purifierConfig": "",
+                  "columnType": "text"
+                }
+              }
+            }
+          },
+          "new9": {
+            "name": "Pull Quote",
+            "handle": "pullQuote",
+            "fields": {
+              "new1": {
+                "name": "Quote",
+                "handle": "quote",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Background Color Overlay",
+      "handle": "backgroundColorOverlay",
+      "instructions": "",
+      "required": false,
+      "type": "RadioButtons",
+      "typesettings": {
+        "options": [
+          {
+            "label": "None",
+            "value": "none",
+            "default": ""
+          },
+          {
+            "label": "Red",
+            "value": "rgba(172, 22, 43, .5)",
+            "default": ""
+          },
+          {
+            "label": "Blue",
+            "value": "rgba(3, 30, 65, .5)",
+            "default": "1"
+          },
+          {
+            "label": "Gray",
+            "value": "rgba(32, 43, 58, .5)",
+            "default": ""
+          }
+        ]
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Background Position",
+      "handle": "backgroundPosition",
+      "instructions": "",
+      "required": false,
+      "type": "RadioButtons",
+      "typesettings": {
+        "options": [
+          {
+            "label": "Left",
+            "value": "left",
+            "default": "1"
+          },
+          {
+            "label": "Right",
+            "value": "right",
+            "default": ""
+          }
+        ]
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Card Grid Matrix Widget",
+      "handle": "cardGridMatrixWidget",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Card Grid Blocks",
+            "handle": "cardGridBlocks",
+            "fields": {
+              "new1": {
+                "name": "Card Grid Image",
+                "handle": "cardGridImage",
+                "instructions": "",
+                "required": "0",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "Card Grid Title",
+                "handle": "cardGridTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new3": {
+                "name": "Card Grid Sub Title",
+                "handle": "cardGridSubTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new4": {
+                "name": "Card Grid CTA Url",
+                "handle": "cardGridCtaUrl",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new5": {
+                "name": "Card Grid CTA HREF Target",
+                "handle": "cardGridCtaHrefTarget",
+                "instructions": "",
+                "required": "0",
+                "type": "Lightswitch",
+                "typesettings": {
+                  "default": "1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Default",
+      "name": "CTA Text",
+      "handle": "ctaText",
+      "instructions": "This is the text that will appear in your Call To Action",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "20",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "CTA URL",
+      "handle": "ctaUrl",
+      "instructions": "This is the url to where your Call To Action will link.",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "225",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Demo Disclaimer Text",
+      "handle": "demoDisclaimerText",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Description",
+      "handle": "description",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "250",
+        "multiline": "1",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Article",
+      "name": "Discipline Category",
+      "handle": "discplineCategory",
+      "instructions": "Select the discipline for which you want to display the 3 most recent article entries.",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "discipline",
+        "limit": "1",
+        "selectionLabel": "Add a discipline "
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Display USA Cycling Badge",
+      "handle": "displayUsaCyclingBadge",
+      "instructions": "Toggle switch for USA Cycling badge.",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": ""
+      }
+    },
+    {
+      "group": "Documents",
+      "name": "Document Category",
+      "handle": "documentCategory",
+      "instructions": "",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "documents",
+        "limit": "",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Documents",
+      "name": "Document Row",
+      "handle": "documentRow",
+      "instructions": "",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "documents",
+        "limit": "1",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Documents",
+      "name": "Document Row Title",
+      "handle": "documentRowTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "30",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Documents",
+      "name": "Document Upload",
+      "handle": "documentUpload",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "documents",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "",
+        "limit": "1",
+        "viewMode": "list",
+        "selectionLabel": "Add a document"
+      }
+    },
+    {
+      "group": "Documents",
+      "name": "Document Year",
+      "handle": "documentYear",
+      "instructions": "",
+      "required": false,
+      "type": "Dropdown",
+      "typesettings": {
+        "options": [
+          {
+            "label": "2020",
+            "value": "2020",
+            "default": ""
+          },
+          {
+            "label": "2019",
+            "value": "2019",
+            "default": ""
+          },
+          {
+            "label": "2018",
+            "value": "2018",
+            "default": ""
+          },
+          {
+            "label": "2017",
+            "value": "2017",
+            "default": ""
+          },
+          {
+            "label": "2016",
+            "value": "2016",
+            "default": ""
+          },
+          {
+            "label": "2015",
+            "value": "2015",
+            "default": ""
+          },
+          {
+            "label": "2014",
+            "value": "2014",
+            "default": ""
+          },
+          {
+            "label": "2013",
+            "value": "2013",
+            "default": ""
+          },
+          {
+            "label": "2012",
+            "value": "2012",
+            "default": ""
+          },
+          {
+            "label": "2011",
+            "value": "2011",
+            "default": ""
+          },
+          {
+            "label": "2010",
+            "value": "2010",
+            "default": ""
+          },
+          {
+            "label": "2009",
+            "value": "2009",
+            "default": ""
+          },
+          {
+            "label": "2008",
+            "value": "2008",
+            "default": ""
+          },
+          {
+            "label": "2007",
+            "value": "2007",
+            "default": ""
+          },
+          {
+            "label": "2006",
+            "value": "2006",
+            "default": ""
+          },
+          {
+            "label": "2005",
+            "value": "2005",
+            "default": ""
+          },
+          {
+            "label": "2004",
+            "value": "2004",
+            "default": ""
+          },
+          {
+            "label": "2003",
+            "value": "2003",
+            "default": ""
+          },
+          {
+            "label": "2002",
+            "value": "2002",
+            "default": ""
+          },
+          {
+            "label": "2001",
+            "value": "2001",
+            "default": ""
+          },
+          {
+            "label": "2000",
+            "value": "2000",
+            "default": ""
+          },
+          {
+            "label": "1999",
+            "value": "1999",
+            "default": ""
+          },
+          {
+            "label": "1998",
+            "value": "1998",
+            "default": ""
+          },
+          {
+            "label": "1997",
+            "value": "1997",
+            "default": ""
+          },
+          {
+            "label": "1996",
+            "value": "1996",
+            "default": ""
+          },
+          {
+            "label": "1995",
+            "value": "1995",
+            "default": ""
+          },
+          {
+            "label": "1994",
+            "value": "1994",
+            "default": ""
+          },
+          {
+            "label": "1993",
+            "value": "1993",
+            "default": ""
+          },
+          {
+            "label": "1992",
+            "value": "1992",
+            "default": ""
+          },
+          {
+            "label": "1991",
+            "value": "1991",
+            "default": ""
+          },
+          {
+            "label": "1990",
+            "value": "1990",
+            "default": ""
+          }
+        ]
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Facebook Button",
+      "handle": "facebookButton",
+      "instructions": "",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": "1"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Facebook Link",
+      "handle": "facebookLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Feature Card Matrix Widget",
+      "handle": "featureCardMatrixWidget",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Feature Card Blocks",
+            "handle": "featureCardBlocks",
+            "fields": {
+              "new1": {
+                "name": "Card Background Image",
+                "handle": "cardBackgroundImage",
+                "instructions": "",
+                "required": "1",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "1",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "Card Top Title",
+                "handle": "cardTopTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new3": {
+                "name": "Card Title",
+                "handle": "cardTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new4": {
+                "name": "Card Sub Title",
+                "handle": "cardSubTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new5": {
+                "name": "Card Description",
+                "handle": "cardDescription",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "350",
+                  "multiline": "1",
+                  "initialRows": "4"
+                }
+              },
+              "new6": {
+                "name": "card CTA Text",
+                "handle": "cardCtaText",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new7": {
+                "name": "Card CTA URL",
+                "handle": "cardCtaUrl",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new8": {
+                "name": "Card CTA HREF Target",
+                "handle": "cardCtaHrefTarget",
+                "instructions": "Whether the CTA should open in a new browser tab or not (default is yes).",
+                "required": "0",
+                "type": "Lightswitch",
+                "typesettings": {
+                  "default": "1"
+                }
+              },
+              "new9": {
+                "name": "GA Override Value",
+                "handle": "gaOverrideValue",
+                "instructions": "This is the \"event\" value sent to Google Analytics when the associated CTA is clicked (https:\/\/developers.google.com\/analytics\/devguides\/collection\/analyticsjs\/events). Please avoid using spaces or special characters.",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Default",
+      "name": "GA Override Value",
+      "handle": "gaOverrideValue",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Href Target",
+      "handle": "hrefTarget",
+      "instructions": "Should the CTA link open in a new window or same window?\r\nnew window = on\r\nsame window = off",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": "1"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Image",
+      "handle": "image",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "1",
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": "Add an Image"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Image CTA Grid Matrix Widget",
+      "handle": "imageCtaGridMatrixWidget",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Image CTA Grid Blocks",
+            "handle": "imageCtaGridBlocks",
+            "fields": {
+              "new1": {
+                "name": "Background Image",
+                "handle": "backgroundImage",
+                "instructions": "",
+                "required": "1",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "1",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "CTA Text",
+                "handle": "ctaText",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new3": {
+                "name": "CTA URL",
+                "handle": "ctaUrl",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new4": {
+                "name": "CTA Href Target",
+                "handle": "ctaHrefTarget",
+                "instructions": "",
+                "required": "0",
+                "type": "Lightswitch",
+                "typesettings": {
+                  "default": "1"
+                }
+              },
+              "new5": {
+                "name": "GA Override Value",
+                "handle": "gaOverrideValue",
+                "instructions": "This is the \"event\" value sent to Google Analytics when the associated CTA is clicked (https:\/\/developers.google.com\/analytics\/devguides\/collection\/analyticsjs\/events). Please avoid using spaces or special characters.",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget 1",
+      "handle": "imageGridWidget1",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "1",
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget 2",
+      "handle": "imageGridWidget2",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "1",
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget 3 (Featured) ",
+      "handle": "imageGridWidget3",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "1",
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget 4",
+      "handle": "imageGridWidget4",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "1",
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget 5",
+      "handle": "imageGridWidget5",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "1",
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget Copy 1",
+      "handle": "imageGridWidgetCopy1",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget Copy 2",
+      "handle": "imageGridWidgetCopy2",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget Copy 3 (Featured)",
+      "handle": "imageGridWidgetCopy3",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget Copy 4",
+      "handle": "imageGridWidgetCopy4",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget Copy 5",
+      "handle": "imageGridWidgetCopy5",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget CTA 1",
+      "handle": "imageGridWidgetCta1",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget CTA 2",
+      "handle": "imageGridWidgetCta2",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget CTA 3 (Featured)",
+      "handle": "imageGridWidgetCta3",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget CTA 4",
+      "handle": "imageGridWidgetCta4",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget CTA 5",
+      "handle": "imageGridWidgetCta5",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Image Grid Widget",
+      "name": "Image Grid Widget Description 3 (Featured)",
+      "handle": "imageGridWidgetDescription3",
+      "instructions": "",
+      "required": false,
+      "type": "RichText",
+      "typesettings": {
+        "configFile": "",
+        "availableAssetSources": "*",
+        "availableTransforms": "*",
+        "cleanupHtml": "1",
+        "purifyHtml": "1",
+        "purifierConfig": "",
+        "columnType": "text"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Image Text Carousel Matrix Widget",
+      "handle": "imageTextCarouselMatrixWidget",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Image Text Carousel Blocks",
+            "handle": "imageTextCarouselBlocks",
+            "fields": {
+              "new1": {
+                "name": "Slide Background Image",
+                "handle": "slideBackgroundImage",
+                "instructions": "",
+                "required": "1",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "1",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "1",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "Slide Top Title",
+                "handle": "slideTopTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new3": {
+                "name": "Slide Title",
+                "handle": "slideTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new4": {
+                "name": "Slide Sub Title",
+                "handle": "slideSubTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new5": {
+                "name": "Description",
+                "handle": "description",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "350",
+                  "multiline": "1",
+                  "initialRows": "4"
+                }
+              },
+              "new6": {
+                "name": "Slide CTA Text",
+                "handle": "slideCtaText",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new7": {
+                "name": "Slide CTA URL",
+                "handle": "slideCtaUrl",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new8": {
+                "name": "Slide CTA HREF Target",
+                "handle": "slideCtaHrefTarget",
+                "instructions": "Whether the CTA should open in a new browser tab or not (default is yes).",
+                "required": "0",
+                "type": "Lightswitch",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new9": {
+                "name": "GA Override Value",
+                "handle": "gaOverrideValue",
+                "instructions": "This is the \"event\" value sent to Google Analytics when the associated CTA is clicked (https:\/\/developers.google.com\/analytics\/devguides\/collection\/analyticsjs\/events). Please avoid using spaces or special characters.",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Instagram Button",
+      "handle": "instagramButton",
+      "instructions": "",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": "1"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Instagram Link",
+      "handle": "instagramLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Navigation Builder",
+      "name": "Navigation Children",
+      "handle": "navigationChildren",
+      "instructions": "",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": ""
+      }
+    },
+    {
+      "group": "Navigation Builder",
+      "name": "Navigation Children Matrix",
+      "handle": "navigationChildrenMatrix",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "Navigation Child",
+            "handle": "navigationChild",
+            "fields": {
+              "new1": {
+                "name": "Child Title",
+                "handle": "childTitle",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              },
+              "new2": {
+                "name": "Child HREF",
+                "handle": "childHref",
+                "instructions": "",
+                "required": "0",
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": "4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Navigation Builder",
+      "name": "Navigation HREF",
+      "handle": "navigationHref",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Navigation Builder",
+      "name": "Navigation Title",
+      "handle": "navigationTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Newsletter Signup Text",
+      "handle": "newsletterSignupText",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Section Title Background Text",
+      "handle": "sectionTitleBackgroundText",
+      "instructions": "This field must contain more than X characters.",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Social Display Instagram Feed",
+      "handle": "socialDisplayInstagramFeed",
+      "instructions": "",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": "1"
+      }
+    },
+    {
+      "group": "Sponsors",
+      "name": "Sponsors CTA Text",
+      "handle": "sponsorsCtaText",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Sponsors",
+      "name": "Sponsors CTA URL",
+      "handle": "sponsorsCtaUrl",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Sponsors",
+      "name": "Sponsors Description",
+      "handle": "sponsorsDescription",
+      "instructions": "",
+      "required": false,
+      "type": "RichText",
+      "typesettings": {
+        "configFile": "",
+        "availableAssetSources": "*",
+        "availableTransforms": "*",
+        "cleanupHtml": "1",
+        "purifyHtml": "1",
+        "purifierConfig": "",
+        "columnType": "text"
+      }
+    },
+    {
+      "group": "Sponsors",
+      "name": "Sponsors Matrix",
+      "handle": "sponsorsMatrix",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": "1",
+        "blockTypes": {
+          "new1": {
+            "name": "Sponsors",
+            "handle": "sponsors",
+            "fields": {
+              "new1": {
+                "name": "Sponsor",
+                "handle": "sponsor",
+                "instructions": "",
+                "required": "0",
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": "",
+                  "sources": "*",
+                  "defaultUploadLocationSource": "assets",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "assets",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": "1",
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "8",
+                  "viewMode": "large",
+                  "selectionLabel": "Add sponsor image"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Sponsors",
+      "name": "Sponsors Title",
+      "handle": "sponsorsTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Strava Button",
+      "handle": "stravaButton",
+      "instructions": "",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": "1"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Strava Link",
+      "handle": "stravaLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Sub Title",
+      "handle": "subTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "150",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Additional Heading",
+      "handle": "teamAdditionalHeading",
+      "instructions": "This field will appear above the featured directors section. ",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Category",
+      "handle": "teamCategory",
+      "instructions": "",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "team",
+        "limit": "1",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Contact",
+      "handle": "teamContact",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team CTA",
+      "handle": "teamCta",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Featured Heading",
+      "handle": "teamFeaturedHeading",
+      "instructions": "This field will appear above the additional directors section. ",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team First Name",
+      "handle": "teamFirstName",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Last Name",
+      "handle": "teamLastName",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Member",
+      "handle": "teamMember",
+      "instructions": "",
+      "required": false,
+      "type": "Entries",
+      "typesettings": {
+        "sources": [
+          "team"
+        ],
+        "limit": "",
+        "selectionLabel": "Add a Member"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Member Bio",
+      "handle": "teamMemberBio",
+      "instructions": "",
+      "required": false,
+      "type": "RichText",
+      "typesettings": {
+        "configFile": "",
+        "availableAssetSources": "*",
+        "availableTransforms": "*",
+        "cleanupHtml": "1",
+        "purifyHtml": "1",
+        "purifierConfig": "",
+        "columnType": "text"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Member Company Name",
+      "handle": "teamMemberCompanyName",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Member Image",
+      "handle": "teamMemberImage",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": "1",
+        "sources": "*",
+        "defaultUploadLocationSource": "assets",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "assets",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": "",
+        "limit": "1",
+        "viewMode": "large",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Member Location",
+      "handle": "teamMemberLocation",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Member Title",
+      "handle": "teamMemberTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Social Facebook Link",
+      "handle": "teamSocialFacebookLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Social Instagram Link",
+      "handle": "teamSocialInstagramLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Social Twitter Link",
+      "handle": "teamSocialTwitterLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Tier",
+      "handle": "teamTier",
+      "instructions": "",
+      "required": false,
+      "type": "Dropdown",
+      "typesettings": {
+        "options": [
+          {
+            "label": "Highlighted Director",
+            "value": "highlightedDirector",
+            "default": ""
+          },
+          {
+            "label": "Featured Director",
+            "value": "featuredDirector",
+            "default": ""
+          },
+          {
+            "label": "Standard Director",
+            "value": "standardDirector",
+            "default": "1"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Team",
+      "name": "Team Tier Member",
+      "handle": "teamTierMember",
+      "instructions": "",
+      "required": false,
+      "type": "Entries",
+      "typesettings": {
+        "sources": [
+          "tieredTeam"
+        ],
+        "limit": "",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Default",
+      "name": "Top Title",
+      "handle": "topTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "50",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Twitter Button",
+      "handle": "twitterButton",
+      "instructions": "",
+      "required": false,
+      "type": "Lightswitch",
+      "typesettings": {
+        "default": "1"
+      }
+    },
+    {
+      "group": "Social",
+      "name": "Twitter Link",
+      "handle": "twitterLink",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": "4"
+      }
+    },
+    {
+      "group": "Default",
+      "name": "WYSIWYG Widget",
+      "handle": "wysiwygWidget",
+      "instructions": "",
+      "required": false,
+      "type": "RichText",
+      "typesettings": {
+        "configFile": "Code.json",
+        "availableAssetSources": "*",
+        "availableTransforms": "*",
+        "cleanupHtml": "",
+        "purifyHtml": "",
+        "purifierConfig": "",
+        "columnType": "text"
+      }
+    },
+    {
+      "group": "Content Builder",
+      "name": "Content Builder",
+      "handle": "contentBuilder",
+      "instructions": "",
+      "required": false,
+      "type": "Neo",
+      "typesettings": {
+        "maxBlocks": null,
+        "groups": {
+          "name": [
+            "Article",
+            "Hero Group",
+            "Image Text Group",
+            "Image Grid",
+            "Team",
+            "Newsletter Signup",
+            "Social",
+            "Other"
+          ],
+          "sortOrder": [
+            "1",
+            "4",
+            "8",
+            "14",
+            "20",
+            "23",
+            "25",
+            "27"
+          ]
+        },
+        "blockTypes": {
+          "new0": {
+            "sortOrder": "2",
+            "name": "News\/Article Listing (Category)",
+            "handle": "newsArticleListingCategory",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "discplineCategory"
+              ]
+            }
+          },
+          "new1": {
+            "sortOrder": "3",
+            "name": "News\/Article Listing",
+            "handle": "newsArticleListing",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": []
+            }
+          },
+          "new2": {
+            "sortOrder": "5",
+            "name": "Left or Right Hero Widget",
+            "handle": "leftOrRightHeroWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "topTitle",
+                "subTitle",
+                "description"
+              ],
+              "CTA": [
+                "ctaText",
+                "ctaUrl",
+                "hrefTarget"
+              ],
+              "Background Image": [
+                "image",
+                "backgroundColorOverlay",
+                "backgroundPosition",
+                "displayUsaCyclingBadge"
+              ],
+              "Google Analytics": [
+                "gaOverrideValue"
+              ]
+            }
+          },
+          "new3": {
+            "sortOrder": "6",
+            "name": "Centered Hero Widget",
+            "handle": "centeredHeroWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "topTitle",
+                "subTitle",
+                "description"
+              ],
+              "CTA": [
+                "ctaText",
+                "ctaUrl",
+                "hrefTarget"
+              ],
+              "Background Image": [
+                "displayUsaCyclingBadge",
+                "image",
+                "backgroundColorOverlay"
+              ],
+              "Google Anayltics": [
+                "gaOverrideValue"
+              ]
+            }
+          },
+          "new4": {
+            "sortOrder": "7",
+            "name": "Wide Feature Hero Widget",
+            "handle": "wideFeatureHeroWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "topTitle",
+                "description"
+              ],
+              "CTA": [
+                "ctaText",
+                "ctaUrl",
+                "hrefTarget"
+              ],
+              "Background Image": [
+                "backgroundColorOverlay",
+                "image"
+              ],
+              "Google Analytics": [
+                "gaOverrideValue"
+              ]
+            }
+          },
+          "new5": {
+            "sortOrder": "9",
+            "name": "Section Title Widget",
+            "handle": "sectionTitleWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "sectionTitleBackgroundText",
+                "topTitle",
+                "description"
+              ]
+            }
+          },
+          "new6": {
+            "sortOrder": "10",
+            "name": "Left or Right Image & Text Feature Widget",
+            "handle": "leftOrRightImageTextFeatureWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "topTitle",
+                "subTitle",
+                "description",
+                "image",
+                "backgroundPosition"
+              ],
+              "CTA": [
+                "ctaText",
+                "ctaUrl",
+                "hrefTarget"
+              ],
+              "Google Analytics": [
+                "gaOverrideValue"
+              ]
+            }
+          },
+          "new7": {
+            "sortOrder": "11",
+            "name": "Image & Text Carousel Widget",
+            "handle": "imageTextCarouselWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "imageTextCarouselMatrixWidget"
+              ]
+            }
+          },
+          "new8": {
+            "sortOrder": "12",
+            "name": "Inset Image Widget",
+            "handle": "insetImageWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Image": [
+                "image"
+              ],
+              "Content": [
+                "topTitle",
+                "subTitle",
+                "description"
+              ],
+              "CTA": [
+                "ctaText",
+                "ctaUrl",
+                "hrefTarget"
+              ]
+            }
+          },
+          "new9": {
+            "sortOrder": "13",
+            "name": "Alternating Image Text Blocks",
+            "handle": "alternatingImageTextBlocks",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Tab 1": [
+                "alternatingImageTextBlocksWidget"
+              ]
+            }
+          },
+          "new10": {
+            "sortOrder": "15",
+            "name": "Image Grid Widget",
+            "handle": "imageGridWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "topTitle"
+              ],
+              "Image 1": [
+                "imageGridWidget1",
+                "imageGridWidgetCopy1",
+                "imageGridWidgetCta1"
+              ],
+              "Image 2": [
+                "imageGridWidget2",
+                "imageGridWidgetCopy2",
+                "imageGridWidgetCta2"
+              ],
+              "Image 3": [
+                "imageGridWidget3",
+                "imageGridWidgetCopy3",
+                "imageGridWidgetCta3",
+                "imageGridWidgetDescription3"
+              ],
+              "Image 4": [
+                "imageGridWidget4",
+                "imageGridWidgetCopy4",
+                "imageGridWidgetCta4"
+              ],
+              "Image 5": [
+                "imageGridWidget5",
+                "imageGridWidgetCopy5",
+                "imageGridWidgetCta5"
+              ]
+            }
+          },
+          "new11": {
+            "sortOrder": "16",
+            "name": "Skinny Row Widget",
+            "handle": "skinnyRowWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "topTitle",
+                "subTitle"
+              ],
+              "CTA": [
+                "ctaText",
+                "ctaUrl",
+                "hrefTarget"
+              ],
+              "Background Image": [
+                "image"
+              ]
+            }
+          },
+          "new12": {
+            "sortOrder": "17",
+            "name": "Card Grid Widget",
+            "handle": "cardGridWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "cardGridMatrixWidget"
+              ],
+              "GA Override": [
+                "gaOverrideValue"
+              ]
+            }
+          },
+          "new13": {
+            "sortOrder": "18",
+            "name": "Feature Card Widget",
+            "handle": "featureCardWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "featureCardMatrixWidget"
+              ]
+            }
+          },
+          "new14": {
+            "sortOrder": "19",
+            "name": "Image CTA Grid Widget ",
+            "handle": "imageCtaGridWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "imageCtaGridMatrixWidget",
+                "ctaText"
+              ]
+            }
+          },
+          "new15": {
+            "sortOrder": "21",
+            "name": "Tiered Team Widget",
+            "handle": "tieredTeamWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Tab 1": [
+                "teamFeaturedHeading",
+                "teamAdditionalHeading",
+                "teamTierMember"
+              ]
+            }
+          },
+          "new16": {
+            "sortOrder": "22",
+            "name": "Team Widget",
+            "handle": "teamWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Tab 1": [
+                "teamFeaturedHeading",
+                "teamCategory"
+              ]
+            }
+          },
+          "new17": {
+            "sortOrder": "24",
+            "name": "Newsletter Signup Widget",
+            "handle": "newsletterSignupWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "newsletterSignupText"
+              ]
+            }
+          },
+          "new18": {
+            "sortOrder": "26",
+            "name": "Social Widget",
+            "handle": "socialWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "socialDisplayInstagramFeed",
+                "facebookButton",
+                "facebookLink",
+                "instagramButton",
+                "instagramLink",
+                "stravaButton",
+                "stravaLink",
+                "twitterButton",
+                "twitterLink"
+              ]
+            },
+            "reasons": {
+              "facebookLink": [
+                [
+                  {
+                    "fieldId": "facebookButton",
+                    "compare": "==",
+                    "value": "true"
+                  }
+                ]
+              ],
+              "instagramLink": [
+                [
+                  {
+                    "fieldId": "instagramButton",
+                    "compare": "==",
+                    "value": "true"
+                  }
+                ]
+              ],
+              "stravaLink": [
+                [
+                  {
+                    "fieldId": "stravaButton",
+                    "compare": "==",
+                    "value": "true"
+                  }
+                ]
+              ],
+              "twitterLink": [
+                [
+                  {
+                    "fieldId": "twitterButton",
+                    "compare": "==",
+                    "value": "true"
+                  }
+                ]
+              ]
+            }
+          },
+          "new19": {
+            "sortOrder": "28",
+            "name": "Documents Widget",
+            "handle": "documentsWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "documentRowTitle",
+                "documentRow"
+              ]
+            }
+          },
+          "new20": {
+            "sortOrder": "29",
+            "name": "WYSIWYG Widget",
+            "handle": "wysiwygWidget",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "wysiwygWidget"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Navigation Builder",
+      "name": "Navigation Builder",
+      "handle": "navigationBuilder",
+      "instructions": "",
+      "required": false,
+      "type": "Neo",
+      "typesettings": {
+        "maxBlocks": null,
+        "groups": {
+          "name": [],
+          "sortOrder": []
+        },
+        "blockTypes": {
+          "new0": {
+            "sortOrder": "1",
+            "name": "Navigation Items",
+            "handle": "navigationItems",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": "1",
+            "fieldLayout": {
+              "Content": [
+                "navigationTitle",
+                "navigationHref",
+                "navigationChildren",
+                "navigationChildrenMatrix"
+              ]
+            },
+            "reasons": {
+              "navigationChildrenMatrix": [
+                [
+                  {
+                    "fieldId": "navigationChildren",
+                    "compare": "==",
+                    "value": "true"
+                  }
+                ]
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "entryTypes": [
+    {
+      "sectionHandle": "article",
+      "hasTitleField": "1",
+      "titleLabel": "Article Title",
+      "name": "Article",
+      "handle": "article",
+      "fieldLayout": {
+        "Content": [
+          "discplineCategory",
+          "articleMatrix"
+        ]
+      }
+    },
+    {
+      "sectionHandle": "athleteBios",
+      "hasTitleField": "0",
+      "titleLabel": null,
+      "titleFormat": "{section.name|raw}",
+      "name": "Athlete Bios",
+      "handle": "athleteBios",
+      "fieldLayout": []
+    },
+    {
+      "sectionHandle": "documents",
+      "hasTitleField": "1",
+      "titleLabel": "Title",
+      "name": "Documents",
+      "handle": "documents",
+      "fieldLayout": {
+        "Content": [
+          "documentCategory",
+          "documentUpload",
+          "documentYear"
+        ]
+      }
+    },
+    {
+      "sectionHandle": "homepage",
+      "hasTitleField": "1",
+      "titleLabel": "Title",
+      "name": "Homepage",
+      "handle": "homepage",
+      "fieldLayout": {
+        "Content": [
+          "description",
+          "ctaText",
+          "ctaUrl",
+          "hrefTarget",
+          "contentBuilder",
+          "sponsorsTitle",
+          "sponsorsDescription",
+          "sponsorsCtaText",
+          "sponsorsCtaUrl",
+          "sponsorsMatrix"
+        ]
+      }
+    },
+    {
+      "sectionHandle": "team",
+      "hasTitleField": "0",
+      "titleLabel": null,
+      "titleFormat": "{teamFirstName} {teamLastName}",
+      "name": "Team",
+      "handle": "team",
+      "fieldLayout": {
+        "Content": [
+          "teamCategory",
+          "teamFirstName",
+          "teamLastName",
+          "teamMemberImage",
+          "teamCta"
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "name": "assets",
+      "handle": "assets",
+      "type": "Local",
+      "settings": {
+        "path": "assets\/",
+        "publicURLs": "1",
+        "url": "{siteUrl}\/assets\/"
+      },
+      "fieldLayout": []
+    },
+    {
+      "name": "documents",
+      "handle": "documents",
+      "type": "Local",
+      "settings": {
+        "path": "documents\/",
+        "publicURLs": "1",
+        "url": "{siteUrl}\/documents\/"
+      },
+      "fieldLayout": []
+    }
+  ],
+  "transforms": [
+    {
+      "name": "alternating-blocks",
+      "handle": "alternatingBlocks",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "547",
+      "height": "399",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "dynamic-article-list",
+      "handle": "dynamicArticleList",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "430",
+      "height": "280",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "dynamic-featured-article-list",
+      "handle": "dynamicFeaturedArticleList",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "897",
+      "height": "600",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "featured-card",
+      "handle": "featuredCard",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "663",
+      "height": "550",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "featured-directors",
+      "handle": "featuredDirectors",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "150",
+      "height": "225",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "hero-widgets",
+      "handle": "heroWidgets",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "1800",
+      "height": "600",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "highlighted-directors",
+      "handle": "highlightedDirectors",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "275",
+      "height": "275",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "image-carousel",
+      "handle": "imageCarousel",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "950",
+      "height": "650",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "image-cta-grid",
+      "handle": "imageCtaGrid",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "350",
+      "height": "350",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "image-grid",
+      "handle": "imageGrid",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "404",
+      "height": "276",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "image-grid-featured",
+      "handle": "imageGridFeatured",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "503",
+      "height": "582",
+      "quality": "82",
+      "format": "jpg"
+    },
+    {
+      "name": "team-member",
+      "handle": "teamMember",
+      "mode": "crop",
+      "position": "center-center",
+      "width": "200",
+      "height": "200",
+      "quality": "60",
+      "format": "jpg"
+    }
+  ],
+  "globals": [
+    {
+      "name": "Navigation",
+      "handle": "navigation",
+      "fieldLayout": {
+        "Content": [
+          "navigationBuilder"
+        ]
+      }
+    }
+  ],
+  "categories": [
+    {
+      "name": "Discipline",
+      "handle": "discipline",
+      "hasUrls": "0",
+      "template": null,
+      "maxLevels": null,
+      "locales": {
+        "en_us": {
+          "urlFormat": null,
+          "nestedUrlFormat": null
+        }
+      },
+      "fieldLayout": []
+    },
+    {
+      "name": "Documents",
+      "handle": "documents",
+      "hasUrls": "0",
+      "template": null,
+      "maxLevels": null,
+      "locales": {
+        "en_us": {
+          "urlFormat": null,
+          "nestedUrlFormat": null
+        }
+      },
+      "fieldLayout": []
+    },
+    {
+      "name": "Team",
+      "handle": "team",
+      "hasUrls": "0",
+      "template": null,
+      "maxLevels": null,
+      "locales": {
+        "en_us": {
+          "urlFormat": null,
+          "nestedUrlFormat": null
+        }
+      },
+      "fieldLayout": []
+    }
+  ]
+}

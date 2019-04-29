@@ -1,0 +1,133 @@
+// Calendar Cards Widget
+// ---------
+#national-calendars {
+  .nc-title {
+    padding: 3rem 0 1rem;
+  }
+  .nc-grid {
+    padding-bottom: 3rem;
+  }
+  .news-article-widget {
+    padding: 3rem 0;
+    background: $light-gray;
+    h3 {
+      text-transform: uppercase;
+      color: $blue;
+    }
+    .news-articles {
+      padding: 2rem 0 1rem;
+    }
+  }
+
+  .more-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .even-more-padding {
+    padding-bottom: 3rem;
+  }
+
+#calendar-cards-widget {
+    a {
+      display:block;
+      position:relative;
+      overflow:hidden;
+
+      &:hover .hovered {
+        animation-name: fadeFromBottom;
+        -webkit-animation-name: fadeFromBottom;
+        animation-duration: 1s;
+        -webkit-animation-duration: 1s;
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+      }
+    }
+
+    .grid-image {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      max-width: 100%;
+      img {
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        max-width: 100%;
+      }
+    }
+
+    .date-container {
+      color: rgba(255, 255, 255, 1);
+      color: $white;
+      z-index: 9999;
+    }
+    .cal-title {
+      font-family:'ProximaNovaBl' !important;
+      line-height: 1.2;
+      @include breakpoint (medium only) {
+        font-size: 1.25rem;
+      }
+    }
+    .hovered {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: rgba(3,30,65,0);
+      text-align: center;
+      width: 100%;
+      padding: 1.5em 1em;
+      animation-name: fadeFromTop;
+      -webkit-animation-name: fadeFromTop;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      animation-timing-function: ease-out;
+      -webkit-animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+    }
+  }
+}
+
+//Keyframes
+
+@keyframes fadeFromBottom  {
+  0% {
+    background-color: rgba(3,30,65,0.7);
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+  100% {
+    background-color: rgba(3,30,65,0.7);
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    display: block;
+  }
+}
+@keyframes fadeFromTop  {
+  0% {
+    background-color: rgba(3,30,65,1);
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    background-color: rgba(3,30,65,0.7);
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+}

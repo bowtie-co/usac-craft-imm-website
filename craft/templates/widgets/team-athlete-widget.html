@@ -1,0 +1,21 @@
+{% set category = content.athleteTeamCategory.first() %}
+{% set entries = craft.entries.section('athleteBios').relatedTo(category).find() %}
+<div id="{{content.type}}_{{content.id}}" class="team-widget grid-container">
+    <div class="cell">
+        <h2 class="main-title team-title">{{content.teamFeaturedHeading}}</h2>
+    </div>
+    <div class="grid-x grid-margin-x small-up-1 medium-up-3 large-up-5">
+        {% for entry in entries %}
+        <div class="cell cell-block team-member">
+            {% if entry.getUrl()|length %}<a href="{{entry.getUrl()}}">{% endif %}
+            {% if entry.athletePortrait.first()|length %}
+            <img class="team-member-image" src="{{ entry.athletePortrait.first().getUrl("teamMember") }}"/>
+            {% endif %}
+            <div class="team-member-overlay">
+                <h4 class="team-name">{{ entry.firstName }} {{ entry.lastName }}</h4>
+            </div>
+            {% if entry.getUrl()|length %}</a>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>

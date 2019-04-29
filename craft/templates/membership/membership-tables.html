@@ -1,0 +1,44 @@
+<div class="membership-comparison-table">
+<div class="grid-x grid-margin-x grid-padding-y align-center">
+<div class="cell">
+  <h4 class="uppercase text-center">{{ entry.topTitle }}</h4>
+</div>
+<div class="cell">
+  <table>
+    {% for block in entry.membershipTableMatrix %}
+    {% set type = block.type.handle %}
+    {% switch type %}
+    {% case 'tableHeader' %}
+    {% for row in block.columnHeadings %}
+    <thead>
+      <tr>
+        <th width="45%">
+          <h6></h6></th>
+        <th class="text-center uppercase" width="15%">
+          <h6>{{row.columnHeading1}}</h6></th>
+        <th class="text-center uppercase" width="15%">
+          <h6>{{row.columnHeading2}}</h6></th>
+        <th class="text-center uppercase" width="15%">
+          <h6>{{row.columnHeading3}}</h6></th>
+      </tr>
+    </thead>
+    {% endfor %}
+    {% endswitch %}
+    {% switch type %}
+    {% case 'tableBody' %}
+    {% for row in block.tableContent %}
+    <tbody>
+      <tr>
+        <td width="45%"> {{row.benefit}}</td>
+        <td class="text-center" width="15%">{% if row.column1 %}<img src="/images/red_check.png"/>{% endif %}</td>
+        <td class="text-center" width="15%">{% if row.column2 %}<img src="/images/red_check.png"/>{% endif %}</td>
+        <td class="text-center" width="15%">{% if row.column3 %}<img src="/images/red_check.png"/>{% endif %}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+    {% endswitch %}
+    {% endfor %}
+  </table>
+</div>
+</div>
+</div>

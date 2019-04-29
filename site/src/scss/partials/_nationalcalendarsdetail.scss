@@ -1,0 +1,230 @@
+// National Calednars Event Detail
+// ---------
+
+
+#national-calendars-detail {
+
+    .finePrint {
+      color: $medium-gray;
+      margin: 1rem 0 2rem;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    p.desc {
+      padding-bottom: 40px;
+    }
+
+  .two-column-table {
+    padding: 1rem 0 2rem;
+    h3 {
+      color: $blue;
+    }
+
+    h5 {
+        color: $red;
+      }
+    .standings-type {
+      padding-bottom: 0rem;
+    }
+    ol {
+      font-family: 'ProximaNovaBold';
+      margin-left: 0.9375rem;
+    }
+    .ranking-info {
+      font-family: 'ProximaNovaRg';
+    }
+  }
+  .ranking-info {
+    padding: 0.625rem 0;
+  }
+
+  @include breakpoint (small only) {
+    .right-rankings {
+      padding-top: 1rem;
+    }
+    .ranking-info {
+      padding: 0.5rem 0;
+    }
+  }
+
+  .name-text {
+    font-family: 'ProximaNovaBold';
+  }
+
+  .calendar-events {
+    padding-top: 1rem;
+    th {
+      padding: .5rem 0 .625rem;
+    }
+    td {
+      padding: .5rem .75rem .625rem 0;
+      :first-child {
+        padding: .5rem 0rem .625rem .5rem;
+      }
+    }
+    a {
+      padding: 0 !important;
+    }
+  }
+
+  .search-form {
+    margin-bottom: 0;
+    select {
+      cursor: pointer;
+      margin-bottom: 0;
+  }
+  }
+  .filter-bar {
+    padding: 1rem 0;
+    img {
+      max-height: 180px;
+      max-width: 300px;
+    }
+  }
+  //button
+  .menu-button {
+    background-image: url(/images/down-arrow.svg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right center;
+    height: 46px;
+    width: 100%;
+    border: 1.5px solid #031e41!important;
+    font-family: "ProximaNovaLt" !important;
+    font-size: 16px;
+    padding: 0 10px;
+    color: #4a4a4a;
+    text-align: left;
+    letter-spacing: 0px;
+    position: relative;
+    cursor: pointer;
+    @include breakpoint (large) {
+      width:320px;
+    }
+  }
+
+  .nc-menu {
+    border: 1px solid $medium-gray;
+    li {
+    width: 100%;
+      a{
+          padding: .7rem 1rem;
+          font-family: 'ProximaNovaRg';
+          color: $dark-gray;
+    }
+  }
+  .accordion-menu {
+    background: $blue;
+    width: 100%;
+    color: $white;
+    li {
+      padding: .7rem 1rem;
+    }
+    a {
+      background: $blue;
+      color: $white;
+    }
+   }
+  }
+
+.dropdown-pane {
+  width: 320px;
+  padding: 0;
+  border: 2px solid $blue;
+  @include breakpoint (medium only) {
+   width: calc(41.7% - 1.875rem);
+  }
+  @include breakpoint (small only) {
+   width: calc(100% - 1.25rem);
+  }
+  li {
+    background: $blue;
+    border-bottom: 1px solid $white;
+    list-style: none;
+    a {
+    color: $white;
+    padding: 1rem;
+    }
+  }
+  li:last-child {
+    border-bottom: 0;
+  }
+
+  .subItem {
+    background: $white;
+    a {
+    background: $white;
+    color: $dark-gray;
+    font-family: 'ProximaNovaRg';
+    border-bottom: 1px solid $blue;
+    }
+    a.active {
+      color: $blue;
+      font-family: 'ProximaNovaBold';
+    }
+  }
+  .subItem:last-child {
+    a {
+      border-bottom: 0;
+    }
+  }
+
+}
+
+#calyear {
+  border: none;
+  li {
+    background: $blue;
+    border-bottom: 1px solid $white;
+    width: 45%;
+    a {
+    color: $white;
+    }
+  }
+
+  li.subItem {
+    a {
+    background: $white;
+    color: $blue;
+    // border-bottom: 1px solid $blue;
+  }
+  }
+}
+
+  // Social Widget
+  .social-icons-widget {
+    padding-top: 3rem;
+    background: $light-gray;
+
+    .social-buttons {
+      padding: 2.0625rem;
+      justify-content: center;
+    }
+
+    .social-cta {
+      color: $medium-gray;
+      font-size: 36px;
+      }
+    .social-cta:hover {
+      color: $blue;
+    }
+
+    .social-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @include breakpoint (small only) {
+    p.desc {
+      padding-bottom: 20px;
+    }
+    .mobile-headings {
+      font-family: 'ProximaNovaBold';
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+
+{% extends "_layout" %}
+{% block content %}
+
+
+{# START HERO OPTIONS #}
+
+<div id="hero">
+{% switch entry.heroType.value %}
+
+    {% case 'default' %}
+        <div id="default" >
+            <!-- OUR FAR IS FURTHER -->
+            <img class="bg-img hide-for-small-only" src="{{entry.desktopHero.first().getUrl('heroBg')}}"/>
+            <img class="bg-img show-for-small-only" src="{{entry.mobileHero.first().getUrl('heroMobileBg')}}"/>
+            <div class="hero-content">
+                <h2 class="hero-text">{{entry.description}}</h2>
+                <div class="hero-cta">
+                    <a class="button large secondary" href="{{entry.ctaUrl}}" {% if entry.hrefTarget %}target="_blank"{% endif %}>{{entry.ctaText}}</a>
+                </div>
+            </div>
+        </div>
+    {% case 'articleCarousel' %}
+        <div id="articleCarousel">
+            <div class="swiper-container swiper-hero-carousel">
+                <div class="swiper-wrapper">
+                    {% if entry.articleHeroMatrix|length > 1 %}
+                        {% for article in entry.articleHeroMatrix %}
+
+                            {# set the bg image from the hero image associated with the article #}
+                            {% set heroSlideBgImage = "" %}
+                            {% set heroArticleDesc = "" %}
+
+                            {% set heroSlideBgImage = article.articleHeroImage.first().getUrl() %}
+
+
+                            <div class="swiper-slide" style="{% if heroSlideBgImage|length > 0 %}background-image: url('{{heroSlideBgImage}}');{% endif %} background-repeat: none;background-size:cover;">
+                              <div class="hero-content background-overlay">
+
+                                <div class="grid-x grid-padding-x grid-container align-middle align-left hero-content-grid">
+                                  <div class="small-9 medium-6 large-6 cell">
+                                      <div class="hero-content-text">
+                                        <div class="hero-article-featured cat button">FEATURED STORY</div>
+                                        <div class="hero-article-title">{{article.title}}</div>
+                                        <div class="hero-article-summary">{{article.articleSummary|hacksaw(hack='words', limit='50', allow='<p>')}}</div>
+                                        <div class="hero-cta">
+                                          <a class="button large primary" href="{{article.url}}">{{entry.ctaText}}</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% for article in entry.articleHeroMatrix %}
+                            {# set the bg image from the hero image associated with the article #}
+                            {% set heroSlideBgImage = "" %}
+                            {% set heroArticleDesc = "" %}
+
+                            {% set heroSlideBgImage = article.articleHeroImage.first().getUrl() %}
+                            <div class="" style="{% if heroSlideBgImage|length > 0 %}background-image: url('{{heroSlideBgImage}}');{% endif %} background-repeat: none;background-size:cover;">
+                                <div class="hero-content">
+                                    <div class="hero-article-featured cat button">FEATURED STORY</div>
+                                    <div class="hero-article-title">{{article.title}}</div>
+                                    <div class="hero-article-summary">{{article.articleSummary|hacksaw(hack='words', limit='50', allow='<p>')}}</div>
+                                    <div class="hero-cta">
+                                        <a class="button large secondary" href="{{article.url}}">{{entry.ctaText}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!--&lt;!&ndash; Add Pagination &ndash;&gt;-->
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <!--&lt;!&ndash; Add Arrows &ndash;&gt;-->
+                <!--<div class="swiper-button-next swiper-button-white"></div>-->
+                <!--<div class="swiper-button-prev swiper-button-white"></div>-->
+            </div>
+        </div>
+    {% case 'vimeoHero' %}
+        <div id="vimeoHero" style="background-image:url({{entry.desktopHero.first().getUrl('heroBg')}})">
+            <!-- OUR FAR IS FURTHER -->
+
+            <div class="hero-content">
+                <div class="hero-supporting-snipper">{{entry.vimeoSupportingSnippet}}</div>
+                <h1 class="hero-vimeo-title">{{entry.heroVimeoTitle}}</h1>
+                <h2 class="hero-text">{{entry.description}}</h2>
+                {% if entry.vimeoUrl|length %}
+                    <iframe class="vimeo-iframe" src="{{entry.vimeoUrl}}?autoplay=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                {% endif %}
+            </div>
+        </div>
+    {% case 'none' %}
+        <!-- none -->
+
+{% endswitch %}
+</div>
+{# END HERO OPTIONS #}
+
+{% if entry.contentBuilder|length %}
+    {% for content in entry.contentBuilder %}
+        {% include 'inc/widgets.twig' %}
+    {% endfor %}
+{% endif %}
+
+<div class="modal-widget">
+
+{% for entry in entry.modalEntry %}
+
+  {% include 'inc/modal.html' %}
+
+{% endfor %}
+</div>
+
+
+{% endblock %}

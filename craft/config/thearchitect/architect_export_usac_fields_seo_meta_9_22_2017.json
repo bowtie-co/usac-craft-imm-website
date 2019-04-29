@@ -1,0 +1,52 @@
+{
+    "groups": [
+        "Default"
+    ],
+    "fields": [
+        {
+            "group": "Default",
+            "name": "Seo Meta ",
+            "handle": "seoMeta",
+            "instructions": "",
+            "required": false,
+            "type": "Seomatic_Meta",
+            "typesettings": {
+                "assetSources": [
+                    "folder:1"
+                ],
+                "seoMainEntityCategory": "CreativeWork",
+                "seoMainEntityOfPage": "WebPage",
+                "seoTitleSource": "field",
+                "seoTitleSourceField": "title",
+                "seoTitle": "",
+                "seoTitleSourceChangeable": "1",
+                "seoDescriptionSource": "custom",
+                "seoDescriptionSourceField": "description",
+                "seoDescription": "",
+                "seoDescriptionSourceChangeable": "1",
+                "seoKeywordsSource": "custom",
+                "seoKeywordsSourceField": "title",
+                "seoKeywords": "",
+                "seoKeywordsSourceChangeable": "1",
+                "seoImageIdSource": "custom",
+                "seoImageIdSourceField": "desktopHero",
+                "seoImageIdSourceChangeable": "1",
+                "seoImageTransform": "",
+                "twitterCardType": "",
+                "twitterCardTypeChangeable": "1",
+                "seoTwitterImageIdSource": "custom",
+                "seoTwitterImageIdSourceField": "desktopHero",
+                "seoTwitterImageIdSourceChangeable": "1",
+                "seoTwitterImageTransform": "",
+                "openGraphType": "",
+                "openGraphTypeChangeable": "1",
+                "seoFacebookImageIdSource": "custom",
+                "seoFacebookImageIdSourceField": "desktopHero",
+                "seoFacebookImageIdSourceChangeable": "1",
+                "seoFacebookImageTransform": "",
+                "robots": "",
+                "robotsChangeable": "1"
+            }
+        }
+    ]
+}

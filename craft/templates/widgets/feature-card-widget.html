@@ -1,0 +1,31 @@
+<div id="{{content.type}}_{{content.id}}" class="feature-card-widget">
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x grid-margin-y">
+    {% for block in content.featureCardMatrixWidget %}
+        {% set type = block.type.handle %}
+        {% switch type %}
+        {% case 'featureCardBlocks' %}
+            <div class="small-12 medium-6 cell feature-card">
+                {% if block.cardBackgroundImage.first().getUrl() is defined %}
+                    {% if block.cardCtaUrl|length %}
+                    <a href="{{block.cardCtaUrl}}" {% if block.cardCtaHrefTarget %}target="_blank"{% endif %} data-ga-push="{% if block.gaOverrideValue|length %}{{block.gaOverrideValue}}_{{loop.index}}{%else%}{% include 'inc/ga-push.html'%}_{{loop.index}}{%endif%}">
+                    {% endif %}
+                    <div class="feature-image-container">
+                        <img class="feature-card-image" src="{{block.cardBackgroundImage.first().getUrl("featuredCard")}}"/>
+                    </div>
+                    <div class="feature-card-text grid-x align-middle">
+                      <div class="cell">
+                            <h4 class="feature-card-title">{{block.cardTitle}}</h4>
+                            <div class="feature-card-description">{{block.cardSubTitle}}</div>
+                          </div>
+                      </div>
+                    {% if block.cardCtaUrl|length %}
+                    </a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endswitch %}
+    {% endfor %}
+</div>
+</div>
+</div>

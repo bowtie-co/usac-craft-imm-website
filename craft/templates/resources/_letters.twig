@@ -1,0 +1,142 @@
+{% extends "_layout" %}
+{% block content %}
+
+{# setting entryIds #}
+{% set entryIds = craft.entries.section('resources').relatedTo(category).ids() %}
+
+{# setting the types that have entries #}
+{% set types = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourceTypes').find() %}
+{# setting the categories that have entries #}
+{% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourceCategories').find() %}
+{# setting the alphabet letters that have entries #}
+{% set alphabet_filtered = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourceAlphabet').find() %}
+{# setting the full alphabet category -- need to think about this ! #}
+{% set alphabet = craft.categories.group('resourceAlphabet') %}
+{# total alphabet letters that have entries #}
+{% set total = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourceAlphabet').total() %}
+{# first time the row is always closed #}
+{% set closedLastRow = true %}
+
+<div id="resources-app">
+    <section id="resources-search" class="grid-container grid-container-padded align-center">
+        <h1>LOREM IPSUM</h1>
+        <ul class="pagination center">
+            {% nav alphabet in craft.categories.group('resourceAlphabet') %}
+                {% set entryCount = craft.entries.relatedTo(alphabet).total() %}
+                <li {% if entryCount > 0 %}class="active"{% endif %}><a href="{{ alphabet.url }}" aria-label="Search {{ alphabet.title }}">{{ alphabet.title }}</a></li>
+            {% endnav %}
+        </ul>
+
+        <form action="/resources/index" role="search" method="GET">
+            <input type="search" name="search" id="searchResource" placeholder="Search">
+            <button type="submit">Search</button>
+        </form>
+
+        <button class="filter-toggle-resources"><img src="/images/filter-toggle.png" alt="Filter Toggle"></button>
+        <div class="grid-x grid-margin-x grid-padding-x">
+            <div class="large-4 cell filters-area">
+                <div class="mobile-filter text-center">
+                    <span class="mobile-filter-title">Filter</span>
+                </div>
+                <span class="filter-heading">Types</span>
+
+                <div class="checkboxes">
+                    {% for type in types %}
+                    <div class="styled-checkbox">
+                        <input type="checkbox" class="filter-checkbox" id="{{ type.id }}" value="{{ type.id }}">
+                        <label for="{{ type.id }}">{{ type.title }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <span class="filter-heading">Categories</span>
+
+                <div class="checkboxes">
+                    {% for category in categories %}
+                    <div class="styled-checkbox">
+                        <input type="checkbox" class="filter-checkbox" id="{{ category.id }}" value="{{ category.id }}">
+                        <label for="{{ category.id }}">{{ category.title }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="mobile-filter button-area text-center">
+                    <button class="btn-lg btn-clear"><span>Clear</span></button>
+                    <button class="btn-lg btn-apply">Apply</button>
+                </div>
+            </div>
+            <div class="filter-pills-container hide">
+                <div class="filter-pills">
+                    <span class="filter-pill-title">Types</span>
+                    <div class="type-pills">
+                        <button href="#" class="filter-pill">General Information</button>
+                        <button href="#" class="filter-pill">Forms and Information</button>
+                    </div>
+                    <span class="filter-pill-title">Categories</span>
+                    <div class="cat-pills">
+                        <button href="#" class="filter-pill">Rider</button>
+                        <button href="#" class="filter-pill">Official</button>
+                    </div>
+                </div>
+            </div>
+            <div class="large-8 cell resources-output">
+                <div class="grid-x grid-margin-x grid-padding-x">
+
+                        {% for i, letter in alphabet_filtered %}
+                            {% if closedLastRow %}
+                            <div class="large-6 cell">
+                            {% endif %}
+
+                                <div class="resource-letter">{{ letter.title }}</div>
+                                {% set resources = craft.entries.section('resources').relatedTo(letter) %}
+                                <div class="resource-links">
+                                    {% for resource in resources %}
+                                        <a href="/" class="resource-link">{{ resource.title }}</a>
+                                    {% endfor %}
+                                </div>
+
+                            {# are we closing the container? #}
+                            {% if (i + 1) == ((total / 2) | round) %}
+                                {% set closedLastRow = true %}
+                            {% else %}
+                                {% set closedLastRow = false %}
+                            {% endif %}
+
+                            {% if closedLastRow %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+                <hr class="spacer">
+                <span class="resource-heading">Frequently Searched</span>
+                <a href="#" class="frequent-link">Lorem Ipsum</a>
+                <a href="#" class="frequent-link">Lorem Ipsum</a>
+                <a href="#" class="frequent-link">Lorem Ipsum</a>
+                <a href="#" class="frequent-link">Lorem Ipsum</a>
+                <span class="resource-heading">Frequently Asked Questions</span>
+                <ul class="accordion" data-accordion data-multi-expand="false" data-allow-all-closed="true">
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">Lorem ipsum dolor sit amet?</a>
+                        <div class="accordion-content" data-tab-content >
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id finibus ex. Proin sit amet risus ut massa elementum lobortis eu vitae ligula. In eget dolor nibh. Nulla quis odio augue. Cras a pretium risus, id efficitur eros. Nulla facilisi. Nam in sapien.</p>
+                        </div>
+                    </li>
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">Fusce luctus lorem velit, a fringilla elit?</a>
+                        <div class="accordion-content" data-tab-content>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id finibus ex. Proin sit amet risus ut massa elementum lobortis eu vitae ligula. In eget dolor nibh. Nulla quis odio augue. Cras a pretium risus, id efficitur eros. Nulla facilisi. Nam in sapien.</p>
+                        </div>
+                    </li>
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">Integer neque velit, tempor quis magna et?</a>
+                        <div class="accordion-content" data-tab-content>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id finibus ex. Proin sit amet risus ut massa elementum lobortis eu vitae ligula. In eget dolor nibh. Nulla quis odio augue. Cras a pretium risus, id efficitur eros. Nulla facilisi. Nam in sapien.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

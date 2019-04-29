@@ -1,0 +1,36 @@
+{% set eventsSection = craft.entries.section('eventsSection') %}
+
+    {# EVENTS LANDING PAGE #}
+    {% if entry.type == "eventsLanding" %}
+      {% include 'events/events.html' %}
+    {% endif %}
+
+    {# LONG FORM TEMPLATE #}
+    {% if entry.type == "eventsLongForm" %}
+      {% include 'unique-pages/long-form-structure.html' %}
+    {% endif %}
+
+    {# FLEX TEMPLATE #}
+    {% if entry.type == "eventsFlex" %}
+      {% include 'flex-template.html' %}
+    {% endif %}
+
+    {# EVENT DETAIL TEMPLATE #}
+    {% if entry.type == "eventsDetail" %}
+      {% include 'events/event-detail.html' %}
+    {% endif %}
+
+    {# NATIONAL CHAMPIONSHIPS LANDING PAGE #}
+    {% if entry.type == "nationalChampionships" %}
+      {% include 'events/national-championships.html' %}
+    {% endif %}
+
+    {# NATIONAL CALENDARS LANDING PAGE #}
+    {% if entry.type == "nationalCalendars" %}
+      {% include 'events/national-calendars.html' %}
+    {% endif %}
+
+    {# NATIONAL CALENDARS DETAIL PAGE #}
+    {% if entry.type == "nationalCalendarsDetail" %}
+      {% include 'events/national-calendars-detail.html' %}
+    {% endif %}

@@ -1,0 +1,40 @@
+<div id="{{content.type}}_{{content.id}}" class="newsletter-signup-widget">
+    <div class="newsletter-signup-container">
+      <div class="grid-container grid-x align-middle">
+        <h5 class="cell medium-6 large-7 newsletter-message-container">{{content.newsletterSignupText}}</h5>
+        <div class="cell medium-6 large-5">
+            <form class="newsletter-form" action="" method="POST">
+                <input type="hidden" name="action" value="mailchimpSubscribe/list/subscribe">
+                {{ getCsrfInput() }}
+                {% if mailchimpSubscribe is defined %}
+                    {% if (not mailchimpSubscribe.success) and (mailchimpSubscribe.errorCode!='1000') %}
+                        <p>An error occured. Please try again.</p>
+                    {% endif %}
+                {% endif %}
+
+                <!--<div class="field-line">-->
+                    <!--<label>First name:</label>-->
+                    <!--<input type="text" name="mcvars[FNAME]" value="{% if (mailchimpSubscribe is defined) and (not mailchimpSubscribe.success) %}{{ mailchimpSubscribe.values.vars.FNAME }}{% endif %}"/>-->
+                <!--</div>-->
+
+                <!--<div class="field-line">-->
+                    <!--<label>Last name:</label>-->
+                    <!--<input type="text" name="mcvars[LNAME]" value="{% if (mailchimpSubscribe is defined) and (not mailchimpSubscribe.success) %}{{ mailchimpSubscribe.values.vars.LNAME }}{% endif %}"/>-->
+                <!--</div>-->
+                <div class="grid-x grid-margin-x">
+                <div class="cell medium-8 field-line">
+                    <label{% if (mailchimpSubscribe is defined) and (mailchimpSubscribe.errorCode=='1000') %} class="error"{% endif %}></label>
+                    <input class="newsletter-email-input" type="email" name="email" placeholder="Email Address" value="{% if (mailchimpSubscribe is defined) and (not mailchimpSubscribe.success) %}{{ mailchimpSubscribe.values.email }}{% endif %}"/>
+                </div>
+                <div class="cell medium-4 hide-for-small-only">
+                <input class="button hollow newsletter-submit" type="submit" name="" value="Sign Up" data-ga-push="{% include 'inc/ga-push.html'%}"/>
+              </div>
+              <div class="cell show-for-small-only submit-mobile">
+              <input class="button hollow newsletter-submit" type="submit" name="" value="Sign Up For Newsletter"/>
+            </div>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>

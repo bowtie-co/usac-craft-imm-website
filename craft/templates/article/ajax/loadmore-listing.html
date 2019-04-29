@@ -1,0 +1,59 @@
+{% if craft.request.isAjax %}
+    {% set queryString = craft.request.queryString|split("&") %}
+    {% set page = "" %}
+    {% set remaining = "" %}
+    {% for param in queryString %}
+        {% set key = param|split("=")[0] %}
+        {% set val = param|split("=")[1] %}
+        {% switch key %}
+            {% case 'page' %}
+                {% set page = val %}
+            {% case 'remaining' %}
+                {% set remaining = val %}
+        {% endswitch %}
+    {% endfor %}
+
+    {% set total_articles = craft.entries.section('article')|length %}
+    {% set entries_on_display = total_articles - remaining %}
+
+
+    {% if page > 1 %}
+        {% set offset = entries_on_display + (3*(page-1)) %}
+    {% else %}
+        {% set offset = entries_on_display %}
+    {% endif %}
+
+    {% set entries = craft.entries.section('article').offset(offset).limit(3).find() %}
+
+    <div class="grid-x grid-padding-x">
+        {% for entry in entries %}
+            <div class="small-12 medium-4 cell">
+                <div class="news-article-content-parent-container">
+                    {% if entry.articleHeroImage.first()|length %}
+                    <img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicFeaturedArticleList") }}"/>
+                    {% endif %}
+                    <div class="article-content-block">
+                        <div class="grid-x row">
+                            <div class="cell small-6 medium-12 large-6">
+                                <div class="cat button hollow secondary">{{ entry.articleCategory.first().title }}</div>
+                            </div>
+                            <div class="cell small-6 medium-12 large-6 date">
+                                <div>{{ entry.postDate | date("M d, Y") }}</div>
+                            </div>
+                        </div>
+
+                        <div class="top-title">{{entry.title}}</div>
+
+                        {% if entry.articleSummary|length %}
+                        <div class="description">{{entry.articleSummary}}</div>
+                        {% endif %}
+                        <div class="news-article-content">
+                            <a class="news-article-cta" href="{{entry.url}}">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endif %}

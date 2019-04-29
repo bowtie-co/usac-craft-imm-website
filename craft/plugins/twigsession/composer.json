@@ -1,0 +1,14 @@
+{
+	"name": "/twigsession",
+	"description": "Custom access to session variables within Twig.",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Aaron Copeland",
+			"homepage": "http://www.imm.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

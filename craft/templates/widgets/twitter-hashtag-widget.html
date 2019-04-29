@@ -1,0 +1,34 @@
+<div id="{{content.type}}_{{content.id}}" class="twitter-widget">
+  <div class="grid-x grid-padding-x grid-container align-top align-center">
+    {% if content.wysiwygWidget|length %}
+    <div class="cell large-6">
+      {{ content.wysiwygWidget }}
+    </div>
+    {% endif %}
+    <div class="cell large-1"></div>
+    <div class="cell large-5 twitter-feed-container">
+      <h2>{{ content.topTitle }}</h2>
+      <div class="grid-x twitterFeed">
+
+      </div>
+    </div>
+</div>
+</div>
+
+{% includejs %}
+$(document).ready(function() {
+  $.ajax({
+    dataType: "json",
+    type: "GET",
+    url: "https:{{ siteUrl }}actions/UsacApi/twitter/getTweets/{{ content.twitterHashtag }}",
+    success: function(data) {
+      var output="<div class=\"cell\">";
+     for (var i in data.tweets) {
+       output+="<div class=\"grid-x tweet\"><div class=\"cell small-2 text-center\">" + "<a target=\"_blank\" href=\"" + data.tweets[i].user_url + "\"><img src=\"" + data.tweets[i].user_profile_img + "\">" + "</a></div><div class=\"cell small-10\"><div class=\"tweet-username\"><a target=\"_blank\" href=\"" + data.tweets[i].user_url + "\">@" + data.tweets[i].username + "</a></div><div>" + data.tweets[i].text + "</div></div></div>";
+     }
+      output+="</div>";
+      $(".twitterFeed").html(output);
+  }
+  });
+});
+{% endincludejs %}

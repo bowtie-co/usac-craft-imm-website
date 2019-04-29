@@ -1,0 +1,124 @@
+{% extends "_layout" %}
+{% block content %}
+<div id="national-calendars" class="national-calendar events">
+  <div class="event-detail-top grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          {% if craft.request.segments %}
+          <div class="breadcrumb">
+            {% for crumb in entry.getAncestors() %}
+            <span>{{ crumb.getLink() }} ></span> {% endfor %}
+            <span>{{ entry.title() }}</span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="grid-x">
+        <div class="cell tab-titles">
+          <ul class="tabs grid-x grid-margin-x">
+            <li class="cell auto tabs-title"><a href="/events/">Search All Events</a></li>
+            <li class="cell auto tabs-title is-active"><a href="/events/national-calendars/">National Calendars</a></li>
+            <li class="cell auto tabs-title"><a class="nc-tab-text" href="/events/national-championships/">National Championships</a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x nc-title">
+      <div class="cell">
+        <h1>National Calendars</h1>
+      </div>
+    </div>
+  </div>
+  <div class="grid-container nc-grid">
+  <div class="grid-x align-middle grid-padding-x grid-padding-y">
+      {% for block in entry.calCardWidget %}
+        {% set type = block.type.handle %}
+            {% switch type %}
+                {% case 'calCard' %}
+            <section class="cell large-3 medium-4 small-6 cal-entry" id="calendar-cards-widget">
+                <a href="{{block.calendarCardUrl}}">
+                  {% if block.calendarCardImage.first()|length %}
+                  <img class="grid-image" src="{{ block.calendarCardImage.first().getUrl("") }}"/>
+                  {% endif %}
+                  <div class="hovered">
+                    <div class="date-container">
+                      <h5 class="cal-title"> {{ block.calendarCardTitle | upper }} </h5>
+                    </div>
+                 </div>
+                </a>
+            </section>
+        {% endswitch %}
+      {% endfor %}
+    </div>
+  </div>
+     {% set entries = craft.entries.section('article').limit(3).find() %}
+     <div class="news-article-widget">
+       <div class="grid-container">
+         <div class="grid-x">
+           <div class="cell text-center">
+           <h3>Latest Posts</h3>
+           </div>
+         </div>
+       <div class="grid-x grid-padding-x news-articles">
+             {% for entry in entries %}
+                 <div class="small-12 medium-4 cell">
+                     <div class="news-article-content-parent-container">
+                         {% if entry.articleHeroImage.first()|length %}
+                             <a href="{{entry.url}}"><img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicFeaturedArticleList") }}"/></a>
+                         {% endif %}
+                         <div class="article-content-block">
+                             <h5><a href="{{entry.url}}">{{entry.title}}</a></h5>
+                             <div class="article-date">{{ entry.postDate | date("M d, Y") }}</div>
+                             <div class="news-article-content">
+                                 <a class="news-article-cta" href="{{entry.url}}">Read Article</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             {% endfor %}
+         </div>
+         <!-- <div class="row text-center">
+             <div class="small-12 centered cell">
+                 <div class="button secondary ajax-listing-widget">View More Articles</div>
+             </div>
+         </div> -->
+     </div>
+  </div>
+  <section class="grid-x social-icons-widget align-center">
+    <div class="cell medium-6">
+      <div class="grid-x grid-padding-x align-center">
+        {% if entry.facebookButton %}
+        <div class="cell small-2 text-center">
+          <a class="social-cta" href="{{entry.facebookLink}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        {% endif %} {% if entry.twitterButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.twitterLink}}" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        {% endif %} {% if entry.stravaButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.stravaLink}}" target="_blank"><i class="fab fa-strava"></i></a>
+        </div>
+        {% endif %} {% if entry.instagramButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.instagramLink}}" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        {% endif %} {% if entry.youtubeButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.youtubeLink}}" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <div class="modal-widget">
+
+  {% for entry in entry.modalEntry %}
+
+    {% include 'inc/modal.html' %}
+
+  {% endfor %}
+  </div>
+ </div>
+{% endblock %}

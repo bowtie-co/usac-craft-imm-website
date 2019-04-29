@@ -1,0 +1,30 @@
+.stacked-image-text-widget {
+  text-align:center;
+  .image-text-header {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: $red;
+  }
+  .stacked-image-title {
+    padding-top: 15px;
+    text-transform: uppercase;
+    color: $blue;
+  }
+
+  .image-text-columns {
+    padding: 0 -1.5rem;
+
+    .cell {
+      padding: 1rem 1.5rem;
+    }
+    img {
+
+    }
+  }
+  .stacked-image-button {
+    padding-top: 1rem;
+  }
+}

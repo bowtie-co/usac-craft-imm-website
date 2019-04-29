@@ -1,0 +1,116 @@
+#sponsors {
+  padding: 2.0625rem 0;
+  h2 {
+    text-transform: uppercase;
+  }
+  .sponsor-grid  {
+    //display: flex;
+    margin: 0;
+
+    .cell-block {
+      text-align: center;
+      border-right:1px solid rgba(155,155,155,.2);
+      border-bottom:1px solid rgba(155,155,155,.2);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      a {
+        margin:0 auto;
+      }
+      .sponsor-img {
+        padding: 1.5rem;
+        margin: 0 auto;
+      }
+    }
+    .cell-block:nth-child(4),
+    .cell-block:nth-child(8) {
+      border-right:none;
+    }
+    .cell-block:nth-child(5),
+    .cell-block:nth-child(6),
+    .cell-block:nth-child(7),
+    .cell-block:nth-child(8) {
+      border-bottom:none;
+    }
+
+  }
+}
+@include breakpoint(small only) {
+  #sponsors {
+    .sponsor-grid {
+      .cell-block {
+        border-bottom:1px solid rgba(155,155,155,.2);
+      }
+      .cell-block:nth-child(5),
+      .cell-block:nth-child(6){
+        border-bottom:1px solid rgba(155,155,155,.2);
+      }
+      .cell-block:nth-child(7),
+      .cell-block:nth-child(8){
+        border-bottom:none;
+      }
+      .cell-block:nth-child(even) {
+        border-right:none;
+      }
+
+      /*safari fixes*/
+      .small-6 {
+        flex: 0 0 49%;
+      }
+    }
+  }
+}
+@include breakpoint(medium only) {
+  #sponsors {
+    .sponsor-grid {
+      .cell-block {
+        border-bottom:1px solid rgba(155,155,155,.2);
+      }
+      .cell-block:nth-child(5),
+      .cell-block:nth-child(6){
+        border-bottom:1px solid rgba(155,155,155,.2);
+      }
+      .cell-block:nth-child(7),
+      .cell-block:nth-child(8){
+        border-bottom:none;
+      }
+      .cell-block:nth-child(even) {
+        border-right:none;
+      }
+      /*safari fixes*/
+      .medium-6 {
+        flex: 0 0 49%;
+      }
+    }
+  }
+}
+@include breakpoint(large only) {
+  #sponsors {
+    .sponsor-grid {
+      /*safari fixes*/
+      .large-3 {
+        flex: 0 0 24%;
+      }
+    }
+  }
+}
+@include breakpoint(xlarge only) {
+  #sponsors {
+    .sponsor-grid {
+      /*safari fixes*/
+      .large-3 {
+        flex: 0 0 24%;
+      }
+    }
+  }
+}
+@include breakpoint(xxlarge only) {
+  #sponsors {
+    .sponsor-grid {
+      /*safari fixes*/
+      .large-3 {
+        flex: 0 0 24%;
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+  <div v-for="(item, key, index) in licenses" v-if="{{status}} {{expression}}" :id="'menu-' + key" :data-pair="'menu-' + key" class="cell large-6 license-card border-back" style="position: relative;">
+    <div class="hide-for-print" style="background-color: #F5F7F7;position:absolute; right: 15px;width: 30px;">
+      <i class="fa-bars fa fa-2x" style="padding-top: 15px;cursor:pointer;pointer:hand;" v-show="item.menuActive == false" @click="item.menuActive = !item.menuActive"></i>
+
+      <a v-show="item.menuActive == true" @click="item.menuActive = !item.menuActive" style="cursor:pointer;pointer:hand;">
+        <svg viewBox="0 0 57 62" xmlns="http://www.w3.org/2000/svg" style="height:40px;">
+          <path fill="#4A4A4A" d="M52 13.732L33.232 32.5 52 51.268 47.268 56 28.5 37.232 9.732 56 5 51.268 23.768 32.5 5 13.732 9.732 9 28.5 27.768 47.268 9z" fill-rule="evenodd"/>
+        </svg>
+      </a>
+    </div>
+      <div class="grid-x align-middle" style="background-color: #F5F7F7; padding: 15px;padding-bottom: 8px;padding-top: 0px;">
+          <div class="cell small-9" style="background-color: #F5F7F7;">
+            <h4 class="title" v-bind:class="getStatus(item)" v-text="item.label"></h4>
+          </div>
+
+          <div class="cell large-6 text-left" style="background-color: #F5F7F7;padding-bottom: 10px;">
+            {# PENDING #}
+            <h5 class="license-status" v-bind:class="getStatus(item)" v-if="getStatus(item) == 'pending'" @click="pendFilter('pend-' + key)">
+              [[outputStatus(item)]]&nbsp;&nbsp;
+              <svg v-if="getStatus(item) == 'pending'" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="width: 20px;height:20px;position: relative;top: 5px;">
+                <g transform="translate(1 1)" fill="none" fill-rule="evenodd">
+                  <circle stroke="#031E41" stroke-width="2" cx="10" cy="10" r="10"/>
+                  <text font-family="ProximaNova-Bold, Proxima Nova" font-size="14" font-weight="bold" fill="#031E41">
+                    <tspan x="7" y="15">?</tspan>
+                  </text>
+                </g>
+              </svg>
+            </h5>
+
+            {# ACTIVE #}
+            <h5 class="license-status" v-bind:class="getStatus(item)" v-if="getStatus(item) == 'active'">[[outputStatus(item)]]</h5>
+
+            {# EXPIRED #}
+            <h5 class="license-status" :href="getRenewLink(item.licensetype)" v-bind:class="getStatus(item)" v-if="getStatus(item) == 'expired'">[[outputStatus(item)]]</h5>
+
+            <h5 class="expiration" v-if="Date.now() <= new Date(item.date_exp)" v-text="'Expires: ' + item.date_exp"></h5>
+            <h5 class="expiration" v-else v-text="'Expired: ' + item.date_exp"></h5>
+          </div>
+          <div class="cell large-6 text-right" style="background-color: #F5F7F7;padding-bottom: 10px;">
+            <a class="register-btn renew-button" :href="getRenewLink(item.licensetype)" v-bind:class="renewStatus(item)" v-if="renewStatus(item) == 'renew'">Renew Now</a>
+          </div>
+
+        </div>
+        <div v-bind:id="'pend-' + key" :data-id="key" v-bind:class="[pendSelect == 'pend-' + key ? activeClass : '', errorClass]" class="pend-details cell large-12">
+          <div class="cell large-12 bg-yellow" v-if="item.pend_details.length > 0 && item.license_status == 'P'">
+            <h5>This license is currently pending:</h5>
+            <ul>
+              <li v-for="pd in item.pend_details">
+                <a :href="pd.link" target="_blank" v-text="pd.message"></a>
+              </li>
+            </ul>
+          </div>
+          <div class="cell large-12 bg-yellow" v-if="item.pend_details.length == 0 && item.license_status == 'P'">
+            <h5>This license is currently pending awaiting:</h5>
+            <ul>
+              <li v-for="pr in item.pend_reason" v-text="pr"></li>
+            </ul>
+          </div>
+        </div>
+          <div class="grid-x grid-margin-x grid-padding-x license-details">
+          <div class="cell large-12">
+            <h5>License Details</h5>
+            <div class="license-details" v-bind:id="'details-' + key" :data-id="key">
+              <div class="cell large-12">
+                <ul>
+                  <li v-for="(license, key, index) in item.categories">
+                    <span v-text="catFullName(key)"></span>&nbsp;<span v-text="license"></span>
+                  </li>
+                </ul>
+              </div>
+              <div class="cell large-12" v-if="item.la_name">
+                <h5>Local Association</h5>
+                <a :href="'http://' + item.la_website" v-text="item.la_name" target="_blank"></a>
+              </div>
+              <div class="cell large-12" v-if="item.clubs">
+                <li v-for="(club, key, index) in item.clubs" style="list-style: none;">
+                    <h5 v-text="catFullName(key) + ' Club/Team'" class="club-name"></h5>
+                    <ul>
+                      <li>
+                        <span v-text="club.club" class="club-org"></span>
+                      </li>
+                    </ul>
+                  </li>
+              </div>
+            </div>
+          </div>
+      </div>
+      <transition name="slide-fade">
+    <div v-show="item.menuActive" v-bind:id="'menu-' + key" class="license-menu hide-for-print">
+        <ul>
+            <li v-if="Date.now() <= new Date(item.date_exp) && getCatUpgrade(item.updown_type) != ''">
+                <a :href="getCatUpgrade(item.updown_type)">Category Upgrade</a>
+            </li>
+            <li v-if="Date.now() <= new Date(item.date_exp)">
+              <a :href="'https://register.usacycling.org/#!/mysubscriptions'">Auto Renewal</a>
+            </li>
+            <li v-if="(item.licensetype === '' || item.licensetype === 'R') && getStatus(item) == 'active'">
+              <a :href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserclub&compid=' + userProfile.comp_id">Edit Club</a>
+            </li>
+            <li v-if="(item.licensetype === '' || item.licensetype === 'R') && getStatus(item) == 'active'">
+                <a :href="'https://legacy.usacycling.org/myusac/index.php?pagename=edituserteam&compid=' + userProfile.comp_id">Edit Team</a>
+              </li>
+            <li v-if="getStatus(item) == 'expired'">
+              <a :href="getRenewLink(item.licensetype)">[[outputStatus(item)]]</a>
+            </li>
+            <li v-if="Date.now() <= new Date(item.date_exp)">
+              <a :href="'https://legacy.usacycling.org/myusac/index.php?pagename=authtoride&compid=' + userProfile.comp_id" @click="item.menuActive = false" target="_blank">Print License</a>
+            </li>
+        </ul>
+      </div>
+    </transition>
+
+    </div>

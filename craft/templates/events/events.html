@@ -1,0 +1,102 @@
+{% extends "_layout" %}
+{% block content %}
+{% if entry.eventCarouselDisplay %}
+<input type="hidden" id="eventCount" value="{{entry.eventCarouselMatrix|length}}" />
+
+<div id="events-widget" class="event-carousel-widget" style="{% if entry.eventCarouselBackgroundImage|length %}background-image:url({{entry.eventCarouselBackgroundImage.first().getUrl()}});{% endif %}">
+  <div class="grid-x grid-container grid-padding-x event-card-carousel">
+    <div class="cell">
+    {{ entry.eventCarouselHeading }}
+    </div>
+    <div class="cell">
+      <events-carousel></events-carousel>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<div id="events" class="events">
+  <div class="event-detail-top grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell">
+        {% if craft.request.segments %}
+        <div class="breadcrumb">
+          {% for crumb in entry.getAncestors() %}
+          <span>{{ crumb.getLink() }} ></span> {% endfor %}
+          <span>{{ entry.title() }}</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell">
+          <h1>Search All Events</h1>
+        </div>
+      </div>
+    </div>
+    <div class="grid-x tab-nav">
+      <div class="cell tab-titles">
+        <ul class="tabs grid-x grid-margin-x">
+          <li class="cell auto tabs-title is-active"><a href="/events/">Search All Events</a></li>
+          {% set calEntry = craft.entries.section('eventsSection').slug('national-calendars').status('disabled').first() %}
+          {% if not calEntry %}
+          <li class="cell auto tabs-title"><a href="/events/national-calendars/">National Calendars</a></li>
+          {% endif %}
+          {% set champEntry = craft.entries.section('eventsSection').slug('national-championships').status('disabled').first() %}
+          {% if not champEntry %}
+          <li class="cell auto tabs-title"><a class="nc-tab-text" href="/events/national-championships/">National Championships</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+    <events></events>
+
+    <section class="more-event-info">
+      <div class="info-container">
+        {% if entry.topTitle %}
+        <h1>{{ entry.topTitle }}</h1>
+        {% endif %}
+        {% if entry.wysiwygWidget %}
+        {{ entry.wysiwygWidget }}
+        {% endif %}
+        {% if entry.ctaText %}
+        <a href="{{ entry.ctaUrl }}" class="btn-lg red-inverse">{{ entry.ctaText }}</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="grid-x social-icons-widget align-center">
+        <div class="cell medium-6">
+          <div class="grid-x grid-padding-x align-center">
+            {% if entry.facebookButton %}
+            <div class="cell small-2 text-center">
+              <a class="social-cta" href="{{entry.facebookLink}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            {% endif %} {% if entry.twitterButton %}
+            <div class="cell small-2  text-center">
+              <a class="social-cta" href="{{entry.twitterLink}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            {% endif %} {% if entry.stravaButton %}
+            <div class="cell small-2  text-center">
+              <a class="social-cta" href="{{entry.stravaLink}}" target="_blank"><i class="fab fa-strava"></i></a>
+            </div>
+            {% endif %} {% if entry.instagramButton %}
+            <div class="cell small-2  text-center">
+              <a class="social-cta" href="{{entry.instagramLink}}" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            {% endif %} {% if entry.youtubeButton %}
+            <div class="cell small-2  text-center">
+              <a class="social-cta" href="{{entry.youtubeLink}}" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

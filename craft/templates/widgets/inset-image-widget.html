@@ -1,0 +1,21 @@
+<div id="{{content.type}}_{{content.id}}" class="inset-image-widget grid-container grid-x align-middle">
+  <div class="medium-6 cell"><img class="inset-image" src="{{content.image.first().getUrl()}}"/></div>
+  <div class="medium-6 cell">
+    <div class="inset-image-content">
+    {% if  content.topTitle|length %}
+    <div class="top-title">{{ content.topTitle }}</div>
+    {% endif %}
+
+    {% if  content.subTitle|length %}
+    <h2 class="main-title">{{ content.subTitle }}</h2>
+    {% endif %}
+
+    {% if  content.description|length %}
+    <p class="description">{{ content.description }}</p>
+    {% endif %}
+    {% if content.ctaUrl|length and content.ctaText|length %}
+    <a class="button hollow secondary" href="{{ content.ctaUrl }}" {% if content.hrefTarget %}target="_blank"{% endif %} data-ga-push="{% if content.gaOverrideValue|length %}{{content.gaOverrideValue}}{%else%}{% include 'inc/ga-push.html'%}{%endif%}">{{ content.ctaText }}</a>
+    {% endif %}
+  </div>
+  </div>
+</div>

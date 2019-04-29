@@ -1,0 +1,43 @@
+{% if content.backgroundPosition == 'left' %}
+    <div id="{{content.type}}_{{content.id}}" class="image-text-widget">
+      <div class="grid-container grid-x align-middle">
+        <div class="cell large-7 alternating-image-left">
+            {% if content.image.first()|length %}
+            <div class="img-min-height">
+                <img class="feature-image" src="{{content.image.first().getUrl()}}"/>
+            </div>
+            {% endif %}
+        </div>
+        <div class="alternating-text-right">
+            <div class="top-title alternating-top-title">{{ content.topTitle }}</div>
+            <h2 class="main-title">{{ content.subTitle }}</h2>
+            <div class="description alternating-description">{{ content.description }}</div>
+            {% if content.ctaUrl|length and content.ctaText|length %}
+                <a class="button hollow secondary" href="{{ content.ctaUrl }}" {% if content.hrefTarget %}target="_blank"{% endif %} data-ga-push="{% include 'inc/ga-push.html'%}">{{ content.ctaText }}</a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+{% if content.backgroundPosition == 'right' %}
+    <div id="{{content.type}}_{{content.id}}" class="image-text-widget">
+      <div class="grid-container grid-x align-middle align-right">
+        <div class="alternating-text-left small-order-2 medium-order-2 large-order-1">
+          <div class="top-title alternating-top-title">{{ content.topTitle }}</div>
+          <h2 class="main-title">{{ content.subTitle }}</h2>
+          <div class="description alternating-description">{{ content.description }}</div>
+          {% if content.ctaUrl|length and content.ctaText|length %}
+              <a class="button hollow secondary" href="{{ content.ctaUrl }}" {% if content.hrefTarget %}target="_blank"{% endif %} data-ga-push="{% include 'inc/ga-push.html'%}">{{ content.ctaText }}</a>
+          {% endif %}
+        </div>
+        <div class="cell large-7 alternating-image-right small-order-1 medium-order-1 large-order-2">
+            {% if content.image.first()|length %}
+            <div class="img-min-height">
+                <img class="feature-image float-right" src="{{content.image.first().getUrl()}}"/>
+            </div>
+            {% endif %}
+        </div>
+      </div>
+      </div>
+{% endif %}

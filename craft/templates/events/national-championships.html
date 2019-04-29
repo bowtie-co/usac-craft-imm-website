@@ -1,0 +1,275 @@
+{% extends "_layout" %}
+{% block content %}
+
+<div id="national-championships" class="national-championships events">
+  <div class="event-detail-top grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell">
+        {% if craft.request.segments %}
+        <div class="breadcrumb">
+          {% for crumb in entry.getAncestors() %}
+          <span>{{ crumb.getLink() }} ></span> {% endfor %}
+          <span>{{ entry.title() }}</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="grid-x">
+      <div class="cell tab-titles">
+        <ul class="tabs grid-x grid-margin-x">
+          <li class="cell auto tabs-title"><a href="/events/">Search All Events</a></li>
+          <li class="cell auto tabs-title"><a href="/events/national-calendars/">National Calendars</a></li>
+          <li class="cell auto tabs-title is-active"><a class="nc-tab-text" href="/events/national-championships/">National Championships</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="championship-hero">
+    <div class="championship-hero-content">
+      {% if entry.topTitle|length %}
+      <h5 class="hero-top-title">{{ entry.topTitle }}</h5> {% endif %} {% if entry.subTitle|length %}
+      <h1 class="">{{ entry.subTitle }}</h1> {% endif %}
+    </div>
+    <img src="{{entry.image.first().getUrl('')}}">
+  </div>
+  <div class="upcoming-events-grid grid-container">
+    <div class="grid-x align-middle grid-padding-x">
+      <div class="cell medium-6">
+        <h3>Upcoming Events</h3>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x grid-padding-y">
+
+      {% set sortedEvents = craft.entries.section('nationalChampionships').order('eventDate asc') %}
+
+      {% for entry in sortedEvents if entry.eventDate > now %}
+      <div class="cell large-3 medium-4 small-6 grid-event future-event">
+        <a href="{{ entry.url}}">
+            <img class="grid-image" src="{{ entry.eventImage.first.getUrl('') }}"/>
+             <div class="hovered">
+              <div class="date-container">
+                <div class="event-box-details">
+                  {% for block in entry.eventAddress %}
+                      {% set type = block.type.handle %}
+                      {% switch type %}
+                          {% case 'address' %}
+                <h5 class="cal-loc">{{block.city}}, {{block.state}}</h5>
+                {% endswitch %}
+                {% endfor %}
+                <hr class="styleOne"/>
+                <h5 class="cal-date">
+                  {{ entry.eventDate |date("M d, Y") }}
+                  {% if entry.eventEndDate %}
+                    - <span>{{ entry.eventEndDate |date("M d, Y") }}</span>
+                  {% endif %}
+                </h5>
+                <p class="cal-desc">{{ entry.title }}</p>
+              </div>
+              </div>
+            </div>
+           </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div id="past-events" class="upcoming-events-grid grid-container event-grid">
+    <div class="grid-x align-middle grid-padding-x">
+      <div class="cell medium-8 large-9">
+        <h3>Past Events</h3>
+      </div>
+      <div class="cell medium-4 large-3">
+        <form class="form-inline" action="{{ url('/events/national-championships/') }}" method="get">
+          <div class="form-group">
+            {% set year_param = craft.request.getParam('eventYear') %}
+            {% set allEntries = craft.entries.section('nationalChampionships').find() %}
+            {% set allEntriesByYear = allEntries|group('eventDate.year') %}
+            <label>
+              <select id="eventYear" name="eventYear" onchange="this.form.submit()">
+                <option value="all" {% if year_param == "" %} selected {% endif %}>All</option>
+                {% for year, entriesInYear in allEntriesByYear %}
+                <option value="{{ year }}" {% if year in year_param %} selected {% endif %}>{{ year }}</option>
+                {% endfor %}
+              </select>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="grid-x grid-padding-x grid-padding-y">
+      {% set query = craft.request.getParam('eventYear') %}
+      {% for entry in allEntries if entry.eventDate < now %}
+      {% if query == "" or query == "all" %}
+      <div class="cell large-3 medium-4 small-6 grid-event past-event">
+        <a href="{{entry.url}}">
+            <img class="grid-image" src="{{ entry.eventImage.first.getUrl('') }}"/>
+             <div class="hovered-grey">
+              <div class="date-container">
+                <div class="event-box-details">
+                  {% for block in entry.eventAddress %}
+                      {% set type = block.type.handle %}
+                      {% switch type %}
+                          {% case 'address' %}
+                <h5 class="cal-loc">{{ block.city }}, {{ block.state }}</h5>
+                {% endswitch %}
+                {% endfor %}
+                <hr class="styleOne"/>
+                <h5 class="cal-date">{{ entry.eventDate |date("M d, Y") }}</h5>
+                <p class="cal-desc">{{ entry.title }}</p>
+              </div>
+              </div>
+            </div>
+           </a>
+      </div>
+      {% endif %}
+      {% if entry.eventDate.year == query %}
+      <div class="cell large-3 medium-4 small-6 grid-event past-event">
+        <a href="{{entry.url}}">
+            <img class="grid-image" src="{{ entry.eventImage.first.getUrl('') }}"/>
+             <div class="hovered-grey">
+              <div class="date-container">
+                <div class="event-box-details">
+                  {% for block in entry.eventAddress %}
+                      {% set type = block.type.handle %}
+                      {% switch type %}
+                          {% case 'address' %}
+                <h5 class="cal-loc">{{ block.city }}, {{ block.state }}</h5>
+                {% endswitch %}
+                {% endfor %}
+                <hr class="styleOne"/>
+                <h5 class="cal-date">{{ entry.eventDate |date("M d, Y") }}</h5>
+                <p class="cal-desc">{{ entry.title }}</p>
+              </div>
+              </div>
+            </div>
+           </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="ranking-section grid-container">
+    <div class="grid-x grid-padding-x align-middle align-center">
+      <div class="cell large-4">
+        <a class="button hollow secondary expanded" href="/resources/national-champions-records/national-champions">Current National Champions</a>
+      </div>
+      <div class="cell large-4">
+        <a class="button secondary expanded" href="/resources/national-champions-records/national-records">National Records</a>
+      </div>
+    </div>
+  </div>
+  <div class="alternating-image-text-blocks-widget stories-section align-middle">
+    <h2 class="stories-title">{{ entry.championStoriesTitle }}</h2>
+    {% for block in entry.championStoriesMatrix %}
+    {% set type = block.type.handle %}
+    {% switch type %}
+    {% case 'championStory' %}
+    {% if block.imageBlockPosition == 'left' %}
+    <div class="champion-block-row">
+      <div class="chevron chevron-blue show-for-large"></div>
+      <div class="grid-x grid-container champion-story-block align-center align-middle">
+      <div class="cell large-6 medium-6 text-right">
+        <img class="" src="{{ block.championImage.first.getUrl('') }}" />
+      </div>
+      <div class="cell large-6 medium-6 text-block champion-text-block-right">
+        <div class="grid-x grid-padding-x align-middle align-right">
+          <div class="cell large-11">
+            <div class="top-title">{{ block.championLocation }}</div>
+            <h4 class="main-title">{{ block.championName }}</h4>
+            <div class="description">{{ block.championStory }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    {% endif %} {% if block.imageBlockPosition == 'right' %}
+    <div class="champion-block-row">
+      <div class="chevron chevron-white show-for-large"></div>
+      <div class="grid-x grid-container champion-story-block align-center align-middle">
+      <div class="cell large-6 medium-6 text-block champion-text-block-left small-order-2 medium-order-1 large-order-1">
+        <div class="grid-x grid-padding-x align-middle align-left">
+          <div class="cell large-11">
+            <div class="top-title">{{ block.championLocation }}</div>
+            <h4 class="main-title">{{ block.championName }}</h4>
+            <div class="description">{{ block.championStory }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="large-6 medium-6 small-order-1 medium-order-1 large-order-2 text-left">
+        <img src="{{ block.championImage.first.getUrl('') }}" />
+      </div>
+    </div>
+  </div>
+    {% endif %} {% endswitch %} {% endfor %}
+  </div>
+  {% set entries = craft.entries.section('article').limit(3).find() %}
+  <div class="news-article-widget">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell text-center">
+          <h3>Latest Posts</h3>
+        </div>
+      </div>
+      <div class="grid-x grid-padding-x news-articles">
+        {% for entry in entries %}
+        <div class="small-12 medium-4 cell">
+          <div class="news-article-content-parent-container">
+            {% if entry.articleHeroImage.first()|length %}
+            <a href="{{entry.url}}"><img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicFeaturedArticleList") }}"/></a> {% endif %}
+            <div class="article-content-block">
+              <h5><a href="{{entry.url}}">{{entry.title}}</a></h5>
+              <div class="article-date">{{ entry.postDate | date("M d, Y") }}</div>
+              <div class="news-article-content">
+                <a class="news-article-cta" href="{{entry.url}}">Read Article</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- <div class="row text-center">
+        <div class="small-12 centered cell">
+          <div class="button secondary ajax-listing-widget">View More Articles</div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <section class="grid-x social-icons-widget align-center">
+    <div class="cell medium-6">
+      <div class="grid-x grid-padding-x align-center">
+        {% if entry.facebookButton %}
+        <div class="cell small-2 text-center">
+          <a class="social-cta" href="{{entry.facebookLink}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        {% endif %} {% if entry.twitterButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.twitterLink}}" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        {% endif %} {% if entry.stravaButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.stravaLink}}" target="_blank"><i class="fab fa-strava"></i></a>
+        </div>
+        {% endif %} {% if entry.instagramButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.instagramLink}}" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        {% endif %} {% if entry.youtubeButton %}
+        <div class="cell small-2  text-center">
+          <a class="social-cta" href="{{entry.youtubeLink}}" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-widget">
+
+  {% for entry in entry.modalEntry %}
+
+    {% include 'inc/modal.html' %}
+
+  {% endfor %}
+  </div>
+
+  {% endblock %}

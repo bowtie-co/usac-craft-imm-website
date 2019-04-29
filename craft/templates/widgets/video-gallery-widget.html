@@ -1,0 +1,32 @@
+<div id="{{content.type}}_{{content.id}}" class="grid-container video-gallery-widget">
+    <div class="grid-x grid-margin-x grid-margin-y align-middle video-gallery-row">
+  {% for block in content.videoGallery%}
+      {% set type = block.type.handle %}
+      {% switch type %}
+      {% case 'videoGridItem' %}
+        <div class="cell medium-6 large-4 video-grid-item">
+              {% if block.videoPlaceholderImage|length %}
+              <img src="{{block.videoPlaceholderImage.first().getUrl('videoStill')}}"/>
+              {% endif %}
+              {% if block.videoUrl|length %}
+                  <div class="reveal" id="twoColWidgetModal-{{ block.videoId }}" data-reveal data-reset-on-close="true" style="background-color: #000;">
+                      <button class="close-button" data-close aria-label="Close modal" type="button">
+                          <span class="" aria-hidden="true">&times;</span>
+                      </button>
+                      <div class="video-container">
+                          <iframe class="video-iframe" src="{{block.videoUrl}}?autoplay=0&title=0&byline=0&portrait=0"  width="100%" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                      </div>
+                  </div>
+                  <div class="video-grid-text">
+                    <h5>{{ block.videoTitle }}</h5>
+                    <p>{{ block.videoDescription}}</p>
+                  </div>
+
+                  <a class="videoCta modalCta" data-open="twoColWidgetModal-{{ block.videoId }}"><i class="fa fa-play"></i></a>
+
+            {% endif %}
+              </div>
+              {% endswitch %}
+              {% endfor %}
+          </div>
+        </div>

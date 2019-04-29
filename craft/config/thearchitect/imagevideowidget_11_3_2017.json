@@ -1,0 +1,70 @@
+{
+    "fields": [
+        {
+            "group": "Image Grid Widget",
+            "name": "Image Grid Widget Video URL 1",
+            "handle": "imageGridWidgetVideoUrl1",
+            "instructions": "If set the vimeo video url provided will be displayed in the hero (e.g., https:\/\/player.vimeo.com\/video\/217852144). If blank the grid will be a static image.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },{
+            "group": "Image Grid Widget",
+            "name": "Image Grid Widget Video URL 2",
+            "handle": "imageGridWidgetVideoUrl2",
+            "instructions": "If set the vimeo video url provided will be displayed in the hero (e.g., https:\/\/player.vimeo.com\/video\/217852144). If blank the grid will be a static image.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },{
+            "group": "Image Grid Widget",
+            "name": "Image Grid Widget Video URL 3",
+            "handle": "imageGridWidgetVideoUrl3",
+            "instructions": "If set the vimeo video url provided will be displayed in the hero (e.g., https:\/\/player.vimeo.com\/video\/217852144). If blank the grid will be a static image.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },{
+            "group": "Image Grid Widget",
+            "name": "Image Grid Widget Video URL 4",
+            "handle": "imageGridWidgetVideoUrl4",
+            "instructions": "If set the vimeo video url provided will be displayed in the hero (e.g., https:\/\/player.vimeo.com\/video\/217852144). If blank the grid will be a static image.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },{
+            "group": "Image Grid Widget",
+            "name": "Image Grid Widget Video URL 5",
+            "handle": "imageGridWidgetVideoUrl5",
+            "instructions": "If set the vimeo video url provided will be displayed in the hero (e.g., https:\/\/player.vimeo.com\/video\/217852144). If blank the grid will be a static image.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        }
+    ]
+}

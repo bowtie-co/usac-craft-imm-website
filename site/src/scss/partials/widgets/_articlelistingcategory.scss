@@ -1,0 +1,111 @@
+.news-article-category-widget {
+  padding: 2.0625rem 0;
+  .news-article-content-featured-parent-container {
+
+  }
+  .news-article-content-parent-container {
+    position: relative;
+    padding-bottom: 34px;
+    .news-article-image {
+      width:100%;
+    }
+    .news-article-content{
+      position: absolute;
+      bottom: 2.25rem;
+      left: 1rem;
+      font-size: 1rem;
+      @include breakpoint (medium) {
+        bottom: 4rem;
+      }
+      .news-article-title {
+        font-size: 20px;
+        margin-bottom: 1rem;
+        @include breakpoint (medium) {
+          font-size: 50px;
+        }
+      }
+      .button {
+        color: #fff;
+      }
+      .news-article-title {
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 1;
+        text-shadow: 2px 2px 35px $dark-gray;
+      }
+      .news-article-cta {
+        text-transform: uppercase;
+        font-family: 'ProximaNovaBold';
+        color: #fff;
+      }
+      .news-article-cta:after {
+         content: "";
+         position: absolute;
+         background-image: url(/assets/redarrow.svg);
+         background-size: cover;
+         background-position: center center;
+         background-repeat: no-repeat;
+         display: inline-block;
+         //right: 6%;
+         //bottom: 35%;
+         width: 28px;
+         height: 43px;
+         bottom: -9px;
+         margin-left: 10px;
+         transition-property: margin-left,margin-right;
+         transition-duration: .5s;
+         transition-timing-function: ease-out;
+       }
+      .news-article-cta:hover:after {
+        margin-left: 10px;
+        margin-right: -10px;
+      }
+    }
+  }
+}
+
+@include breakpoint(medium only) {
+  .news-article-category-widget {
+    .news-article-content-parent-container {
+      .news-article-content {
+        .small-article-box {
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(large only) {
+  .news-article-category-widget {
+    .news-article-content-parent-container {
+      .news-article-content {
+        .small-article-box {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}
+@include breakpoint(xlarge only) {
+  .news-article-category-widget {
+    .news-article-content-parent-container {
+      .news-article-content {
+        .small-article-box {
+          font-size: 1.625rem;
+        }
+      }
+    }
+  }
+}
+@include breakpoint(xxlarge only) {
+  .news-article-category-widget {
+    .news-article-content-parent-container {
+      .news-article-content {
+        .small-article-box {
+          font-size: 1.625rem;
+        }
+      }
+    }
+  }
+}

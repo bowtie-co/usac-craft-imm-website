@@ -1,0 +1,63 @@
+<div v-show="currentState == 'licenses'">
+  <div class="grid-container" style="margin-bottom:60px;">
+      <div class="grid-x profile-snap">
+          <div class="cell large-3 small-6 medium-6 text-center">
+            <div class="snap-title">USA Cycling #</div>
+            <span class="snap-data" v-text="userProfile.comp_id"></span>
+          </div>
+          <div class="cell large-2 small-6 medium-6 text-center">
+            <div class="snap-title">DOB</div>
+            <span class="snap-data" v-text="userProfile.dob"></span>
+          </div>
+          <div class="cell large-3 small-6 medium-6 text-center">
+            <div class="snap-title">UCI ID</div>
+            <span class="snap-data" v-text="userProfile.uci_id"></span>
+          </div>
+          <div class="cell large-2 small-6 medium-6 text-center">
+            <div class="snap-title">Racing Age</div>
+            <span class="snap-data" v-text="getAge(userProfile.dob)"></span>
+          </div>
+          <div class="cell large-2 small-6 medium-6 text-center">
+            <div class="snap-title">Gender</div>
+            <span class="snap-data" v-text="getGender(userProfile.gender)"></span>
+          </div>
+      </div>
+      <div class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y">
+        <div class="cell large-12">
+          <ul class="tabs" id="example-tabs">
+            <li class="tabs-title" v-bind:class="[licenseTabSelect == 'active' ? activeTabClass : '', errorClass]"><a @click="licenseTabSelect = 'active'" aria-selected="true">Active</a></li>
+            <li class="tabs-title" v-bind:class="[licenseTabSelect == 'expired' ? activeTabClass : '', errorClass]"><a @click="licenseTabSelect = 'expired'">Expired</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        {# Active/Pending Licenses - status is set to "<=" to indicate current date is less than or equal to expiration date #}
+        <transition name="slide-fade-lic">
+        <div v-show="licenseTabSelect == 'active'" v-if="activeLicenseCount > 0" class="tabs-panel is-active" id="panel1">
+          <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y">
+              {% include "inc/account/modules/license-card.html" with { 'status': 'Date.now() <= new Date(item.date_exp) && item.licensetype != "O" && item.org != "RDR"', 'expression': ''} %}
+              {% include "inc/account/modules/license-card-official.html" with { 'status': 'Date.now() <= new Date(item.date_exp) && item.licensetype == "O"  && item.org != "RDR"', 'expression': ''} %}
+            </div>
+          </div>
+        </div>
+        <div v-show="licenseTabSelect == 'active'" v-else class="tabs-panel is-active" id="panel1" style="padding-left:0px;margin-left:0px;padding-top: 20px;">
+          There are currently no active licenses associated with your account.
+        </div>
+      </transition>
+
+      {# Expired Licenses - status is set to ">" to indicate current date is greater than the expiration date #}
+      <transition name="slide-fade-lic">
+        <div class="tabs-panel" v-if="expiredLicenseCount > 0" style="display:block;" v-show="licenseTabSelect == 'expired'">
+          <div class="grid-x grid-margin-x grid-margin-y">
+            {% include "inc/account/modules/license-card.html" with { 'status': 'Date.now() > new Date(item.date_exp) && item.licensetype != "O" && item.org != "RDR"', 'expression': ''} %}
+            {% include "inc/account/modules/license-card-official.html" with { 'status': 'Date.now() > new Date(item.date_exp) && item.licensetype == "O" && item.org != "RDR"', 'expression': ''} %}
+          </div>
+        </div>
+        <div class="tabs-panel" v-else style="display:block;padding-left:0px;margin-left:0px;padding-top: 20px;" v-show="licenseTabSelect == 'expired'">
+          There are currently no expired licenses associated with your account.
+        </div>
+        </transition>
+      </div>
+    </div>
+</div>

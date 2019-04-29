@@ -1,0 +1,48 @@
+.faq-widget {
+  margin-top: 1rem;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-flow: row wrap;
+  .cell{
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 50px;
+    padding-top: 40px;
+    width: 100%;
+    flex: 1 1 400px;
+    max-width: 400px;
+    .faq{
+      color: #031e41;
+      font-size: 26px;
+      font-family: ProximaNovaBold,sans-serif;
+      line-height: 26px;
+      margin-bottom: 20px;
+      max-width: 90%;
+    }
+    .learn-more-expand {
+      margin-top:20px;
+      a {
+        text-transform: uppercase;
+        color: #031e41;
+        font-family: ProximaNovaBold,sans-serif;
+        font-size:16px;
+        margin-bottom:20px;
+        padding-bottom:10px;
+        border-bottom:2px $red solid;
+      }
+    }
+  }
+
+  @include breakpoint(small only) {
+    .cell {
+      margin: 0 auto;
+    }
+  }
+  @include breakpoint(medium only) {
+    .cell {
+      margin: 0 auto;
+    }
+  }
+}

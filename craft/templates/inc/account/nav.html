@@ -1,0 +1,11 @@
+<div id="flip-list-nav">
+  <transition-group name="flip-list" tag="ul" class="account-nav show-for-large">
+    <li v-for="navItem in navList" v-if="checkNavOption(navItem.licenseType)" v-bind:key="navItem" v-bind:class="[currentState == navItem.stateName ? activeClass : '', errorClass]">
+      <a @click="currentState = navItem.stateName" v-text="navItem.displayName"></a>
+    </li>
+  </transition-group>
+</div>
+
+<select v-model="currentState" class="hide-for-large">
+    <option v-for="navItem in navList" v-if="checkNavOption(navItem.licenseType)" :value="navItem.stateName" v-text="navItem.displayName"></option>
+</select>

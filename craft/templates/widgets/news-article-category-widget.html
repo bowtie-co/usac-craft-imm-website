@@ -1,0 +1,60 @@
+{% set category = content.articleCategory.first() %}
+{% set classCategory = category|replace({" ": "_", "-" : "_", "," : "_"}) %}
+{% set entry_featured = craft.entries.section('article').relatedTo(category).limit(1).find() %}
+{% set entries = craft.entries.section('article').relatedTo(category).limit(2).offset(1).find() %}
+
+<div id="{{content.type}}_{{content.id}}" class="news-article-category-widget news-article-category-widget-{{classCategory}} grid-container" data-cat="{{category}}">
+
+
+
+    <div class="grid-x grid-padding-x">
+        {% for entry in entry_featured %}
+            <div class="medium-12 large-8 cell">
+
+                <div class="news-article-content-parent-container">
+                    {% if entry.articleHeroImage.first()|length %}
+                        <img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicFeaturedArticleList") }}"/>
+                    {% endif %}
+                    <div class="news-article-content">
+                        <!-- <div class="button hollow secondary">{{category}}</div> -->
+                        <h2 class="news-article-title">{{entry.title}}</h2>
+                        <a class="news-article-cta button secondary" href="{{entry.url}}" data-ga-push="{% include 'inc/ga-push.html'%}">Read Article</a>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+            <div class="medium-12 large-4 cell">
+                {% for entry in entries %}
+                    <div class="news-article-content-parent-container">
+                        <div class="row">
+                            <div class="small-12 cell">
+                                {% if entry.articleHeroImage.first()|length %}
+                                <img class="news-article-image" src="{{ entry.articleHeroImage.first().getUrl("dynamicArticleList") }}"/>
+                                {% endif %}
+
+                                <div class="news-article-content">
+                                    <!-- <div class="button hollow secondary">{{category}}</div> -->
+                                    <h2 class="news-article-title small-article-box">{{entry.title}}</h2>
+                                    <a class="news-article-cta button secondary" href="{{entry.url}}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}">Read Article</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+
+    <div class="">
+        {% set total_ajaxable_entries = craft.entries.section('article').relatedTo(category).find()|length-(entry_featured|length + entries|length) %}
+        <div class="load-target" data-total-ajaxable-entries-count="{{ total_ajaxable_entries }}"></div>
+    </div>
+
+    <div class="row text-center">
+        <div class="small-12 centered cell">
+            <div class="button hollow secondary ajax-listing-widget">View More Articles</div>
+        </div>
+    </div>
+
+</div>

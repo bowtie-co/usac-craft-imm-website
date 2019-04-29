@@ -1,0 +1,45 @@
+// Social Widget
+// ---------
+
+.social-widget {
+  position: relative;
+  h2 {
+    a{
+    font-family: 'ProximaNovaBl';
+  }
+  }
+  h5 {
+    text-transform: uppercase;
+    color: $dark-gray;
+    letter-spacing: 1px;
+  }
+  .hashtag-title {
+    text-transform: uppercase;
+    color: $red;
+  }
+
+  .social-buttons {
+    padding: 2.0625rem 0;
+    justify-content: center;
+  }
+
+  .social-cta {
+    color: $medium-gray;
+    font-size: 36px;
+    }
+  .social-cta:hover {
+    color: $blue;
+  }
+
+  .social-image {
+    background-size: cover;
+    background-position: center center;
+  }
+  .social-image-cell {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-social {
+    margin-top: 1rem;
+  }
+}

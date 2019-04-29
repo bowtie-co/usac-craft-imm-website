@@ -1,0 +1,93 @@
+// Image Text Carousel
+// ---------
+
+.image-text-carousel-widget {
+
+  .card-cta {
+    margin-top:1em!important;
+  }
+
+  @include breakpoint(small only) {
+      padding: 0rem;
+    }
+
+
+.swiper-slide {
+  background: $white;
+}
+
+.swiper-image {
+float: right;
+}
+
+.swiper-image-text-container {
+   position: absolute;
+   background-color: rgba(214,11,48,.8);
+   left: 0%;
+   color: $white;
+   height:100%;
+    /* IE fix */
+    top:0;
+}
+
+.swiper-image-text {
+  position: absolute;
+  line-height: 1;
+  top: 50%;
+  left: 12%;
+  right: 5%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+.swiper-main-title {
+  color: $white;
+  line-height: 1;
+  letter-spacing: 0.15625rem;
+  text-transform: uppercase;
+
+  @include breakpoint(medium only) {
+        font-size: 3rem;
+      }
+  @include breakpoint(small only) {
+          margin-bottom: 0;
+        }
+}
+
+.swiper-top-title {
+  color: $white;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.card-cta {
+  border-color: $white !important;
+  color: $white !important;
+  margin: 0 !important;
+}
+
+.swiper-image-text-mobile {
+  position: absolute;
+  background-color: rgba(214,11,48,.8);
+  text-align: center;
+  line-height: 1;
+  bottom:0;
+  width: 100%;
+  padding: 1.5rem 0 1.5rem 0;
+  color: $white;
+}
+
+.swiper-image-container {
+  @include breakpoint(small only) {
+      padding-bottom: 2.5rem;
+    }
+}
+
+.swiper-pagination-bullets {
+  @include breakpoint(small only) {
+      bottom: 5px;
+    }
+}
+}

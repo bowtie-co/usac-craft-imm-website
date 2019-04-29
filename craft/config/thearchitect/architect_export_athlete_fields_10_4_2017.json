@@ -1,0 +1,518 @@
+{
+    "groups": [
+        "Athlete",
+        "Default"
+    ],
+    "sections": [
+        {
+            "name": "Athlete Bios",
+            "handle": "athleteBios",
+            "type": "channel",
+            "enableVersioning": "1",
+            "typesettings": {
+                "hasUrls": "1",
+                "template": "athlete-bios\/_entry.html",
+                "urlFormat": "athlete\/{slug}",
+                "nestedUrlFormat": null
+            }
+        }
+    ],
+    "fields": [
+        {
+            "group": "Athlete",
+            "name": "Athlete Contact Email",
+            "handle": "athleteContactEmail",
+            "instructions": "Enter the email address for contacting this athlete.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete Description",
+            "handle": "athleteDescription",
+            "instructions": "This description of the athlete will appear directly underneath the athlete's name. It is a brief summary of the athlete's discipline and accomplishments therein. ",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "300",
+                "multiline": "1",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete External Website URL",
+            "handle": "athleteExternalWebsiteUrl",
+            "instructions": "If the athlete has an external website, please the link here (this is will display as a url on the front-end).",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "225",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete Facebook Profile",
+            "handle": "athleteFacebookProfile",
+            "instructions": "Enter the athlete's full url to their facebook profile.\r\ne.g.,\r\nhttps:\/\/www.facebook.com\/usacycling",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete Instagram Profile",
+            "handle": "athleteInstagramProfile",
+            "instructions": "Enter the athlete's full url to their instagram profile\r\ne.g.,\r\nhttps:\/\/www.instagram.com\/usacycling",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete Portrait",
+            "handle": "athletePortrait",
+            "instructions": "Upload the portrait image of the featured athlete. ",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "athletes",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "large",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete Twitter Profile",
+            "handle": "athleteTwitterProfile",
+            "instructions": "Enter the athlete's full url to their twitter profile.\r\ne.g.,\r\nhttps:\/\/twitter.com\/usacycling",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Athlete WYSIWYG",
+            "handle": "athleteWysiwyg",
+            "instructions": "Enter any supporting content in this WYSIWYG field. This is optional, if blank, nothing will be output to the front-end.",
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "Code.json",
+                "availableAssetSources": "*",
+                "availableTransforms": "*",
+                "cleanupHtml": "",
+                "purifyHtml": "1",
+                "purifierConfig": "",
+                "columnType": "text"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Biography",
+            "handle": "biography",
+            "instructions": "",
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "",
+                "availableAssetSources": "*",
+                "availableTransforms": "*",
+                "cleanupHtml": "",
+                "purifyHtml": "1",
+                "purifierConfig": "",
+                "columnType": "text"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Biography Intro",
+            "handle": "biographyIntro",
+            "instructions": "This is the highlighted portion of the athlete's biography. It will appear above the core biography and will have a dark blue font-color to distinguish it from the rest of the biography. ",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "500",
+                "maxLength": "",
+                "multiline": "1",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Birthplace",
+            "handle": "birthplace",
+            "instructions": "Enter the athlete's birthplace, format (City, State e.g., Colorado Springs, Colorado).",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Date of Birth",
+            "handle": "dateOfBirth",
+            "instructions": "Please enter the athlete's date of birth, format (Month DD, YYYY).",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "20",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Education",
+            "handle": "education",
+            "instructions": "Enter the athlete's higher education institute and degree.\r\ne.g.,\r\nUniversity of Colorado\r\n(B.S. Exercise Physiology)",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "100",
+                "multiline": "1",
+                "initialRows": "2"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "First Name",
+            "handle": "firstName",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Height",
+            "handle": "height",
+            "instructions": "Enter the athlete's height, format (standard\/metric e.g., 5'8\"\/ 1.72m).",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Hometown",
+            "handle": "hometown",
+            "instructions": "Enter the athlete's hometown, format (City, State e.g., Colorado Springs, Colorado). ",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Last Name",
+            "handle": "lastName",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Points of Interest Matrix",
+            "handle": "pointsOfInterestMatrix",
+            "instructions": "Enter points of interest in the athlete's career.",
+            "required": false,
+            "type": "Matrix",
+            "typesettings": {
+                "maxBlocks": null,
+                "blockTypes": {
+                    "new1": {
+                        "name": "POI Block",
+                        "handle": "poiBlock",
+                        "fields": {
+                            "new1": {
+                                "name": "POI Image",
+                                "handle": "poiImage",
+                                "instructions": "Upload an image supporting this point of interest.",
+                                "required": "1",
+                                "type": "Assets",
+                                "typesettings": {
+                                    "useSingleFolder": "1",
+                                    "sources": "*",
+                                    "defaultUploadLocationSource": "assets",
+                                    "defaultUploadLocationSubpath": "",
+                                    "singleUploadLocationSource": "athletes",
+                                    "singleUploadLocationSubpath": "",
+                                    "restrictFiles": "1",
+                                    "allowedKinds": [
+                                        "image"
+                                    ],
+                                    "limit": "1",
+                                    "viewMode": "large",
+                                    "selectionLabel": ""
+                                }
+                            },
+                            "new2": {
+                                "name": "POI Description",
+                                "handle": "poiDescription",
+                                "instructions": "Enter the description of this point of interest.",
+                                "required": "1",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "500",
+                                    "multiline": "1",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Pro Teams",
+            "handle": "proTeams",
+            "instructions": "Enter all professional teams which the athlete has been a member and their time associated with the professional team.\r\ne.g.,\r\nExergy TWENTY12 (2012), Peanut Butter & Co. TWENTY12 (2011), Cerveio Lifeforce (2008-2009), Team Lipton (2006-2007), T-Mobile Women (2001-2005)",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "350",
+                "multiline": "1",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Residence",
+            "handle": "residence",
+            "instructions": "Enter the athlete's current residence, format (City, State e.g., Colorado Springs, Colorado).",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Seo Meta ",
+            "handle": "seoMeta",
+            "instructions": "",
+            "required": false,
+            "type": "Seomatic_Meta",
+            "typesettings": {
+                "assetSources": [
+                    "folder:1"
+                ],
+                "seoMainEntityCategory": "CreativeWork",
+                "seoMainEntityOfPage": "WebPage",
+                "seoTitleSource": "field",
+                "seoTitleSourceField": "title",
+                "seoTitle": "",
+                "seoTitleSourceChangeable": "1",
+                "seoDescriptionSource": "custom",
+                "seoDescriptionSourceField": "description",
+                "seoDescription": "",
+                "seoDescriptionSourceChangeable": "1",
+                "seoKeywordsSource": "custom",
+                "seoKeywordsSourceField": "title",
+                "seoKeywords": "",
+                "seoKeywordsSourceChangeable": "1",
+                "seoImageIdSource": "custom",
+                "seoImageIdSourceField": "desktopHero",
+                "seoImageIdSourceChangeable": "1",
+                "seoImageTransform": "",
+                "twitterCardType": "",
+                "twitterCardTypeChangeable": "1",
+                "seoTwitterImageIdSource": "custom",
+                "seoTwitterImageIdSourceField": "desktopHero",
+                "seoTwitterImageIdSourceChangeable": "1",
+                "seoTwitterImageTransform": "",
+                "openGraphType": "",
+                "openGraphTypeChangeable": "1",
+                "seoFacebookImageIdSource": "custom",
+                "seoFacebookImageIdSourceField": "desktopHero",
+                "seoFacebookImageIdSourceChangeable": "1",
+                "seoFacebookImageTransform": "",
+                "robots": "",
+                "robotsChangeable": "1"
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Team Designation",
+            "handle": "teamDesignation",
+            "instructions": "Designate this athlete's discipline. ",
+            "required": false,
+            "type": "Categories",
+            "typesettings": {
+                "source": "team",
+                "limit": "1",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Athlete",
+            "name": "Weight",
+            "handle": "weight",
+            "instructions": "Enter the athlete's weight, format (standard\/metric e.g., 128 lbs\/58kg)",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        }
+    ],
+    "entryTypes": [
+        {
+            "sectionHandle": "athleteBios",
+            "hasTitleField": "1",
+            "titleLabel": "Athlete Biography Page Title",
+            "name": "Athlete Bios",
+            "handle": "athleteBios",
+            "fieldLayout": {
+                "Athlete Info": [
+                    "athletePortrait",
+                    "teamDesignation",
+                    "firstName",
+                    "lastName",
+                    "athleteDescription",
+                    "athleteExternalWebsiteUrl",
+                    "athleteTwitterProfile",
+                    "athleteFacebookProfile",
+                    "athleteInstagramProfile",
+                    "dateOfBirth",
+                    "hometown",
+                    "height",
+                    "residence",
+                    "weight",
+                    "education",
+                    "birthplace",
+                    "proTeams",
+                    "athleteContactEmail"
+                ],
+                "Biography": [
+                    "biographyIntro",
+                    "biography"
+                ],
+                "Points of Interest": [
+                    "pointsOfInterestMatrix"
+                ],
+                "WYSIWYG": [
+                    "athleteWysiwyg"
+                ],
+                "SEO": [
+                    "seoMeta"
+                ]
+            }
+        }
+    ],
+    "sources": [
+        {
+            "name": "athletes",
+            "handle": "athletes",
+            "type": "Local",
+            "settings": {
+                "path": "assets\/athletes\/",
+                "publicURLs": "1",
+                "url": "{siteUrl}\/assets\/athletes\/"
+            },
+            "fieldLayout": []
+        }
+    ],
+    "transforms": [
+        {
+            "name": "Athlete Portrait",
+            "handle": "athletePortrait",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "432",
+            "height": "362",
+            "quality": "82",
+            "format": "jpg"
+        },
+        {
+            "name": "athlete-points-of-interest",
+            "handle": "athletePointsOfInterest",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "430",
+            "height": "275",
+            "quality": "82",
+            "format": "jpg"
+        },
+        {
+            "name": "athlete-prev-next",
+            "handle": "athletePrevNext",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "253",
+            "height": "211",
+            "quality": "82",
+            "format": "jpg"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+{% set handle = craft.request.getParam("c") %}
+{% set entry = craft.entries.section('accountContent').slug(handle).first() %}
+
+{{ entry.wysiwygWidget }}

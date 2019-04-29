@@ -1,0 +1,115 @@
+// Event Cards Carousel
+// ---------
+.event-carousel-widget {
+  background-repeat:no-repeat;
+  background-size:cover;
+  position: relative;
+  padding: 3rem 0 0;
+  color: $white;
+  h5 {
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  h2 {
+    text-transform: uppercase;
+  }
+  a {
+    color: $white;
+  }
+  a:hover, a:focus, a:active {
+    color: $light-gray;
+  }
+  .event-card-parent-container {
+    padding: 0 8px;
+    .event-card-container{
+      height: 100%;
+      background: $blue;
+
+    .event-card-content-block {
+      padding: 1.5rem;
+      height: 250px;
+      .event-category-label {
+        margin-bottom: 1rem;
+        width:max-content;
+        max-width: 150px;
+        font-family: ProximaNovaBold;
+        text-transform: uppercase;
+        padding: .5rem 1rem;
+        border: 1px solid $white;
+        color: $white;
+        font-size: .9rem;
+        line-height: 1;
+        text-align: center;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .event-card-container:hover {
+    box-shadow: 5px 5px 8px 0 rgba(0, 0, 0, 0.3), 5px 5px 8px 0 rgba(0, 0, 0, 0.3);
+  }
+  .event-listing {
+    cursor:pointer;
+  }
+}
+
+@include breakpoint (small only) {
+      .event-card-content-block {
+        height: 300px;
+      }
+      h5 {
+        font-size: 1.5rem;
+      }
+      .swiper-slide {
+        width: 320px;
+      }
+      .event-card-parent-container {
+        padding: 0px;
+      }
+}
+
+.VueCarousel {
+  padding-bottom: 20px;
+}
+
+.VueCarousel-slide {
+  cursor:pointer !important;
+}
+
+.VueCarousel-dot-button {
+  background:rgba(255,255,255,0.5) !important;
+}
+
+.VueCarousel-dot--active {
+  .VueCarousel-dot-button {
+  background:$white !important;
+}
+}
+
+.VueCarousel-navigation-button {
+  font-size: 60px;
+  top: 75% !important;
+  color: $white !important;
+  }
+  .VueCarousel-navigation-prev {
+    transform: none !important;
+  }
+  .VueCarousel-navigation-next {
+    transform: none !important;
+  }
+
+@include breakpoint (small only) {
+  .VueCarousel-pagination {
+    display:none;
+  }
+  .VueCarousel-navigation {
+    .VueCarousel-navigation-button {
+      position: relative;
+      }
+      .VueCarousel-navigation-next {
+        float: right;
+      }
+    }
+  }
+}

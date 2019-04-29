@@ -1,0 +1,21 @@
+{
+  "buttons": [
+    "format",
+    "bold",
+    "italic",
+    "lists",
+    "link",
+    "image",
+    "video",
+    "horizontalrule"
+  ],
+  "plugins": [
+    "fontcolor",
+    "alignment",
+    "clips",
+    "source",
+    "fullscreen",
+    "video",
+    "table"
+  ]
+}

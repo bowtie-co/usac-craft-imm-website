@@ -1,0 +1,11 @@
+{% set uniquePages = craft.entries.section('uniquePages') %}
+
+    {# Flex Template #}
+    {% if entry.type == "flexTemplateStructure" %}
+      {% include 'flex-template.html' %}
+    {% endif %}
+
+    {# Long Form Template #}
+    {% if entry.type == "longFormStructure" %}
+      {% include 'unique-pages/long-form-structure.html' %}
+    {% endif %}

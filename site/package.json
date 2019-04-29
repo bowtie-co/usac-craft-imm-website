@@ -1,0 +1,105 @@
+{
+  "name": "USAC",
+  "version": "0.0.1",
+  "description": "description of USAC",
+  "main": "webpack.mix.js",
+  "homepage": "",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "paths": {
+    "src": {
+      "js": "./src/vue/"
+    },
+    "dist": {
+      "js": "./js/"
+    }
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.18.13",
+    "browserify": "^10.1.2",
+    "browserify-shim": "^3.8.6",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.19.1",
+    "eslint-config-spatie": "^2.0.3",
+    "eslint-loader": "^2.0.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.2.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-html": "^1.0.2",
+    "gulp-sass": "^2.0.0",
+    "gulp-sequence": "^0.3.2",
+    "gulp-sketch": "^1.0.5",
+    "gulp-sourcemaps": "^1.12.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.2.4",
+    "laravel-mix": "^2.1.11",
+    "laravel-mix-banner": "^0.1.0",
+    "laravel-mix-eslint": "^0.1.1",
+    "motion-ui": "^1.1.1",
+    "node-bourbon": "^4.2.3",
+    "targets-webpack-plugin": "^1.0.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-core": "^6.26.3",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "es6-promise": "^4.2.4",
+    "foundation-sites": "6.4.0",
+    "git-rev-sync": "^1.12.0",
+    "gulp": "^3.9.1",
+    "gulp-vueify": "0.0.3",
+    "jquery": "^2.1.4",
+    "moment": "^2.22.2",
+    "moment-range": "^4.0.1",
+    "npm": "^5.10.0",
+    "vue": "^2.5.9",
+    "vue-carousel": "^0.16.1",
+    "vue-flickity": "^1.1.2",
+    "vue-moment": "^4.0.0",
+    "vue-slick": "^1.1.15",
+    "vue2-google-maps": "^0.10.0",
+    "vueify-insert-css": "^1.0.0",
+    "vuejs-datepicker": "^1.5.2",
+    "waypoints": "^4.0.1",
+    "webpack": "^3.12.0",
+    "yarn": "^1.12.3"
+  },
+  "eslintConfig": {
+    "extends": "spatie"
+  },
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "foundation": "./node_modules/foundation-sites/js/foundation.js"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  }
+}

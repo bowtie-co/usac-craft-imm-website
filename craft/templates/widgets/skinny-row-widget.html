@@ -1,0 +1,20 @@
+<div id="{{content.type}}_{{content.id}}" class="skinny-row-widget"
+     style="{% if content.image|length %}background-image:url({{content.image.first().url}});{% endif %}">
+  <div class="skinny-row-background-overlay"></div>
+    <div class="grid-x grid-container grid-padding-x align-middle skinny-row-content">
+        <div class="cell medium-7 large-9">
+            {% if  content.topTitle|length %}
+                <h2 class="skinny-row-top-title main-title">{{ content.topTitle }}</h2>
+            {% endif %}
+
+            {% if  content.subTitle|length %}
+            <div class="skinny-row-sub-title description">{{ content.subTitle }}</div>
+            {% endif %}
+        </div>
+        <div class="cell medium-5 large-3 skinny-row-cta-cell">
+            {% if  content.ctaText|length and content.ctaUrl|length  %}
+                <a class="button large secondary skinny-row-cta" href="{{ content.ctaUrl }}" data-ga-push="{% include 'inc/ga-push.html'%}">{{ content.ctaText }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

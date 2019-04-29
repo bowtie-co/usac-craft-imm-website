@@ -1,0 +1,16 @@
+<div id="{{content.type}}_{{content.id}}" class="grid-x full-width-button-widget">
+  {% for block in content.fullwidthButtonBar %}
+      {% set type = block.type.handle %}
+      {% switch type %}
+      {% case 'button' %}
+  <div class="large-auto cell button-cell">
+    <a href="{{ block.buttonHref }}" class="button secondary expanded">
+      <h4>{{ block.buttonTitle }}</h4>
+      {% if block.buttonText|length %}
+      <p>{{ block.buttonText }}</p>
+      {% endif %}
+    </a>
+  </div>
+  {% endswitch %}
+{% endfor %}
+</div>

@@ -1,0 +1,31 @@
+<div id="{{content.type}}_{{content.id}}" class="grid-container stacked-image-text-widget">
+  {% if content.subTitle|length %}
+      <div class="grid-x align-middle align-center image-text-header">
+        <div class="cell text-center">
+        <h2>{{ content.subTitle }}</h2>
+      </div>
+    </div>
+      {% endif %}
+    <div class="grid-x align-top image-text-columns">
+  {% for block in content.stackedImageTextWidget%}
+      {% set type = block.type.handle %}
+      {% switch type %}
+      {% case 'stackedImageTextColumn' %}
+        <div class="medium-auto small-12 cell">
+           {% if block.stackedImageTextImage.first()|length %}
+                <div class="img-min-height">
+                    <img class="feature-image" src="{{block.stackedImageTextImage.first().getUrl()}}"/>
+                </div>
+                {% endif %}
+                <h6 class="stacked-image-title">{{ block.stackedImageTextTitle }}</h6>
+                <div class="description">{{ block.stackedImageTextDescription }}</div>
+                {% if block.stackedImageTextCtaUrl|length and block.stackedImageTextCtaText|length %}
+                <div class="stacked-image-button">
+                    <a class="button primary" href="{{ block.stackedImageTextCtaUrl }}" {% if block.stackedImageTextHrefTarget%}target="_blank"{% endif %}>{{ block.stackedImageTextCtaText }}</a>
+                  </div>
+                {% endif %}
+        </div>
+        {% endswitch %}
+    {% endfor %}
+    </div>
+</div>

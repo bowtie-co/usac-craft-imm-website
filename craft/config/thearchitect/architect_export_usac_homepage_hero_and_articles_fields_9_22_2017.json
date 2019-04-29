@@ -1,0 +1,588 @@
+{
+    "groups": [
+        "Article",
+        "Hero",
+        "Navigation Builder",
+        "Default"
+    ],
+    "fields": [
+        {
+            "group": "Article",
+            "name": "Article Author",
+            "handle": "articleAuthor",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Article Hero Matrix",
+            "handle": "articleHeroMatrix",
+            "instructions": "Select which articles you would like to display in a hero carousel (max 4).",
+            "required": false,
+            "type": "Entries",
+            "typesettings": {
+                "sources": [
+                    "article"
+                ],
+                "limit": "4",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Article Matrix",
+            "handle": "articleMatrix",
+            "instructions": "",
+            "required": false,
+            "type": "Matrix",
+            "typesettings": {
+                "maxBlocks": null,
+                "blockTypes": {
+                    "new1": {
+                        "name": "Hero Image",
+                        "handle": "heroImage",
+                        "fields": {
+                            "new1": {
+                                "name": "Hero",
+                                "handle": "hero",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "Assets",
+                                "typesettings": {
+                                    "useSingleFolder": "1",
+                                    "sources": [
+                                        "folder:1"
+                                    ],
+                                    "defaultUploadLocationSource": "assets",
+                                    "defaultUploadLocationSubpath": "",
+                                    "singleUploadLocationSource": "assets",
+                                    "singleUploadLocationSubpath": "",
+                                    "restrictFiles": "1",
+                                    "allowedKinds": [
+                                        "image"
+                                    ],
+                                    "limit": "1",
+                                    "viewMode": "large",
+                                    "selectionLabel": ""
+                                }
+                            }
+                        }
+                    },
+                    "new2": {
+                        "name": "Supporting Image",
+                        "handle": "supportingImage",
+                        "fields": {
+                            "new1": {
+                                "name": "Supporting",
+                                "handle": "supporting",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "Assets",
+                                "typesettings": {
+                                    "useSingleFolder": "1",
+                                    "sources": "*",
+                                    "defaultUploadLocationSource": "assets",
+                                    "defaultUploadLocationSubpath": "",
+                                    "singleUploadLocationSource": "assets",
+                                    "singleUploadLocationSubpath": "",
+                                    "restrictFiles": "1",
+                                    "allowedKinds": [
+                                        "image"
+                                    ],
+                                    "limit": "1",
+                                    "viewMode": "large",
+                                    "selectionLabel": ""
+                                }
+                            }
+                        }
+                    },
+                    "new3": {
+                        "name": "h1",
+                        "handle": "h1",
+                        "fields": {
+                            "new1": {
+                                "name": "h1",
+                                "handle": "h1",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new4": {
+                        "name": "h2",
+                        "handle": "h2",
+                        "fields": {
+                            "new1": {
+                                "name": "h2",
+                                "handle": "h2",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new5": {
+                        "name": "h3",
+                        "handle": "h3",
+                        "fields": {
+                            "new1": {
+                                "name": "h3",
+                                "handle": "h3",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new6": {
+                        "name": "Description",
+                        "handle": "description",
+                        "fields": {
+                            "new1": {
+                                "name": "description",
+                                "handle": "description",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "Simple.json",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "1",
+                                    "purifyHtml": "1",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            }
+                        }
+                    },
+                    "new7": {
+                        "name": "Text Image Columns",
+                        "handle": "textImageColumns",
+                        "fields": {
+                            "new1": {
+                                "name": "Text",
+                                "handle": "text",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "Standard.json",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "1",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            },
+                            "new2": {
+                                "name": "Image",
+                                "handle": "image",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "Assets",
+                                "typesettings": {
+                                    "useSingleFolder": "1",
+                                    "sources": "*",
+                                    "defaultUploadLocationSource": "assets",
+                                    "defaultUploadLocationSubpath": "",
+                                    "singleUploadLocationSource": "assets",
+                                    "singleUploadLocationSubpath": "",
+                                    "restrictFiles": "1",
+                                    "allowedKinds": [
+                                        "image"
+                                    ],
+                                    "limit": "1",
+                                    "viewMode": "large",
+                                    "selectionLabel": ""
+                                }
+                            },
+                            "new3": {
+                                "name": "Image Caption",
+                                "handle": "imageCaption",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new8": {
+                        "name": "Text Block",
+                        "handle": "textBlock",
+                        "fields": {
+                            "new1": {
+                                "name": "Text",
+                                "handle": "text",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "Standard.json",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            }
+                        }
+                    },
+                    "new9": {
+                        "name": "Pull Quote",
+                        "handle": "pullQuote",
+                        "fields": {
+                            "new1": {
+                                "name": "Quote",
+                                "handle": "quote",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    },
+                    "new10": {
+                        "name": "Rich Text Block",
+                        "handle": "richTextBlock",
+                        "fields": {
+                            "new1": {
+                                "name": "html",
+                                "handle": "html",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "RichText",
+                                "typesettings": {
+                                    "configFile": "Standard.json",
+                                    "availableAssetSources": "*",
+                                    "availableTransforms": "*",
+                                    "cleanupHtml": "",
+                                    "purifyHtml": "1",
+                                    "purifierConfig": "",
+                                    "columnType": "text"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Article Summary",
+            "handle": "articleSummary",
+            "instructions": "",
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "",
+                "availableAssetSources": "*",
+                "availableTransforms": "*",
+                "cleanupHtml": "1",
+                "purifyHtml": "1",
+                "purifierConfig": "",
+                "columnType": "text"
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Desktop Hero",
+            "handle": "desktopHero",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": "*",
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "list",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Discipline Category",
+            "handle": "discplineCategory",
+            "instructions": "Select the discipline for which you want to display the 3 most recent article entries.",
+            "required": false,
+            "type": "Categories",
+            "typesettings": {
+                "source": "discipline",
+                "limit": "1",
+                "selectionLabel": "Add a discipline "
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Hero Type",
+            "handle": "heroType",
+            "instructions": "",
+            "required": false,
+            "type": "RadioButtons",
+            "typesettings": {
+                "options": [
+                    {
+                        "label": "Default",
+                        "value": "default",
+                        "default": "1"
+                    },
+                    {
+                        "label": "Article Carousel",
+                        "value": "articleCarousel",
+                        "default": ""
+                    },
+                    {
+                        "label": "Vimeo Hero",
+                        "value": "vimeoHero",
+                        "default": ""
+                    },
+                    {
+                        "label": "None",
+                        "value": "none",
+                        "default": ""
+                    }
+                ]
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Hero Vimeo Title",
+            "handle": "heroVimeoTitle",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Mobile Hero",
+            "handle": "mobileHero",
+            "instructions": "",
+            "required": false,
+            "type": "Assets",
+            "typesettings": {
+                "useSingleFolder": "1",
+                "sources": [
+                    "folder:1"
+                ],
+                "defaultUploadLocationSource": "assets",
+                "defaultUploadLocationSubpath": "",
+                "singleUploadLocationSource": "assets",
+                "singleUploadLocationSubpath": "",
+                "restrictFiles": "1",
+                "allowedKinds": [
+                    "image"
+                ],
+                "limit": "1",
+                "viewMode": "list",
+                "selectionLabel": ""
+            }
+        },
+        {
+            "group": "Navigation Builder",
+            "name": "Navigation Children",
+            "handle": "navigationChildren",
+            "instructions": "",
+            "required": false,
+            "type": "Lightswitch",
+            "typesettings": {
+                "default": ""
+            }
+        },
+        {
+            "group": "Navigation Builder",
+            "name": "Navigation Children Matrix",
+            "handle": "navigationChildrenMatrix",
+            "instructions": "",
+            "required": false,
+            "type": "Matrix",
+            "typesettings": {
+                "maxBlocks": null,
+                "blockTypes": {
+                    "new1": {
+                        "name": "Navigation Child",
+                        "handle": "navigationChild",
+                        "fields": {
+                            "new1": {
+                                "name": "Child Title",
+                                "handle": "childTitle",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            },
+                            "new2": {
+                                "name": "Child HREF",
+                                "handle": "childHref",
+                                "instructions": "",
+                                "required": "0",
+                                "type": "PlainText",
+                                "typesettings": {
+                                    "placeholder": "",
+                                    "maxLength": "",
+                                    "multiline": "",
+                                    "initialRows": "4"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "group": "Navigation Builder",
+            "name": "Navigation HREF",
+            "handle": "navigationHref",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Navigation Builder",
+            "name": "Navigation Title",
+            "handle": "navigationTitle",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Default",
+            "name": "Newsletter Signup Text",
+            "handle": "newsletterSignupText",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Article",
+            "name": "Rich Text Block",
+            "handle": "richTextBlock",
+            "instructions": "",
+            "required": false,
+            "type": "RichText",
+            "typesettings": {
+                "configFile": "",
+                "availableAssetSources": "*",
+                "availableTransforms": "*",
+                "cleanupHtml": "",
+                "purifyHtml": "1",
+                "purifierConfig": "",
+                "columnType": "text"
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Vimeo Supporting Snippet",
+            "handle": "vimeoSupportingSnippet",
+            "instructions": "",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "50",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        },
+        {
+            "group": "Hero",
+            "name": "Vimeo Url",
+            "handle": "vimeoUrl",
+            "instructions": "If set the vimeo video url provided will be displayed in the hero (e.g., https:\/\/player.vimeo.com\/video\/217852144). Leave blank if you do not ",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        }
+    ],
+    "transforms": [
+        {
+            "name": "hero-bg",
+            "handle": "heroBg",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "1440",
+            "height": "775",
+            "quality": "82",
+            "format": "jpg"
+        }
+    ]
+}

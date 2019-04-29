@@ -1,0 +1,224 @@
+<div id="account-profile" v-show="currentState == 'profile'">
+  <div class="grid-x">
+      <div class="cell medium-12 text-right">
+          <a :href="'https://legacy.usacycling.org/myusac/index.php?pagename=editaccount&compid='+userProfile.comp_id" target="_blank">Edit Profile</a>
+      </div>
+  </div>
+  <div class="grid-x">
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4 text-bold">
+          <strong>Name:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.first_name"></span>&nbsp;<span v-text="userProfile.last_name"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>USA Cycling #:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.comp_id"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>UCI ID:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.uci_id"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>Username:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.user_id"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+        <div class="grid-x">
+          <div class="cell medium-4">
+            <strong>Email:</strong>
+          </div>
+          <div class="cell medium-4">
+            <span v-text="userProfile.email"></span>
+          </div>
+        </div>
+      </div>
+      <div class="cell medium-12 profile-entry">
+          <div class="grid-x">
+            <div class="cell medium-4">
+              <strong>Phone Number:</strong>
+            </div>
+            <div class="cell medium-4">
+              <span v-text="formatPhone(userProfile.home_phone)"></span>
+            </div>
+          </div>
+        </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>Address:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.address"></span><br />
+          <span v-text="userProfile.city"></span>,&nbsp;<span v-text="userProfile.state"></span>&nbsp;<span v-text="userProfile.zip"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>DOB:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.dob"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>Gender:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.gender"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>Emergency Contact:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-text="userProfile.emergency_name"></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span v-text="userProfile.emergency_phone"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+        <div class="grid-x">
+          <div class="cell medium-4">
+            <strong>Criminal Background Status:</strong>
+          </div>
+          <div class="cell medium-4">
+            <span v-if="userProfile.criminal_background_status">
+              [[userProfile.criminal_background_status.status]]&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Expires:&nbsp;[[userProfile.criminal_background_status.expiry]]
+            </span>
+          </div>
+        </div>
+      </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>SafeSport Status:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span v-if="userProfile.safesportstatus">
+            [[userProfile.safesportstatus.status]]&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Expires:&nbsp;[[userProfile.safesportstatus.expiry]]
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>MVR Status:</strong>
+        </div>
+        <div class="cell medium-4">
+          <span  v-if="userProfile.mvr_status">
+              [[userProfile.mvr_status.status]]<span v-if="userProfile.mvr_status.expiry">&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Expires:&nbsp;[[userProfile.mvr_status.expiry]]</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+        <div class="grid-x">
+          <div class="cell medium-4">
+            <strong>Membership/Licenses Expiration:</strong>
+          </div>
+          <div class="cell medium-4">
+            <span v-text="getExpiry(userProfile)"></span>
+          </div>
+        </div>
+      </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          <strong>Communication Preferences:</strong>
+        </div>
+        <div class="cell medium-4">
+          <a href="https://legacy.usacycling.org/myusac/index.php?pagename=mypage&lookup=memberprofile" target="_blank">Update Preferences</a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          Local Association:
+        </div>
+        <div class="cell medium-4">
+          BRAC/ACA
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          Background Check Status:
+        </div>
+        <div class="cell medium-4">
+          PASS
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          SafeSport Status:
+        </div>
+        <div class="cell medium-4">
+          PASS
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="cell medium-12 profile-entry">
+      <div class="grid-x">
+        <div class="cell medium-4">
+          Volunteer Status:
+        </div>
+        <div class="cell medium-6">
+          <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
+          <label for="checkbox_id">Yes, I would like to be considered for volunteer opportunities in my local area.</label>
+          <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
+          <label for="checkbox_id">Yes, I would like to be considered for volunteer opportunities in my local area.</label>
+        </div>
+      </div>
+    </div> -->
+      <!-- <div class="cell medium-12" style="border-bottom: solid 1px #031E41;margin-top: 50px;">
+        <h4 style="color: #031E41;">Notifications</h4>
+      </div>
+      <div class="cell medium-12 text-center" style="margin-top: 35px;">
+        Awaiting further input.
+      </div> -->
+      <div class="cell medium-12" style="border-bottom: solid 1px #031E41;margin-top: 50px;">
+        <h4 style="color: #031E41;">Quick Links</h4>
+      </div>
+      <div class="cell medium-12 text-center quick-links" style="margin-top: 35px;">
+          <ul>
+            <li><a :href="'https://legacy.usacycling.org/myusac/index.php?pagename=receipt&compid=' + userProfile.comp_id" target="_blank">Order History</a></li>
+            <li><a href="https://register.usacycling.org/#!/memberships/builder/usa-cycling-race-membership-2018" target="_blank">Auto Renewal</a></li>
+          </ul>
+      </div>
+    </div>
+</div>

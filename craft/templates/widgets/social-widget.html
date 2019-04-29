@@ -1,0 +1,59 @@
+<div id="{{content.type}}_{{content.id}}" class="social-widget">
+  <div class="grid-x align-center text-center">
+    <div class="cell auto">
+    {% if content.topTitle|length %}
+      <h5>{{content.topTitle}}</h5>
+      {% endif %}
+      {% if content.hashtagTitle|length %}
+      <h2><a class="hashtag-title" href="{{content.hashtagUrl}}" target="_blank">{{content.hashtagTitle}}</a></h2>
+      {% endif %}
+    </div>
+  </div>
+  {% if content.socialDisplayInstagramFeed %}
+    <div class="swiper-container swiper-social">
+        <div class="swiper-wrapper" style="transition-timing-function:linear; width: 300px; height: 300px">
+            {% if craft.instagramfeed.isConnected() %}
+                {% for image in craft.instagramfeed.getFeed(15) %}
+                    <div class="swiper-slide social-image" style="background-image:url({{ image.url }});">
+                        <a class="social-image-link" href="{{image.link}}" target="_blank"><div class="social-image-cell"></div></a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    {% endif %}
+
+    <div class="grid-x social-buttons align-center">
+      <div class="cell medium-6">
+        <div class="grid-x grid-padding-x align-center">
+        {% if content.facebookButton %}
+        <div class="cell small-2 text-center">
+            <a class="social-cta" href="{{ content.facebookLink }}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        {% endif %}
+        {% if content.twitterButton %}
+        <div class="cell small-2 text-center">
+            <a class="social-cta" href="{{ content.twitterLink }}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        {% endif %}
+        {% if content.stravaButton %}
+        <div class="cell small-2 text-center">
+            <a class="social-cta" href="{{ content.stravaLink }}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_strava"><i class="fab fa-strava"></i></a>
+        </div>
+        {% endif %}
+        {% if content.instagramButton %}
+        <div class="cell small-2 text-center">
+            <a class="social-cta" href="{{ content.instagramLink }}" target="_blank" data-ga-push="{% include 'inc/ga-push.html'%}_instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        {% endif %}
+        {% if content.youtubeButton %}
+        <div class="cell small-2 text-center">
+          <a class="social-cta" href="{{ content.youtubeLink }}" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+</div>

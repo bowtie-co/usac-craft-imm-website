@@ -1,0 +1,14 @@
+{
+    "transforms": [
+        {
+            "name": "search",
+            "handle": "search",
+            "mode": "crop",
+            "position": "center-center",
+            "width": "320",
+            "height": "240",
+            "quality": "82",
+            "format": "jpg"
+        }
+    ]
+}

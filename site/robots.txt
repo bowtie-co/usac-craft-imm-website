@@ -1,0 +1,8 @@
+# Don't allow web crawlers to index Craft CMS
+User-agent: *
+Disallow: /craft/
+Disallow: /scripts/
+Disallow: /site/documents/
+Disallow: /site/sketch/
+Disallow: /site/API/
+Disallow: /API/

@@ -1,0 +1,22 @@
+//author contact email address
+{
+    "groups": [
+        "Article"
+    ],
+    "fields": [
+        {
+            "group": "Article",
+            "name": "Author Contact Email",
+            "handle": "authorContactEmail",
+            "instructions": "Enter the email address for contacting this author.",
+            "required": false,
+            "type": "PlainText",
+            "typesettings": {
+                "placeholder": "",
+                "maxLength": "",
+                "multiline": "",
+                "initialRows": "4"
+            }
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+// Feature Card Widget
+// ---------
+
+.feature-card-widget {
+  padding: 3rem;
+  background: $alternate-bg;
+
+  @include breakpoint(small only) {
+      padding: 1rem;
+    }
+
+  .feature-card {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 5%;
+  @include breakpoint(small only) {
+    margin-bottom: 1rem;
+    padding-bottom: 10%;
+    }
+  }
+
+  .feature-card-text {
+    background: $white;
+    width: 80%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    height: 150px;
+    padding: 0 30px;
+    z-index: 10;
+    text-align: left;
+    @include breakpoint(small only) {
+      padding: 0 20px;
+    }
+    .cell {
+      width: 90%;
+    }
+  }
+
+  .feature-card-text:after{
+    content: "";
+    position: absolute;
+    background-image: url("/images/redarrow.svg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 34px;
+    margin-left: 10px;
+    transition-property: margin-left, margin-right;
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+  }
+
+  .feature-card-text:hover:after{
+    margin-left: 10px;
+    margin-right: -10px;
+  }
+
+  .feature-image-container {
+    overflow: hidden;
+    height: 100%;
+    //width: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  .feature-card-image {
+    height: 100%;
+    //width: auto;
+    width: 100%;
+    max-width: 100%;
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+  }
+
+  .feature-card-image:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  .feature-card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: .015625rem;
+    position:relative;
+    padding-right:1rem;
+    font-family: 'ProximaNovaLt', sans-serif;
+    color: $dark-gray;
+  }
+
+  .feature-card-title {
+      color: $red;
+      line-height: 1;
+      letter-spacing: 0.0625rem;
+      text-transform: uppercase;
+  }
+}

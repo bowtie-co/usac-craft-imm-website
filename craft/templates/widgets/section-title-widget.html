@@ -1,0 +1,29 @@
+<div id="{{content.type}}_{{content.id}}" class="section-title-widget">
+
+    <div class="bigtext background-text-cell">
+        {% if  content.sectionTitleBackgroundText|length > 5 %}
+            <h1 class="section-title-background">{{ content.sectionTitleBackgroundText }}</h1>
+        {% endif %}
+    </div>
+
+    <div class="section-title-content grid-x align-middle">
+        <div class="cell">
+
+            {% if  content.topTitle|length %}
+                <div class="wide-title section-title">{{ content.topTitle }}</div>
+            {% endif %}
+
+            {% if  content.description|length %}
+                <div class="section-description hide-for-small-only">{{ content.description }}</div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class="show-for-small-only">
+        <div class="cell">
+            <div class="section-description">{{ content.description }}</div>
+        </div>
+    </div>
+
+</div>

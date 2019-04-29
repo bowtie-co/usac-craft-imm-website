@@ -1,0 +1,50 @@
+{
+    "formatting": [
+        "p",
+        "blockquote",
+        "pre",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5"
+    ],
+    "buttons": [
+        "format",
+        "bold",
+        "italic",
+        "lists",
+        "link",
+        "file",
+        "image",
+        "horizontalrule"
+    ],
+    "plugins": [
+        "source",
+        "fullscreen",
+        "imagePosition",
+        "table"
+    ],
+    "imageResizable": true,
+    "imagePosition": true,
+		"HTML.Allowed": ["figure","span"],
+    "Attr.AllowedClasses": ["c-figure", "c-figure--inline", "c-figure--left", "c-figure--right", "c-figure--full", "c-figure__image", "c-figure__caption" ],
+		formattingAdd: {
+		"align-left": {
+			"title": "Align left",
+			"args": ["p","class","text-left"],
+		},
+		"align-right": {
+			"title": "Align right",
+			"args": ["p","class","text-right"],
+		},
+		"align-center": {
+			"title": "Align center",
+			"args": ["p","class","text-center"],
+		},
+		"align-justify": {
+			"title": "Justify",
+			"args": ["p","class","text-justify"],
+		},
+	}
+}

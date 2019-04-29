@@ -1,0 +1,155 @@
+{% switch content.type %}
+    {################}
+    {# HERO WIDGETS #}
+    {################}
+    {% case 'leftOrRightHeroWidget' %}
+        {% include 'widgets/hero-widget.html' %}
+    {% case 'centeredHeroWidget' %}
+        {% include 'widgets/hero-center-widget.html' %}
+    {% case 'wideFeatureHeroWidget' %}
+        {% include 'widgets/wide-feature-hero-widget.html' %}
+
+    {########################}
+    {# IMAGE & TEXT WIDGETS #}
+    {########################}
+    {% case 'leftOrRightImageTextFeatureWidget' %}
+        {% include 'widgets/image-text-widget.html' %}
+    {% case 'sectionTitleWidget' %}
+        {% include 'widgets/section-title-widget.html' %}
+    {% case 'imageTextCarouselWidget' %}
+        {% include 'widgets/image-text-carousel-widget.html' %}
+    {% case 'insetImageWidget' %}
+        {% include 'widgets/inset-image-widget.html' %}
+    {% case 'alternatingImageTextBlocks' %}
+        {% include 'widgets/alternating-image-text-blocks-widget.html' %}
+
+    {######################}
+    {# IMAGE GRID WIDGETS #}
+    {######################}
+    {% case 'skinnyRowWidget' %}
+        {% include 'widgets/skinny-row-widget.html' %}
+    {% case 'cardGridWidget' %}
+        {% include 'widgets/card-grid-widget.html' %}
+    {% case 'imageGridWidget' %}
+        {% include 'widgets/image-grid-widget.html' %}
+    {% case 'featureCardWidget' %}
+        {% include 'widgets/feature-card-widget.html' %}
+    {% case 'imageCtaGridWidget' %}
+        {% include 'widgets/image-cta-grid-widget.html' %}
+
+    {################}
+    {# TEAM WIDGETS #}
+    {################}
+    {% case 'tieredTeamWidget' %}
+        {% include 'widgets/tiered-team-widget.html' %}
+    {% case 'teamAthleteWidget' %}
+        {% include 'widgets/team-athlete-widget.html' %}
+    {% case 'teamDivisionClubWidget' %}
+        {% include 'widgets/team-discipline-club-widget.html' %}
+
+    {############################}
+    {# NEWSLETTER SIGNUP WIDGET #}
+    {############################}
+    {% case 'newsletterSignupWidget' %}
+        {% include 'widgets/newsletter-signup-widget.html' %}
+
+    {######################}
+    {# SOCIAL FEED WIDGET #}
+    {######################}
+    {% case 'socialWidget' %}
+        {% include 'widgets/social-widget.html' %}
+    {% case 'twitterWidget' %}
+        {% include 'widgets/twitter-widget.html' %}
+
+    {######################}
+    {# NEWSARTICLE WIDGET #}
+    {######################}
+    {% case 'newsArticleListingCategory' %}
+        {% include 'widgets/news-article-category-widget.html' %}
+    {% case 'newsArticleListing' %}
+        {% include 'widgets/news-article-widget.html' %}
+
+    {####################}
+    {# DOCUMENTS WIDGET #}
+    {####################}
+    {% case 'documentsWidget' %}
+        {% include 'widgets/documents-widget.html' %}
+
+    {##################}
+    {# WYSIWYG WIDGET #}
+    {##################}
+    {% case 'wysiwygWidget' %}
+        {% include 'widgets/wysiwyg-widget.html' %}
+
+    {############################}
+    {# VIDEO WIDGETS  #}
+    {############################}
+    {% case 'twoColumnVideoWidget' %}
+        {% include 'widgets/two-col-video-widget.html' %}
+
+    {% case 'videoGalleryWidget' %}
+        {% include 'widgets/video-gallery-widget.html' %}
+
+    {####################################}
+    {# TWO COLUMN IMAGE COLLAGE WIDGET  #}
+    {####################################}
+    {% case 'twoColumnImageCollage' %}
+        {% include 'widgets/two-col-image-collage-widget.html' %}
+
+    {##############}
+    {# FAQ WIDGETS #}
+    {##############}
+    {% case 'faqWidget' %}
+        {% include 'widgets/faq-widget.html' %}
+    {% case 'accordionFaqWidget' %}
+        {% include 'widgets/accordion-faq-widget.html' %}
+
+    {##############}
+    {# FEATURE CARD CAROUSEL WIDGET #}
+    {##############}
+    {% case 'featureCardCarouselWidget' %}
+        {% include 'widgets/feature-card-carousel-widget.html' %}
+
+    {##############}
+    {# DROPDOWN WIDGET #}
+    {##############}
+    {% case 'dropdownWidget' %}
+        {% include 'widgets/dropdown-widget.html' %}
+
+    {##############}
+    {# Stacked Image Text Widget #}
+    {##############}
+    {% case 'stackedImageTextWidget' %}
+        {% include 'widgets/stacked-image-text-widget.html' %}
+
+    {% case 'layoutSpacer' %}
+        {% include 'widgets/spacer.html' %}
+
+    {% case 'fullwidthButtonWidget' %}
+        {% include 'widgets/full-width-button-widget.html' %}
+
+    {% case 'membershipBlocksWidget' %}
+        {% include 'widgets/membership-blocks-widget.html' %}
+
+    {% case 'tabsMenuWidget' %}
+        {% include 'widgets/tabs-menu-widget.html' %}
+
+    {% case 'tabsWidget' %}
+        {% include 'widgets/tabs-widget.html' %}
+
+    {% case 'membershipEntriesWidget' %}
+        {% include 'widgets/membership-entries-widget.html' %}
+
+    {% case 'modalWidget' %}
+        {% include 'widgets/modal-widget.html' %}
+
+    {% case 'sponsorsWidget' %}
+        {% include 'widgets/sponsors-widget.html' %}
+
+    {% case 'eventCarouselWidget' %}
+        {% include 'widgets/event-card-carousel-widget.html' %}
+
+    {% case 'twitterHashtagWidget' %}
+        {% include 'widgets/twitter-hashtag-widget.html' %}
+
+{% endswitch %}
