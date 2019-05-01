@@ -10,8 +10,8 @@ return array(
 		'tablePrefix' => 'craft',
 	),
 	".org" => array(
-		//'server' => 'usac-craft-dev-dbcluster-arnu1g5z1sa6.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com',
-		'server' => getenv('IMM_ORG_MYSQL_DB_SERVER'),
+		'server' => 'usac-craft-dev-dbcluster-arnu1g5z1sa6.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com',
+		//'server' => getenv('IMM_ORG_MYSQL_DB_SERVER'),
 		'database' => 'usa_cycling_uat',
 		'user' => 'usac_user',
 		'password' => 'KjYzK4N4b5iJaJactD',
