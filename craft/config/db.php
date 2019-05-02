@@ -20,11 +20,7 @@ return array(
 		'tablePrefix' => 'craft',
 	),
 	".org" => array(
-<<<<<<< HEAD
-		'server' => 'usac-craft-dbcluster-1j6argk4diuwq.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com',
-=======
 		'server' => get_database_server(),
->>>>>>> remotes/origin/stage
 		'database' => 'usa_cycling_uat',
 		'user' => 'usac_user',
 		'password' => 'KjYzK4N4b5iJaJactD',
