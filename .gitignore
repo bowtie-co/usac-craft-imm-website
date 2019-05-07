@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------
+# .gitignore for WordPress
+# Bare Minimum Git
+# Caleb Collins <ccollins@imm.com>
+# ver 20172212
+#
+# Change Log
+# 20172212 Initial Publish
+#
+# -----------------------------------------------------------------
+#
+
+# ignore all files that start with ~
+~*
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+.DS_Store
+.dev.env
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+*.codekit
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ignore node/grunt/bower dependency directories
+node_modules/
+bower_components/*
+build/*
+
+
+# Craft
+#craft/app/**
+craft/storage/runtime/*
+craft/storage/backups/*
+site/assets/
+site/documents/
+site/assets/uploads/*
+site/assets/blog/_*
+site/assets/misc/_*
+site/assets/people/_*
+site/assets/work/_*
+site/assets/welcome/_*
+
+#eclipse
+.project
+.settings/
+site/.buildpath
+site/.project
+
