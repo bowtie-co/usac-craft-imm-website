@@ -8,7 +8,7 @@
 ### How do I get set up? ###
 
 * Install Docker
-* Create the `.dev.env` from `example.dev.env`. Change `MYSQL_HOST` to `localhost`
+* Create the `.dev.env` from `example.dev.env`. Change `MYSQL_HOST` to `localhost`.
 * Run `docker-compose build` on the repo
 * Once it builds, obtain a db dump from the sysadmin and import into the usa_cycling_uat table
 * Run `docker-compose up`
