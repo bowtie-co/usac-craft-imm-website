@@ -1,22 +1,19 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* This repo will let you run the USAC Craft site locally in Docker
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
+* Install Docker
+* Create the `.dev.env` from `example.dev.env`
+* Run `docker-compose build` on the repo
+* Once it builds, obtain a db dump from the sysadmin and import into the usa_cycling_uat table
+* Run `docker-compose up`
+* Site will be available at http://usac.localhost/
+<!--
 ### Contribution guidelines ###
 
 * Writing tests
@@ -26,4 +23,4 @@ This README would normally document whatever steps are necessary to get your app
 ### Who do I talk to? ###
 
 * Repo owner or admin
-* Other community or team contact
+* Other community or team contact -->
