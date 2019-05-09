@@ -13,6 +13,9 @@ function get_database_server() {
                 return 'usac-craft-stage-dbcluster-lo8q5omnp6j0.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
         if($_SERVER['HTTP_HOST'] == 'craftprod.usacycling.org')
                 return 'usac-craft-dbcluster-1j6argk4diuwq.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
+	if($_SERVER['HTTP_HOST'] == 'www.usacycling.org')
+                return 'usac-craft-dbcluster-1j6argk4diuwq.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
+
 }
 
 return array(
