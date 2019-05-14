@@ -12,9 +12,9 @@ function get_database_server() {
         if($_SERVER['HTTP_HOST'] == 'craftstage.usacycling.org')
                 return 'usac-craft-stage-dbcluster-kj8mjkcqom53.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
         if($_SERVER['HTTP_HOST'] == 'craftprod.usacycling.org')
-                return 'usac-craft-dbcluster-1j6argk4diuwq.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
+                return 'usac-craft-dbcluster-16mr9pkusvxrn.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
 	if($_SERVER['HTTP_HOST'] == 'www.usacycling.org')
-                return 'usac-craft-dbcluster-1j6argk4diuwq.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
+                return 'usac-craft-dbcluster-16mr9pkusvxrn.cluster-clj0ec3twiv7.us-east-1.rds.amazonaws.com';
 
 }
 
