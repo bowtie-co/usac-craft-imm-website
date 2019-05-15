@@ -15,6 +15,12 @@ services:
       - mysql
     links:
       - mysql
+  buildchain:
+    build:
+      context: ./site
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./site:/project
   mysql:
     image: mysql:5.6
     env_file:
