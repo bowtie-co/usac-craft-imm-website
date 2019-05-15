@@ -86,12 +86,14 @@ class OauthHandler
           case 'www.usacycling.org':
           case 'register.usacycling.org':
           case 'local.usacycling.org':
+          case 'craftprod.usacycling.org':
               $base_url = "https://api.usacycling.org";
               break;
           case 'imm.usacycling.org':
           case 'usac.immdemo.com':
           case 'usacycling.dev':
           case 'usac.localhost':
+          case 'craftstage.usacycling.org':
 
               $base_url = "https://stage-api.usacycling.org";
               break;
@@ -114,6 +116,8 @@ class OauthHandler
           case 'register.usacycling.org':
           case 'imm.usacycling.org':
           case 'local.usacycling.org':
+          case 'craftstage.usacycling.org':
+          case 'craftprod.usacycling.org':
               $protectedEnvironment = true;
               break;
 
@@ -372,6 +376,8 @@ class OauthHandler
             case 'usacycling.org':
             case 'www.usacycling.org':
             case 'imm.usacycling.org':
+            case 'craftprod.usacycling.org':
+            case 'craftstage.usacycling.org':
                 // Prod. Do nothing.
                 break;
 
@@ -414,6 +420,8 @@ class OauthHandler
           case 'www.usacycling.org':
           case 'imm.usacycling.org':
           case 'local.usacycling.org':
+          case 'craftstage.usacycling.org':
+          case 'craftprod.usacycling.org':
               $name = ".usacycling.org";
               break;
 
