@@ -119,15 +119,16 @@ gulp.task('sass', function() {
 
 // browser sync server for live reload
 gulp.task('watch', function() {
-  browserSync.init({
-    ui: {
-      port: 8080
-    },
-    open: "external",
-    host: "usac.localhost",
-    proxy: "usac.localhost",
-    port: 8080
-  });
+  // browserSync.init({
+  //   open: false,
+  //   ui: {
+  //     port: 8080
+  //   },
+  //   open: "external",
+  //   host: "usac.localhost",
+  //   proxy: "usac.localhost",
+  //   port: 8080
+  // });
   gulp.watch('./src/js/**/*.js', ['js']);
   gulp.watch('./src/vue/**/*.js', ['vue']);
   gulp.watch('./src/scss/**/*.scss', ['sass']);

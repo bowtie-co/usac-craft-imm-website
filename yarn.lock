@@ -2,28 +2,3 @@
 # yarn lockfile v1
 
 
-babel-runtime@^5.8.0:
-  version "5.8.38"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-5.8.38.tgz#1c0b02eb63312f5f087ff20450827b425c9d4c19"
-  dependencies:
-    core-js "^1.0.0"
-
-core-js@^1.0.0:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-
-lazy-value@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/lazy-value/-/lazy-value-1.0.0.tgz#06e2088790b3c72f7b16c5427be2c83ea302ce38"
-
-marker-clusterer-plus@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/marker-clusterer-plus/-/marker-clusterer-plus-2.1.4.tgz#f8eff74d599dab3b7d0e3fed5264ea0e704f5d67"
-
-vue2-google-maps@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/vue2-google-maps/-/vue2-google-maps-0.10.0.tgz#a46ad54ae5d4f1261014f7e6dc0e2221438ee565"
-  dependencies:
-    babel-runtime "^5.8.0"
-    lazy-value "^1.0.0"
-    marker-clusterer-plus "^2.1.4"
