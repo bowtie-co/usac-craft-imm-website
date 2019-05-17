@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.5'
 services:
   web:
     build: .
@@ -11,6 +11,11 @@ services:
       # - ./sql:/sql
       - ./site:/var/www/usacycling_org/site
       - ./craft:/var/www/usacycling_org/craft
+      - type: volume
+        source: nodemodules
+        target: /var/www/usacycling_org/site/node_modules
+        volume:
+          nocopy: true
     depends_on:
       - mysql
     links:
@@ -21,6 +26,16 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./site:/project
+      - type: volume
+        source: nodemodules
+        target: /project/node_modules
+        volume:
+          nocopy: true
+      - type: volume
+        source: npm
+        target: /root/.npm
+        volume:
+          nocopy: true
   mysql:
     image: mysql:5.6
     env_file:
@@ -32,3 +47,5 @@ services:
       # - ./sql:/docker-entrypoint-initdb.d
 volumes:
   mysql:
+  npm:
+  nodemodules:
